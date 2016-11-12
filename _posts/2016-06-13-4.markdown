@@ -1,0 +1,24 @@
+---
+author: baixiaoustc
+comments: true
+date: 2016-06-13 11:24:13+00:00
+layout: post
+link: http://baixiaoustc.com/wordpress/2016/06/13/4/
+slug: '4'
+title: 搭建第一个wordpress博客
+wordpress_id: 4
+categories:
+- 网站
+tags:
+- wordpress
+---
+
+
+
+使用aliyun最便宜的服务器。
+
+然后参照如下教程（基本照抄）：
+
+[https://www.howtoforge.com/apache_php_mysql_on_centos_7_lamp](https://www.howtoforge.com/apache_php_mysql_on_centos_7_lamp)
+
+[https://www.howtoforge.com/how-to-install-wordpress-on-centos-7](https://www.howtoforge.com/how-to-install-wordpress-on-centos-7)
