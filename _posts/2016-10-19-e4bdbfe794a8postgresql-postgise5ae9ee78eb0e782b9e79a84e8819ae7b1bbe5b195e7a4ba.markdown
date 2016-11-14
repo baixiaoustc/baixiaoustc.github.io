@@ -14,6 +14,11 @@ tags:
 - postgresql
 ---
 
+
+
+
+
+
 最新版本的postgis2.3支持点的聚类操作：ST_ClusterDBSCAN和ST_ClusterKMeans，[这篇文章](https://dbaston.wordpress.com/2016/06/03/dbscan-clustering-in-postgis/)介绍了dbscan的操作。
 
 在此基础上做一些操作：
