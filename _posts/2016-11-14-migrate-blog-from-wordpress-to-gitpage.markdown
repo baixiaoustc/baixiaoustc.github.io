@@ -4,7 +4,7 @@ comments: true
 date: 2016-11-14 19:54:23+00:00
 layout: post
 slug: 2016-11-14-migrate-blog-from-wordpress-to-gitpage
-title: 迁移博客从wordpress到github
+title: 迁移博客从wordpress到gitpage
 categories:
 - 网站
 tags:
