@@ -4,7 +4,7 @@ comments: true
 date: 2016-06-23 01:51:53+00:00
 layout: post
 link: http://baixiaoustc.com/wordpress/2016/06/23/golang%e4%bd%bf%e7%94%a8reflect%e5%8c%85%ef%bc%8c%e8%bd%ac%e5%8c%96map%e4%b8%bastruct/
-slug: golang%e4%bd%bf%e7%94%a8reflect%e5%8c%85%ef%bc%8c%e8%bd%ac%e5%8c%96map%e4%b8%bastruct
+slug: golang-transfer-map-to-struct-with-reflect
 title: golang使用reflect包，转化map为struct
 wordpress_id: 77
 categories:
@@ -14,7 +14,7 @@ tags:
 - reflect
 ---
 
-package main
+	package main
     
     import (
     	"reflect"
