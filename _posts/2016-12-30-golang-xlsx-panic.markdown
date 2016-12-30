@@ -47,6 +47,6 @@ tags:
 		}
 	}
 	
-![xlsx_panic](http://oiz85bhef.bkt.clouddn.com/image/xlsx_panic.png)	
+![xlsx_panic](http://oiz85bhef.bkt.clouddn.com/image/xlsx_panic1.png)	
 
 解决方法为获取cell数据前判断长度
