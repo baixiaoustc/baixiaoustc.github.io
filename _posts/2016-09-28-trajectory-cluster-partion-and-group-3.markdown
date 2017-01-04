@@ -15,7 +15,7 @@ tags:
 
 《Trajectory Clustering- A Partition-and-Group Framework》学习笔记
 
-##原文提出一种轨迹分割方法：在原轨迹中选取一些特征点，利用特征点的连线来近似原轨迹。特征点是多指轨迹中变化较大的点。 partition用特征点之间的线段表示。
+##原文提出一种轨迹分割方法：在原轨迹中选取一些特征点，利用特征点的连线来近似原轨迹。特征点是多指轨迹中变化较大的点。 partition用特征点之间的线段表示。##
 
 ![trajectory_partitions](http://oiz85bhef.bkt.clouddn.com/image/trajectory_partitions.png)
 
@@ -26,20 +26,20 @@ tags:
 MDL原则包含两个部分：
 
 1.	L(H)：描述压缩模型（或编码方式）所需要的长度
-2.	L(D|H)：描述利用压缩模型所编码的数据所需要的长度
+2.	L(D/H)：描述利用压缩模型所编码的数据所需要的长度
 
 
 原文中对两部分的定义如下：
 
 ![LDH_definition](http://oiz85bhef.bkt.clouddn.com/image/LDH_definition.png)
 
-L(D|H)中没有包含水平距离是因为对于闭合的两条线段，其水平距离为零.
+L(D/H)中没有包含水平距离是因为对于闭合的两条线段，其水平距离为零.
 
 例如：
 
 ![formulation_of_the_MDL_cost](http://oiz85bhef.bkt.clouddn.com/image/formulation_of_the_MDL_cost.png)
 
-原文又定义了两个概念。MDLpar(pi,pj)表示若点pi、pj为仅有的特征点时所需要的MDL开销，即L(H)+L(D|H)；MDLnopar(pi,pj)表示pi、pj之间没有特征点时的MDL开销，即退化为原始路径。具体来讲，MDLnopar(pi,pj)的L(D|H)部分为0（因为没有特征点所以partition跟原轨迹没有距离），L(H)部分为log2（原轨迹各线段的长度之和）。对于给定的一条线段，算法选择其特征点的标准是该点为特征点的MDL开销要小于不选择其作为特征点的MDL开销。
+原文又定义了两个概念。MDLpar(pi,pj)表示若点pi、pj为仅有的特征点时所需要的MDL开销，即L(H)+L(D/H)；MDLnopar(pi,pj)表示pi、pj之间没有特征点时的MDL开销，即退化为原始路径。具体来讲，MDLnopar(pi,pj)的L(D/H)部分为0（因为没有特征点所以partition跟原轨迹没有距离），L(H)部分为log2（原轨迹各线段的长度之和）。对于给定的一条线段，算法选择其特征点的标准是该点为特征点的MDL开销要小于不选择其作为特征点的MDL开销。
 
 算法流程如下：
 
