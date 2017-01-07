@@ -16,8 +16,7 @@ tags:
 
 交集表结构为
 
->postgres=# \d route\_intersects\_polygon
->>		Table "public.route\_intersects\_polygon"
+>postgres=# \d route\_intersects\_polygon		Table "public.route\_intersects\_polygon"
  Column  |   Type   |                               Modifiers                               
 ---------+----------+-----------------------------------------------------------------------
  id      | bigint   | not null default nextval('route\_intersects\_polygon_id_seq'::regclass)
