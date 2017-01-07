@@ -4,7 +4,7 @@ comments: true
 date: 2016-10-19 10:54:23+00:00
 layout: post
 link: http://baixiaoustc.com/wordpress/2016/10/19/%e4%bd%bf%e7%94%a8postgresql-postgis%e5%ae%9e%e7%8e%b0%e7%82%b9%e7%9a%84%e8%81%9a%e7%b1%bb%e5%b1%95%e7%a4%ba/
-slug: '%e4%bd%bf%e7%94%a8postgresql-postgis%e5%ae%9e%e7%8e%b0%e7%82%b9%e7%9a%84%e8%81%9a%e7%b1%bb%e5%b1%95%e7%a4%ba'
+slug: 2016-10-19-postgresql-postgis-cluster
 title: 使用postgresql-postgis实现点的聚类展示
 wordpress_id: 269
 categories:
@@ -59,4 +59,4 @@ tags:
 
 
 效果图如下，浅绿色为原始点，深绿色为聚类后的店，红色为每个簇的代表点
-![%e6%9c%aa%e5%91%bd%e5%90%8d](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/10/未命名-12.png)
+![postgis_cluster](http://oiz85bhef.bkt.clouddn.com/image/postgis_cluster.png)
