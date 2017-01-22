@@ -4,7 +4,7 @@ comments: true
 date: 2016-06-13 11:24:13+00:00
 layout: post
 link: http://baixiaoustc.com/wordpress/2016/06/13/4/
-slug: '4'
+slug: 2016-06-13-1st-blog
 title: 搭建第一个wordpress博客
 wordpress_id: 4
 categories:
