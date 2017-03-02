@@ -3,7 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2017-01-07 10:54:23+00:00
 layout: post
-slug: 2016-01-07-postgresql-postgis-route-to-polygon
+slug: 2017-01-07-postgresql-postgis-route-to-polygon
 title: 使用postgresql-postgis实现路线填充为多边形
 categories:
 - postgresql

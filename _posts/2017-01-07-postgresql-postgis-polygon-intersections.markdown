@@ -3,7 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2017-01-07 16:54:23+00:00
 layout: post
-slug: 2016-01-07-postgresql-postgis-polygon-intersections
+slug: 2017-01-07-postgresql-postgis-polygon-intersections
 title: 使用postgresql-postgis实现多边形取交集
 categories:
 - postgresql
