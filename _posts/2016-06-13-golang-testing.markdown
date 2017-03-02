@@ -15,6 +15,4 @@ tags:
 
 之前写的测试讲稿
 
-这是嵌入 [Microsoft Office](https://office.com) 演示文稿，由 [Office Online](https://office.com/webapps) 支持。
-
-<iframe src='https://onedrive.live.com/embed?cid=72ADB35B7D43F7CE&amp;resid=72ADB35B7D43F7CE%21106&amp;authkey=AIGBev1Vy8RMw90&amp;em=2&amp;wdAr=1.7777777777777777' width='350px' height='221px' frameborder='0'>这是嵌入 <a target='_blank' href='https://office.com'>Microsoft Office</a> 演示文稿，由 <a target='_blank' href='https://office.com/webapps'>Office Online</a> 支持。 </iframe>
+<iframe src='https://onedrive.live.com/embed?cid=72ADB35B7D43F7CE&amp;resid=72ADB35B7D43F7CE%21106&amp;authkey=AIGBev1Vy8RMw90&amp;em=2&amp;wdAr=1.7777777777777777' width='962px' height='565px' frameborder='0'>这是嵌入 <a target='_blank' href='https://office.com'>Microsoft Office</a> 演示文稿，由 <a target='_blank' href='https://office.com/webapps'>Office Online</a> 支持。 </iframe>
