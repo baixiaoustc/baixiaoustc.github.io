@@ -15,7 +15,7 @@ tags:
 
 《Trajectory Clustering- A Partition-and-Group Framework》学习笔记
 
-##原文提出一种轨迹分割方法：在原轨迹中选取一些特征点，利用特征点的连线来近似原轨迹。特征点是多指轨迹中变化较大的点。 partition用特征点之间的线段表示。##
+##原文提出一种轨迹分割方法：在原轨迹中选取一些特征点，利用特征点的连线来近似原轨迹。特征点是多指轨迹中变化较大的点。 partition用特征点之间的线段表示。
 
 ![trajectory_partitions](http://oiz85bhef.bkt.clouddn.com/image/trajectory_partitions.png)
 
