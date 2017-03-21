@@ -13,10 +13,14 @@ tags:
 
 
 
-学习自[Andrew Ng的coursera讲义](https://www.coursera.org/learn/machine-learning/home/welcome)
+学习自[Andrew Ng的coursera讲义](https://www.coursera.org/learn/machine-learning/home/welcome)。
 
-##model
-###机器学习怎么定义？
+
+## model
+
+
+### 机器学习怎么定义？
+
 
 >Tom Mitchell (1998) Well-posed Learning
 Problem: A computer program is said to learn
@@ -27,7 +31,9 @@ with experience E.
 
 就是说，机器学习针对一个任务，在能测量的情况下，能随着经验不断进步。这里的经验，就是指训练集。
 
-###机器学习怎么分类？
+
+### 机器学习怎么分类？
+
 
 1. Supervised learning
 2. Unsupervised learning
@@ -36,11 +42,14 @@ Supervised learning（可监督学习），具体又分为回归问题（Regress
 
 Unsupervised learning（无监督学习），待补充
 
-###模型
+
+### 模型
+
 
 预测房价的问题，已有房价对房屋面积的对应关系，需要预测其他房屋的房价。
 
 ![如图](http://oiz85bhef.bkt.clouddn.com/image/L2-1L2-1.png)
 
 
-##cost function
+## cost function
+
