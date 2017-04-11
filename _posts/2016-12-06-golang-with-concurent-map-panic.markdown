@@ -15,6 +15,81 @@ tags:
 {:toc}
 
 
+## 更新
+
+在读写结构体里的map时，原以为将结构体重新赋值到新变量就能避免内部map的读写并发问题，实则不然：
+
+	package main
+	
+	import (
+		"fmt"
+		"sync"
+		"time"
+	)
+	
+	var M = map[string]int{"a": 1}
+	var lock = sync.RWMutex{}
+	
+	func main() {
+		go Read(M)
+		time.Sleep(1 * time.Second)
+		go Write(M)
+		time.Sleep(1 * time.Minute)
+	}
+	
+	func Read(M map[string]int) {
+		fmt.Println("read")
+		for {
+			m := M
+			read(m)
+		}
+	}
+	
+	func Write(M map[string]int) {
+		fmt.Println("write")
+		for {
+			m := M
+			// m := make(map[string]int)
+			// for k, v := range M {
+			// 	m[k] = v
+			// }
+			write(m)
+		}
+	}
+	
+	func read(m map[string]int) {
+		lock.RLock()
+		defer lock.RUnlock()
+		_ = m["a"]
+	}
+	
+	func write(m map[string]int) {
+		// lock.Lock()
+		// defer lock.Unlock()
+		m["b"] = 2
+	}
+	
+在Write函数中申请新变量m，并不能解决问题：
+
+![image](http://oiz85bhef.bkt.clouddn.com/image/Jietu20170411-085651.jpg)
+
+可以通过拷贝map的做法来规避，将Write函数修改为：
+
+	func Write(M map[string]int) {
+		fmt.Println("write")
+		for {
+			// m := M
+			m := make(map[string]int)
+			for k, v := range M {
+				m[k] = v
+			}
+			write(m)
+		}
+	}
+
+
+## 原文
+
 
 
 服务器从1.5升级到1.7之后，高并发的服务持续panic：
