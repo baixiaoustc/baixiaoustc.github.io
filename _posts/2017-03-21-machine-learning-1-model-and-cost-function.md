@@ -65,4 +65,20 @@ with experience E.
 ![](http://oiz85bhef.bkt.clouddn.com/image/L2-4.png)
 
 
-线性回归的目标是找到合适的theta，使得cost function最小。
+线性回归的目标是找到合适的theta，使得cost function最小。如何找到最小的theta？先引入梯度下降法。
+
+### Gradient descent
+
+Gradient descent（梯度下降法）的中心思想就是沿梯度下降，如图：
+
+![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20170411-092847@2x.jpg)
+
+其数学思想是循环地取偏导数，注意每次迭代时，要同步更新所有的theta值：
+
+![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20170411-093159@2x.jpg)
+
+对于线性回归来说，简单的数学推导可知：
+
+![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20170411-093530@2x.jpg)
+
+如此就可以通过编程实现梯度下降了。需要注意的是，公式中的alpha指学习率，描述了每个迭代步伐的大小。alpha不能太大也不能太小，后文会有介绍。
