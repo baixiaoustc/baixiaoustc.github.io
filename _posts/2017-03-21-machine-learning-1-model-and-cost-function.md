@@ -56,7 +56,7 @@ with experience E.
 ## cost function
 
 
-那么如何判定所选的Hypothesis函数好不好？或者说如何选择最好的Hypothesis函数？需要用到cost function的概念。cost function（称为J）描述，Hypothesis函数的计算值和真实值的差异。
+那么如何判定所选的Hypothesis函数好不好？或者说如何选择最好的Hypothesis函数？需要用到cost function的概念。cost function（称为J）描述了，Hypothesis函数的计算值和真实值的差异。
 
 ![](http://oiz85bhef.bkt.clouddn.com/image/L2-3.png)
 
