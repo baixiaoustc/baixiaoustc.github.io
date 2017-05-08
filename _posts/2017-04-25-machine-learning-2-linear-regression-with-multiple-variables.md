@@ -11,6 +11,8 @@ tags:
 - machine learning
 ---
 
+* content 
+{:toc}
 
 
 学习自[Andrew Ng的coursera讲义](https://www.coursera.org/learn/machine-learning/home/welcome)。
@@ -38,3 +40,21 @@ tags:
 多变量带来一个问题，就是不同变量的取值范围可能差异很大。为了将所有变量缩放到一个统一的范围，以加速迭代收敛，引入了Mean normalization（均值归一化）。用训练集中每个变量的均值和范围来重新归一化每个变量。
 
 ![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20170425-094355@2x.jpg)
+
+### Learning rate
+
+梯度下降法里面一个重要的参数alpha，怎么选择呢？如果alpha太小，会导致收敛过慢；如果alpha太大，则可能会导致J(theta)无法在每次迭代都能下降，最终可能无法收敛。如下是一种选择alpha的方法：
+
+![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20170508-092419@2x.jpg)
+
+## Normal equation
+
+梯度下降法使用起来比较麻烦，因为需要指定theta的初始值，还需要选择alpha，做feature scaling等等。现在引入Normal equation，在特定场景下可以更方便地求theta。
+
+Normal equation的推导：
+
+![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20170508-100522@2x.jpg)
+
+什么情况下可以用Normal equation？在样本不是太大的时候，因为样本太大时矩阵的计算十分耗时。
+
+![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20170508-100848@2x.jpg)
