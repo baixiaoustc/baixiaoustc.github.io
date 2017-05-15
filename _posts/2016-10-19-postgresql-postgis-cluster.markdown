@@ -58,5 +58,5 @@ tags:
     
 
 
-效果图如下，浅绿色为原始点，深绿色为聚类后的店，红色为每个簇的代表点
+效果图如下，深绿色为原始点，浅绿色为聚类后的点，红色为每个簇的代表点
 ![postgis_cluster](http://oiz85bhef.bkt.clouddn.com/image/postgis_cluster.png)
