@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-06-13 11:40:27+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/06/13/golang%e6%8c%89%e7%85%a7map%e8%a7%a3%e6%9e%90json%e7%bb%93%e6%9e%84%e6%97%b6%ef%bc%8cint%e7%b1%bb%e5%9e%8b%e4%bc%9a%e8%a2%ab%e5%8d%87%e7%ba%a7%e4%b8%bafloat64/
-slug: golang%e6%8c%89%e7%85%a7map%e8%a7%a3%e6%9e%90json%e7%bb%93%e6%9e%84%e6%97%b6%ef%bc%8cint%e7%b1%bb%e5%9e%8b%e4%bc%9a%e8%a2%ab%e5%8d%87%e7%ba%a7%e4%b8%bafloat64
+slug: golang-bug-when-json-unmarshal-map
 title: golang按照map解析json结构的坑
 wordpress_id: 10
 categories:

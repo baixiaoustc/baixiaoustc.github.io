@@ -3,7 +3,6 @@ author: baixiaoustc
 comments: true
 date: 2016-06-13 12:12:46+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/06/13/golang%e7%9a%84%e5%8f%af%e7%94%a8%e6%80%a7%e6%b5%8b%e8%af%95/
 slug: 2016-06-13-golang-testing
 title: golang的可用性测试
 wordpress_id: 19

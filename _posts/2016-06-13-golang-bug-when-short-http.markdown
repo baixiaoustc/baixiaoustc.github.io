@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-06-13 11:36:37+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/06/13/golang%e7%9a%84http%e7%9f%ad%e8%bf%9e%e6%8e%a5%e4%bd%bf%e7%94%a8/
-slug: golang%e7%9a%84http%e7%9f%ad%e8%bf%9e%e6%8e%a5%e4%bd%bf%e7%94%a8
+slug: golang-bug-when-short-http
 title: golang的http短连接使用的坑
 wordpress_id: 8
 categories:
