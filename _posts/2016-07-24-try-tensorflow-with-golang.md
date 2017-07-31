@@ -12,7 +12,8 @@ tags:
 ---
 
 
-（手机阅读会有问题-。=）
+手机阅读会有问题-。=
+
 google的tensorflow提供golang接口了，总算是拉了自家的语言一把。周末抽空试了试，总体思想还是用python训练并Save好model（更友好），然后用golang Load该model，再进行运算。
 
 ## 安装
@@ -104,5 +105,7 @@ google的tensorflow提供golang接口了，总算是拉了自家的语言一把�
 完整代码在[https://github.com/baixiaoustc/tensorflow_mnist](https://github.com/baixiaoustc/tensorflow_mnist)
 
 参考：
+
 [https://nilsmagnus.github.io/post/go-tensorflow/](https://nilsmagnus.github.io/post/go-tensorflow/)
+
 [https://pgaleone.eu/tensorflow/go/2017/05/29/understanding-tensorflow-using-go/?utm_source=golangweekly&utm_medium=email](https://pgaleone.eu/tensorflow/go/2017/05/29/understanding-tensorflow-using-go/?utm_source=golangweekly&utm_medium=email)
