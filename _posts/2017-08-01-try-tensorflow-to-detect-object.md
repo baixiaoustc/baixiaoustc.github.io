@@ -18,19 +18,16 @@ tags:
 
 
 
-不会写前端，手机阅读会有问题-。=
-
 ## 先看效果吧
 
 ### 乖乖女儿
 
-看看
 
-<iframe width="100%" src="http://player.youku.com/embed/XMjkzNzUzMjc0OA==" frameborder="0"> </iframe>
+<iframe height="498" width="100%" src="http://player.youku.com/embed/XMjkzNzUzMjc0OA==" frameborder="0"> </iframe>
 
 ### 笨拙滑冰
 
-<iframe width="100%" src="http://player.youku.com/embed/XMjkzNzUzNjExMg==" frameborder="0"> </iframe>
+<iframe height="498" width="100%" src="http://player.youku.com/embed/XMjkzNzUzNjExMg==" frameborder="0"> </iframe>
 
 ## 代码
 
