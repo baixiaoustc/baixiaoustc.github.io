@@ -3,9 +3,8 @@ author: baixiaoustc
 comments: true
 date: 2017-07-03 12:12:46+00:00
 layout: post
-slug: 2016-07-03-postgresql-and-postgis-training
+slug: 2017-07-03-postgresql-and-postgis-training
 title: PostgreSQL+PostGIS空间数据库
-wordpress_id: 19
 categories:
 - postgresql
 tags:
