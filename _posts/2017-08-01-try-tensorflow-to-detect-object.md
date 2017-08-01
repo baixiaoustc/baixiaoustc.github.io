@@ -26,11 +26,11 @@ tags:
 
 看看
 
-<iframe height="498" width="100%" src="http://player.youku.com/embed/XMjkzNzUzMjc0OA==" frameborder="0"> </iframe>
+<iframe width="100%" src="http://player.youku.com/embed/XMjkzNzUzMjc0OA==" frameborder="0"> </iframe>
 
 ### 笨拙滑冰
 
-<iframe height="498" width="510" src="http://player.youku.com/embed/XMjkzNzUzNjExMg==" frameborder="0"> </iframe>
+<iframe width="100%" src="http://player.youku.com/embed/XMjkzNzUzNjExMg==" frameborder="0"> </iframe>
 
 ## 代码
 
