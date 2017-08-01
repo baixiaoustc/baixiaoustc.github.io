@@ -3,7 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2017-08-01 12:12:46+00:00
 layout: post
-slug: 2017-08-01-try-tensorflow-to-detect-object
+slug: 2017-07-24-try-tensorflow-with-golang1
 title: 小试tensorflow的图像识别
 categories:
 - 机器学习
