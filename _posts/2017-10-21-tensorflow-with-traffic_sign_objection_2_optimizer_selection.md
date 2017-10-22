@@ -101,7 +101,7 @@ Adam(Adaptive Moment Estimation)本质上是上述方法的结合进一步优化
 
 ## 结束
 
-完整代码在[https://github.com/baixiaoustc/tensorflow_tsc](https://github.com/baixiaoustc/tensorflow_tsc)
+完整代码在[https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_1.1_softmax_adam.py](https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_1.1_softmax_adam.py)
 
 参考：
 

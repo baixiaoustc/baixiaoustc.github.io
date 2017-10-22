@@ -247,7 +247,7 @@ TensorFlow 的 “延迟执行（deferred execution）” 模型：TensorFlow �
 
 ## 结束
 
-完整代码在[https://github.com/baixiaoustc/tensorflow_tsc](https://github.com/baixiaoustc/tensorflow_tsc)
+完整代码在[https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_1.0_softmax.py](https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_1.0_softmax.py)
 
 参考：
 
