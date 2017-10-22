@@ -239,6 +239,12 @@ TensorFlow 的 “延迟执行（deferred execution）” 模型：TensorFlow �
 
 ![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20171007-181103@2x.jpg)
 
+### 增加训练迭代次数
+
+迭代增加为1000次，训练数据拟合的更好，测试数据的精确度并没有提升：
+
+![](http://oiz85bhef.bkt.clouddn.com/image/21710221132image.png)
+
 ## 结束
 
 完整代码在[https://github.com/baixiaoustc/tensorflow_tsc](https://github.com/baixiaoustc/tensorflow_tsc)
