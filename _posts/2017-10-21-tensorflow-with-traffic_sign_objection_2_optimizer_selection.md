@@ -90,11 +90,11 @@ Adam(Adaptive Moment Estimation)本质上是上述方法的结合进一步优化
 	# training, learning rate = 0.003
 	train_step = tf.train.AdamOptimizer(0.003).minimize(cross_entropy)
 
-200次的adam优化器，准确度均有提升：
+200次迭代的adam优化器，准确度均有提升：
 
 ![](http://oiz85bhef.bkt.clouddn.com/image/201710221136image.png)
 
-1000次的adam优化器，居然训练数据准确度达到100%：
+1000次迭代的adam优化器，居然训练数据准确度达到100%：
 
 ![](http://oiz85bhef.bkt.clouddn.com/image/2017102238image.png)
 
