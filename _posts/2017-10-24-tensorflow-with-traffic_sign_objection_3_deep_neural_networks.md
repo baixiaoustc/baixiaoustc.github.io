@@ -66,6 +66,8 @@ Sigmoid函数曾被广泛地应用，但由于其自身的一些缺陷，现在�
 
 ![](http://images2015.cnblogs.com/blog/673793/201512/673793-20151228170208120-1856567090.jpg)
 
+从图可见，目前正处于神经网络第三次兴起的阶段。但万事无常，这波热潮过去后说不定又要进入冷却期。只有期待量子计算带来的计算能力提高，或是又有革命性的算法出来，才有可能将神经网络应用到更加广泛的场景。
+
 ### 层级连接结构
 
 之前用到的是单层神经网络，现在说说普遍的结构。神经网络的结构是一种单向的层级连接结构，每一层可能有多个神经元。再形象一点说，就是每一层的输出将会作为下一层的输入数据。一般情况下，单层内的这些神经元之间是没有连接的。最常见的一种神经网络结构就是全连接层级神经网络，也就是相邻两层之间，每个神经元和每个神经元都是相连的，单层内的神经元之间是没有关联的。一般从前往后分为输入层／隐藏层／输出层。只有输入层和输出层的时候就为单层网络。注意命名习俗里面，通常是不把输入层计算在层数内的。
@@ -117,7 +119,7 @@ Sigmoid函数曾被广泛地应用，但由于其自身的一些缺陷，现在�
 	cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=Y_, logits=Ylogits))
 
 
-我们选取两个隐藏层的神经元个数分别为300和150，看看效果。200次迭代的效果如下，训练和测试的准确度分别为87%和83%，还没有上一篇文章的好呢？
+我们选取两个隐藏层的神经元个数分别为300和150（且Adam的学习率为0.003时），看看效果。200次迭代的效果如下，训练和测试的准确度分别为87%和83%，还没有上一篇文章的好呢？
 
 ![](http://oiz85bhef.bkt.clouddn.com/image/201710241936image.png)
 
@@ -125,7 +127,7 @@ Sigmoid函数曾被广泛地应用，但由于其自身的一些缺陷，现在�
 
 ![](http://oiz85bhef.bkt.clouddn.com/image/201710241939image.png)
 
-经过多次尝试，将两个隐藏层的神经元个数调整为为500和250，且Adam的学习率为0.002时，达到了最优效果。这也说明机器学习的调参是很重要的。调整后的效果如下：
+经过多次尝试，将两个隐藏层的神经元个数调整为为500和250（且Adam的学习率为0.002时），达到了最优效果。这也说明机器学习的调参是很重要的。调整后的效果如下：
 
 200次迭代，测试准确度达到98%，测试准确度达到85%：
 
@@ -137,7 +139,7 @@ Sigmoid函数曾被广泛地应用，但由于其自身的一些缺陷，现在�
 
 ## 结束
 
-完整代码在[https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_1.1_softmax_adam.py](https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_1.1_softmax_adam.py)
+完整代码在[https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_2.0_five_layers_sigmoid.py](https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_2.0_five_layers_sigmoid.py)
 
 参考：
 
