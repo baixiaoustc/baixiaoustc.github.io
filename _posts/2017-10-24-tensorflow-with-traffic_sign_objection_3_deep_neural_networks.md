@@ -150,9 +150,12 @@ Sigmoid函数曾被广泛地应用，但由于其自身的一些缺陷，现在�
 	# variable learning rate
 	lr = tf.placeholder(tf.float32)
 	
-	# training step, learning rate will decay	train_step = tf.train.AdamOptimizer(lr).minimize(cross_entropy)
+	# training step, learning rate will decay
 	
-	# You can call this function in a loop to train the model	def training_step(i, update_test_data, update_train_data):
+	train_step = tf.train.AdamOptimizer(lr).minimize(cross_entropy)
+	
+	# You can call this function in a loop to train the model	
+	def training_step(i, update_test_data, update_train_data):
 	    batch_X, batch_Y = train.next_batch(BATCH_NUM)
 	
 	    # learning rate decay
@@ -184,9 +187,7 @@ Sigmoid函数曾被广泛地应用，但由于其自身的一些缺陷，现在�
 ## 结束
 
 完整代码在[https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_2.0_five_layers_sigmoid.py](https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_2.0_five_layers_sigmoid.py)
-
 以及
-
 [https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_2.1_five_layers_sigmoid_lrdecay.py](https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_2.1_five_layers_sigmoid_lrdecay.py)
 
 
@@ -195,3 +196,5 @@ Sigmoid函数曾被广泛地应用，但由于其自身的一些缺陷，现在�
 [http://blog.csdn.net/han_xiaoyang/article/details/50447834](http://blog.csdn.net/han_xiaoyang/article/details/50447834)
 
 [http://www.cnblogs.com/subconscious/p/5058741.html](http://www.cnblogs.com/subconscious/p/5058741.html)
+
+[https://mp.weixin.qq.com/s/E6SsvWofiN94JtZWf1f-Ug](https://mp.weixin.qq.com/s/E6SsvWofiN94JtZWf1f-Ug)
