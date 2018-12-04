@@ -56,7 +56,7 @@ google的tensorflow提供golang接口了，总算是拉了自家的语言一把�
     
 导出model的形式如下图：
 
-![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20170724-094807@2x.jpg)
+![](http://image99.renyit.com/image/Jietu20170724-094807@2x.jpg)
 
 
 ## 使用模型
@@ -97,7 +97,7 @@ google的tensorflow提供golang接口了，总算是拉了自家的语言一把�
 	
 结果如下图，可以看到识别数字8是成功了：
 
-![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20170724-095333.jpg)
+![](http://image99.renyit.com/image/Jietu20170724-095333.jpg)
 
 
 ## 结束

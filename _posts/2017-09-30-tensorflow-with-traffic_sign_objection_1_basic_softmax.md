@@ -48,7 +48,7 @@ tags:
 
 一个简化的单层神经网络如下图
 
-![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20171007-102511@2x.jpg)
+![](http://image99.renyit.com/image/Jietu20171007-102511@2x.jpg)
 
 ### 图像预处理
 
@@ -56,11 +56,11 @@ tags:
 
 原图像为下图：
 
-![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20171007-103349@2x.jpg)
+![](http://image99.renyit.com/image/Jietu20171007-103349@2x.jpg)
 
 转为下图：
 
-![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20171007-103022@2x.jpg)
+![](http://image99.renyit.com/image/Jietu20171007-103022@2x.jpg)
 
 对所有图像都进行如上的处理，训练数据共 4575 张，测试数据为 2520 张。
 
@@ -68,7 +68,7 @@ tags:
 
 经过预处理之后，一张图像就被 28*28=784 个像素点给代表了，即输入层为 784 个。输出层为 0 到 61 共 62 个神经元，代表 62 种分类类型。通过「全连接」连接起来的。
 
-![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20171007-144416@2x.jpg)
+![](http://image99.renyit.com/image/Jietu20171007-144416@2x.jpg)
 
 神经网络中的每个「神经元」对其所有的输入进行加权求和，并添加一个被称为「偏置（bias）」的常数，然后通过一些非线性激活函数来反馈结果。
 
@@ -76,7 +76,7 @@ tags:
 
 激活函数用于给神经网络加入非线性因素的，因为线性模型的表达能力不够。对于分类问题，softmax 是一个不错的激活函数。通过取每个元素的指数，然后归一化向量（使用任意的范数（norm），比如向量的普通欧几里得距离）从而将 softmax 应用于向量。
 
-![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20171007-154723@2x.jpg)
+![](http://image99.renyit.com/image/Jietu20171007-154723@2x.jpg)
 
 那么为什么「softmax」会被称为 softmax 呢？指数是一种骤增的函数。这将加大向量中每个元素的差异。它也会迅速地产生一个巨大的值。然后，当进行向量的标准化时，支配范数（norm）的最大的元素将会被标准化为一个接近 1 的数字，其他的元素将会被一个较大的值分割并被标准化为一个接近 0 的数字。所得到的向量清楚地显示出了哪个是其最大的值，即「max」，但是却又保留了其值的原始的相对排列顺序，因此即为「soft」。
 
@@ -84,13 +84,13 @@ tags:
 
 我们现在将使用矩阵乘法将这个单层的神经元的行为总结进一个简单的公式当中。使用加权矩阵 W 的第一列权重，我们计算第一个图像所有像素的加权和。该和对应于第一神经元。使用第二列权重，我们对第二个神经元进行同样的操作，直到第 62 个神经元。然后，我们可以对剩余的图像重复操作。如果我们把一个包含 100 个图像的矩阵称为 X，那么我们的 62 个神经元在这 100 张图像上的加权和就是简单的 X * W（矩阵乘法）。
 
-![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20171007-161920@2x.jpg)
+![](http://image99.renyit.com/image/Jietu20171007-161920@2x.jpg)
 
 每一个神经元都必须添加其偏置（一个常数）。因为我们有 62 个神经元，我们同样拥有 62 个偏置常数。我们将这个 62 个值的向量称为 b。它必须被添加到先前计算的矩阵中的每一行当中。使用一个称为 "broadcasting" 的魔法，我们将会用一个简单的加号写出它。
 
 我们最终应用 softmax 激活函数并且得到一个描述单层神经网络的公式，并将其应用于 100 张图像：
 
-![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20171007-162906@2x.jpg)
+![](http://image99.renyit.com/image/Jietu20171007-162906@2x.jpg)
 
 **特别说明：上文（包括图片中）提到的 100 张图像是一个 mini-batch 的概念，实际上在本案例的运算中是将 4575 张图片一起投入计算，使得输入是一个 4575 * 784 的矩阵。究其原因，是因为训练数据是按照其分类排好序的，如果按 mini-batch 投入运算，会每个迭代对这 100 张图像过拟合，最终使参数左右摇摆。如果要用到 mini-batch，需要将数据源顺序打乱。**
 
@@ -126,7 +126,7 @@ tags:
 
 上文提到过，为了判断模型的优劣，需要计算模型的精确度。我们用「判定结果」（即上文的Y）和「自有标签」（见下文的Y_）的距离来描述模型的精确程度。任何一种定义的距离都可以进行这样的操作，普通欧几里得距离是可以的，但是对于分类问题，被称为「交叉熵（cross-entropy）」的距离更加有效。
 
-![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20171007-165349@2x.jpg)
+![](http://image99.renyit.com/image/Jietu20171007-165349@2x.jpg)
 
 交叉熵是一个关于权重、偏置、训练图像的像素和其已知标签的函数。
 
@@ -203,7 +203,7 @@ TensorFlow 的 “延迟执行（deferred execution）” 模型：TensorFlow �
 
 可以看到准确度（accuracy）在逐步提升：
 
-![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20171007-180704.jpg)
+![](http://image99.renyit.com/image/Jietu20171007-180704.jpg)
 
 抽取10个训练样本，感性地看看整体模型的效果：
 
@@ -237,13 +237,13 @@ TensorFlow 的 “延迟执行（deferred execution）” 模型：TensorFlow �
 	
 	plt.show()
 
-![](http://oiz85bhef.bkt.clouddn.com/image/Jietu20171007-181103@2x.jpg)
+![](http://image99.renyit.com/image/Jietu20171007-181103@2x.jpg)
 
 ### 增加训练迭代次数
 
 迭代增加为1000次，训练数据拟合的更好，测试数据的精确度并没有提升：
 
-![](http://oiz85bhef.bkt.clouddn.com/image/21710221132image.png)
+![](http://image99.renyit.com/image/21710221132image.png)
 
 ## 结束
 
