@@ -35,4 +35,4 @@ Indexes:
 	
 结果为：
 
-![polygon_intersection](http://oiz85bhef.bkt.clouddn.com/image/polygon_intersection.png)
+![polygon_intersection](http://image99.renyit.com/image/polygon_intersection.png)
