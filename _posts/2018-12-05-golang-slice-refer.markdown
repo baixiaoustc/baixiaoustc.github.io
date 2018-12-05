@@ -82,7 +82,7 @@ tags:
 
 > 在函数传参时，slice传递了一个含有指针和长度的结构的值，而不是一个指向结构的指针。这一点非常重要。
 
-![](https://img1.tuicool.com/UZRnAnz.png!web)
+![](http://image99.renyit.com/image/UZRnAnz.png)
 
 因此，实参`ids`和行参`idsa`、`idsb`是指向的同一段数组。所以funcb是可以修改实参的值。第一个问题解决了。再看funca里面的append之后，`idsa[0]`的地址改变了，所以说append之后实际上`idsa`指向了另一个数组。第二个问题也解决了。
 
