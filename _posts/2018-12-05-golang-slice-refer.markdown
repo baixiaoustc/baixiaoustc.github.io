@@ -88,4 +88,21 @@ tags:
 
 另外，一开始可能会奇怪，`&ids`的地址**0xc42000a060**和`&ids[0]`的地址**0xc42000e1d0**在地址空间中差得很远，正说明了slice和slice指向的数组是两个东西，分配的是两块内存地址。只不过slice会指向关联数组，slice的结构中保存了数组的地址。
 
+所以我们的面试题就很简单了：
+
+	type T struct {
+		ls []int
+		v  int
+	}
+	
+	func foo(t T) {
+		t.ls[0] = 999
+		t.v = 888
+	}
+	
+	func main() {
+		var t = T{ls: []int{1, 2, 3}}
+		foo(t)
+		fmt.Println(t)
+	}
 
