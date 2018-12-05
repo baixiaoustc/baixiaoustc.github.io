@@ -36,7 +36,7 @@ tags:
 			fmt.Printf("&idsa    addr:%p\n", &idsa)
 			fmt.Printf("&idsa[0] addr:%p\n", &idsa[0])
 			idsa = append(idsa, productId)
-			fmt.Printf("&idsa[0] addr:%p\n", &idsa[0])
+			fmt.Printf("&idsa[0] addr:%p after append\n", &idsa[0])
 			fmt.Printf("&idsa[1] addr:%p\n", &idsa[1])
 		}
 	
