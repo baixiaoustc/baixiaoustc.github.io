@@ -26,7 +26,7 @@ tags:
 
 来看例子：
 
-```Go
+```golang
 func main() {
 	ids := make([]string, 0)
 	fmt.Printf("&ids     addr:%p\n", &ids)
