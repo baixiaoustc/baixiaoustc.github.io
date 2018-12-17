@@ -26,7 +26,7 @@ tags:
 
 来看例子：
 
-{% highlight golang linenos %}
+{% highlight golang %}
 
 func main() {
 	ids := make([]string, 0)
