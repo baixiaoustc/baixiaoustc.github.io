@@ -27,7 +27,6 @@ tags:
 来看例子：
 
 {% highlight golang %}
-
 func main() {
 	ids := make([]string, 0)
 	fmt.Printf("&ids     addr:%p\n", &ids)
@@ -56,7 +55,6 @@ func main() {
 	funcb(ids)
 	fmt.Println(ids)
 }
-
 {% endhighlight %}
 
 看结果：
