@@ -26,48 +26,36 @@ tags:
 
 来看例子：
 
-<head>
-    <title>Rouge</title>
-    <link media="all" rel="stylesheet" type="text/css" href="../assets/rouge/rouge.css" />
-    <style>
-        pre{
-            background: rgba(0, 0, 0, 0.95);
-        }
-    </style>
-</head>
-
-<body>
-	{% highlight ruby %}
-	func main() {
-		ids := make([]string, 0)
-		fmt.Printf("&ids     addr:%p\n", &ids)
-		ids = append(ids, "23")
-		fmt.Printf("&ids[0]  addr:%p\n", &ids[0])
-		
-		funca := func(productId string, idsa []string) {
-			fmt.Printf("&idsa    addr:%p\n", &idsa)
-			fmt.Printf("&idsa[0] addr:%p\n", &idsa[0])
-			idsa = append(idsa, productId)
-			fmt.Printf("&idsa[0] addr:%p after append\n", &idsa[0])
-			fmt.Printf("&idsa[1] addr:%p\n", &idsa[1])
-		}
-		
-		productId := "144"
-		funca(productId, ids)
-		fmt.Println(ids)
-		
-		funcb := func(idsb []string) {
-			for i := range idsb {
-				idsb[i] = fmt.Sprint(i)
-				fmt.Printf("&idsb[i] addr:%p\n", &idsb[i])
-			}
-		}
-		
-		funcb(ids)
-		fmt.Println(ids)
+```Go
+func main() {
+	ids := make([]string, 0)
+	fmt.Printf("&ids     addr:%p\n", &ids)
+	ids = append(ids, "23")
+	fmt.Printf("&ids[0]  addr:%p\n", &ids[0])
+	
+	funca := func(productId string, idsa []string) {
+		fmt.Printf("&idsa    addr:%p\n", &idsa)
+		fmt.Printf("&idsa[0] addr:%p\n", &idsa[0])
+		idsa = append(idsa, productId)
+		fmt.Printf("&idsa[0] addr:%p after append\n", &idsa[0])
+		fmt.Printf("&idsa[1] addr:%p\n", &idsa[1])
 	}
-	{% endhighlight %}
-</body>	
+	
+	productId := "144"
+	funca(productId, ids)
+	fmt.Println(ids)
+	
+	funcb := func(idsb []string) {
+		for i := range idsb {
+			idsb[i] = fmt.Sprint(i)
+			fmt.Printf("&idsb[i] addr:%p\n", &idsb[i])
+		}
+	}
+	
+	funcb(ids)
+	fmt.Println(ids)
+}
+```
 
 看结果：
 
