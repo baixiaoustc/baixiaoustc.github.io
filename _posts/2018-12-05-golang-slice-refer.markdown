@@ -26,7 +26,7 @@ tags:
 
 来看例子：
 
-{% highlight golang %}
+{% highlight c++ %}
 func main() {
 	ids := make([]string, 0)
 	fmt.Printf("&ids     addr:%p\n", &ids)
