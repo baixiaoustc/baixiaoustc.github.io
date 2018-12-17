@@ -25,35 +25,36 @@ tags:
 > In a function call, the function value and arguments are evaluated in the usual order. After they are evaluated, the parameters of the call are **passed by value** to the function and the called function begins execution. 
 
 来看例子：
-
-	func main() {
-		ids := make([]string, 0)
-		fmt.Printf("&ids     addr:%p\n", &ids)
-		ids = append(ids, "23")
-		fmt.Printf("&ids[0]  addr:%p\n", &ids[0])
+{% highlight ruby %}
+func main() {
+	ids := make([]string, 0)
+	fmt.Printf("&ids     addr:%p\n", &ids)
+	ids = append(ids, "23")
+	fmt.Printf("&ids[0]  addr:%p\n", &ids[0])
 	
-		funca := func(productId string, idsa []string) {
-			fmt.Printf("&idsa    addr:%p\n", &idsa)
-			fmt.Printf("&idsa[0] addr:%p\n", &idsa[0])
-			idsa = append(idsa, productId)
-			fmt.Printf("&idsa[0] addr:%p after append\n", &idsa[0])
-			fmt.Printf("&idsa[1] addr:%p\n", &idsa[1])
-		}
-	
-		productId := "144"
-		funca(productId, ids)
-		fmt.Println(ids)
-	
-		funcb := func(idsb []string) {
-			for i := range idsb {
-				idsb[i] = fmt.Sprint(i)
-				fmt.Printf("&idsb[i] addr:%p\n", &idsb[i])
-			}
-		}
-	
-		funcb(ids)
-		fmt.Println(ids)
+	funca := func(productId string, idsa []string) {
+		fmt.Printf("&idsa    addr:%p\n", &idsa)
+		fmt.Printf("&idsa[0] addr:%p\n", &idsa[0])
+		idsa = append(idsa, productId)
+		fmt.Printf("&idsa[0] addr:%p after append\n", &idsa[0])
+		fmt.Printf("&idsa[1] addr:%p\n", &idsa[1])
 	}
+	
+	productId := "144"
+	funca(productId, ids)
+	fmt.Println(ids)
+	
+	funcb := func(idsb []string) {
+		for i := range idsb {
+			idsb[i] = fmt.Sprint(i)
+			fmt.Printf("&idsb[i] addr:%p\n", &idsb[i])
+		}
+	}
+	
+	funcb(ids)
+	fmt.Println(ids)
+}
+{% endhighlight %}
 
 看结果：
 
