@@ -92,19 +92,20 @@ func main() {
 
 所以我们的面试题就很简单了：
 
-	type T struct {
-		ls []int
-		v  int
-	}
+{% highlight golang %}
+type T struct {
+	ls []int
+	v  int
+}
 	
-	func foo(t T) {
-		t.ls[0] = 999
-		t.v = 888
-	}
+func foo(t T) {
+	t.ls[0] = 999
+	t.v = 888
+}
 	
-	func main() {
-		var t = T{ls: []int{1, 2, 3}}
-		foo(t)
-		fmt.Println(t)
-	}
-
+func main() {
+	var t = T{ls: []int{1, 2, 3}}
+	foo(t)
+	fmt.Println(t)
+}
+{% endhighlight %}
