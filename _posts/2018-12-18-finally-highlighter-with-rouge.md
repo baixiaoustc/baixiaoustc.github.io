@@ -23,25 +23,38 @@ tags:
 
 用命令`rougify help style`看rouge支持哪些高亮配色，最终选了个普通的github配色，生成css文件：`rougify style github > rouge.css`。将该css文件放入项目路径`assets/rouge/rouge.css`里去，然后在`_includes/head.html`里面添加引用：`<link rel="stylesheet" href="{{ '/assets/rouge/rouge.css' }}" />`。
 
-然后就可以在文章里面使用啦，使用格式如下：
-{`% highlight golang `%}
+然后就可以在文章里面使用啦，使用格式如下（注意「」替换为{}）：
+
+「% highlight golang %」
+
 code
-{\% endhighlight \%}
+
+「% endhighlight %」
+
+效果如下：
 
 {% highlight golang %}
-type T struct {
-	ls []int
-	v  int
-}
-	
-func foo(t T) {
-	t.ls[0] = 999
-	t.v = 888
-}
-	
-func main() {
-	var t = T{ls: []int{1, 2, 3}}
-	foo(t)
-	fmt.Println(t)
+func GetDb(userId string) (db *gorm.DB, err error) {
+	//if GDoubleWrite == 0 {
+	//	db = GGPSDb
+	//	return
+	//} else {
+	//判断到哪个分库
+	if len(userId) == 0 {
+		err = fmt.Errorf("zero len userid")
+		return
+	}
+
+	var db_index int64
+	db_index, err = strconv.ParseInt(userId[0:1], 16, 64)
+	if err != nil {
+		clog.Warnf("[user:%s] db_index error: %v", userId, err)
+		return
+	}
+
+	db = g_dbGPSArr[db_index]
+	clog.Debugf("%d dbGPSx %v", db_index, db)
+	return
+	//}
 }
 {% endhighlight %}
