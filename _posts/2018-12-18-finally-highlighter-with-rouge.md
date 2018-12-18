@@ -24,9 +24,9 @@ tags:
 用命令`rougify help style`看rouge支持哪些高亮配色，最终选了个普通的github配色，生成css文件：`rougify style github > rouge.css`。将该css文件放入项目路径`assets/rouge/rouge.css`里去，然后在`_includes/head.html`里面添加引用：`<link rel="stylesheet" href="{{ '/assets/rouge/rouge.css' }}" />`。
 
 然后就可以在文章里面使用啦，使用格式如下：
-`{% highlight golang %}` 
+{`% highlight golang `%}
 code
-`{% endhighlight %}`
+{\% endhighlight \%}
 
 {% highlight golang %}
 type T struct {
