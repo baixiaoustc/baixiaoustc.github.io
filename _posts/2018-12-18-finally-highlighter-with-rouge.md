@@ -33,7 +33,7 @@ code
 
 效果如下：
 
-{% highlight golang linenos %}
+{% highlight golang %}
 func GetDb(userId string) (db *gorm.DB, err error) {
 	//if GDoubleWrite == 0 {
 	//	db = GGPSDb
