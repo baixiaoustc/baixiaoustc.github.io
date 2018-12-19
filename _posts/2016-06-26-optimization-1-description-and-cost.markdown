@@ -27,6 +27,7 @@ tags:
 
 从一个txt文件中获取航班信息，文件中每行分别表示两个机场、往返时间、总花费：
 
+
 {% highlight golang %}  
 // 从txt文件中解析航班信息
 func parseShecdule(fileName string, flight *map[[2]string][][3]string) error {
@@ -58,12 +59,12 @@ func parseShecdule(fileName string, flight *map[[2]string][][3]string) error {
 	return nil
 }
 {% endhighlight %}
-    
 
 
 如何描述问题的解？用一个数字序列表示每人选择的航班编号：0表示当天第一次航班，1表示第二次航班。因为每个人需要往返两个航班，所有序列的长度是总人数的两倍。
 
 按序列打印出航班信息：
+
 
 {% highlight golang %}   
 //打印选定日程表的航班信息
@@ -82,12 +83,11 @@ func printSchedule(schedule []int)  {
 {% endhighlight %}
 
 
-
-
 ### 成本函数
 
 
 如何用一个值表示所选解的好坏？该值是对问题的一个加权总和，对本例来说，机票钱、飞行时间、等待时间等都被用来描述一组解的好坏：
+
 
 {% highlight golang %}  
 //计算选定日程表的成本
@@ -136,7 +136,6 @@ func costSchedule(schedule []int) int64 {
 	return totalPrice + totalWait
 }
 {% endhighlight %}
-    
 
 
 ![未命名](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/06/未命名-4.png)
