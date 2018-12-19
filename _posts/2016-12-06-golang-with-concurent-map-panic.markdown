@@ -75,17 +75,19 @@ tags:
 
 可以通过拷贝map的做法来规避，将Write函数修改为：
 
-	func Write(M map[string]int) {
-		fmt.Println("write")
-		for {
-			// m := M
-			m := make(map[string]int)
-			for k, v := range M {
-				m[k] = v
-			}
-			write(m)
+{% highlight golang %}
+func Write(M map[string]int) {
+	fmt.Println("write")
+	for {
+		// m := M
+		m := make(map[string]int)
+		for k, v := range M {
+			m[k] = v
 		}
+		write(m)
 	}
+}
+{% endhighlight %}
 
 
 ## 原文
@@ -101,13 +103,15 @@ tags:
 
 解决办法就是加锁，读时加读锁，写时加写锁，记得释放锁。
 
-	var GLock sync.RWMutex
+{% highlight golang %}
+var GLock sync.RWMutex
 
-	GLock.RLock()
-	_, mapOk := msg.Payload.(map[string]interface{})
-	GLock.RUnlock()
-	if mapOk {
-		GLock.Lock()
-		msg.Payload.(map[string]interface{})["member_type"] = v
-		GLock.Unlock()
-	}
+GLock.RLock()
+_, mapOk := msg.Payload.(map[string]interface{})
+GLock.RUnlock()
+if mapOk {
+	GLock.Lock()
+	msg.Payload.(map[string]interface{})["member_type"] = v
+	GLock.Unlock()
+}
+{% endhighlight %}
