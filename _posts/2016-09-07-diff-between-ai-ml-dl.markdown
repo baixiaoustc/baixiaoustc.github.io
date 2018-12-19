@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-09-07 01:11:45+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/09/07/%e8%bd%ac%ef%bc%9a%e4%b8%80%e7%af%87%e6%96%87%e7%ab%a0%e8%ae%b2%e6%b8%85%e6%a5%9a%e4%ba%ba%e5%b7%a5%e6%99%ba%e8%83%bd%e3%80%81%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e5%92%8c%e6%b7%b1%e5%ba%a6%e5%ad%a6/
-slug: '%e8%bd%ac%ef%bc%9a%e4%b8%80%e7%af%87%e6%96%87%e7%ab%a0%e8%ae%b2%e6%b8%85%e6%a5%9a%e4%ba%ba%e5%b7%a5%e6%99%ba%e8%83%bd%e3%80%81%e6%9c%ba%e5%99%a8%e5%ad%a6%e4%b9%a0%e5%92%8c%e6%b7%b1%e5%ba%a6%e5%ad%a6'
+slug: 2016-09-07-diff-between-ai-ml-dl
 title: 转：一篇文章讲清楚人工智能、机器学习和深度学习的区别
 wordpress_id: 200
 categories:

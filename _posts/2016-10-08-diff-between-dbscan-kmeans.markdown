@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-10-08 04:55:25+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/10/08/%e8%bd%ac%ef%bc%9a%e5%9f%ba%e4%ba%8e%e5%af%86%e5%ba%a6%e8%81%9a%e7%b1%bb%e7%9a%84dbscan%e5%92%8ckmeans%e7%ae%97%e6%b3%95%e6%af%94%e8%be%83/
-slug: '%e8%bd%ac%ef%bc%9a%e5%9f%ba%e4%ba%8e%e5%af%86%e5%ba%a6%e8%81%9a%e7%b1%bb%e7%9a%84dbscan%e5%92%8ckmeans%e7%ae%97%e6%b3%95%e6%af%94%e8%be%83'
+slug: 2016-10-08-diff-between-dbscan-kmeans
 title: 转：基于密度聚类的DBSCAN和kmeans算法比较
 wordpress_id: 264
 categories:

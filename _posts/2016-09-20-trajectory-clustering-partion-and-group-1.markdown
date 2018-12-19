@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-09-20 01:48:15+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/09/20/%e8%b7%af%e7%ba%bf%e8%bd%a8%e8%bf%b9%e8%81%9a%e9%9b%86%ef%bc%9a%e5%88%86%e5%89%b2%e5%92%8c%e6%b1%87%e9%9b%86%ef%bc%881%ef%bc%89/
-slug: '%e8%b7%af%e7%ba%bf%e8%bd%a8%e8%bf%b9%e8%81%9a%e9%9b%86%ef%bc%9a%e5%88%86%e5%89%b2%e5%92%8c%e6%b1%87%e9%9b%86%ef%bc%881%ef%bc%89'
+slug: 2016-09-20-trajectory-clustering-partion-and-group-1
 title: 路线轨迹聚集：分割和汇集（1：概述）
 wordpress_id: 206
 categories:

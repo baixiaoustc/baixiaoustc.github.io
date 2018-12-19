@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-10-07 10:34:32+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/10/07/%e8%b7%af%e7%ba%bf%e8%bd%a8%e8%bf%b9%e8%81%9a%e9%9b%86%ef%bc%9a%e5%88%86%e5%89%b2%e5%92%8c%e6%b1%87%e9%9b%86%ef%bc%886%ef%bc%9a%e8%ae%a1%e7%ae%97%e4%bb%a3%e8%a1%a8%e8%bd%a8%e8%bf%b9%ef%bc%89/
-slug: '%e8%b7%af%e7%ba%bf%e8%bd%a8%e8%bf%b9%e8%81%9a%e9%9b%86%ef%bc%9a%e5%88%86%e5%89%b2%e5%92%8c%e6%b1%87%e9%9b%86%ef%bc%886%ef%bc%9a%e8%ae%a1%e7%ae%97%e4%bb%a3%e8%a1%a8%e8%bd%a8%e8%bf%b9%ef%bc%89'
+slug: 2016-10-07-trajectory-cluster-partion-and-group-6
 title: 路线轨迹聚集：分割和汇集（6：计算代表轨迹）
 wordpress_id: 257
 categories:

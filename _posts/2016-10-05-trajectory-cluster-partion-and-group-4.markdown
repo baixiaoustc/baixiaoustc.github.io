@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-10-05 09:39:15+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/10/05/%e8%b7%af%e7%ba%bf%e8%bd%a8%e8%bf%b9%e8%81%9a%e9%9b%86%ef%bc%9a%e5%88%86%e5%89%b2%e5%92%8c%e6%b1%87%e9%9b%86%ef%bc%884%ef%bc%9a%e7%ba%bf%e6%ae%b5%e5%af%86%e5%ba%a6%e7%9a%84%e5%ae%9a%e4%b9%89%ef%bc%89/
-slug: '%e8%b7%af%e7%ba%bf%e8%bd%a8%e8%bf%b9%e8%81%9a%e9%9b%86%ef%bc%9a%e5%88%86%e5%89%b2%e5%92%8c%e6%b1%87%e9%9b%86%ef%bc%884%ef%bc%9a%e7%ba%bf%e6%ae%b5%e5%af%86%e5%ba%a6%e7%9a%84%e5%ae%9a%e4%b9%89%ef%bc%89'
+slug: 2016-10-05-trajectory-cluster-partion-and-group-4
 title: 路线轨迹聚集：分割和汇集（4：线段密度的定义）
 wordpress_id: 229
 categories:
