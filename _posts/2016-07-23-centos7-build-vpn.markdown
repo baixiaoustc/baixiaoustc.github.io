@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-07-23 09:07:05+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/07/23/centos7%e4%b8%8a%e8%87%aa%e5%bb%bavpn/
-slug: centos7%e4%b8%8a%e8%87%aa%e5%bb%bavpn
+slug: 2016-07-23-centos7-build-vpn
 title: centos7上自建VPN
 wordpress_id: 189
 categories:
