@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-07-02 03:07:00+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/07/02/%e7%89%af%e5%b2%ad%e8%a1%97%e5%b0%91%e5%b9%b4%e6%9d%80%e4%ba%ba%e4%ba%8b%e4%bb%b6%ef%bc%9a%e4%b8%80%e4%b8%aa%e4%b8%96%e7%95%8c%e7%9a%84%e5%b4%a9%e5%a1%8c/
-slug: '%e7%89%af%e5%b2%ad%e8%a1%97%e5%b0%91%e5%b9%b4%e6%9d%80%e4%ba%ba%e4%ba%8b%e4%bb%b6%ef%bc%9a%e4%b8%80%e4%b8%aa%e4%b8%96%e7%95%8c%e7%9a%84%e5%b4%a9%e5%a1%8c'
+slug: 2016-07-02-killing-boy
 title: 牯岭街少年杀人事件：一个世界的崩塌
 wordpress_id: 122
 categories:
@@ -13,7 +12,7 @@ tags:
 - 杨德昌
 ---
 
-![牯岭街少年杀人事件](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/07/牯岭街少年杀人事件.jpg)
+![牯岭街少年杀人事件](https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=4fc2601c4fc2d562e605d8bf8678fb8a/72f082025aafa40fbd0100a1ab64034f79f01983.jpg)
 
 4个小时，杨德昌的细腻细节、氛围营造、蒙太奇手法，造就这部电影在华语电影中的特殊地位。讲述60年代的对岸，只有《阳光灿烂的日子》在这端可以比拟。
 

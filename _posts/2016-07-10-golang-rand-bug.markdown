@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-07-10 13:43:52+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/07/10/golang%e7%9a%84rand%e5%8c%85%e7%9a%84%e5%9d%91/
-slug: golang%e7%9a%84rand%e5%8c%85%e7%9a%84%e5%9d%91
+slug: 2016-07-10-golang-rand-bug
 title: golang的rand包的坑
 wordpress_id: 164
 categories:

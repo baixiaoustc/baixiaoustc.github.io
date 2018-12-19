@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-07-01 04:32:13+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/07/01/x86-64%e6%8c%87%e4%bb%a4%e5%92%8cabi/
-slug: x86-64%e6%8c%87%e4%bb%a4%e5%92%8cabi
+slug: 2016-07-01-x86-instruction
 title: x86-64指令和ABI
 wordpress_id: 118
 categories:

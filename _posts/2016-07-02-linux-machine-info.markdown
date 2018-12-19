@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-07-02 03:23:45+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/07/02/%e6%9f%a5%e7%9c%8blinux%e6%9c%ba%e5%99%a8%e4%bf%a1%e6%81%af/
-slug: '%e6%9f%a5%e7%9c%8blinux%e6%9c%ba%e5%99%a8%e4%bf%a1%e6%81%af'
+slug: 2016-07-02-linux-machine-info
 title: 查看Linux机器信息
 wordpress_id: 128
 categories:

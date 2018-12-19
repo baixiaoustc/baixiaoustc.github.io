@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-07-06 12:24:11+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/07/06/%e4%bc%98%e5%8c%96%e7%ae%97%e6%b3%95%e4%b9%8b%e4%b8%80%ef%bc%9a%e9%9a%8f%e6%9c%ba%e6%90%9c%e7%b4%a2/
-slug: '%e4%bc%98%e5%8c%96%e7%ae%97%e6%b3%95%e4%b9%8b%e4%b8%80%ef%bc%9a%e9%9a%8f%e6%9c%ba%e6%90%9c%e7%b4%a2'
+slug: 2016-07-06-optimization-2-random-searching
 title: 优化算法之二：随机搜索
 wordpress_id: 145
 categories:
@@ -18,33 +17,33 @@ tags:
 
 随机搜索接收两个参数，一个是二元组的列表，二元组表示每个解的最小最大值，列表长度就为题解的长度；另一个是成本函数。在“组团出游”的问题里，参数一表示所有成员往返航班的选择范围的列表：(0,9)*len_of_people*2。
 
+{% highlight golang %}
+//随机优化
+func optimizeRandom(domainList [][2]int, costF func([]int) int64) []int {
+	var maxCost int64 = 999999999
+	var bestSchedule []int
     
-    //随机优化
-    func optimizeRandom(domainList [][2]int, costF func([]int) int64) []int {
-    	var maxCost int64 = 999999999
-    	var bestSchedule []int
+        r := rand.New(rand.NewSource(time.Now().UnixNano()))
+	for i := 0; i < 1000; i++ {
+		//fmt.Println("i", i)
+		schedule := make([]int, 0)
+		for _, domain := range domainList {
+			//fmt.Println(domain)
+			choice := rand.Intn(domain[1] - domain[0]) + domain[0]
+			schedule = append(schedule, choice)
+		}
+		//fmt.Println(schedule)
     
-            r := rand.New(rand.NewSource(time.Now().UnixNano()))
-    	for i := 0; i < 1000; i++ {
-    		//fmt.Println("i", i)
-    		schedule := make([]int, 0)
-    		for _, domain := range domainList {
-    			//fmt.Println(domain)
-    			choice := rand.Intn(domain[1] - domain[0]) + domain[0]
-    			schedule = append(schedule, choice)
-    		}
-    		//fmt.Println(schedule)
+		cost := costF(schedule)
+		if cost < maxCost {
+			maxCost = cost
+			bestSchedule = schedule
+		}
+	}
     
-    		cost := costF(schedule)
-    		if cost < maxCost {
-    			maxCost = cost
-    			bestSchedule = schedule
-    		}
-    	}
-    
-    	return bestSchedule
-    }
-    
+	return bestSchedule
+}
+{% endhighlight %}
     
 
 

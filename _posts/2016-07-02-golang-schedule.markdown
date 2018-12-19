@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-07-02 03:36:10+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/07/02/%e7%9c%8bgoroutine%e8%b0%83%e5%ba%a6%e8%ae%be%e8%ae%a1%e6%96%87%e6%a1%a3/
-slug: '%e7%9c%8bgoroutine%e8%b0%83%e5%ba%a6%e8%ae%be%e8%ae%a1%e6%96%87%e6%a1%a3'
+slug: 2016-07-02-golang-schedule
 title: golang调度器设计
 wordpress_id: 130
 categories:
@@ -13,6 +12,9 @@ tags:
 - goroutine
 - schedule
 ---
+
+* content 
+{:toc}
 
 ## [设计文档](https://docs.google.com/document/d/1TTj4T2JO42uD5ID9e89oa0sLKhJYD0Y_kqxDv3I3XMw/edit#)
 
