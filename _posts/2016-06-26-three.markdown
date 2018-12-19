@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-06-26 15:56:59+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/06/26/%e4%b8%89%e4%ba%ba%e8%a1%8c%ef%bc%9a%e7%9c%8b%e4%b8%8d%e6%87%82%e7%9a%84%e8%ad%a6%e5%8c%aa%e7%89%87/
-slug: '%e4%b8%89%e4%ba%ba%e8%a1%8c%ef%bc%9a%e7%9c%8b%e4%b8%8d%e6%87%82%e7%9a%84%e8%ad%a6%e5%8c%aa%e7%89%87'
+slug: 2016-06-26-three
 title: 三人行：看不懂的警匪片
 wordpress_id: 110
 categories:
