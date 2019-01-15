@@ -95,7 +95,7 @@ func main() {
 	Fix(99.99, 88.88, 77.77, 2, &rmsM)
     
 }
- {% endhighlight %}   
+{% endhighlight %}   
     
 
 

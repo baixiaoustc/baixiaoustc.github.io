@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-06-19 04:29:55+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/06/19/golang%e7%9a%84reflect%e5%8c%85%e7%94%a8%e5%9c%a8struct%e4%b8%8a/
-slug: golang%e7%9a%84reflect%e5%8c%85%e7%94%a8%e5%9c%a8struct%e4%b8%8a
+slug: 2016-06-19-golang-turn-struct-to-map-using-reflect
 title: golang使用reflect包，转化struct为map
 wordpress_id: 59
 categories:

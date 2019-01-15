@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-06-23 13:48:37+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/06/23/golang%e7%9a%84%e5%bb%ba%e8%ae%aegoroutine%e7%ba%bf%e7%a8%8b%e6%b1%a0/
-slug: golang%e7%9a%84%e5%bb%ba%e8%ae%aegoroutine%e7%ba%bf%e7%a8%8b%e6%b1%a0
+slug: 2016-06-23-golang-simple-goroutine-pool
 title: golang的简易goroutine线程池
 wordpress_id: 88
 categories:
