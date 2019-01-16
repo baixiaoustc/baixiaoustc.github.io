@@ -271,11 +271,11 @@ func TestASTWalk(t *testing.T) {
 				*ast.Ident
 				*ast.BasicLit
 
-***以上基础知识主要参考原文[How a Go Program Compiles down to Machine Code](https://getstream.io/blog/how-a-go-program-compiles-down-to-machine-code/)（译文[Go 程序到机器码的编译之旅](https://studygolang.com/articles/15648?utm_source=tuicool&utm_medium=referral)）***。下面来点干货。
+***以上基础知识主要参考文章[How a Go Program Compiles down to Machine Code](https://getstream.io/blog/how-a-go-program-compiles-down-to-machine-code/)（译文：[Go 程序到机器码的编译之旅](https://studygolang.com/articles/15648?utm_source=tuicool&utm_medium=referral)）***。下面来点干货。
 
 # 怎么找到特定的代码块
 
-现在有一个任务，需要找到一个源文件中的这些地方，特征是调用了`context.WithCancel`函数，并且入参为nil。比如example/test2.go文件里面，有十多种可能：
+其实翻一翻网上将这个golang的ast的文章也不少，但是大多停留在上文的阶段，没有实际指导开发运用。那么我们假设现在有一个任务，拿到了一个别人的项目（俗称接盘侠），现在需要找到源文件中的这些地方：特征是调用了`context.WithCancel`函数，并且入参为nil。比如example/test2.go文件里面，有十多种可能：
 
 {% highlight golang %}
 package example
@@ -327,11 +327,11 @@ func test(a string, b int) {
 }
 {% endhighlight %}
 
-从000到ccc，对应ast的不同结构，现在需要把他们全部找出来。其中bbb这种情况代表了for语句，只不过在`context.WithCancel`函数不适用，所以注掉了。为了解决这个问题，首先需要仔细分析ast的Node接口。
+从000到ccc，对应golang的AST的不同结构类型，现在需要把他们全部找出来。其中bbb这种情况代表了for语句，只不过在`context.WithCancel`函数不适用，所以注掉了。为了解决这个问题，首先需要仔细分析go/ast的Node接口。
 
 ## AST的结构定义
 
-go/ast/ast.go中定义了ast节点的定义：
+go/ast/ast.go中指明了ast节点的定义：
 
 {% highlight golang %}
 // All node types implement the Node interface.
@@ -359,7 +359,7 @@ type Decl interface {
 }
 {% endhighlight %}
 
-语法有三个主体,表达式(expression),语句(statement),声明(declaration),Node是基类,用于标记该节点的位置的开始和结束。而三个主体的函数没有实际意义,只是用三个interface来划分不同的语法单位,如果某个语法是Stmt的话,就实现一个空的stmtNode函数即可。参考这篇文章[go-parser-语法分析](https://studygolang.com/articles/6709)，定义了源文件中可能出现的语法结构。列表如下：
+语法有三个主体：表达式(expression)、语句(statement)、声明(declaration)，Node是基类，用于标记该节点的位置的开始和结束。而三个主体的函数没有实际意义，只是用三个interface来划分不同的语法单位,如果某个语法是Stmt的话,就实现一个空的stmtNode函数即可。参考这篇文章[go-parser-语法分析](https://studygolang.com/articles/6709)，定义了源文件中可能出现的语法结构。列表如下：
 
 ### 普通Node,不是特定语法结构,属于某个语法结构的一部分.
 * Comment 表示一行注释 // 或者 / /
@@ -429,7 +429,7 @@ type Decl interface {
 
 ## 全类型匹配
 
-那么我们需要仔细判断上面总总结构，来适配我们的特征：
+那么我们需要仔细判断上面的总总结构，来适配我们的特征：
 
 {% highlight golang %}
 package go_code_analysis
@@ -447,12 +447,13 @@ var GFixedFunc map[string]Fixed //key的格式为Package.Func
 func stmtCase(stmt ast.Stmt, todo func(call *ast.CallExpr) bool) bool {
 	switch t := stmt.(type) {
 	case *ast.ExprStmt:
+		log.Printf("表达式语句%+v at line:%v", t, GFset.Position(t.Pos()))
 		if call, ok := t.X.(*ast.CallExpr); ok {
 			return todo(call)
 		}
 	case *ast.ReturnStmt:
 		for i, p := range t.Results {
-			log.Printf("return表达式%d:%v at line:%v", i, p, GFset.Position(p.Pos()))
+			log.Printf("return语句%d:%v at line:%v", i, p, GFset.Position(p.Pos()))
 			if call, ok := p.(*ast.CallExpr); ok {
 				return todo(call)
 			}
@@ -465,7 +466,7 @@ func stmtCase(stmt ast.Stmt, todo func(call *ast.CallExpr) bool) bool {
 				for i, p := range t.Elts {
 					switch t := p.(type) {
 					case *ast.KeyValueExpr:
-						log.Printf("构造赋值%d:%+v at line:%v", i, t.Value, GFset.Position(p.Pos()))
+						log.Printf("构造赋值语句%d:%+v at line:%v", i, t.Value, GFset.Position(p.Pos()))
 						if call, ok := t.Value.(*ast.CallExpr); ok {
 							return todo(call)
 						}
@@ -619,7 +620,7 @@ type FindContext struct {
 	LocalFunc *ast.FuncDecl
 }
 
-func (f *FindContext) Visit(n ast.Node) (w ast.Visitor) {
+func (f *FindContext) Visit(n ast.Node) ast.Visitor {
 	if n == nil {
 		return f
 	}
@@ -667,4 +668,22 @@ func (f *FindContext) FindCallFunc(call *ast.CallExpr) bool {
 }
 {% endhighlight %}
 
-故事的结尾，我们使用FindContext提供的walk递归了AST树，找到了所有符合我们特征的函数，当然例子里就`test`一个函数。所有代码都在[https://github.com/baixiaoustc/go_code_analysis](https://github.com/baixiaoustc/go_code_analysis)中能找到。
+在`AllCallCase`方法中我们穷举了所有的调用函数的情况（ast.CallExpr），分别对应了000到ccc这13种情况。`stmtCase`方法分析了语句的各种可能，尽量找全所有。
+`FindContext.FindCallFunc`方法首先看调用函数是不是选择结构，类似于a.b的结构；然后对比了调用函数的a.b是不是我们关心的`context.WithCancel`；最后看第一个实参的名称是不是`nil`。
+
+最终找到了所有特征点：
+
+	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:9:21
+	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:11:34
+	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:12:22
+	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:14:22
+	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:11:34
+	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:17:28
+	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:19:24
+	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:22:22
+	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:25:27
+	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:28:22
+	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:32:28
+	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:45:22
+
+故事的结尾，我们使用FindContext提供的walk方法递归了AST树，找到了所有符合我们特征的函数，当然例子里就`test`一个函数。所有代码都在[https://github.com/baixiaoustc/go_code_analysis](https://github.com/baixiaoustc/go_code_analysis)中能找到。
