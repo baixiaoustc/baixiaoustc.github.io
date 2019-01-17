@@ -237,7 +237,7 @@ func doAnalysis(buildCtx *build.Context, tests bool, args []string) {
 - 针对类的函数，用class@func来标示
 - 注意处理跨package的调用情况
 
-执行代码见：
+执行代码见: [https://github.com/baixiaoustc/go_code_analysis/blob/master/second_post_test.go](https://github.com/baixiaoustc/go_code_analysis/blob/master/second_post_test.go)中的`TestAnalysisCallGraphy`。
 
 如上例子的最终结果为：
 
