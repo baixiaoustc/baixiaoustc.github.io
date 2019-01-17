@@ -206,12 +206,12 @@ func TestInspectAST(t *testing.T) {
 example/test1.go代码如下：
 
 {% highlight golang %}
-package example
+package main
 
 import "fmt"
 import "strings"
 
-func main() {
+func test1() {
 	hello := "Hello"
 	world := "World"
 	words := []string{hello, world}
@@ -278,14 +278,14 @@ func TestASTWalk(t *testing.T) {
 其实翻一翻网上将这个golang的ast的文章也不少，但是大多停留在上文的阶段，没有实际指导开发运用。那么我们假设现在有一个任务，拿到了一个别人的项目（俗称接盘侠），现在需要找到源文件中的这些地方：特征是调用了`context.WithCancel`函数，并且入参为nil。比如example/test2.go文件里面，有十多种可能：
 
 {% highlight golang %}
-package example
+package main
 
 import (
 	"context"
 	"fmt"
 )
 
-func test(a string, b int) {
+func test2(a string, b int) {
 	context.WithCancel(nil) //000
 
 	if _, err := context.WithCancel(nil); err != nil { //111
