@@ -19,7 +19,7 @@ tags:
 
 # 怎么形成一个项目内部的函数调用关系
 
-在一些场景下，需要对一个项目内部的函数调用关系做分析，IDE当然是可以做到一部分。但是对于一个完整调用链，IDE就爱莫能助了。上面列举的第一篇文章讲到的golang AST遍历可以解决这个问题。分析每一个FuncDesc内部的所有调用可能，记录所有A-》B的调用关系，可以解决这个问题。不过本文列举了另外一种方法。
+在一些场景下，需要对一个项目内部的函数调用关系做分析，IDE当然是可以做到一部分。但是对于一个完整调用链，IDE就爱莫能助了。上面列举的第一篇文章讲到的golang AST遍历可以解决这个问题。分析每一个FuncDesc内部的所有调用可能，记录所有A-》B的调用关系，可以解决这个问题。不过本文没有直接使用AST，而是运用了golang提供的完备的工具链来实现。
 
 ## 一个例子
 
@@ -147,7 +147,7 @@ func Itest1() {
 
 > Package ssa defines a representation of the elements of Go programs (packages, types, functions, variables and constants) using a static single-assignment (SSA) form intermediate representation (IR) for the bodies of functions.
 
-SSA (Static Single Assignment，静态单赋值），是源代码和机器码中间的表现形式。从AST转换到SSA之后，编译器会进行一系列的优化。这些优化被应用于代码的特定阶段使得处理器能够更简单和快速地执行。
+SSA(Static Single Assignment，静态单赋值），是源代码和机器码中间的表现形式。从AST转换到SSA之后，编译器会进行一系列的优化。这些优化被应用于代码的特定阶段使得处理器能够更简单和快速地执行。
 
 ## go/pointer
 
@@ -238,6 +238,23 @@ func doAnalysis(buildCtx *build.Context, tests bool, args []string) {
 - 注意处理跨package的调用情况
 
 执行代码见: [https://github.com/baixiaoustc/go_code_analysis/blob/master/second_post_test.go](https://github.com/baixiaoustc/go_code_analysis/blob/master/second_post_test.go)中的`TestAnalysisCallGraphy`。
+
+我们定义了如下结构表示函数之间的两两调用关系：
+
+{% highlight golang %}
+//函数定义
+type FuncDesc struct {
+	File    string //文件路径
+	Package string //package名
+	Name    string //函数名，格式为Package.Func
+}
+
+//描述一个函数调用N个函数的一对多关系
+type CallerRelation struct {
+	Caller  FuncDesc
+	Callees []FuncDesc
+}
+{% endhighlight %}
 
 如上例子的最终结果为：
 
