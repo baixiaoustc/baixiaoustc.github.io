@@ -19,7 +19,7 @@ tags:
 
 # 怎么形成一个项目内部的函数调用关系
 
-在一些场景下，需要对一个项目内部的函数调用关系做分析，IDE当然是可以做到一部分。但是对于一个完整调用链，IDE就爱莫能助了。上面列举的第一篇文章讲到的golang AST遍历可以解决这个问题。分析每一个FuncDesc内部的所有调用可能，记录所有A-》B的调用关系，可以解决这个问题。不过本文没有直接使用AST，而是运用了golang提供的完备的工具链来实现。
+在一些场景下，需要对一个项目内部的函数调用关系做分析，IDE当然是可以做到一部分。但是对于一个完整调用链，IDE就爱莫能助了。上面列举的第一篇文章讲到的golang AST遍历可以解决这个问题。分析每一个`ast.FuncDecl`内部的所有调用可能，记录所有A->B的调用关系，可以解决这个问题。不过本文没有直接使用AST，而是运用了golang提供的完备的工具链来实现。
 
 ## 一个例子
 
@@ -230,7 +230,7 @@ func doAnalysis(buildCtx *build.Context, tests bool, args []string) {
 }
 {% endhighlight %}
 
-如上的`pointer.Result`中含有的`callgraph.Graph`结构就是上述的**节点间的指向关系**，是一颗树形结构。再用`callgraph.GraphVisitEdges`深度优先遍历它得到函数之间的两两调用关系。
+如上的`result`的类型`pointer.Result`中含有的`callgraph.Graph`结构就是上述的**节点间的指向关系**，是一颗树形结构。再用`callgraph.GraphVisitEdges`深度优先遍历它得到函数之间的两两调用关系。
 
 需要注意三个坑：
 - 针对go func(){}的情况需要处理处理`$`
@@ -293,4 +293,153 @@ type CallerRelation struct {
 
 ***以上内容大量参考[https://github.com/TrueFurby/go-callvis](https://github.com/TrueFurby/go-callvis)***
 
-参考
+# 形成反向调用关系
+
+针对上面例子，`test4a`函数的反向调用关系应为：
+
+![](http://image99.renyit.com/image/2019-01-17-1.png)
+
+实际上可以将其转为树形结构，如图：
+
+![](http://image99.renyit.com/image/2019-01-17-2.png)
+
+那我们的工作就是构造出一棵树，其节点为`test4a`函数。
+
+## 构造多叉树
+
+用如下结构表示多叉树的节点：
+
+{% highlight golang %}
+type MWTNode struct {
+	Key      string
+	Value    FuncDesc
+	N        int
+	Children []*MWTNode
+}
+{% endhighlight %}
+
+其中Key和`FuncDesc.Name`一样，格式为Package.Func，N表示子节点的个数，Children是子节点列表。如下代码生成多叉树，`callMap`是上一个阶段生成的正向调用关系：
+
+{% highlight golang %}
+func BuildFromCallMap(head *MWTNode, callMap map[string]CallerRelation) {
+	nodeMap := make(map[string]struct{})
+	nodeList := make([]*MWTNode, 1)
+	nodeList[0] = head
+
+	for {
+		if len(nodeList) == 0 {
+			break
+		}
+
+		tmp := nodeList[0]
+		log.Printf("tmp %+v", tmp)
+		for callerName, callRelation := range callMap {
+			for _, callee := range callRelation.Callees {
+				if tmp.Key == fmt.Sprintf("%s.%s", callee.Package, callee.Name) {
+					log.Printf("found caller:%s -> callee:%s", callerName, callee)
+
+					key := fmt.Sprintf("%s.%s", callRelation.Caller.Package, callRelation.Caller.Name)
+					if _, ok := nodeMap[key]; !ok {
+						newNode := &MWTNode{
+							Key:      key,
+							Value:    FuncDesc{callRelation.Caller.File, callRelation.Caller.Package, callRelation.Caller.Name},
+							Children: make([]*MWTNode, 0),
+						}
+						tmp.N++
+						tmp.Children = append(tmp.Children, newNode)
+						nodeList = append(nodeList, newNode)
+					} else {
+						nodeMap[key] = struct{}{}
+					}
+				}
+			}
+		}
+		nodeList = nodeList[1:]
+
+		//log.Printf("head %+v", head)
+		log.Printf("nodeList len:%d", len(nodeList))
+	}
+}
+{% endhighlight %}
+
+## 形成反向调用链
+
+再定义一个结构用于描述反向调用链：
+
+{% highlight golang %}
+//描述关键函数的一条反向调用关系
+type CalledRelation struct {
+	Callees []FuncDesc
+	CanFix  bool //该调用关系能反向找到gin.Context即可以自动修复
+}
+{% endhighlight %}
+
+再利用深度优先比例该树，期望得到如下结论：
+
+* test4a <- test3c <- main
+* test4a <- receiveFromKafka <- main
+
+{% highlight golang %}
+func depthTraversal(head *MWTNode, s string, re CalledRelation, list *[]CalledRelation) {
+	s = fmt.Sprintf("%s<-%s", s, head.Key)
+	re.Callees = append(re.Callees, head.Value)
+	//log.Printf("%+v: %s %+v", head, s, re.Callees)
+
+	if head.N == 0 {
+		log.Printf("找到反向调用链:%s", s)
+		log.Printf("re.Callees:%+v", re.Callees)
+		*list = append(*list, re)
+		s = ""
+		re.Callees = make([]FuncDesc, 0)
+	} else {
+		for _, node := range head.Children {
+			depthTraversal(node, s, re, list)
+		}
+	}
+}
+{% endhighlight %}
+
+执行代码见: [https://github.com/baixiaoustc/go_code_analysis/blob/master/second_post_test.go](https://github.com/baixiaoustc/go_code_analysis/blob/master/second_post_test.go)中的`TestAnalysisReverceCallGraphy`。最终结论如下，得到了印证：
+
+	
+	2019/01/20 21:53:32 tmp &{Key:main.test4a Value:{File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test4a.go Package:main Name:test4a} N:0 Level:0 Children:[]}
+	
+	2019/01/20 21:53:32 found caller:example.receiveFromKafka -> callee:{/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test4.go main test4a}
+	
+	2019/01/20 21:53:32 found caller:example.test3c -> callee:{/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test4.go main test4a}
+	
+	2019/01/20 21:53:32 nodeList len:2
+	
+	2019/01/20 21:53:32 tmp &{Key:main.receiveFromKafka Value:{File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test4.go Package:main Name:receiveFromKafka} N:0 Level:0 Children:[]}
+	
+	2019/01/20 21:53:32 found caller:example.main -> callee:{/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test4.go main receiveFromKafka}
+	
+	2019/01/20 21:53:32 nodeList len:2
+	
+	2019/01/20 21:53:32 tmp &{Key:main.test3c Value:{File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test3.go Package:main Name:test3c} N:0 Level:0 Children:[]}
+	
+	2019/01/20 21:53:32 found caller:example.main -> callee:{/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test3.go main test3c}
+	
+	2019/01/20 21:53:32 nodeList len:2
+	
+	2019/01/20 21:53:32 tmp &{Key:main.main Value:{File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test3.go Package:main Name:main} N:0 Level:0 Children:[]}
+	
+	2019/01/20 21:53:32 nodeList len:1
+	
+	2019/01/20 21:53:32 tmp &{Key:main.main Value:{File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test3.go Package:main Name:main} N:0 Level:0 Children:[]}
+	
+	2019/01/20 21:53:32 nodeList len:0
+	
+	2019/01/20 21:53:32 找到反向调用链:<-main.test4a<-main.receiveFromKafka<-main.main
+	
+	2019/01/20 21:53:32 re.Callees:[{File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test4a.go Package:main Name:test4a} {File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test4.go Package:main Name:receiveFromKafka} {File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test3.go Package:main Name:main}]
+	
+	2019/01/20 21:53:32 找到反向调用链:<-main.test4a<-main.test3c<-main.main
+	
+	2019/01/20 21:53:32 re.Callees:[{File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test4a.go Package:main Name:test4a} {File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test3.go Package:main Name:test3c} {File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test3.go Package:main Name:main}]
+	
+	2019/01/20 21:53:32 list0: {Callees:[{File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test4a.go Package:main Name:test4a} {File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test4.go Package:main Name:receiveFromKafka} {File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test3.go Package:main Name:main}] CanFix:false}
+	
+	2019/01/20 21:53:32 list1: {Callees:[{File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test4a.go Package:main Name:test4a} {File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test3.go Package:main Name:test3c} {File:/Users/baixiao/Go/src/github.com/baixiaoustc/go_code_analysis/example/test3.go Package:main Name:main}] CanFix:false}
+	
+
