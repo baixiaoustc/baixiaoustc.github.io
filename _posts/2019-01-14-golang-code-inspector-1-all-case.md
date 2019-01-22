@@ -4,7 +4,7 @@ comments: true
 date: 2019-01-14 09:54:23+00:00
 layout: post
 slug: 2019-01-14-golang-code-inspector-1-all-case
-title: golang深入源代码之一：AST的遍历
+title: golang深入源代码系列之一：AST的遍历
 categories:
 - 后端技术
 tags:

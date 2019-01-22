@@ -4,7 +4,7 @@ comments: false
 date: 2019-01-17 09:54:23+00:00
 layout: post
 slug: 2019-01-17-golang-code-inspector-2-reverse-call-graph
-title: golang深入源代码之二：反向调用关系的生成
+title: golang深入源代码系列之二：反向调用关系的生成
 categories:
 - 后端技术
 tags:
@@ -127,7 +127,7 @@ func Itest1() {
 }
 {% endhighlight %}
 
-比如我们要找到从上到下调用到`test4a`的调用链，应该怎么做呢？
+第一步，比如我们要找到从上到下调用到`test4a`的调用链，应该怎么做呢？
 
 # 使用golang提供的静态编译工具链
 
@@ -293,6 +293,8 @@ type CallerRelation struct {
 
 ***以上内容大量参考[https://github.com/TrueFurby/go-callvis](https://github.com/TrueFurby/go-callvis)***
 
+第二部，需要反向找到`test4a`函数被其他函数调用的完整路径。
+
 # 形成反向调用关系
 
 针对上面例子，`test4a`函数的反向调用关系应为：
@@ -303,7 +305,7 @@ type CallerRelation struct {
 
 ![](http://image99.renyit.com/image/2019-01-17-2.png)
 
-那我们的工作就是构造出一棵树，其节点为`test4a`函数。
+那我们的工作就是构造出一棵树，其根节点为`test4a`函数。
 
 ## 构造多叉树
 
