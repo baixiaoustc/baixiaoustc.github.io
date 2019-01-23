@@ -14,7 +14,7 @@ tags:
 * content 
 {:toc}
 
-这是系列博文的第二篇，第一篇在此：[golang深入源代码之一：AST的遍历](http://baixiaoustc.com/2019/01/14/2019-01-14-golang-code-inspector-1-all-case)
+这是系列博文的第二篇，第一篇在此：[golang深入源代码之一：AST的遍历](http://baixiaoustc.com/2019/01/14/2019-01-14-golang-code-inspector-1-all-case)。
 
 
 # 怎么形成一个项目内部的函数调用关系

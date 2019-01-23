@@ -309,7 +309,7 @@ func test2(a string, b int) {
 	}()
 
 	data := map[string]interface{}{
-		"x2": context.WithCancel(nil), //999
+		"x2": context.WithValue(nil, "k", "v"), //999
 	}
 	fmt.Println(data)
 
@@ -683,7 +683,6 @@ func (f *FindContext) FindCallFunc(call *ast.CallExpr) bool {
 	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:22:22
 	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:25:27
 	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:28:22
-	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:32:28
 	2019/01/16 20:19:52 找到关键函数:context.WithCancel at line:./example/test2.go:45:22
 
 故事的结尾，我们使用FindContext提供的walk方法递归了AST树，找到了所有符合我们特征的函数，当然例子里就`test`一个函数。所有代码都在[https://github.com/baixiaoustc/go_code_analysis](https://github.com/baixiaoustc/go_code_analysis)中能找到。
