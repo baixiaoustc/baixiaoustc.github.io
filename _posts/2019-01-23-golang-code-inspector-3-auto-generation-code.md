@@ -133,7 +133,7 @@ func (f *FixContext) insertCtxInParam(fn *ast.FuncDecl) {
 }
 {% endhighlight %}
 
-其实就是把AST中的函数结构体的Type里面的Params中新插入一个`*ast.Field`结构。不用担心，最后逗号会自动补上。、
+其实就是把AST中的函数结构体的Type里面的Params中新插入一个`*ast.Field`结构。不用担心，最后逗号会自动补上。
 
 ## 「传递函数」
 
@@ -240,3 +240,85 @@ func (f *FixContext) genSourceCtx(fn *ast.FuncDecl) {
 	fn.Body.List = bodies
 }
 {% endhighlight %}
+
+# 自动格式化
+
+现在已经能自动生成相应的代码了，但是还需要自动import "context"，当package里面没有的时候。
+
+## go fmt && goimports
+
+当AST修改完以后，重新写回源文件并覆盖：
+
+{% highlight golang %}
+ast.Walk(fix, f)
+
+var buf bytes.Buffer
+printer.Fprint(&buf, fset, f)
+genFile(file, buf)
+{% endhighlight %}
+
+用`exec`包进行命令行处理，包括go fmt格式化和goimports自动处理包管理。具体如下：
+
+{% highlight golang %}
+func genFile(file string, buf bytes.Buffer) {
+	//替换原文件
+	newFile, err := os.Create(file)
+	defer newFile.Close()
+	if err != nil {
+		log.Printf("os.Create %s error:%v", file, err)
+		return
+	} else {
+		newFile.Write(buf.Bytes())
+	}
+
+	cmd := fmt.Sprintf("go fmt %s;goimports -w %s", file, file)
+	runCmd("/bin/sh", "-c", cmd)
+}
+
+func runCmd(name string, args ...string) string {
+	// 执行系统命令
+	// 第一个参数是命令名称
+	// 后面参数可以有多个，命令参数
+	cmd := exec.Command(name, args...)
+	// 获取输出对象，可以从该对象中读取输出结果
+	stderr, err := cmd.StderrPipe()
+	if err != nil {
+		log.Printf("%v", err)
+		return err.Error()
+	}
+	// 保证关闭输出流
+	defer stderr.Close()
+	// 运行命令
+	if err := cmd.Start(); err != nil {
+		log.Printf("%v", err)
+		return err.Error()
+	}
+	// 读取输出结果
+	opBytes, err := ioutil.ReadAll(stderr)
+	if err != nil {
+		log.Printf("%v", err)
+		return err.Error()
+	}
+	log.Printf("%v", string(opBytes))
+
+	//防止进程太多导致：resource temporarily unavailable
+	timer := time.AfterFunc(1*time.Second, func() {
+		err := cmd.Process.Kill()
+		if err != nil {
+			//panic(err) // panic as can't kill a process.
+			log.Printf("cmd.Process.Kill %v", err)
+			return
+		}
+	})
+	err = cmd.Wait()
+	if err != nil {
+		timer.Stop()
+		log.Printf("cmd.Wait %v", err)
+		return string(opBytes)
+	}
+	timer.Stop()
+	return string(opBytes)
+}
+{% endhighlight %}
+
+执行代码见: [https://github.com/baixiaoustc/go_code_analysis/blob/master/third_post_test.go](https://github.com/baixiaoustc/go_code_analysis/blob/master/sthird_post_test.go)中的`TestAutoGenContext`。
