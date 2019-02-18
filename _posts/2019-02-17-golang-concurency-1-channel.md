@@ -31,6 +31,8 @@ tags:
 
 # goroutine
 
+这大概是golang中最吸引人的地方了。
+
 ## 启动goroutine
 
 关键字`go`启动一个goroutine，新手容易犯以下的错误，使得goroutine没有真正运行：
@@ -38,7 +40,7 @@ tags:
 {% highlight golang %}
 func testBoring(msg string) {
 	for i := 0; ; i++ {
-		log.Print("%s %d", msg, i)
+		log.Printf("%s %d", msg, i)
 		time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
 	}
 }
@@ -55,7 +57,7 @@ func TestBasicGo(t *testing.T) {
 {% highlight golang %}
 func testBoring(msg string) {
 	for i := 0; ; i++ {
-		log.Print("%s %d", msg, i)
+		log.Printf("%s %d", msg, i)
 		time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
 	}
 }
@@ -160,11 +162,123 @@ func TestGoFuncParam(t *testing.T) {
 	
 # channel：goroutine间的通信
 
-## 需要通信
+搞并发编程，怎么能没有进程间（线程间/协程间）通信呢？
+
+## goroutine需要通信
+
+在上例`TestGoAndWait`中，我们假装主goroutine听到了后启动的goroutine的话。实则不然。要这两个goroutine通信，我们需要channel。来一个最简单的示例，当然这是一个死循环：
+
+{% highlight golang %}
+func testBoringWithChannel(msg string, c chan string) {
+	for i := 0; ; i++ {
+		c <- fmt.Sprintf("%s %d", msg, i)
+		time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
+	}
+}
+
+func TestGoWithChannel(t *testing.T) {
+	c := make(chan string)
+	go testBoringWithChannel("boring!", c)
+	for b := range c {
+		log.Printf("receive %s", b)
+	}
+}
+{% endhighlight %}
+
+## 关闭channel
+
+抛开死循环，怎么在后启动的goroutine结束时告知主goroutine呢？直接退出是会造成死锁的！
+> fatal error: all goroutines are asleep - deadlock!
+
+此时需要在写端关闭channel：
+
+{% highlight golang %}
+func testBoringWithChannelClose(msg string, c chan string) {
+	for i := 0; i < 10; i++ {
+		c <- fmt.Sprintf("%s %d", msg, i)
+		time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
+	}
+	close(c)
+}
+
+func TestGoWithChannelClose(t *testing.T) {
+	c := make(chan string)
+	go testBoringWithChannelClose("boring!", c)
+	for b := range c {
+		log.Printf("receive %s", b)
+	}
+}
+{% endhighlight %}
+
+`for range`可以自动监测到channel关闭，然后自动退出。但是需要强调的是关闭后的channel不能再写入，如下是个反例：
+
+{% highlight golang %}
+func TestGoWithChannelCloseThenWrite(t *testing.T) {
+	c := make(chan string)
+	go testBoringWithChannelClose("boring!", c)
+	for b := range c {
+		log.Printf("receive %s", b)
+	}
+	c <- "after close"
+}
+{% endhighlight %}
+
+	2019/02/18 23:12:31 receive boring! 0
+	2019/02/18 23:12:31 receive boring! 1
+	2019/02/18 23:12:32 receive boring! 2
+	2019/02/18 23:12:32 receive boring! 3
+	2019/02/18 23:12:32 receive boring! 4
+	panic: send on closed channel [recovered]
+		panic: send on closed channel
+	
+	goroutine 5 [running]:
+	testing.tRunner.func1(0xc4200aa0f0)
+		/usr/local/go/src/testing/testing.go:711 +0x2d2
+	panic(0x1114e40, 0x1151930)
+		/usr/local/go/src/runtime/panic.go:491 +0x283
+	github.com/baixiaoustc/go_concurrency.TestGoWithChannelCloseThenWrite(0xc4200aa0f0)
+		/Users/baixiao/Go/src/github.com/baixiaoustc/go_concurrency/first_post_test.go:80 +0x167
+	testing.tRunner(0xc4200aa0f0, 0x1141a58)
+		/usr/local/go/src/testing/testing.go:746 +0xd0
+	created by testing.(*T).Run
+		/usr/local/go/src/testing/testing.go:789 +0x2de
+	
+	Process finished with exit code 2
 
 ## 只读channel
 
-## 关闭channel
+如何简单地避免上述误操作呢？可以用只读channel，这样如果有写入操作的话在编译时就会报错。但是只读channel的写法有一点技巧，如下的写法就不行，直接编译失败：
+
+{% highlight golang %}
+func TestReceiveChannelWrong(t *testing.T) {
+	ch := make(<-chan int)
+	go func() {
+		ch <- 1
+	}()
+	a := <-ch
+	log.Println(a)
+}
+{% endhighlight %}
+
+	./first_post_test.go:86:6: invalid operation: ch <- 1 (send to receive-only type <-chan int)
+	
+	Process finished with exit code 2
+	
+正确的写法如下，通过函数的返回值限定「只读属性」：
+
+{% highlight golang %}
+func TestReceiveChannelRight(t *testing.T) {
+	ch := func() <-chan int {
+		ch := make(chan int)
+		go func() {
+			ch <- 2
+		}()
+		return ch
+	}()
+	a := <-ch
+	log.Println(a)
+}
+{% endhighlight %}
 
 ## 构造定时器
 
