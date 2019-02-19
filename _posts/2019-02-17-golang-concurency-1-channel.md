@@ -252,6 +252,8 @@ func TestGoWithChannelCloseThenWrite(t *testing.T) {
 		/usr/local/go/src/testing/testing.go:789 +0x2de
 	
 	Process finished with exit code 2
+	
+**还需要记住一点，关闭后的channel不能再写入，但是可以继续读，读出来都是空值**	
 
 ## 只读channel
 
