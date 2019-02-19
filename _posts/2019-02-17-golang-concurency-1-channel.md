@@ -166,7 +166,7 @@ func TestGoFuncParam(t *testing.T) {
 
 ## goroutine需要通信
 
-在上例`TestGoAndWait`中，我们假装主goroutine听到了后启动的goroutine的话。实则不然。要这两个goroutine通信，我们需要channel。来一个最简单的示例，当然这是一个死循环：
+在上例`TestGoAndWait`中，我们假装主goroutine听到了子goroutine的话（**注意这里的子goroutine仅用于方便描述，并不像多进程里面有父子关系，下同**）。实则不然。要这两个goroutine通信，我们需要channel。来一个最简单的示例，当然这是一个死循环：
 
 {% highlight golang %}
 func testBoringWithChannel(msg string, c chan string) {
@@ -177,10 +177,10 @@ func testBoringWithChannel(msg string, c chan string) {
 }
 
 func TestGoWithChannel(t *testing.T) {
-	c := make(chan string)
-	go testBoringWithChannel("boring!", c)
-	for b := range c {
-		log.Printf("receive %s", b)
+	ch := make(chan string)
+	go testBoringWithChannel("boring!", ch)
+	for c := range ch {
+		log.Printf("You say: %s", c)
 	}
 }
 {% endhighlight %}
@@ -194,7 +194,7 @@ func TestGoWithChannel(t *testing.T) {
 
 {% highlight golang %}
 func testBoringWithChannelClose(msg string, c chan string) {
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 5; i++ {
 		c <- fmt.Sprintf("%s %d", msg, i)
 		time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
 	}
@@ -202,10 +202,10 @@ func testBoringWithChannelClose(msg string, c chan string) {
 }
 
 func TestGoWithChannelClose(t *testing.T) {
-	c := make(chan string)
-	go testBoringWithChannelClose("boring!", c)
-	for b := range c {
-		log.Printf("receive %s", b)
+	ch := make(chan string)
+	go testBoringWithChannelClose("boring!", ch)
+	for c := range ch {
+		log.Printf("You say: %s", c)
 	}
 }
 {% endhighlight %}
@@ -214,12 +214,12 @@ func TestGoWithChannelClose(t *testing.T) {
 
 {% highlight golang %}
 func TestGoWithChannelCloseThenWrite(t *testing.T) {
-	c := make(chan string)
-	go testBoringWithChannelClose("boring!", c)
-	for b := range c {
-		log.Printf("receive %s", b)
+	ch := make(chan string)
+	go testBoringWithChannelClose("boring!", ch)
+	for c := range ch {
+		log.Printf("You say: %s", c)
 	}
-	c <- "after close"
+	ch <- "after close"
 }
 {% endhighlight %}
 
@@ -247,7 +247,7 @@ func TestGoWithChannelCloseThenWrite(t *testing.T) {
 
 ## 只读channel
 
-如何简单地避免上述误操作呢？可以用只读channel，这样如果有写入操作的话在编译时就会报错。但是只读channel的写法有一点技巧，如下的写法就不行，直接编译失败：
+如何简单地避免上述误操作呢？可以用只读channel，生产者和消费者严格定义好，生产者只写channel，消费者只读channel，如果消费者有写入操作的话在编译时就会报错。但是只读channel的写法有一点技巧，如下的写法就不行，直接编译失败：
 
 {% highlight golang %}
 func TestReceiveChannelWrong(t *testing.T) {
@@ -280,6 +280,135 @@ func TestReceiveChannelRight(t *testing.T) {
 }
 {% endhighlight %}
 
+## channel with select
+
+那么当主goroutine要启动多个子goroutine干不同的事呢？主goroutine不可能依次阻塞到不同的channel上，串行地等待子goroutine依次完工，这样太丑了：
+
+{% highlight golang %}
+func TestMultiChannelsSerial(t *testing.T) {
+	ch1 := make(chan string)
+	go testBoringWithChannelClose("boring!", ch1)
+	ch2 := make(chan string)
+	go testBoringWithChannelClose("funning!", ch2)
+
+	for b := range ch1 {
+		log.Printf("You say: %s", b)
+	}
+	for b := range ch2 {
+		log.Printf("You say: %s", b)
+	}
+}
+{% endhighlight %}
+
+golang提供了select关键字，提供了多路复用的能力，同时处理多个channel。为了让主goroutine不是一直死循环等，而是在其多个子goroutine完工后继续往下走，这里用到了两个重要特性：
+
+* 使用_,ok判断channel是否关闭
+* 当通道为nil时，对应的case永远为阻塞
+
+{% highlight golang %}
+func TestMultiChannelsConcurrently(t *testing.T) {
+	ch1 := make(chan string)
+	go testBoringWithChannelClose("boring!", ch1)
+	ch2 := make(chan string)
+	go testBoringWithChannelClose("funning!", ch2)
+
+	for {
+		select {
+		case c1, ok := <-ch1:
+			if !ok {
+				ch1 = nil
+				log.Print("close ch1")
+				continue
+			}
+			log.Printf("You say: %s", c1)
+		case c2, ok := <-ch2:
+			if !ok {
+				ch2 = nil
+				log.Print("close ch2")
+				continue
+			}
+			log.Printf("You say: %s", c2)
+		default:
+			break
+		}
+
+		if ch1 == nil && ch2 == nil {
+			break
+		}
+	}
+
+	log.Print("go on")
+}
+{% endhighlight %}
+
 ## 构造定时器
 
+channel + select 的另一个经典运用是超时管理：
+
+{% highlight golang %}
+func TestTimeOutEach(t *testing.T) {
+	ch := make(chan string)
+	go testBoringWithChannel("boring!", ch)
+	for i := 0; i < 5; i++ {
+		select {
+		case c := <-ch:
+			log.Printf("You say: %s", c)
+		case <-time.After(500 * time.Millisecond):
+			log.Println("You talk too slow.")
+		}
+	}
+}
+{% endhighlight %}
+
+	2019/02/19 21:08:14 You say: boring! 0
+	2019/02/19 21:08:14 You say: boring! 1
+	2019/02/19 21:08:15 You talk too slow.
+	2019/02/19 21:08:15 You say: boring! 2
+	2019/02/19 21:08:15 You talk too slow.
+	
+	Process finished with exit code 0
+	
+上述是针对每次循环内部的超时，如果要对整个会话进行管理：
+
+{% highlight golang %}
+func TestTimeOutWhole(t *testing.T) {
+	ch := make(chan string)
+	timeout := time.After(1 * time.Second)
+	go testBoringWithChannel("boring!", ch)
+	for i := 0; i < 5; i++ {
+		select {
+		case c := <-ch:
+			log.Printf("You say: %s", c)
+		case <-timeout:
+			log.Println("You talk too much.")
+			return
+		}
+	}
+}
+{% endhighlight %}
+
 ## channel生成器
+
+还有一个比较常用的方法在上面的只读channel也提到了，雅称channel生成器：
+
+{% highlight golang %}
+func TestChannelGenerator(t *testing.T) {
+	c := testBoringWithChannelGenerate("boring!")
+	for i := 0; i < 5; i++ {
+		log.Printf("You say: %q\n", <-c)
+	}
+	log.Println("I'm leaving.")
+}
+{% endhighlight %}
+
+	2019/02/19 21:20:40 You say: "boring! 0"
+	2019/02/19 21:20:40 You say: "boring! 1"
+	2019/02/19 21:20:41 You say: "boring! 2"
+	2019/02/19 21:20:41 You say: "boring! 3"
+	2019/02/19 21:20:42 You say: "boring! 4"
+	
+	2019/02/19 21:20:42 I'm leaving.
+	
+## 上面提到的channel都是没有buffer的，很大程度上起了「同步」的作用。后面会再提带buffer的channel。
+	
+所有代码都在[https://github.com/baixiaoustc/go_concurrency/blob/master/first_post_test.go](https://github.com/baixiaoustc/go_concurrency/blob/master/first_post_test.go)中能找到。
