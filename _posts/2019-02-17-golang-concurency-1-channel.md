@@ -210,6 +210,14 @@ func TestGoWithChannelClose(t *testing.T) {
 }
 {% endhighlight %}
 
+	2019/02/19 21:35:23 You say: boring! 0
+	2019/02/19 21:35:23 You say: boring! 1
+	2019/02/19 21:35:24 You say: boring! 2
+	2019/02/19 21:35:24 You say: boring! 3
+	2019/02/19 21:35:24 You say: boring! 4
+	
+	Process finished with exit code 0
+
 `for range`可以自动监测到channel关闭，然后自动退出。但是需要强调的是关闭后的channel不能再写入，如下是个反例：
 
 {% highlight golang %}
@@ -300,7 +308,7 @@ func TestMultiChannelsSerial(t *testing.T) {
 }
 {% endhighlight %}
 
-golang提供了select关键字，提供了多路复用的能力，同时处理多个channel。为了让主goroutine不是一直死循环等，而是在其多个子goroutine完工后继续往下走，这里用到了两个重要特性：
+golang提供了`select`关键字，提供了多路复用的能力，同时处理多个channel。为了让主goroutine不是一直死循环等，而是在其多个子goroutine完工后继续往下走，这里用到了两个重要特性：
 
 * 使用_,ok判断channel是否关闭
 * 当通道为nil时，对应的case永远为阻塞
@@ -340,6 +348,23 @@ func TestMultiChannelsConcurrently(t *testing.T) {
 	log.Print("go on")
 }
 {% endhighlight %}
+
+	2019/02/19 21:32:18 You say: funning! 0
+	2019/02/19 21:32:18 You say: boring! 0
+	2019/02/19 21:32:18 You say: funning! 1
+	2019/02/19 21:32:19 You say: boring! 1
+	2019/02/19 21:32:19 You say: funning! 2
+	2019/02/19 21:32:19 You say: boring! 2
+	2019/02/19 21:32:19 You say: funning! 3
+	2019/02/19 21:32:19 You say: boring! 3
+	2019/02/19 21:32:19 You say: funning! 4
+	2019/02/19 21:32:20 You say: boring! 4
+	2019/02/19 21:32:20 close ch2
+	2019/02/19 21:32:20 close ch1
+	
+	2019/02/19 21:32:20 go on
+	
+这里值得一提的是，funning和boring肯定是交替出现的，但是第一个是funning还是boring是随机的，因为`select`还有一个特征是，当多个`case`同时满足的时候，随机地选一个执行。
 
 ## 构造定时器
 
