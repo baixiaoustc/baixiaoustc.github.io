@@ -4,11 +4,11 @@ comments: false
 date: 2019-02-17 09:54:23+00:00
 layout: post
 slug: 2019-02-17-golang-concurency-1-channel
-title: golang并发三板斧系列之一：会用channel
+title: golang并发三板斧系列之一：channel用于通信和同步
 categories:
 - 后端技术
 tags:
-- golang
+- golang 并发
 ---
 
 * content 
@@ -25,6 +25,11 @@ tags:
 
 并发是描述代码架构，是指在模型上可以同时处理多件事务。并行是描述执行状态，除了代码限制外，如果没有多CPU多核心，谈何并行呢？对于单CPU单核心的硬件（当然现在基本上很少了），并发往往带来更多的进程间切换，反而会拖累效率。
 
+那到底要不要并行？关键在于我们的模型是CPU密集型还是IO密集型的，一般来讲前者更适用于并发。听起来好像有点反常识，这么来思考一下：
+
+* CPU密集型不会主动释放系统线程，人为释放的话会有时间成本。利用并行的话，可以尽量让CPU密集型的任务独占一个系统线程。
+* IO密集型本身遇到系统调用或者网络阻塞就会释放系统线程，所以并发就能满足需要了，可以有效利用单一的系统线程。
+
 本系列文章只谈golang的代码模型，因此取`并发`二字。下图很直观的区分了并发和并行：
 
 ![](http://image99.renyit.com/image/2019-02-17-1.png)
@@ -32,6 +37,8 @@ tags:
 # goroutine
 
 这大概是golang中最吸引人的地方了。
+
+![](https://talks.golang.org/2013/advconc/gopherswim.jpg)
 
 ## 启动goroutine
 
@@ -420,9 +427,9 @@ func TestTimeOutWhole(t *testing.T) {
 
 {% highlight golang %}
 func TestChannelGenerator(t *testing.T) {
-	c := testBoringWithChannelGenerate("boring!")
+	ch := testBoringWithChannelGenerate("boring!")
 	for i := 0; i < 5; i++ {
-		log.Printf("You say: %q\n", <-c)
+		log.Printf("You say: %q\n", <-ch)
 	}
 	log.Println("I'm leaving.")
 }
@@ -436,6 +443,49 @@ func TestChannelGenerator(t *testing.T) {
 	
 	2019/02/19 21:20:42 I'm leaving.
 	
-## 上面提到的channel都是没有buffer的，很大程度上起了「同步」的作用。后面会再提带buffer的channel。
+## channel用于退出
+
+扩展上个示例，如果想在主goroutine退出之前告知子goroutine也退出呢？还是利用channel，只不过发送者和接受者对调了：
+
+{% highlight golang %}
+func testBoringWithChannelQuit(msg string, quit chan bool) <-chan string {
+	c := make(chan string)
+	go func() {
+		for i := 0; ; i++ {
+			select {
+			case c <- fmt.Sprintf("%s %d", msg, i):
+				time.Sleep(time.Duration(rand.Intn(1e3)) * time.Millisecond)
+			case <-quit:
+				return
+			}
+
+		}
+	}()
+	return c
+}
+
+func TestChannelQuit(t *testing.T) {
+	quit := make(chan bool)
+	c := testBoringWithChannelQuit("boring!", quit)
+	for i := 0; i < 5; i++ {
+		log.Printf("You say: %q\n", <-c)
+	}
+	log.Println("I'm leaving.")
+	quit <- true
+}
+{% endhighlight %}
+
+	
+# 通信和同步
+
+上面提到的channel都是没有buffer的，很大程度上起了「同步」的作用。发送者和接受者都必须等双方都准备好才能通信，实际上是一个同步模型。
+
+后面会再提带buffer的channel。
+
+---
+
+本篇的模型可以类比为你现在是个师傅，带了个小学徒一起做事情。
+
+---
 	
 所有代码都在[https://github.com/baixiaoustc/go_concurrency/blob/master/first_post_test.go](https://github.com/baixiaoustc/go_concurrency/blob/master/first_post_test.go)中能找到。
