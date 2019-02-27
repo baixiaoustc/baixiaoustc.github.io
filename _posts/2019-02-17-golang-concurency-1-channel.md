@@ -8,7 +8,8 @@ title: golang并发三板斧系列之一：channel用于通信和同步
 categories:
 - 后端技术
 tags:
-- golang 并发
+- golang 
+- 并发
 ---
 
 * content 

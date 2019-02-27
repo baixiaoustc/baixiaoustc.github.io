@@ -8,7 +8,8 @@ title: golang并发三板斧系列之二：会用pipeline
 categories:
 - 后端技术
 tags:
-- golang 并发
+- golang 
+- 并发
 ---
 
 * content 
