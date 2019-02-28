@@ -3,8 +3,8 @@ author: baixiaoustc
 comments: false
 date: 2019-02-20 09:54:23+00:00
 layout: post
-slug: 2019-02-20-golang-concurency-2-pipeline
-title: golang并发三板斧系列之二：会用pipeline
+slug: 2019-02-20-golang-concurency-2-goroutine-pool
+title: golang并发三板斧系列之二：goroutine池用于并发
 categories:
 - 后端技术
 tags:
@@ -128,9 +128,253 @@ func TestFan(t *testing.T) {
 	
 	Process finished with exit code 0
 
-# merge好吗，要用串行来比
+# 以上模型能提升并行效率吗
 
 ## CPU密集型
+
+设计了如下模型用于比较：
+
+{% highlight golang %}
+//功能函数
+func BenchmarkList() []float64 {
+	list := make([]float64, MAX)
+	for n := 0; n < MAX; n++ {
+		list[n] = float64(n)
+	}
+	return list
+}
+
+func genChan(nums []float64) <-chan float64 {
+	out := make(chan float64)
+	go func() {
+		for _, n := range nums {
+			out <- n
+		}
+		close(out)
+	}()
+	return out
+}
+
+func genChanBuffer(nums []float64) <-chan float64 {
+	out := make(chan float64, BUFFERSIZE)
+	go func() {
+		for _, n := range nums {
+			out <- n
+		}
+		close(out)
+	}()
+	return out
+}
+
+func sqChan(in <-chan float64) <-chan float64 {
+	out := make(chan float64)
+	go func() {
+		for n := range in {
+			out <- math.Pow(3.1415926, n)
+		}
+		close(out)
+	}()
+	return out
+}
+
+func sqChanBuffer(in <-chan float64) <-chan float64 {
+	out := make(chan float64, BUFFERSIZE)
+	go func() {
+		for n := range in {
+			out <- math.Pow(3.1415926, n)
+		}
+		close(out)
+	}()
+	return out
+}
+
+func mergeChan(cs ...<-chan float64) <-chan float64 {
+	var wg sync.WaitGroup
+	out := make(chan float64)
+
+	output := func(c <-chan float64) {
+		for n := range c {
+			out <- n
+		}
+		wg.Done()
+	}
+	wg.Add(len(cs))
+	for _, c := range cs {
+		go output(c)
+	}
+
+	go func() {
+		wg.Wait()
+		close(out)
+	}()
+	return out
+}
+
+func mergeChanBuffer(cs ...<-chan float64) <-chan float64 {
+	var wg sync.WaitGroup
+	out := make(chan float64, BUFFERSIZE)
+
+	output := func(c <-chan float64) {
+		for n := range c {
+			out <- n
+		}
+		wg.Done()
+	}
+	wg.Add(len(cs))
+	for _, c := range cs {
+		go output(c)
+	}
+
+	go func() {
+		wg.Wait()
+		close(out)
+	}()
+	return out
+}
+
+//测试函数
+func BenchmarkSequential(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		list := BenchmarkList()
+
+		var sum float64
+		for _, n := range list {
+			sum += math.Pow(3.1415926, n)
+		}
+	}
+}
+
+func BenchmarkPipeline(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		list := BenchmarkList()
+
+		c := genChan(list)
+		out := sqChan(c)
+
+		var sum float64
+		for n := range out {
+			sum += n
+		}
+	}
+}
+
+func BenchmarkPipelineBuffer(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		list := BenchmarkList()
+
+		c := genChanBuffer(list)
+		out := sqChanBuffer(c)
+
+		var sum float64
+		for n := range out {
+			sum += n
+		}
+	}
+}
+
+func BenchmarkFan(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		list := BenchmarkList()
+
+		c := genChan(list)
+		gonum := runtime.NumCPU() / 2
+		outs := make([]<-chan float64, gonum)
+		for i := 0; i < gonum; i++ {
+			outs[i] = sqChan(c)
+		}
+
+		var sum float64
+		for n := range mergeChan(outs...) {
+			sum += n
+		}
+	}
+}
+
+func BenchmarkFanBuffer(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		list := BenchmarkList()
+
+		c := genChanBuffer(list)
+		gonum := runtime.NumCPU() / 2
+		outs := make([]<-chan float64, gonum)
+		for i := 0; i < gonum; i++ {
+			outs[i] = sqChanBuffer(c)
+		}
+
+		var sum float64
+		for n := range mergeChanBuffer(outs...) {
+			sum += n
+		}
+	}
+}
+
+func BenchmarkParallelize(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		list := BenchmarkList()
+		gonum := runtime.NumCPU()
+
+		var sum float64
+		num := len(list)
+		stride := num / gonum
+
+		var wg sync.WaitGroup
+		wg.Add(gonum)
+		var mux sync.Mutex
+
+		for g := 0; g < gonum; g++ {
+			go func(g int) {
+				start := g * stride
+				end := start + stride
+				if g == gonum-1 {
+					end = num
+				}
+
+				var sumin float64
+				for _, n := range list[start:end] {
+					sumin += math.Pow(3.1415926, n)
+				}
+
+				mux.Lock()
+				sum += sumin
+				mux.Unlock()
+
+				wg.Done()
+			}(g)
+		}
+
+		wg.Wait()
+	}
+}
+{% endhighlight %}
+
+结果让人大跌眼镜，无论是Pipeline模型还是Fan模型，都比不上普通的串行，只有普通的并发模型能有效提升：
+
+	C02S259EFVH3:go_concurrency baixiao$ GOGC=off go test -cpu 1,4 -run none -bench . -benchtime 3s
+	goos: darwin
+	goarch: amd64
+	BenchmarkSequential         	      30	 129557137 ns/op
+	BenchmarkSequential-4       	      30	 121506413 ns/op
+	BenchmarkPipeline           	      10	 601315189 ns/op
+	BenchmarkPipeline-4         	       3	1045210346 ns/op
+	BenchmarkPipelineBuffer     	      20	 256968800 ns/op
+	BenchmarkPipelineBuffer-4   	      10	 511966497 ns/op
+	BenchmarkFan                	       5	 746298055 ns/op
+	BenchmarkFan-4              	       3	1257709787 ns/op
+	BenchmarkFanBuffer          	      20	 294691379 ns/op
+	BenchmarkFanBuffer-4        	      20	 276993724 ns/op
+	BenchmarkParallelize        	     100	 114204933 ns/op
+	BenchmarkParallelize-4      	     100	  46729235 ns/op
+	PASS
+	ok  	_/Users/baixiao/Go/src/github.com/baixiaoustc/go_concurrency	78.726s
+	
+可以得出以下结论：
+
+* Sequential完爆Pipeline和Fan
+* Sequential在多核下略好于单核，因为testing框架下会生成一些goroutine，用在多核上有提升
+* Pipeline和Fan在多核下弱于单核，因为系统瓶颈根本不在并行上，而是channel造成的阻塞
+* 给channel加了buffer之后，PipelineBuffer优于Pipeline、FanBuffer优于Fan
+* 仅FanBuffer能享受多核的加成，提升也不大
+* 多核下的Parallelize：在座的各位都是垃圾
 
 ## IO密集型
 
