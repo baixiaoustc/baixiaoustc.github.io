@@ -132,16 +132,21 @@ func TestFan(t *testing.T) {
 
 ## CPU密集型
 
-设计了如下模型用于比较：
+用浮点数的幂计算模拟CPU-BOUND，设计了如下模型用于比较：
 
 {% highlight golang %}
 //功能函数
-func BenchmarkList() []float64 {
+
+func benchmarkList() []float64 {
 	list := make([]float64, MAX)
 	for n := 0; n < MAX; n++ {
 		list[n] = float64(n)
 	}
 	return list
+}
+
+func cpubound(n float64) float64 {
+	return math.Pow(3.1415926, n)
 }
 
 func genChan(nums []float64) <-chan float64 {
@@ -166,22 +171,22 @@ func genChanBuffer(nums []float64) <-chan float64 {
 	return out
 }
 
-func sqChan(in <-chan float64) <-chan float64 {
+func cpuChan(in <-chan float64) <-chan float64 {
 	out := make(chan float64)
 	go func() {
 		for n := range in {
-			out <- math.Pow(3.1415926, n)
+			out <- cpubound(n)
 		}
 		close(out)
 	}()
 	return out
 }
 
-func sqChanBuffer(in <-chan float64) <-chan float64 {
+func cpuChanBuffer(in <-chan float64) <-chan float64 {
 	out := make(chan float64, BUFFERSIZE)
 	go func() {
 		for n := range in {
-			out <- math.Pow(3.1415926, n)
+			out <- cpubound(n)
 		}
 		close(out)
 	}()
@@ -233,23 +238,24 @@ func mergeChanBuffer(cs ...<-chan float64) <-chan float64 {
 }
 
 //测试函数
-func BenchmarkSequential(b *testing.B) {
+
+func BenchmarkCPUSequential(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		list := BenchmarkList()
+		list := benchmarkList()
 
 		var sum float64
 		for _, n := range list {
-			sum += math.Pow(3.1415926, n)
+			sum += cpubound(n)
 		}
 	}
 }
 
-func BenchmarkPipeline(b *testing.B) {
+func BenchmarkCPUPipeline(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		list := BenchmarkList()
+		list := benchmarkList()
 
 		c := genChan(list)
-		out := sqChan(c)
+		out := cpuChan(c)
 
 		var sum float64
 		for n := range out {
@@ -258,12 +264,12 @@ func BenchmarkPipeline(b *testing.B) {
 	}
 }
 
-func BenchmarkPipelineBuffer(b *testing.B) {
+func BenchmarkCPUPipelineBuffer(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		list := BenchmarkList()
+		list := benchmarkList()
 
 		c := genChanBuffer(list)
-		out := sqChanBuffer(c)
+		out := cpuChanBuffer(c)
 
 		var sum float64
 		for n := range out {
@@ -272,15 +278,15 @@ func BenchmarkPipelineBuffer(b *testing.B) {
 	}
 }
 
-func BenchmarkFan(b *testing.B) {
+func BenchmarkCPUFan(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		list := BenchmarkList()
+		list := benchmarkList()
 
 		c := genChan(list)
 		gonum := runtime.NumCPU() / 2
 		outs := make([]<-chan float64, gonum)
 		for i := 0; i < gonum; i++ {
-			outs[i] = sqChan(c)
+			outs[i] = cpuChan(c)
 		}
 
 		var sum float64
@@ -290,15 +296,15 @@ func BenchmarkFan(b *testing.B) {
 	}
 }
 
-func BenchmarkFanBuffer(b *testing.B) {
+func BenchmarkCPUFanBuffer(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		list := BenchmarkList()
+		list := benchmarkList()
 
 		c := genChanBuffer(list)
 		gonum := runtime.NumCPU() / 2
 		outs := make([]<-chan float64, gonum)
 		for i := 0; i < gonum; i++ {
-			outs[i] = sqChanBuffer(c)
+			outs[i] = cpuChanBuffer(c)
 		}
 
 		var sum float64
@@ -308,9 +314,9 @@ func BenchmarkFanBuffer(b *testing.B) {
 	}
 }
 
-func BenchmarkParallelize(b *testing.B) {
+func BenchmarkCPUParallelize(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		list := BenchmarkList()
+		list := benchmarkList()
 		gonum := runtime.NumCPU()
 
 		var sum float64
@@ -331,7 +337,7 @@ func BenchmarkParallelize(b *testing.B) {
 
 				var sumin float64
 				for _, n := range list[start:end] {
-					sumin += math.Pow(3.1415926, n)
+					sumin += cpubound(n)
 				}
 
 				mux.Lock()
@@ -347,35 +353,205 @@ func BenchmarkParallelize(b *testing.B) {
 }
 {% endhighlight %}
 
-结果让人大跌眼镜，无论是Pipeline模型还是Fan模型，都比不上普通的串行，只有普通的并发模型能有效提升：
+设MAX=1000000，BUFFERSIZE=1000。结果让人大跌眼镜，无论是Pipeline模型还是Fan模型，都比不上普通的串行，只有普通的并发模型能有效提升：
 
-	C02S259EFVH3:go_concurrency baixiao$ GOGC=off go test -cpu 1,4 -run none -bench . -benchtime 3s
-	goos: darwin
+	[baixiao@localhost go_concurrency]$ GOGC=off go test -cpu 1,8 -run none -bench CPU -benchtime 3s 
+	goos: linux
 	goarch: amd64
-	BenchmarkSequential         	      30	 129557137 ns/op
-	BenchmarkSequential-4       	      30	 121506413 ns/op
-	BenchmarkPipeline           	      10	 601315189 ns/op
-	BenchmarkPipeline-4         	       3	1045210346 ns/op
-	BenchmarkPipelineBuffer     	      20	 256968800 ns/op
-	BenchmarkPipelineBuffer-4   	      10	 511966497 ns/op
-	BenchmarkFan                	       5	 746298055 ns/op
-	BenchmarkFan-4              	       3	1257709787 ns/op
-	BenchmarkFanBuffer          	      20	 294691379 ns/op
-	BenchmarkFanBuffer-4        	      20	 276993724 ns/op
-	BenchmarkParallelize        	     100	 114204933 ns/op
-	BenchmarkParallelize-4      	     100	  46729235 ns/op
+	BenchmarkCPUSequential                50          95148037 ns/op
+	BenchmarkCPUSequential-8              30         101450384 ns/op
+	BenchmarkCPUPipeline                  10         512093124 ns/op
+	BenchmarkCPUPipeline-8                 5         864946495 ns/op
+	BenchmarkCPUPipelineBuffer            20         219850707 ns/op
+	BenchmarkCPUPipelineBuffer-8          10         370302165 ns/op
+	BenchmarkCPUFan                        5         715223945 ns/op
+	BenchmarkCPUFan-8                      5         913448396 ns/op
+	BenchmarkCPUFanBuffer                 10         320494600 ns/op
+	BenchmarkCPUFanBuffer-8               10         427863250 ns/op
+	BenchmarkCPUParallelize              100          95482003 ns/op
+	BenchmarkCPUParallelize-8            200          19398520 ns/op
 	PASS
-	ok  	_/Users/baixiao/Go/src/github.com/baixiaoustc/go_concurrency	78.726s
+	ok      _/home/baixiao/go_concurrency   77.085s
 	
 可以得出以下结论：
 
 * Sequential完爆Pipeline和Fan
-* Sequential在多核下略好于单核，因为testing框架下会生成一些goroutine，用在多核上有提升
-* Pipeline和Fan在多核下弱于单核，因为系统瓶颈根本不在并行上，而是channel造成的阻塞
+* Pipeline和Fan在多核下均弱于单核，因为系统瓶颈根本不在并行上，而是channel造成的阻塞
 * 给channel加了buffer之后，PipelineBuffer优于Pipeline、FanBuffer优于Fan
-* 仅FanBuffer能享受多核的加成，提升也不大
 * 多核下的Parallelize：在座的各位都是垃圾
 
 ## IO密集型
+
+用随机sleep模拟IOU-BOUND，设计了如下模型用于比较：
+
+{% highlight golang %}
+func iobound(n float64) float64 {
+	time.Sleep(time.Duration(rand.Intn(10)) * time.Millisecond)
+	return n
+}
+
+func ioChan(in <-chan float64) <-chan float64 {
+	out := make(chan float64)
+	go func() {
+		for n := range in {
+			out <- iobound(n)
+		}
+		close(out)
+	}()
+	return out
+}
+
+func ioChanBuffer(in <-chan float64) <-chan float64 {
+	out := make(chan float64, BUFFERSIZE)
+	go func() {
+		for n := range in {
+			out <- iobound(n)
+		}
+		close(out)
+	}()
+	return out
+}
+
+//测试函数
+func BenchmarkIOSequential(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		list := benchmarkList()
+
+		var sum float64
+		for _, n := range list {
+			sum += iobound(n)
+		}
+	}
+}
+
+func BenchmarkIOPipeline(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		list := benchmarkList()
+
+		c := genChan(list)
+		out := ioChan(c)
+
+		var sum float64
+		for n := range out {
+			sum += n
+		}
+	}
+}
+func BenchmarkIOPipelineBuffer(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		list := benchmarkList()
+
+		c := genChanBuffer(list)
+		out := ioChanBuffer(c)
+
+		var sum float64
+		for n := range out {
+			sum += n
+		}
+	}
+}
+
+func BenchmarkIOFan(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		list := benchmarkList()
+
+		c := genChan(list)
+		gonum := runtime.NumCPU() / 2
+		outs := make([]<-chan float64, gonum)
+		for i := 0; i < gonum; i++ {
+			outs[i] = ioChan(c)
+		}
+
+		var sum float64
+		for n := range mergeChan(outs...) {
+			sum += n
+		}
+	}
+}
+
+func BenchmarkIOFanBuffer(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		list := benchmarkList()
+
+		c := genChanBuffer(list)
+		gonum := runtime.NumCPU() / 2
+		outs := make([]<-chan float64, gonum)
+		for i := 0; i < gonum; i++ {
+			outs[i] = ioChanBuffer(c)
+		}
+
+		var sum float64
+		for n := range mergeChanBuffer(outs...) {
+			sum += n
+		}
+	}
+}
+
+func BenchmarkIOParallelize(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		list := benchmarkList()
+		gonum := runtime.NumCPU()
+
+		var sum float64
+		num := len(list)
+		stride := num / gonum
+
+		var wg sync.WaitGroup
+		wg.Add(gonum)
+		var mux sync.Mutex
+
+		for g := 0; g < gonum; g++ {
+			go func(g int) {
+				start := g * stride
+				end := start + stride
+				if g == gonum-1 {
+					end = num
+				}
+
+				var sumin float64
+				for _, n := range list[start:end] {
+					sumin += iobound(n)
+				}
+
+				mux.Lock()
+				sum += sumin
+				mux.Unlock()
+
+				wg.Done()
+			}(g)
+		}
+
+		wg.Wait()
+	}
+}
+{% endhighlight %}
+
+设MAX=100，BUFFERSIZE=1000。
+
+	[baixiao@localhost go_concurrency]$ GOGC=off go test -cpu 1,8 -run none -bench IO -benchtime 3s
+	goos: linux
+	goarch: amd64
+	BenchmarkIOSequential                 10         441609349 ns/op
+	BenchmarkIOSequential-8               10         457200927 ns/op
+	BenchmarkIOPipeline                   10         454147034 ns/op
+	BenchmarkIOPipeline-8                 10         467264740 ns/op
+	BenchmarkIOPipelineBuffer             10         456459492 ns/op
+	BenchmarkIOPipelineBuffer-8           10         452286832 ns/op
+	BenchmarkIOFan                       100          36995490 ns/op
+	BenchmarkIOFan-8                     100          36950275 ns/op
+	BenchmarkIOFanBuffer                 100          37555702 ns/op
+	BenchmarkIOFanBuffer-8               100          36851459 ns/op
+	BenchmarkIOParallelize                50          88653231 ns/op
+	BenchmarkIOParallelize-8              50          87061568 ns/op
+	PASS
+	ok      _/home/baixiao/go_concurrency   54.007s
+	
+可以得出以下结论：
+
+* 在IO密集的情况下，Fan模型吊打所有
+* 所有的模型，在多核下都没有提升
+
+
+**坑：runtime.NumCPU()不会随着runtime.GOMAXPROCS()改变，前者代表的是系统全部的核数，后者代表的是可同时使用的核数**
 
 # 池子
