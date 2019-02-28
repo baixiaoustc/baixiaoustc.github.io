@@ -556,6 +556,9 @@ func BenchmarkIOParallelize(b *testing.B) {
 1. 不带buffer的channel由于「强同步」特性，无法提高并行，甚至拖累效率
 2. CPU密集型的场景，多核并行能提升效率
 3. IO密集型的场景，多核并行不能提升效率
+4. Pipeling模型有何用途？我没看出来
+5. Waitgroup模型在CPU密集型场景有优势
+6. Fan模型在IO密集型场景有优势
 
 
 **坑：runtime.NumCPU()不会随着runtime.GOMAXPROCS()改变，前者代表的是系统全部的核数，后者代表的是可同时使用的核数**
