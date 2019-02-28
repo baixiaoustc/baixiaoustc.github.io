@@ -19,7 +19,7 @@ tags:
 
 前文描述了手工作坊的时代，即老师傅带着小学徒并发地做一项工作，现在我们准备进入工业时代。
 
-# Pipeline
+# Pipeline模型
 
 Pipeline即流水线模型，这在现代工业是很常见的。模型分为数个阶段，每个阶段干不同的事情，但可以并行地去做。以造拖拉机为例来解释流水线的工作方式，假设装配一辆汽车需要四个步骤：
 
@@ -136,7 +136,6 @@ func TestFan(t *testing.T) {
 
 {% highlight golang %}
 //功能函数
-
 func benchmarkList() []float64 {
 	list := make([]float64, MAX)
 	for n := 0; n < MAX; n++ {
@@ -238,7 +237,6 @@ func mergeChanBuffer(cs ...<-chan float64) <-chan float64 {
 }
 
 //测试函数
-
 func BenchmarkCPUSequential(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		list := benchmarkList()
@@ -377,7 +375,7 @@ func BenchmarkCPUParallelize(b *testing.B) {
 
 * Sequential完爆Pipeline和Fan
 * Pipeline和Fan在多核下均弱于单核，因为系统瓶颈根本不在并行上，而是channel造成的阻塞
-* 给channel加了buffer之后，PipelineBuffer优于Pipeline、FanBuffer优于Fan
+* 给channel加了buffer之后，PipelineBuffer优于Pipeline、FanBuffer优于Fan，因为channel的阻塞减弱了
 * 多核下的Parallelize：在座的各位都是垃圾
 
 ## IO密集型
@@ -385,6 +383,7 @@ func BenchmarkCPUParallelize(b *testing.B) {
 用随机sleep模拟IOU-BOUND，设计了如下模型用于比较：
 
 {% highlight golang %}
+//功能函数
 func iobound(n float64) float64 {
 	time.Sleep(time.Duration(rand.Intn(10)) * time.Millisecond)
 	return n
@@ -549,7 +548,14 @@ func BenchmarkIOParallelize(b *testing.B) {
 可以得出以下结论：
 
 * 在IO密集的情况下，Fan模型吊打所有
+* channel带buffer没有效率提升
 * 所有的模型，在多核下都没有提升
+
+## 结论是？
+
+1. 不带buffer的channel由于「强同步」特性，无法提高并行，甚至拖累效率
+2. CPU密集型的场景，多核并行能提升效率
+3. IO密集型的场景，多核并行不能提升效率
 
 
 **坑：runtime.NumCPU()不会随着runtime.GOMAXPROCS()改变，前者代表的是系统全部的核数，后者代表的是可同时使用的核数**
