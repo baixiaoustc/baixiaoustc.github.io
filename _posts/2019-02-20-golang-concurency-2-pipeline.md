@@ -563,4 +563,231 @@ func BenchmarkIOParallelize(b *testing.B) {
 
 **坑：runtime.NumCPU()不会随着runtime.GOMAXPROCS()改变，前者代表的是系统全部的核数，后者代表的是可同时使用的核数**
 
-# 池子
+# goroutine池
+
+## pool模型
+
+设计一个pool，需要考虑几个方面：输入是什么，做什么事情，多少worker一起执行？
+
+现抽象出一个goroutine pool的模型代码，可以自定义输入类型，执行函数，worker数量。
+
+{% highlight golang %}
+func genPoolChanBuffer(nums []float64) <-chan interface{} {
+	out := make(chan interface{}, BUFFERSIZE)
+	go func() {
+		for _, n := range nums {
+			out <- n
+		}
+		close(out)
+	}()
+	return out
+}
+
+type Handler func(*Work)
+type Work struct {
+	input interface{}
+}
+
+type Pool struct {
+	channum   int
+	workernum int
+	wg        *sync.WaitGroup
+	ch        chan Work
+	Func      Handler
+}
+
+func (p Pool) RunWorker() {
+	for i := 0; i < p.workernum; i++ {
+		p.wg.Add(1)
+		go func() {
+			defer p.wg.Done()
+			for work := range p.ch {
+				p.Func(&work)
+			}
+		}()
+	}
+}
+
+func (p Pool) FeedWorker(in <-chan interface{}) {
+	go func() {
+		for n := range in {
+			work := Work{
+				input: n,
+			}
+			p.ch <- work
+		}
+		close(p.ch)
+	}()
+}
+
+func (p Pool) Wait() {
+	p.wg.Wait()
+}
+
+func InitPool(channum, workernum int, f Handler) *Pool {
+	return &Pool{
+		channum:   channum,
+		workernum: workernum,
+		wg:        &sync.WaitGroup{},
+		ch:        make(chan Work, channum),
+		Func:      f,
+	}
+}
+{% endhighlight %}
+
+## 对比测试
+
+设计了四个对比测试，观察在CPU密集型和IO密集型的情况下该pool的表现，另外还旨在探索什么情况下worker的数量会越多越好？带Min的测试中设置`gonum`为系统核数的一半，带Max的测试中设置`gonum`为系统核数的十倍，`gonum`即为worker数量。
+
+{% highlight golang %}
+//测试函数
+func BenchmarkCPUPool(b *testing.B) {
+	channum := 100
+	gonum := runtime.NumCPU()
+	for i := 0; i < b.N; i++ {
+		f := func(w *Work) {
+			if v, ok := w.input.(float64); ok {
+				cpubound(v)
+			}
+		}
+		list := benchmarkList()
+		c := genPoolChanBuffer(list)
+
+		p := InitPool(channum, gonum, f)
+		p.RunWorker()
+		p.FeedWorker(c)
+		p.Wait()
+	}
+}
+
+func BenchmarkCPUPoolMin(b *testing.B) {
+	channum := 100
+	gonum := runtime.NumCPU() / 2
+	for i := 0; i < b.N; i++ {
+		f := func(w *Work) {
+			if v, ok := w.input.(float64); ok {
+				cpubound(v)
+			}
+		}
+		list := benchmarkList()
+		c := genPoolChanBuffer(list)
+
+		p := InitPool(channum, gonum, f)
+		p.RunWorker()
+		p.FeedWorker(c)
+		p.Wait()
+	}
+}
+
+func BenchmarkCPUPoolMax(b *testing.B) {
+	channum := 100
+	gonum := 10 * runtime.NumCPU()
+	for i := 0; i < b.N; i++ {
+		f := func(w *Work) {
+			if v, ok := w.input.(float64); ok {
+				cpubound(v)
+			}
+		}
+		list := benchmarkList()
+		c := genPoolChanBuffer(list)
+
+		p := InitPool(channum, gonum, f)
+		p.RunWorker()
+		p.FeedWorker(c)
+		p.Wait()
+	}
+}
+
+func BenchmarkIOPool(b *testing.B) {
+	channum := 100
+	gonum := runtime.NumCPU()
+	for i := 0; i < b.N; i++ {
+		f := func(w *Work) {
+			if v, ok := w.input.(float64); ok {
+				iobound(v)
+			}
+		}
+		list := benchmarkList()
+		c := genPoolChanBuffer(list)
+
+		p := InitPool(channum, gonum, f)
+		p.RunWorker()
+		p.FeedWorker(c)
+		p.Wait()
+	}
+}
+
+func BenchmarkIOPoolMin(b *testing.B) {
+	channum := 100
+	gonum := runtime.NumCPU() / 2
+	for i := 0; i < b.N; i++ {
+		f := func(w *Work) {
+			if v, ok := w.input.(float64); ok {
+				iobound(v)
+			}
+		}
+		list := benchmarkList()
+		c := genPoolChanBuffer(list)
+
+		p := InitPool(channum, gonum, f)
+		p.RunWorker()
+		p.FeedWorker(c)
+		p.Wait()
+	}
+}
+
+func BenchmarkIOPoolMax(b *testing.B) {
+	channum := 100
+	gonum := 10 * runtime.NumCPU()
+	for i := 0; i < b.N; i++ {
+		f := func(w *Work) {
+			if v, ok := w.input.(float64); ok {
+				iobound(v)
+			}
+		}
+		list := benchmarkList()
+		c := genPoolChanBuffer(list)
+
+		p := InitPool(channum, gonum, f)
+		p.RunWorker()
+		p.FeedWorker(c)
+		p.Wait()
+	}
+}
+{% endhighlight %}
+
+设MAX=100，BUFFERSIZE=1000。
+
+	[baixiao@localhost go_concurrency]$ GOGC=off go test -cpu 1,8 -run none -bench Pool -benchtime 3s
+	goos: linux
+	goarch: amd64
+	BenchmarkCPUPool                  100000             38070 ns/op
+	BenchmarkCPUPool-8                 50000             77872 ns/op
+	BenchmarkCPUPoolMin               100000             33286 ns/op
+	BenchmarkCPUPoolMin-8              50000             71690 ns/op
+	BenchmarkCPUPoolMax                30000            143250 ns/op
+	BenchmarkCPUPoolMax-8              20000            281619 ns/op
+	BenchmarkIOPool                      200          21382667 ns/op
+	BenchmarkIOPool-8                    200          21467617 ns/op
+	BenchmarkIOPoolMin                   100          37068480 ns/op
+	BenchmarkIOPoolMin-8                 100          37350682 ns/op
+	BenchmarkIOPoolMax                   500           9438800 ns/op
+	BenchmarkIOPoolMax-8                 500           9519574 ns/op
+	PASS
+	ok      _/home/baixiao/go_concurrency   64.149s	
+可以得出以下结论：
+
+* CPU密集型场景中多核下均弱于单核	
+* CPU密集型场景中worker数量太多只能起反作用
+* IO密集型场景中多核并行不能提升效率
+* IO密集型场景中worker数量在一定范围内能有效提升效率
+* Pool模型由于用到了channel，多核都不能提升效率
+
+
+---
+
+本篇的模型可以类比为你现在是个企业主，开工厂进行工业生产了。
+
+---
+	
+所有代码都在[https://github.com/baixiaoustc/go_concurrency/blob/master/second_post_test.go](https://github.com/baixiaoustc/go_concurrency/blob/master/second_post_test.go)中能找到。
