@@ -783,6 +783,18 @@ func BenchmarkIOPoolMax(b *testing.B) {
 * IO密集型场景中worker数量在一定范围内能有效提升效率
 * Pool模型由于用到了channel，多核都不能提升效率
 
+# channel是个好东西？
+
+在第一篇里，我们讲到channel是goroutine之间通信和同步的重要工具，也是golang中重要的关键字之一，说明golang的设计者们很看重这个特性。
+
+但是实际上channel的性能较一般，分析源码可知，channel中的数据无论读写都会加mutex锁，造成高并发时的较大瓶颈，这个从我们的对比测试中也都可以看出来。
+
+![](http://img.lessisbetter.site/2019-03-channel_design.png)
+
+上图来自[文章](http://lessisbetter.site/2019/03/03/golang-channel-design-and-source/)。
+
+另外，channel目前都还有整个社群都无法调优的问题，比如[runtime: select on a shared channel is slow with many Ps](https://github.com/golang/go/issues/20351)。
+
 
 ---
 
