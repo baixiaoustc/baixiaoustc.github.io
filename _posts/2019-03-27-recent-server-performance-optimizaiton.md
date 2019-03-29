@@ -116,4 +116,159 @@ runtime.siftdownTimer是定时器相关逻辑。对比一下上线代码可知�
 	
 从日志可以看出一个大文件最多有8474681个对象，每个32byte，仅存放数据就要占用200+M，算上json序列化以及更早的解析protobuf的步骤可能耗用内存翻几番。
 
-但是从业务上来说这种超大文件本身是不合规的，故在业务上过滤此等文件。另外还尝试了内存池的写法：
+但是从业务上来说这种超大文件本身是不合规的，故在业务上过滤此等文件。另外还尝试了内存池[https://github.com/funny/slab](https://github.com/funny/slab)的写法：
+
+{% highlight golang %}
+package utils
+
+import (
+	"backend/framework/log"
+	"sync"
+)
+
+type RawMem [4]int64
+
+var GUseMemPool bool
+var MinSize int = 100
+var MaxSize int = 100 * 1024
+var MaxSensor int = 1000000
+
+var MemPool *SyncPool
+
+func InitPool() {
+	MemPool = NewSyncPool(MinSize, MaxSize, 2)
+	log.Info("init pool")
+}
+
+// SyncPool is a sync.Pool base slab allocation memory pool
+type SyncPool struct {
+	classes     []sync.Pool
+	classesSize []int
+	minSize     int
+	maxSize     int
+}
+
+// NewSyncPool create a sync.Pool base slab allocation memory pool.
+// minSize is the smallest chunk size.
+// maxSize is the lagest chunk size.
+// factor is used to control growth of chunk size.
+func NewSyncPool(minSize, maxSize, factor int) *SyncPool {
+	n := 0
+	for chunkSize := minSize; chunkSize <= maxSize; chunkSize *= factor {
+		n++
+	}
+	pool := &SyncPool{
+		make([]sync.Pool, n),
+		make([]int, n),
+		minSize, maxSize,
+	}
+	n = 0
+	for chunkSize := minSize; chunkSize <= maxSize; chunkSize *= factor {
+		pool.classesSize[n] = chunkSize
+		pool.classes[n].New = func(size int) func() interface{} {
+			return func() interface{} {
+				buf := make([]RawMem, size)
+				return &buf
+			}
+		}(chunkSize)
+		n++
+	}
+	return pool
+}
+
+// Alloc try alloc a []byte from internal slab class if no free chunk in slab class Alloc will make one.
+func (pool *SyncPool) Alloc(size int) []RawMem {
+	if size <= pool.maxSize {
+		for i := 0; i < len(pool.classesSize); i++ {
+			if pool.classesSize[i] >= size {
+				mem := pool.classes[i].Get().(*[]RawMem)
+				return (*mem)[:size]
+			}
+		}
+	}
+	return make([]RawMem, size)
+}
+
+// Free release a []byte that alloc from Pool.Alloc.
+func (pool *SyncPool) Free(mem []RawMem) {
+	if size := cap(mem); size <= pool.maxSize {
+		for i := 0; i < len(pool.classesSize); i++ {
+			if pool.classesSize[i] >= size {
+				pool.classes[i].Put(&mem)
+				return
+			}
+		}
+	}
+}
+{% endhighlight %}
+
+从压测的效果来看不错：
+
+{% highlight golang %}
+func BenchmarkPool(b *testing.B) {
+	pool := NewSyncPool(MinSize, MaxSize, 2)
+	b.ResetTimer()
+	b.RunParallel(func(pb *testing.PB) {
+		for pb.Next() {
+			size := rand.Intn(1024 * 100)
+
+			ret := &SensorData1{}
+			ret.GsPoints = pool.Alloc(size)
+			if len(ret.GsPoints) != size {
+				b.Fatal("not equal")
+			}
+
+			for i := 0; i < size; i++ {
+				ret.GsPoints[i] = RawMem{int64(size), int64(size), int64(size), int64(size)}
+			}
+
+			for i := 0; i < size; i++ {
+				m := RawMem{int64(size), int64(size), int64(size), int64(size)}
+				if ret.GsPoints[i] != m {
+					b.Fatal("not equal m")
+				}
+			}
+
+			pool.Free(ret.GsPoints)
+		}
+	})
+}
+
+func BenchmarkMake(b *testing.B) {
+	b.RunParallel(func(pb *testing.PB) {
+		for pb.Next() {
+			size := rand.Intn(1024 * 100)
+
+			ret := &SensorData1{}
+			ret.GsPoints = make([]RawMem, size)
+			if len(ret.GsPoints) != size {
+				b.Fatal("not equal")
+			}
+
+			for i := 0; i < size; i++ {
+				ret.GsPoints[i] = RawMem{int64(size), int64(size), int64(size), int64(size)}
+			}
+
+			for i := 0; i < size; i++ {
+				m := RawMem{int64(size), int64(size), int64(size), int64(size)}
+				if ret.GsPoints[i] != m {
+					b.Fatal("not equal m")
+				}
+			}
+		}
+	})
+}
+{% endhighlight %}
+
+	C02S259EFVH3:utils baixiao$ GOGC=off go test -cpu 1,8 -run none -bench .
+	goos: darwin
+	goarch: amd64
+	pkg: backend/sensor_sport/utils
+	BenchmarkPool     	    5000	    312012 ns/op
+	BenchmarkPool-8   	    5000	    252566 ns/op
+	BenchmarkMake     	    2000	   1843596 ns/op
+	BenchmarkMake-8   	    1000	   1238463 ns/op
+	PASS
+	ok  	backend/sensor_sport/utils	9.276s
+
+在实际项目中有待考察。
