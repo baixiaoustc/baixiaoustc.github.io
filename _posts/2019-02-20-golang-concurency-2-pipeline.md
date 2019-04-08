@@ -380,7 +380,7 @@ func BenchmarkCPUParallelize(b *testing.B) {
 
 ## IO密集型
 
-用随机sleep模拟IOU-BOUND，设计了如下模型用于比较：
+用随机sleep模拟IO-BOUND，设计了如下模型用于比较：
 
 {% highlight golang %}
 //功能函数
@@ -436,6 +436,7 @@ func BenchmarkIOPipeline(b *testing.B) {
 		}
 	}
 }
+
 func BenchmarkIOPipelineBuffer(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		list := benchmarkList()
