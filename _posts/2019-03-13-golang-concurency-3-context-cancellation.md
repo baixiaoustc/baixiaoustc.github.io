@@ -224,18 +224,23 @@ func TestWorkerHold(t *testing.T) {
 终于我们的主角登场了，golang提供了`context`模式用于解决goroutine的高效且安全退出问题，教程在网上很多了，不用细讲，只贴一下主要函数：
 
 > // 带cancel返回值的Context，一旦cancel被调用，即取消该创建的context
+> 
 func WithCancel(parent Context) (ctx Context, cancel CancelFunc) 
 
 > // 带有效期cancel返回值的Context，即必须到达指定时间点调用的cancel方法才会被执行
+> 
 func WithDeadline(parent Context, deadline time.Time) (Context, CancelFunc) 
 
 > // 带超时时间cancel返回值的Context，类似Deadline，前者是时间点，后者为时间间隔
 > // 相当于WithDeadline(parent, time.Now().Add(timeout)).
+> 
 func WithTimeout(parent Context, timeout time.Duration) (Context, CancelFunc)
 
 最后进化到我们的代码，注意`SavingDB()`方法只是一个伪代码示意：
 
 {% highlight golang %}
+import "database/sql"
+
 //fake, just a example
 func (w work) SavingDB(ctx context.Context) {
 	log.Printf("save %s", w.sth)
@@ -262,7 +267,6 @@ func (w work) SavingDB(ctx context.Context) {
 }
 
 func RunWorkerContext(ctx context.Context, stopped chan struct{}) {
-	WorkPool = make(chan work)
 	var wg sync.WaitGroup
 	workers := 2
 	for i := 0; i < workers; i++ {
@@ -321,7 +325,7 @@ func TestWorkerContext(t *testing.T) {
 	for {
 		select {
 		case work := <-WorkPool:
-			work.SavingDB(ctx)
+			work.SavingDB(ctxTimeout)
 		case <-ctxTimeout.Done():
 			log.Println("main: cann't wait any more")
 			return
@@ -333,6 +337,7 @@ func TestWorkerContext(t *testing.T) {
 {% endhighlight %}
 
 通过`cancel()`方法通知该`context.Context`其下的所有goroutine进入退出流程，并可以启动带timeout的ctx开始保存工作流程，所有流程都是受控的。
+
 ---
 
 这像不像是现代企业的扁平化管理，BOSS直接控制所有员工，提升所有的工作效率？
