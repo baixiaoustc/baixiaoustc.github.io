@@ -66,10 +66,8 @@ func (w work) Working() {
 }
 
 func RunWorkerSimple() {
-	WorkPool = make(chan work)
-
 	workers := 2
-	for i := 0; i < int(workers); i++ {
+	for i := 0; i < workers; i++ {
 		go HandleWorkerSimple()
 	}
 }
@@ -86,12 +84,17 @@ func HandleWorkerSimple() {
 }
 
 func TestWorkerSimple(t *testing.T) {
-	RunWorkerSimple()
+	WorkPool = make(chan work)
+	go RunWorkerSimple()
 
-	list := benchmarkList()
-	for _, l := range list {
-		WorkPool <- work{fmt.Sprint(l)}
-	}
+	go func() {
+		list := benchmarkList()
+		for _, l := range list {
+			WorkPool <- work{fmt.Sprint(l)}
+		}
+	}()
+
+	select {}
 }
 {% endhighlight %}
 
@@ -110,9 +113,9 @@ func TestWorkerSimple(t *testing.T) {
 	
 # 要对得起这份工作
 
-人民的工人为人民，所以即便工会保障了工人的权益，该做好的工作还是要认真做完啊。对应到程序中，收到`ctrl+c`中断后，每个worker应该完成手上正在做的工作，并且由工长把剩余队列中的工作保存起来（比如写数据库或者文件），留待明天上班继续做。
+人民的工人为人民，所以即便工会保障了工人的权益，该做好的工作还是要认真做完啊。对应到程序中，收到`ctrl+c`中断后，每个worker应该完成手上正在做的工作，并且由BOSS（主goroutine）把剩余队列中的工作保存起来（比如写数据库或者文件），留待明天上班继续做。
 
-代码写起来就复杂多了，要监控系统的中断信号，要等待所有worker处理完手上的事情，最后再把剩余的事情保存起来。需要用两个chan来通信，stopChan 用于通知workers下班啦，stoppedChan 用于所有worker处理完之后告知主goroutine（工长），再由工长保存剩余的工作。
+代码写起来就复杂多了，要监控系统的中断信号，要等待所有worker处理完手上的事情，最后再把剩余的事情保存起来。需要用两个chan来通信，stopChan 用于通知workers下班啦，stoppedChan 用于所有worker处理完之后告知BOSS，再由BOSS保存剩余的工作。
 
 {% highlight golang %}
 func (w work) Saving() {
@@ -120,10 +123,9 @@ func (w work) Saving() {
 }
 
 func RunWorkerHold(stop, stopped chan struct{}) {
-	WorkPool = make(chan work)
 	var wg sync.WaitGroup
 	workers := 2
-	for i := 0; i < int(workers); i++ {
+	for i := 0; i < workers; i++ {
 		wg.Add(1)
 		go HandleWorkerHold(stop, &wg)
 	}
@@ -134,25 +136,21 @@ func RunWorkerHold(stop, stopped chan struct{}) {
 func HandleWorkerHold(stop chan struct{}, wg *sync.WaitGroup) {
 	defer wg.Done()
 
-	var wait sync.WaitGroup
 	for {
 		select {
 		case work := <-WorkPool:
-			wait.Add(1)
 			work.Working()
-			wait.Done()
 		case <-stop:
 			log.Println("worker: caller has told us to stop")
-			goto CANCEL
+			return
 		}
 	}
 
-CANCEL:
-	wait.Wait()
 	return
 }
 
 func TestWorkerHold(t *testing.T) {
+	WorkPool = make(chan work)
 	stopChan := make(chan struct{})
 	stoppedChan := make(chan struct{})
 	go RunWorkerHold(stopChan, stoppedChan)
@@ -221,7 +219,7 @@ func TestWorkerHold(t *testing.T) {
 
 # 更进一步
 
-上面的模式还是有缺陷，如果worker下面还有徒弟怎么办（又新开了goroutine）？最后工长在做剩余工作的保存时也不想耽误太久怎么办？保存工作写数据库也想受控制`database/sql`怎么办？
+上面的模式还是有缺陷，如果worker下面还有徒弟怎么办（又新开了goroutine）？最后BOSS在做剩余工作的保存时也不想耽误太久怎么办？保存工作写数据库也想受控制（比如`database/sql`包提供了相应支持）怎么办？
 
 终于我们的主角登场了，golang提供了`context`模式用于解决goroutine的高效且安全退出问题，教程在网上很多了，不用细讲，只贴一下主要函数：
 
