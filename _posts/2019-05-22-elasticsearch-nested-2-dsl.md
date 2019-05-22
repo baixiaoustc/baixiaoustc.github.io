@@ -18,11 +18,9 @@ tags:
 
 # 嵌套结构
 
-针对嵌套结构的基础知识，可以参考文章[
-嵌套对象 | Elasticsearch: 权威指南 | Elastic
-](https://www.elastic.co/guide/cn/elasticsearch/guide/current/nested-objects.html)。
+针对嵌套结构的基础知识，可以参考文章[嵌套对象](https://www.elastic.co/guide/cn/elasticsearch/guide/current/nested-objects.html)。
 
-文章[干货 | Elasticsearch Nested类型深入详解](https://blog.csdn.net/laoyang360/article/details/82950393)对其场景有较好描述：
+文章[Elasticsearch Nested类型深入详解](https://blog.csdn.net/laoyang360/article/details/82950393)对其场景有较好描述：
 
 ![](https://img-blog.csdn.net/20181006125704897?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvaml1c2hpd285ODc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
