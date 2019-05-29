@@ -3,8 +3,8 @@ author: baixiaoustc
 comments: false
 date: 2019-05-22 09:54:23+00:00
 layout: post
-slug: 2019-05-22-elasticsearch-nested-2-dsl
-title: elasticsearch的嵌套结构的两种DSL
+slug: 2019-05-22-elasticsearch-nested-struct
+title: elasticsearch的嵌套结构
 categories:
 - 后端技术
 tags:
@@ -22,7 +22,7 @@ tags:
 
 文章[Elasticsearch Nested类型深入详解](https://blog.csdn.net/laoyang360/article/details/82950393)对其场景有较好描述：
 
-![](https://img-blog.csdn.net/20181006125704897?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dvaml1c2hpd285ODc=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+![](http://image99.renyit.com/image/2019-05-22-1.png)
 
 # 问题
 
@@ -54,7 +54,7 @@ tags:
 	  }
 	}
 	
-描述了商品和（一级分类-二级分类）的一对多关系，两点值得说明：
+描述了商品和（一级分类加二级分类）的一对多关系，两点值得说明：
 
 * 	用`nested`结构描述一对多关系
 *  特别定义了`Raw`属性，用于精准匹配
@@ -136,3 +136,8 @@ tags:
 	    }
 	  ]
 	}
+	
+## 需要判断非空时
+
+某些场景必须要求`nested`结构非空时，使用`exists`查询：
+

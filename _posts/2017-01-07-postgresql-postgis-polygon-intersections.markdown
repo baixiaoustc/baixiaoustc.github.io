@@ -6,8 +6,7 @@ layout: post
 slug: 2017-01-07-postgresql-postgis-polygon-intersections
 title: 使用postgresql-postgis实现多边形取交集
 categories:
-- postgresql
-- 路线聚集
+- 后端技术
 tags:
 - postgresql
 ---

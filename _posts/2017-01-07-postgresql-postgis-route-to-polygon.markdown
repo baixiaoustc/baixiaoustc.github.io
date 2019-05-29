@@ -6,8 +6,7 @@ layout: post
 slug: 2017-01-07-postgresql-postgis-route-to-polygon
 title: 使用postgresql-postgis实现路线填充为多边形
 categories:
-- postgresql
-- 路线聚集
+- 后端技术
 tags:
 - postgresql
 ---

@@ -6,7 +6,7 @@ layout: post
 slug: 2017-07-03-postgresql-and-postgis-training
 title: PostgreSQL+PostGIS空间数据库
 categories:
-- postgresql
+- 后端技术
 tags:
 - postgresql
 ---

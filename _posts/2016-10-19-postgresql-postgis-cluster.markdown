@@ -8,8 +8,7 @@ slug: 2016-10-19-postgresql-postgis-cluster
 title: 使用postgresql-postgis实现点的聚类展示
 wordpress_id: 269
 categories:
-- postgresql
-- 路线聚集
+- 后端技术
 tags:
 - postgresql
 ---
