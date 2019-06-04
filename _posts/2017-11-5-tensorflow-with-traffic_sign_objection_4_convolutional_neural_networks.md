@@ -109,7 +109,7 @@ tags:
 
 我们再来看看运算步骤：
 
-![](https://codelabs.developers.google.com/codelabs/cloud-tensorflow-mnist/img/53c160301db12a6e.png)
+![](http://image99.renyit.com/image/2019-06-04-4.png)
 
 200次迭代(cnn+sigmoid)，测试准确度达到100%，测试准确度达到87.5%：
 
@@ -126,7 +126,7 @@ tags:
 
 从上面的实验看到，测试准确度很早的达到了100%，但是测试数据这边没有提升。这是过拟合的表现，学习算法只是在训练数据上做工作并相应地优化训练的交叉熵，它再也看不到测试数据了。
 
-![](https://codelabs.developers.google.com/codelabs/cloud-tensorflow-mnist/img/519fc815b21989cb.png)
+![](http://image99.renyit.com/image/2019-06-04-3.png)
 
 它不会立刻影响你模型对于真实世界的识别能力，但是它会使你运行的众多迭代毫无用处，而且这基本上是一个信号——告诉我们训练已经不能再为模型提供进一步改进了。这种无法连接通常会被标明「过拟合（overfitting）」，而且当你看到这个的时候，你可以尝试采用一种规范化（regularization）技术，称之为「dropout」。
 

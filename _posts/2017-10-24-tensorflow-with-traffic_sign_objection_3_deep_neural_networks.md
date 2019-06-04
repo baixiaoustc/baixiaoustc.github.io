@@ -86,7 +86,7 @@ Sigmoid函数曾被广泛地应用，但由于其自身的一些缺陷，现在�
 
 ### 增加隐藏层
 
-![](https://codelabs.developers.google.com/codelabs/cloud-tensorflow-mnist/img/a2832d28e7a4d272.png)
+![](http://image99.renyit.com/image/2019-06-04-2.png)
 
 为了提高识别的准确度，我们将为神经网络增加更多的层。第二层神经元将计算前一层神经元输出的加权和，而非计算像素的加权和。这里有一个 5 层全相连的神经网络的例子：
 
@@ -143,7 +143,7 @@ Sigmoid函数曾被广泛地应用，但由于其自身的一些缺陷，现在�
 
 ### 学习速率衰退
 
-![](https://codelabs.developers.google.com/codelabs/cloud-tensorflow-mnist/img/8ec267106683ff35.png)
+![](http://image99.renyit.com/image/2019-06-04-1.png)
 
 把上面1000次迭代的效果看完，你会发现从500次开始，测试数据的准确度和loss都在震荡。这是学习率过大的表现。但我们不能仅仅将学习率除以十或者永远不停地做训练。一个好的解决方案是开始很快随后将学习速率指数级衰减至比如说 0.001。代码如下：
 

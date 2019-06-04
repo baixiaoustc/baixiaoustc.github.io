@@ -89,56 +89,46 @@ tags:
 在用户搜索场景，需要分类提供一定的score时，则只需要`match`查询：
 
 	{
-	  "from": 0,
 	  "query": {
-	    "function_score": {
-	      "boost_mode": "multiply",
-	      "field_value_factor": {
-	        "factor": 2,
-	        "field": "RecentOrderCnt",
-	        "modifier": "log2p"
-	      },
-	      "max_boost": 4,
-	      "query": {
-	        "bool": {
-	          "must": {
-	            "match": {
-	              "GoodsName": {
-	                "operator": "and",
-	                "query": "华为"
-	              }
-	            }
-	          },
-	          "should": {
-	            "multi_match": {
-	              "fields": [
-	                "Types.FirstTypeName^4",
-	                "Types.Tags^4",
-	                "Brand^30",
-	                "Labels^2"
-	              ],
-	              "query": "华为",
-	              "tie_breaker": 0.1,
-	              "type": "best_fields"
-	            }
-	          }
+	    "bool": {
+	      "should": {
+	        "multi_match": {
+	          "fields": [
+	            "Types.FirstTypeName^4",
+	            "Types.Tags^4",
+	            "Brand^30",
+	            "Labels^2"
+	          ],
+	          "query": "华为",
+	          "tie_breaker": 0.1,
+	          "type": "best_fields"
 	        }
-	      },
-	      "score_mode": "sum"
-	    }
-	  },
-	  "size": 2,
-	  "sort": [
-	    {
-	      "_score": {
-	        "order": "desc"
 	      }
 	    }
-	  ]
-	}
-	
+	  }
+	}	
+
 ## 需要判断非空时
 
 某些场景必须要求`nested`结构非空时，使用`exists`查询：
 
-111
+	{
+	  "query": {
+	    "bool": {
+	      "must": {
+	        "nested": {
+	          "path": "Types",
+	          "query": {
+	            "bool": {
+	              "must": {
+	                "exists": {
+	                  "field": "Types.FirstTypeName"
+	                }
+	              }
+	            }
+	          }
+	        }
+	      }
+	    }
+	  }
+	}
