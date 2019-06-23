@@ -4,7 +4,7 @@ comments: false
 date: 2019-06-13 09:54:23+00:00
 layout: post
 slug: 2019-06-13-elasticsearch-why-so-quick
-title: elasticsearch为啥这么快
+title: Elasticsearch为啥这么快
 categories:
 - 后端技术
 tags:
@@ -32,16 +32,17 @@ tags:
 这是节点node：就是个机器。
 
 ![](http://image99.renyit.com/image/2019-06-13-3.jpeg)
-在一个或者多个节点直接，多个绿色小方块组合在一起形成一个ElasticSearch的索引。
+由一个或者多个节点，多个绿色小方块组合在一起形成一个ElasticSearch的索引。
 
 ![](http://image99.renyit.com/image/2019-06-13-4.jpeg)
-在一个索引下，分布在多个节点里的绿色小方块称为分片——Shard。
+在一个索引下，分布在多个节点里的绿色小方块称为分片：Shard。
 
 ![](http://image99.renyit.com/image/2019-06-13-5.jpeg)
+
 一个分片就是一个Lucene Index。
 
 ![](http://image99.renyit.com/image/2019-06-13-6.jpeg)
-在Lucene里面有很多小的segment，即为存储的最小管理单元。
+在Lucene里面有很多小的Segment，即为存储的最小管理单元。
 
 # Node节点维度
 
@@ -51,7 +52,7 @@ tags:
 
 当索引一个文档的时候，文档会被存储到一个主分片中。 Elasticsearch 如何知道一个文档应该存放到哪个分片中呢？实际上，这个过程是根据下面这个公式决定的：
 
-> shard = hash(routing) % number_of_primary_shards
+> shard = hash(routing) % `number_of_primary_shards`
 
 routing 是一个可变值，默认是文档的 _id ，也可以设置成一个自定义的值。这就解释了为什么我们要在创建索引的时候就确定好主分片的数量 并且永远不会改变这个数量：因为如果数量变化了，那么所有之前路由的值都会无效，文档也再也找不到了。
 
@@ -92,11 +93,11 @@ Elasticsearch 中使用的这种方法假定冲突是不可能发生的，并且
 - 其它缓存(像filter缓存)，在索引的生命周期内始终有效。它们不需要在每次数据改变时被重建，因为数据不会变化。
 - 写入单个大的倒排索引允许数据被压缩，减少磁盘 I/O 和 需要被缓存到内存的索引的使用量。
 
-## 完整写入过程
-
 怎样在保留不变性的前提下实现倒排索引的更新？用上文提到的`_version`，创建更多的索引文档。
 
-Elasticsearch 增加了一个 translog ，或者叫事务日志，在每一次对 Elasticsearch 进行操作时均进行了日志记录。
+## 提升写入速度
+
+为了提升写索引速度，并且同时保证可靠性，Elasticsearch 增加了一个 translog ，或者叫事务日志，在每一次对 Elasticsearch 进行操作时均进行了日志记录。
 
 ### 一个文档被索引之后，就会被添加到内存缓冲区，并且 追加到了 translog 
 ![](http://image99.renyit.com/image/2019-06-16-2.png)
@@ -127,9 +128,10 @@ Elasticsearch 增加了一个 translog ，或者叫事务日志，在每一次�
 
 # Segment段维度
 
-
+Lucene 从 4.0 开始支持 DocValues，极大降低了内存的占用，减少了磁盘上的尺寸并且提高了加载数据到内存计算的吞吐能力。
 
 
 # 参考
 
 https://www.elastic.co/guide/cn/elasticsearch/guide/current/dynamic-indices.html
+https://www.jianshu.com/p/28fb017be7a7

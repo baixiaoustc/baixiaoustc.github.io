@@ -4,7 +4,7 @@ comments: false
 date: 2019-05-22 09:54:23+00:00
 layout: post
 slug: 2019-05-22-elasticsearch-nested-struct
-title: elasticsearch的嵌套结构
+title: Elasticsearch的嵌套结构
 categories:
 - 后端技术
 tags:
