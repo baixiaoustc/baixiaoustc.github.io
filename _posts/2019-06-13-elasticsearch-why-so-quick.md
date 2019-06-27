@@ -23,7 +23,6 @@ tags:
 
 
 # 复习一遍从上到下的整体结构
-
 这里有篇[文章](http://www.zhuanzhi.ai/document/4f97036243052fd5577c0ecf188b06dd)讲解的很形象：
 
 ![](http://image99.renyit.com/image/2019-06-13-1.jpeg)
@@ -48,11 +47,9 @@ tags:
 我们分别从Node维度、Shard维度、Segment维度来阐明为啥Elasticsearch这么快。
 
 # Node节点维度
-
 多节点的集群方案，提高了整个系统的并发处理能力。
 
 ## 多节点的集群方案
-
 路由一个文档到一个分片中：当索引一个文档的时候，文档会被存储到一个主分片中。 Elasticsearch 如何知道一个文档应该存放到哪个分片中呢？实际上，这个过程是根据下面这个公式决定的：
 
 > shard = hash(routing) % `number_of_primary_shards`
@@ -62,7 +59,6 @@ routing 是一个可变值，默认是文档的 _id ，也可以设置成一个�
 确定了在哪个分片中，可以判定其在哪个节点上。
 
 ## 协调节点
-
 每个节点都可以接受客户端的请求，每个节点都知道集群中任一文档位置，所以可以直接将请求转发到需要的节点上。当接受请求后，节点变为「协调节点」。从这个角度，整个系统可以接受更高的并发请求，当然搜索的就更快了。
 
 以更新文档为例：
@@ -76,7 +72,6 @@ routing 是一个可变值，默认是文档的 _id ，也可以设置成一个�
 
 
 ## 乐观并发控制
-
 Elasticsearch 中使用的这种方法假定冲突是不可能发生的，并且不会阻塞正在尝试的操作。因为没有阻塞，所以提升了索引的速度，同时通过`_version`字段来保证并发情况下的正确性：
 
 	PUT /website/blog/1?version=1 
@@ -88,9 +83,7 @@ Elasticsearch 中使用的这种方法假定冲突是不可能发生的，并且
 控制在我们索引中的文档只有现在的`_version`为 1 时，本次更新才能成功。
 
 # Shard分片维度
-
 ## Segment的不变性
-
 在底层采用了分段的存储模式，使它在读写时几乎完全避免了锁的出现，大大提升了读写性能。
 
 - 不需要锁。如果你从来不更新索引，你就不需要担心多进程同时修改数据的问题。
@@ -101,7 +94,6 @@ Elasticsearch 中使用的这种方法假定冲突是不可能发生的，并且
 怎样在保留不变性的前提下实现倒排索引的更新？用上文提到的`_version`，创建更多的索引文档。
 
 ## 提升写入速度
-
 为了提升写索引速度，并且同时保证可靠性，Elasticsearch 增加了一个 translog ，或者叫事务日志，在每一次对 Elasticsearch 进行操作时均进行了日志记录。
 
 ### 一个文档被索引之后，就会被添加到内存缓冲区，并且 追加到了 translog 
@@ -132,9 +124,7 @@ Elasticsearch 中使用的这种方法假定冲突是不可能发生的，并且
 ## 对比LSM树
 
 # Segment段维度
-
 ## 倒排索引
-
 都说倒排索引提升了搜索的速度，那么具体采用了哪些架构或者数据结构来达成这一目标？
 
 ![](http://image99.renyit.com/image/2019-06-23-1.jpg)
@@ -189,7 +179,6 @@ E 开头的 term ……………. Zzz 页
 现在我们可以回答“为什么 Elasticsearch/Lucene 检索可以比 mysql 快了。Mysql 只有 term dictionary 这一层，是以 b-tree 排序的方式存储在磁盘上的。检索一个 term 需要若干次的 random access 的磁盘操作。而 Lucene 在 term dictionary 的基础上添加了 term index 来加速检索，term index 以树的形式缓存在内存中。从 term index 查到对应的 term dictionary 的 block 位置之后，再去磁盘上找 term，大大减少了磁盘的 random access 次数。
 
 ## FST(finite-state transducer)
-
 实际上，Lucene 内部的 Term Index 是用的「变种的」trie树，即 FST 。FST 比 trie树好在哪？trie树只共享了前缀，而 FST 既共享前缀也共享后缀，更加的节省空间。
 
 一个FST是一个6元组 (Q, I, O, S, E, f):
@@ -216,16 +205,109 @@ E 开头的 term ……………. Zzz 页
 
 这篇文章讲的很好：[关于Lucene的词典FST深入剖析](https://www.shenyanchao.cn/blog/2018/12/04/lucene-fst/)
 
-想想为啥不用HashMap？耗内存啊！牺牲了一点性能来节约内存，旨在把所有Term Index都放在内存里面，最终的效果是提升了速度。
+想想为啥不用 HashMap，HashMap 也能实现有序Map？耗内存啊！牺牲了一点性能来节约内存，旨在把所有Term Index都放在内存里面，最终的效果是提升了速度。
 
 总结一下，FST有更高的数据压缩率和查询效率，因为词典是常驻内存的，而 FST 有很好的压缩率，所以 FST 在 Lucene 的最新版本中有非常多的使用场景，也是默认的词典数据结构。
 
 ## 词典的完整结构
-
 Lucene 的tip文件即为 Term Index 结构，tim文件即为 Term Dictionary 结构。由图可视，tip中存储的就是多个FST，
 FST中存储的是<单词前缀，以该前缀开头的所有Term的压缩块在磁盘中的位置>。即为前文提到的从 term index 查到对应的 term dictionary 的 block 位置之后，再去磁盘上找 term，大大减少了磁盘的 random access 次数。
 
 ![](http://image99.renyit.com/image/2019-06-24-2.png)
+
+## 如何联合索引查询？
+回到上面的例子，给定查询过滤条件 age=24 的过程就是先从 term index 找到 18 在 term dictionary 的大概位置，然后再从 term dictionary 里精确地找到 18 这个 term，然后得到一个 posting list 或者一个指向 posting list 位置的指针。然后再查询 sex=Female 的过程也是类似的。最后得出 age= 24 AND sex=Female 就是把两个 posting list 做一个“与”的合并。
+
+这个理论上的“与”合并的操作可不容易。对于 mysql 来说，如果你给 age 和 gender 两个字段都建立了索引，查询的时候只会选择其中最 selective 的来用，然后另外一个条件是在遍历行的过程中在内存中计算之后过滤掉。那么要如何才能联合使用两个索引呢？有两种办法：
+
+- 使用 skip list 数据结构。同时遍历 gender 和 age 的 posting list，互相 skip；
+- 使用 bitset 数据结构，对 gender 和 age 两个 filter 分别求出 bitset，对两个 bitset 做 AN 操作。
+
+Elasticsearch 支持以上两种的联合索引方式，如果查询的 filter 缓存到了内存中（以 bitset 的形式），那么合并就是两个 bitset 的 AND。如果查询的 filter 没有缓存，那么就用 skip list 的方式去遍历两个 on disk 的 posting list。
+
+### 利用 Skip List 合并
+用一个例子来说明如何使用 skip list 的思路来做合并（参考[Lucene学习总结之七：Lucene搜索过程解析(5)](https://www.cnblogs.com/forfuture1978/archive/2010/04/04/1704258.html)）：
+
+1. 倒排表最初如下，可见每个 posting list 已经是排好序的：
+
+	![](http://image99.renyit.com/image/2019-06-27-1.png)
+	
+2. 将每个 posting list 按照第一篇的文档号从小到大进行排列：
+
+	![](http://image99.renyit.com/image/2019-06-27-2.png)
+
+3. 称拥有最小文档号的倒排表称为first，再取最后一个 posting list 的文档号为 doc（很明显做交集可以跳过之前的文档）。即，doc = 8，first指向第0项，advance到大于8的第一篇文档，也即文档10，然后设doc = 10，first指向第1项。
+
+	![](http://image99.renyit.com/image/2019-06-27-3.png)
+
+4. doc = 10，first指向第1项，advance到文档11，然后设doc = 11，first指向第2项。
+
+	![](http://image99.renyit.com/image/2019-06-27-4.png)
+	
+5. doc = 11，first指向第3项，advance到文档11，然后设doc = 11，first指向第4项。
+
+	![](http://image99.renyit.com/image/2019-06-27-5.png)
+	
+6. 以此类推，first指向最后一项。即，doc = 11，first指向第7项，advance到文档11，然后设doc = 11，first指向第0项。
+
+	![](http://image99.renyit.com/image/2019-06-27-6.png)
+	
+7. doc = 11，first指向第0项，advance到文档11，然后设doc = 11，first指向第1项。
+
+	![](http://image99.renyit.com/image/2019-06-27-7.png)
+	
+8. doc = 11，first指向第1项。因为11 < 11为false，因而结束循环，返回doc = 11。这时候我们会发现，在循环退出的时候，所有的倒排表的第一篇文档都是11，故11为所有 skip list 的公共项。
+
+	![](http://image99.renyit.com/image/2019-06-27-8.png)
+	
+9. 按照此法再外层循环，得到剩余的公共项。
+
+	![](http://image99.renyit.com/image/2019-06-27-9.png)
+
+另外一方面，对于一个很长的 posting list，比如：
+
+[1,3,13,101,105,108,255,256,257]
+
+我们可以把这个 list 分成三个 block：
+
+[1,3,13] [101,105,108] [255,256,257]
+
+然后可以构建出 skip list 的第二层：
+
+[1,101,255]
+
+1,101,255 分别指向自己对应的 block。这样就可以很快地跨 block 的移动指向位置了。
+
+Lucene 自然会对这个 block 再次进行压缩。其压缩方式叫做 Frame Of Reference 编码。示例如下：
+
+![](http://image99.renyit.com/image/2019-06-25-3.png)
+
+考虑到频繁出现的 term（所谓 low cardinality 的值），比如 gender 里的男或者女。如果有 1 百万个文档，那么性别为男的 posting list 里就会有 50 万个 int 值。用 Frame of Reference 编码进行压缩可以极大减少磁盘占用。这个优化对于减少索引尺寸有非常重要的意义。当然 mysql b-tree 里也有一个类似的 posting list 的东西，是未经过这样压缩的。
+
+因为这个 Frame of Reference 的编码是有解压缩成本的。利用 skip list，除了跳过了遍历的成本，也跳过了解压缩这些压缩过的 block 的过程，从而节省了 cpu。
+
+这也可以看到，Lucene 为了省内存真是做到了极致。
+
+### 利用 bitset 合并
+Bitset 是一种很直观的数据结构，对应 posting list 如：
+
+[1,3,4,7,10]
+
+对应的 bitset 就是：
+
+[1,0,1,1,0,0,1,0,0,1]
+
+每个文档按照文档 id 排序对应其中的一个 bit。Bitset 自身就有压缩的特点，其用一个 byte 就可以代表 8 个文档。所以 100 万个文档只需要 12.5 万个 byte。但是考虑到文档可能有数十亿之多，在内存里保存 bitset 仍然是很奢侈的事情。而且对于个每一个 filter 都要消耗一个 bitset，比如 age=18 缓存起来的话是一个 bitset，18<=age<25 是另外一个 filter 缓存起来也要一个 bitset。
+
+所以秘诀就在于需要有一个数据结构：
+
+可以很压缩地保存上亿个 bit 代表对应的文档是否匹配 filter；
+这个压缩的 bitset 仍然可以很快地进行 AND 和 OR 的逻辑操作。
+Lucene 使用的这个数据结构叫做 Roaring Bitmap。
+
+![](http://image99.renyit.com/image/2019-06-25-4.png)
+
+其压缩的思路其实很简单。与其保存 100 个 0，占用 100 个 bit。还不如保存 0 一次，然后声明这个 0 重复了 100 遍。
 
 ## DocValues
 
@@ -244,3 +326,5 @@ Lucene 从 4.0 开始支持 DocValues，极大降低了内存的占用，减少�
 - [倒排索引的介绍](https://www.cnblogs.com/kukri/p/9996104.html)
 - [介绍FST](https://www.cnblogs.com/LBSer/p/4119841.html)
 - [介绍FST](https://blog.csdn.net/zx2011302580235/article/details/88594342)
+- [介绍跳表](https://kenby.iteye.com/blog/1187303)
+- [Lucene 查询原理](https://blog.csdn.net/yunqiinsight/article/details/80008394)
