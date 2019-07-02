@@ -118,7 +118,7 @@ Elasticsearch 中使用的这种方法假定冲突是不可能发生的，并且
 - 文件系统缓存通过 fsync 被刷新（flush）。
 - 老的 translog 被删除。
 
-
+Segment在被refresh之前，数据保存在内存中，是不可被搜索的，这也就是为什么Lucene被称为提供近实时而非实时查询的原因。
 
 
 ## 对比LSM树
@@ -205,7 +205,7 @@ E 开头的 term ……………. Zzz 页
 
 这篇文章讲的很好：[关于Lucene的词典FST深入剖析](https://www.shenyanchao.cn/blog/2018/12/04/lucene-fst/)
 
-想想为啥不用 HashMap，HashMap 也能实现有序Map？耗内存啊！牺牲了一点性能来节约内存，旨在把所有Term Index都放在内存里面，最终的效果是提升了速度。
+想想为啥不用 HashMap，HashMap 也能实现有序Map？耗内存啊！牺牲了一点性能来节约内存，旨在把所有Term Index都放在内存里面，最终的效果是提升了速度。如上可知，FST是压缩字典树后缀的图结构，她拥有Trie高效搜索能力，同时还非常小。这样的话我们的搜索时，能把整个FST加载到内存。
 
 总结一下，FST有更高的数据压缩率和查询效率，因为词典是常驻内存的，而 FST 有很好的压缩率，所以 FST 在 Lucene 的最新版本中有非常多的使用场景，也是默认的词典数据结构。
 
@@ -214,6 +214,10 @@ Lucene 的tip文件即为 Term Index 结构，tim文件即为 Term Dictionary �
 FST中存储的是<单词前缀，以该前缀开头的所有Term的压缩块在磁盘中的位置>。即为前文提到的从 term index 查到对应的 term dictionary 的 block 位置之后，再去磁盘上找 term，大大减少了磁盘的 random access 次数。
 
 ![](http://image99.renyit.com/image/2019-06-24-2.png)
+
+可以形象地理解为，Term Dictionary 就是新华字典的正文部分包含了所有的词汇，Term Index 就是新华字典前面的索引页，用于表明词汇在哪一页。
+
+但是 FST 即不能知道某个Term在Dictionary(.tim)文件上具体的位置，也不能仅通过FST就能确切的知道Term是否真实存在。它只能告诉你，查询的Term可能在这些Blocks上，到底存不存在FST并不能给出确切的答案，因为FST是通过Dictionary的每个Block的前缀构成，所以通过FST只可以直接找到这个Block在.tim文件上具体的File Pointer，并无法直接找到Terms。
 
 ## 如何联合索引查询？
 回到上面的例子，给定查询过滤条件 age=24 的过程就是先从 term index 找到 18 在 term dictionary 的大概位置，然后再从 term dictionary 里精确地找到 18 这个 term，然后得到一个 posting list 或者一个指向 posting list 位置的指针。然后再查询 sex=Female 的过程也是类似的。最后得出 age= 24 AND sex=Female 就是把两个 posting list 做一个“与”的合并。
@@ -264,6 +268,8 @@ Elasticsearch 支持以上两种的联合索引方式，如果查询的 filter �
 
 	![](http://image99.renyit.com/image/2019-06-27-9.png)
 
+Advance操作是什么？就是 skip list 提供的快速跳跃的特性。
+
 另外一方面，对于一个很长的 posting list，比如：
 
 [1,3,13,101,105,108,255,256,257]
@@ -309,11 +315,14 @@ Lucene 使用的这个数据结构叫做 Roaring Bitmap。
 
 其压缩的思路其实很简单。与其保存 100 个 0，占用 100 个 bit。还不如保存 0 一次，然后声明这个 0 重复了 100 遍。
 
-## DocValues
+为什么是以65535为界限？程序员的世界里除了1024外，65535也是一个经典值，因为它=2^16-1，正好是用2个字节能表示的最大数，一个short的存储单位，注意到上图里的最后一行“If a block has more than 4096 values, encode as a bit set, and otherwise as a simple array using 2 bytes per value”，如果是大块，用节省点用bitset存，小块就豪爽点，2个字节我也不计较了，用一个short[]存着方便。
 
-Lucene 从 4.0 开始支持 DocValues，极大降低了内存的占用，减少了磁盘上的尺寸并且提高了加载数据到内存计算的吞吐能力。
+在 Lucene 7.0之后，Lucene 针对 bitset的稠稀性，采用不同的存储方式：当 bitset比较稀疏时，直接存储DocID；当 bitset 稠密时，则直接存储 bitset 的Bits数据。根据数据的分布情况不同，采用适当的结构不仅可以提高空间的利用率，还能提高遍历的效率。
+
 
 # 总结
+
+Elasticsearch/Lucene 为了提升索引和搜索的效率，从上层到底层，使用了各种巧妙的数据结构和设计，靠优秀的理论加极致的优化，做到查询性能上的极致。
 
 ![](http://image99.renyit.com/image/2019-06-24-1.jpg)
 
@@ -328,3 +337,4 @@ Lucene 从 4.0 开始支持 DocValues，极大降低了内存的占用，减少�
 - [介绍FST](https://blog.csdn.net/zx2011302580235/article/details/88594342)
 - [介绍跳表](https://kenby.iteye.com/blog/1187303)
 - [Lucene 查询原理](https://blog.csdn.net/yunqiinsight/article/details/80008394)
+- [Lucene倒排索引实现原理探秘](http://www.nosqlnotes.com/technotes/searchengine/lucene-invertedindex/)
