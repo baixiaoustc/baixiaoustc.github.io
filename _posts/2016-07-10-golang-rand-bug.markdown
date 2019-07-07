@@ -35,8 +35,8 @@ tags:
 
 第一次：
 
-![未命名 2](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/07/未命名-2-3-1024x148.png)
+![未命名 2](http://baixiaoustc.github.io/wordpress/wp-content/uploads/2016/07/未命名-2-3-1024x148.png)
 
 第二次：
 
-![未命名 2](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/07/未命名-2-4-1024x153.png)
+![未命名 2](http://baixiaoustc.github.io/wordpress/wp-content/uploads/2016/07/未命名-2-4-1024x153.png)

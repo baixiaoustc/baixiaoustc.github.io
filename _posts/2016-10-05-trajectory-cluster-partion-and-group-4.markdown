@@ -18,7 +18,7 @@ tags:
 
 承接（2）中定义的线段距离函数dist(Li,Lj)=w⊥⋅d⊥(Li,Lj)+w∥⋅d∥(Li,Lj)+wθ⋅dθ(Li,Lj)，原文提出线段密度的几个概念：
 
-![%e6%9c%aa%e5%91%bd%e5%90%8d](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/10/未命名.png)
+![%e6%9c%aa%e5%91%bd%e5%90%8d](http://baixiaoustc.github.io/wordpress/wp-content/uploads/2016/10/未命名.png)
 
 首先定义D为所有线段的集合。
 

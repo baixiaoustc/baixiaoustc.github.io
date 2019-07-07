@@ -15,7 +15,7 @@ tags:
 * content 
 {:toc}
 
-这是本系列文章的第三篇，第一篇在此[golang并发三板斧系列之一：channel用于通信和同步](http://baixiaoustc.com/2019/02/17/2019-02-17-golang-concurency-1-channel/)，第二篇在此[golang并发三板斧系列之二：goroutine池用于并发](http://baixiaoustc.com/2019/02/20/2019-02-20-golang-concurency-2-goroutine-pool/)。
+这是本系列文章的第三篇，第一篇在此[golang并发三板斧系列之一：channel用于通信和同步](http://baixiaoustc.github.io/2019/02/17/2019-02-17-golang-concurency-1-channel/)，第二篇在此[golang并发三板斧系列之二：goroutine池用于并发](http://baixiaoustc.github.io/2019/02/20/2019-02-20-golang-concurency-2-goroutine-pool/)。
 
 前文描述了手工作坊的时代和工业时代，现在我们进入信息时代。
 

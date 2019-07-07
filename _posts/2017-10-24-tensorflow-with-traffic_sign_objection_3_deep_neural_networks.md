@@ -14,7 +14,7 @@ tags:
 
 手机阅读会有问题-。=
 
-本文在[前文](http://baixiaoustc.com/2017/10/21/2017-10-21-tensorflow-with-traffic_sign_objection_2_optimizer_selection/)的基础上，引入深层神经网络来继续提升图像识别的准确度。
+本文在[前文](http://baixiaoustc.github.io/2017/10/21/2017-10-21-tensorflow-with-traffic_sign_objection_2_optimizer_selection/)的基础上，引入深层神经网络来继续提升图像识别的准确度。
 
 ## 神经元的激活
 

@@ -60,6 +60,6 @@ func optimizeAnealing(domainList [][2]int, costF func([]int) int64, t, cool floa
 {% endhighlight %}
 
 
-![未命名](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/07/未命名-3.png)
+![未命名](http://baixiaoustc.github.io/wordpress/wp-content/uploads/2016/07/未命名-3.png)
 
 这个系列来自《集体智慧编程》的第五章，完整golang代码在[https://github.com/baixiaoustc/optimization](https://github.com/baixiaoustc/optimization)

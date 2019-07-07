@@ -21,7 +21,7 @@ tags:
 
 ### 机器学习到底做什么事情？
 
-回顾之前的文章[机器学习的学习1：model和cost function](http://baixiaoustc.com/2017/03/21/2017-03-21-machine-learning-1-model-and-cost-function/)，了解最基本的输入输出模型及损失函数。简单来说机器学习处理的问题分为回归问题和分类问题。
+回顾之前的文章[机器学习的学习1：model和cost function](http://baixiaoustc.github.io/2017/03/21/2017-03-21-machine-learning-1-model-and-cost-function/)，了解最基本的输入输出模型及损失函数。简单来说机器学习处理的问题分为回归问题和分类问题。
 
 ### 有监督的图像识别做什么事情？
 
@@ -136,7 +136,7 @@ tags:
 
 ### 梯度下降
 
-关于梯度下降，可以参考之前的文章[机器学习的学习1：model和cost function](http://baixiaoustc.com/2017/03/21/2017-03-21-machine-learning-1-model-and-cost-function/)。
+关于梯度下降，可以参考之前的文章[机器学习的学习1：model和cost function](http://baixiaoustc.github.io/2017/03/21/2017-03-21-machine-learning-1-model-and-cost-function/)。
 
 总结一下，以下是训练过程的步骤：
 

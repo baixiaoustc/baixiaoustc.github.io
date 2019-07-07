@@ -3,7 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-09-28 15:36:08+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/09/28/%e8%b7%af%e7%ba%bf%e8%bd%a8%e8%bf%b9%e8%81%9a%e9%9b%86%ef%bc%9a%e5%88%86%e5%89%b2%e5%92%8c%e6%b1%87%e9%9b%86%ef%bc%883%ef%bc%89/
+link: http://baixiaoustc.github.io/wordpress/2016/09/28/%e8%b7%af%e7%ba%bf%e8%bd%a8%e8%bf%b9%e8%81%9a%e9%9b%86%ef%bc%9a%e5%88%86%e5%89%b2%e5%92%8c%e6%b1%87%e9%9b%86%ef%bc%883%ef%bc%89/
 slug: 2016-09-28-trajectory-cluster-partion-and-group-3
 title: 路线轨迹聚集：分割和汇集（3：通过特征点分割轨迹）
 wordpress_id: 222
@@ -47,4 +47,4 @@ L(D/H)中没有包含水平距离是因为对于闭合的两条线段，其水�
 
 我模拟的结果如下，红色代表特征点：
 
-![test_image](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/09/test_image.png)
+![test_image](http://baixiaoustc.github.io/wordpress/wp-content/uploads/2016/09/test_image.png)

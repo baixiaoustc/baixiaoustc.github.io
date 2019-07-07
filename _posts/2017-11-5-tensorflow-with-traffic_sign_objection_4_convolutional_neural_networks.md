@@ -17,7 +17,7 @@ tags:
 
 手机阅读会有问题-。=
 
-本文在[前文：深层神经网络](http://baixiaoustc.com/2017/10/24/2017-10-24-tensorflow-with-traffic_sign_objection_3_deep_neural_networks/)的基础上，引入卷积神经网络来继续提升交通标志图像识别的准确度。
+本文在[前文：深层神经网络](http://baixiaoustc.github.io/2017/10/24/2017-10-24-tensorflow-with-traffic_sign_objection_3_deep_neural_networks/)的基础上，引入卷积神经网络来继续提升交通标志图像识别的准确度。
 
 
 ## 卷积网络

@@ -138,6 +138,6 @@ func costSchedule(schedule []int) int64 {
 {% endhighlight %}
 
 
-![未命名](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/06/未命名-4.png)
+![未命名](http://baixiaoustc.github.io/wordpress/wp-content/uploads/2016/06/未命名-4.png)
 
 这个系列来自《集体智慧编程》的第五章，完整golang代码在[https://github.com/baixiaoustc/optimization](https://github.com/baixiaoustc/optimization)

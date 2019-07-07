@@ -49,6 +49,6 @@ func optimizeRandom(domainList [][2]int, costF func([]int) int64) []int {
 
 随机搜索的结果不见得是最优解，因为代码中的1000次尝试在所有解中只占很少一部分。
 
-![未命名](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/07/未命名.png)
+![未命名](http://baixiaoustc.github.io/wordpress/wp-content/uploads/2016/07/未命名.png)
 
 这个系列来自《集体智慧编程》的第五章，完整golang代码在[https://github.com/baixiaoustc/optimization](https://github.com/baixiaoustc/optimization)

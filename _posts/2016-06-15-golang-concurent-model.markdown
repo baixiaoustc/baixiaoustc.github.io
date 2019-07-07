@@ -3,7 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-06-15 13:17:32+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/06/15/golang%e7%9a%84%e5%b9%b6%e5%8f%91%e6%a8%a1%e5%9e%8b/
+link: http://baixiaoustc.github.io/wordpress/2016/06/15/golang%e7%9a%84%e5%b9%b6%e5%8f%91%e6%a8%a1%e5%9e%8b/
 slug: 2016-06-15-golang-concurent-model
 title: golang的并发模型
 wordpress_id: 45

@@ -14,7 +14,7 @@ tags:
 * content 
 {:toc}
 
-这是系列博文的第三篇，第一篇在此：[golang深入源代码之一：AST的遍历](http://baixiaoustc.com/2019/01/14/2019-01-14-golang-code-inspector-1-all-case)，第二篇在此：[golang深入源代码系列之二：反向调用关系的生成](http://baixiaoustc.com/2019/01/17/2019-01-17-golang-code-inspector-2-reverse-call-graph/)。
+这是系列博文的第三篇，第一篇在此：[golang深入源代码之一：AST的遍历](http://baixiaoustc.github.io/2019/01/14/2019-01-14-golang-code-inspector-1-all-case)，第二篇在此：[golang深入源代码系列之二：反向调用关系的生成](http://baixiaoustc.github.io/2019/01/17/2019-01-17-golang-code-inspector-2-reverse-call-graph/)。
 
 
 

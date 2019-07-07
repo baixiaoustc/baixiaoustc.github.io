@@ -337,8 +337,8 @@ Elasticsearch/Lucene 为了提升索引和搜索的效率，从上层到底层�
 
 # 参考
 
-- https://www.elastic.co/guide/cn/elasticsearch/guide/current/dynamic-indices.html
-- [https://www.jianshu.com/p/28fb017be7a7](https://www.jianshu.com/p/28fb017be7a7)
+- [Elasticsearch: 权威指南](https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html)
+- [Elasticsearch详解](https://www.jianshu.com/p/28fb017be7a7)
 - [lucene的内部结构](https://www.infoq.cn/article/database-timestamp-02)
 - [倒排索引的介绍](https://www.cnblogs.com/kukri/p/9996104.html)
 - [介绍FST](https://www.cnblogs.com/LBSer/p/4119841.html)

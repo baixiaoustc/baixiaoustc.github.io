@@ -87,4 +87,4 @@ main从msgs取数据，然后通过dataChan发送给所有的worker处理。
 
 
 从结果来看，task是正常执行完了，但是没有完满结束：
-![未命名 2](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/06/未命名-2-1.png)
+![未命名 2](http://baixiaoustc.github.io/wordpress/wp-content/uploads/2016/06/未命名-2-1.png)

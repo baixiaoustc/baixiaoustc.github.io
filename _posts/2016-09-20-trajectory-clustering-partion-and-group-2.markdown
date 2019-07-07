@@ -16,11 +16,11 @@ tags:
 
 为了线段的汇集，需要分辨线段之间的距离，故引入线段的距离函数。含三部分：(i) the perpendicular distance (垂直距离)， (ii) the parallel distance (平行距离)，and (iii) the angle distance (角度距离)。下图表示清楚：
 
-![%e6%9c%aa%e5%91%bd%e5%90%8d](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/09/未命名.png)
+![%e6%9c%aa%e5%91%bd%e5%90%8d](http://baixiaoustc.github.io/wordpress/wp-content/uploads/2016/09/未命名.png)
 
 通过向量运算可计算上图Ps／Pe的值，以及θ：
 
-![%e6%9c%aa%e5%91%bd%e5%90%8d](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/09/未命名-1.png)
+![%e6%9c%aa%e5%91%bd%e5%90%8d](http://baixiaoustc.github.io/wordpress/wp-content/uploads/2016/09/未命名-1.png)
 
 最终，dist(Li,Lj)=w⊥⋅d⊥(Li,Lj)+w∥⋅d∥(Li,Lj)+wθ⋅dθ(Li,Lj)dist(L_i, L_j)，一般权重都取1。
 

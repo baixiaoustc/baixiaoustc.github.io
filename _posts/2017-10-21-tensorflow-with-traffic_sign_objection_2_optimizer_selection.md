@@ -14,7 +14,7 @@ tags:
 
 手机阅读会有问题-。=
 
-本文在[前文](http://baixiaoustc.com/2017/09/30/2017-09-30-tensorflow-with-traffic_sign_objection_1_basic_softmax/)的基础上，继续提升图像识别的准确度。
+本文在[前文](http://baixiaoustc.github.io/2017/09/30/2017-09-30-tensorflow-with-traffic_sign_objection_1_basic_softmax/)的基础上，继续提升图像识别的准确度。
 
 ## 优化器
 

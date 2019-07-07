@@ -17,11 +17,11 @@ tags:
 
 第一种是变异（mutate），做法是对一个最优解做某个方向的单一调整，在“组团出游”的问题里，既是对解中的某一个值做递增或者递减：
 
-![未命名](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/07/未命名-4.png)
+![未命名](http://baixiaoustc.github.io/wordpress/wp-content/uploads/2016/07/未命名-4.png)
 
 第二种是交叉（crossover），做法是选择两个最优解，将它们以某种方式结合，在本题中，两个解分表提供一部分值组成一个新解：
 
-![未命名](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/07/未命名-5.png)
+![未命名](http://baixiaoustc.github.io/wordpress/wp-content/uploads/2016/07/未命名-5.png)
 
 生成新的种群后（数量通常和原种群一致），下一轮“遗传”再开始，直到指定的迭代数或者直到没有更新的解出现为止。
 
@@ -131,6 +131,6 @@ func crossover(domainList [][2]int, schedule1, schedule2 []int, r *rand.Rand) []
 {% endhighlight %}
 
 
-![未命名](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/07/未命名-6.png)
+![未命名](http://baixiaoustc.github.io/wordpress/wp-content/uploads/2016/07/未命名-6.png)
 
 这个系列来自《集体智慧编程》的第五章，完整golang代码在[https://github.com/baixiaoustc/optimization](https://github.com/baixiaoustc/optimization)

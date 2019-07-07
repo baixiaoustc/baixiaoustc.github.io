@@ -3,7 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-10-19 10:54:23+00:00
 layout: post
-link: http://baixiaoustc.com/wordpress/2016/10/19/%e4%bd%bf%e7%94%a8postgresql-postgis%e5%ae%9e%e7%8e%b0%e7%82%b9%e7%9a%84%e8%81%9a%e7%b1%bb%e5%b1%95%e7%a4%ba/
+link: http://baixiaoustc.github.io/wordpress/2016/10/19/%e4%bd%bf%e7%94%a8postgresql-postgis%e5%ae%9e%e7%8e%b0%e7%82%b9%e7%9a%84%e8%81%9a%e7%b1%bb%e5%b1%95%e7%a4%ba/
 slug: 2016-10-19-postgresql-postgis-cluster
 title: 使用postgresql-postgis实现点的聚类展示
 wordpress_id: 269

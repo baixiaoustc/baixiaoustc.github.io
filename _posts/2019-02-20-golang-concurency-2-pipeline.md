@@ -15,7 +15,7 @@ tags:
 * content 
 {:toc}
 
-这是本系列文章的第二篇，第一篇在此[golang并发三板斧系列之一：channel用于通信和同步](http://baixiaoustc.com/2019/02/17/2019-02-17-golang-concurency-1-channel/)。
+这是本系列文章的第二篇，第一篇在此[golang并发三板斧系列之一：channel用于通信和同步](http://baixiaoustc.github.io/2019/02/17/2019-02-17-golang-concurency-1-channel/)。
 
 前文描述了手工作坊的时代，即老师傅带着小学徒并发地做一项工作，现在我们准备进入工业时代。
 

@@ -21,8 +21,8 @@ tags:
 
 原文提出一种聚集相似路线轨迹的方法：（1）先将路线分割为线段集（线段并不是原路线的一个片段，而是原路线其中两个点之间的线段），（2）再从线段集中寻找类似的线段组成一个个cluster，并找出每个cluster的代表性轨迹。每一条原始轨迹可能属于不同的cluster。可用下图概括：
 
-![%e6%9c%aa%e5%91%bd%e5%90%8d](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/09/未命名-6.png)
+![%e6%9c%aa%e5%91%bd%e5%90%8d](http://baixiaoustc.github.io/wordpress/wp-content/uploads/2016/09/未命名-6.png)
 
 算法名为TRACLUS (TRAjectory CLUStering)，步骤如下：
 
-![%e6%9c%aa%e5%91%bd%e5%90%8d](http://baixiaoustc.com/wordpress/wp-content/uploads/2016/09/未命名-5.png)
+![%e6%9c%aa%e5%91%bd%e5%90%8d](http://baixiaoustc.github.io/wordpress/wp-content/uploads/2016/09/未命名-5.png)
