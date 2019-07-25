@@ -15,6 +15,7 @@ tags:
 * content 
 {:toc}
 
+**建议先自行学习偏基础的 Elasticsearch 知识内容。**
 
 思考几个问题：
 
