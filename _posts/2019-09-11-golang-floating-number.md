@@ -47,7 +47,7 @@ func math1() {
 	c: 19.999999999999996
 	discount: 19
 	
-这么简单都要出错！
+最后优惠19分。这么简单都要出错！
 
 ![](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1568213988573&di=83532dbe5cdb4b89c1e9e7f320cc3b2d&imgtype=0&src=http%3A%2F%2F2e.zol-img.com.cn%2Fproduct%2F87_500x2000%2F88%2FcecyeD29t4fg.png)
 
