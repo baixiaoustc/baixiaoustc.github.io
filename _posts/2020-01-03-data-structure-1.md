@@ -118,7 +118,7 @@ removeLast时resize过于着急（Eager）
 这一端称为栈顶
 ```
 
-![](http://flowerman.cc/data-structure/2-1.png =200x300)
+![](http://flowerman.cc/data-structure/2-1.png)
 
 ```
 栈是一种后进先出的数据结构
@@ -204,6 +204,7 @@ front == tail 队列为空
 ---
 
 (tail + 1) % c == front 队列满
+
 capacity中，浪费了一个空间
 
 ![](http://flowerman.cc/data-structure/5-4.png)
