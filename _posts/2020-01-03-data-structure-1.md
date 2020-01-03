@@ -118,7 +118,7 @@ removeLast时resize过于着急（Eager）
 这一端称为栈顶
 ```
 
-![](http://flowerman.cc/data-structure/2-1.png)
+![](http://flowerman.cc/data-structure/2-1.png =200x300)
 
 ```
 栈是一种后进先出的数据结构
