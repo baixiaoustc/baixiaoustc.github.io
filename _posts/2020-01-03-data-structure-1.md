@@ -19,6 +19,7 @@ tags:
 ### 数组
 把数据码成一排存放
 ![](http://flowerman.cc/data-structure/1-1.png)
+
 ---
 
 ```
@@ -28,22 +29,31 @@ tags:
 
 #### 向指定位置添加元素
 ![](http://flowerman.cc/data-structure/1-2.png)
+
 ---
+
 元素后移
 ![](http://flowerman.cc/data-structure/1-3.png)
+
 ---
 
 #### 删除指定位置元素
 ![](http://flowerman.cc/data-structure/1-4.png)
+
 ---
+
 这里的第二个100可以置空，可以不置空，不置空也是安全的，因为它无法被访问到
 ![](http://flowerman.cc/data-structure/1-5.png)
+
 ---
 
 #### 动态扩容
 ![](http://flowerman.cc/data-structure/1-6.png)
+
 ---
+
 ![](http://flowerman.cc/data-structure/1-7.png)
+
 ---
 
 #### 数组简单的复杂度分析
@@ -100,13 +110,15 @@ removeLast时resize过于着急（Eager）
 ```
 
 ### 栈 Stack
+
 ```
 栈也是一种线性结构
 相比数组，栈对应的操作是数组的子集
 只能从一端添加元素，也只能从一端取出元素
 这一端称为栈顶
 ```
-![](http://flowerman.cc/data-structure/2-1.png" width = 20% height = 20% />
+
+![](http://flowerman.cc/data-structure/2-1.png)
 
 ```
 栈是一种后进先出的数据结构
@@ -114,18 +126,25 @@ Last In First Out（LIFO）
 ```
 
 #### 常见应用
+
 ![](http://flowerman.cc/data-structure/2-2.png)
+
 ---
 
 ![](http://flowerman.cc/data-structure/2-3.png)
+
 ---
 
 ![](http://flowerman.cc/data-structure/2-4.png)
+
 ---
 
 ![](http://flowerman.cc/data-structure/2-5.png)
+
 ---
+
 #### 栈的复杂度分析
+
 ```
 ArrayStack<E>       
 void push(E)        O(1) 均摊
@@ -136,21 +155,26 @@ boolean isEmpty()   O(1)
 ```
 
 ###  队列 Queue
+
 ```
 队列也是一种线性结构
 相比数组，队列对应的操作是数组的子集
 只能从一端（队尾）添加元素，只能从另一端（队首）取出元素
 队列是一种先进先出的数据结构（先到先得），First In First Out（FIFO）
 ```
-![](http://flowerman.cc/data-structure/3-1.png" width = 20% width = 20% />
+
+![](http://flowerman.cc/data-structure/3-1.png)
+
 ---
 
 删除队首元素（a）
 ![](http://flowerman.cc/data-structure/4-1.png)
+
 ---
 
 删除后
 ![](http://flowerman.cc/data-structure/4-2.png)
+
 ---
 
 #### 数组队列的复杂度分析
@@ -166,20 +190,28 @@ boolean isEmpty()   O(1)
 ### 循环队列
 
 front == tail 队列为空
-![](http://flowerman.cc/data-structure/5-1.png" width = 80%  />
+
+![](http://flowerman.cc/data-structure/5-1.png)
+
 ---
 
-![](http://flowerman.cc/data-structure/5-2.png" width = 80%  />
+![](http://flowerman.cc/data-structure/5-2.png)
+
 ---
 
-![](http://flowerman.cc/data-structure/5-3.png" width = 80%  />
+![](http://flowerman.cc/data-structure/5-3.png)
+
 ---
 
 (tail + 1) % c == front 队列满
 capacity中，浪费了一个空间
-![](http://flowerman.cc/data-structure/5-4.png" width = 80%  />
+
+![](http://flowerman.cc/data-structure/5-4.png)
+
 ---
+
 #### 循环队列的复杂度分析
+
 ```
 LoopQueue<E>        
 void enqueue(E)     O(1) 均摊 
