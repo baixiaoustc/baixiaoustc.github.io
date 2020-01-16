@@ -285,6 +285,7 @@ Kubernetes 如此流行的一个重要原因是：应用会一直顺利运行，
 ![](http://image99.renyit.com/image/%E5%81%87%E5%A6%82%E7%BB%99%E6%88%91%E7%99%BE%E5%80%8D%E6%B5%81%E9%87%8F.045.jpeg)
 
 IO 复用是节约进程这个资源，让单个进程可以监听多个 fd。
+
 ---
 
 ![](http://image99.renyit.com/image/%E5%81%87%E5%A6%82%E7%BB%99%E6%88%91%E7%99%BE%E5%80%8D%E6%B5%81%E9%87%8F.046.jpeg)
