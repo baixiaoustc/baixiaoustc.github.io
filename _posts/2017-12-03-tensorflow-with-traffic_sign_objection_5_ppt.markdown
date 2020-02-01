@@ -8,7 +8,9 @@ title: 深度学习实战：实现无人驾驶
 categories:
 - 机器学习
 tags:
-- python tensorflow ppt
+- python 
+- tensorflow 
+- ppt
 ---
 
 最近写的深度学习-图像识别讲稿
