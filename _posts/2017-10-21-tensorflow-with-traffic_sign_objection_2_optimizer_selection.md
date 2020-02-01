@@ -8,7 +8,8 @@ title: 用Tensorflow识别交通标志2:优化器的选择
 categories:
 - 机器学习
 tags:
-- python tensorflow
+- python 
+- tensorflow
 ---
 
 

@@ -8,7 +8,8 @@ title: 小试tensorflow的目标识别
 categories:
 - 机器学习
 tags:
-- python tensorflow
+- python 
+- tensorflow
 ---
 
 

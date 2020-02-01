@@ -3,8 +3,7 @@ author: baixiaoustc
 comments: true
 date: 2016-06-22 04:50:58+00:00
 layout: post
-link: http://baixiaoustc.github.io/wordpress/2016/06/22/mqtt%e5%8d%8f%e8%ae%ae/
-slug: mqtt%e5%8d%8f%e8%ae%ae
+slug: 2016-06-22-mqtt-protocol
 title: 转：MQTT协议
 wordpress_id: 73
 categories:

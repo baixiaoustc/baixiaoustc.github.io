@@ -8,7 +8,9 @@ title: 循环网络实战：视频动作识别
 categories:
 - 机器学习
 tags:
-- python tensorflow ppt
+- python 
+- tensorflow 
+- ppt
 ---
 
 最近写的《循环网络实战：视频动作识别》讲稿

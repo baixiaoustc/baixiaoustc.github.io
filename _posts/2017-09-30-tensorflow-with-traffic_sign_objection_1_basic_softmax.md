@@ -8,7 +8,8 @@ title: 用Tensorflow识别交通标志1:基础和基于softmax的单层神经网
 categories:
 - 机器学习
 tags:
-- python tensorflow
+- python 
+- tensorflow
 ---
 
 

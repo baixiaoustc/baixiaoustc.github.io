@@ -8,7 +8,8 @@ title: PostgreSQL+PostGIS空间数据库
 categories:
 - 后端技术
 tags:
-- postgresql ppt
+- postgresql 
+- ppt
 ---
 
 最近写的postgresql讲稿

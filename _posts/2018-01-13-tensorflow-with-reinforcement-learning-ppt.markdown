@@ -8,7 +8,9 @@ title: 强化学习实战：AI教你打飞机
 categories:
 - 机器学习
 tags:
-- python tensorflow ppt
+- python 
+- tensorflow 
+- ppt
 ---
 
 最近写的强化学习-飞机游戏AI讲稿

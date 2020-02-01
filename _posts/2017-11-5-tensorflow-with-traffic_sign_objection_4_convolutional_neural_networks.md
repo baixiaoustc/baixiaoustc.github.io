@@ -8,7 +8,8 @@ title: 用Tensorflow识别交通标志4:卷积神经网络
 categories:
 - 机器学习
 tags:
-- python tensorflow
+- python 
+- tensorflow
 ---
 
 * content 

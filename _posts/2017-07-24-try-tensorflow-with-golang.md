@@ -8,7 +8,8 @@ title: 用golang小试tensorflow
 categories:
 - 机器学习
 tags:
-- golang tensorflow
+- golang 
+- tensorflow
 ---
 
 
