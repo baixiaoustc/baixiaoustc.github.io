@@ -1,9 +1,9 @@
 ---
 author: baixiaoustc
 comments: false
-date: 2020-07-13 09:54:23+00:00
+date: 2018-07-13 09:54:23+00:00
 layout: post
-slug: 2020-07-13-data-structure-3
+slug: 2018-07-13-data-structure-3
 title: 数据结构之二叉树
 categories:
 - 计算机

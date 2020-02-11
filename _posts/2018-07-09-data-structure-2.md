@@ -1,9 +1,9 @@
 ---
 author: baixiaoustc
 comments: false
-date: 2020-07-09 09:54:23+00:00
+date: 2018-07-09 09:54:23+00:00
 layout: post
-slug: 2020-07-09-data-structure-2
+slug: 2018-07-09-data-structure-2
 title: 数据结构之链表
 categories:
 - 计算机

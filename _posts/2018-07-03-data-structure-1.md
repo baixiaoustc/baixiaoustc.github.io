@@ -1,9 +1,9 @@
 ---
 author: baixiaoustc
 comments: false
-date: 2020-07-03 09:54:23+00:00
+date: 2018-07-03 09:54:23+00:00
 layout: post
-slug: 2020-07-03-data-structure-1
+slug: 2018-07-03-data-structure-1
 title: 数据结构之数组、栈和队列
 categories:
 - 计算机
