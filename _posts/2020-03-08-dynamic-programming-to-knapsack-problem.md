@@ -28,7 +28,7 @@ tags:
 2. 最优子结构：是指子问题的最优解可以推导为原问题的最优解
 3. 自下而上：由子问题到上层问题之间，寻找迭代递推公式，也叫「状态转移方程」
 
-特别说明一下，「自下而上」区别于递归算法的「自上而下」，后者的子问题可能存在大量的重叠，导致大量的重复计算，这样时间复杂度很可能呈指数级上升。
+特别说明一下，「自下而上」区别于递归算法的「自上而下」，后者的子问题可能存在大量的重叠，导致大量的重复计算，这样时间复杂度很可能呈指数级上升。这个从后面的例子可以看出。
 
 ## 套路
 
@@ -43,7 +43,7 @@ tags:
 
 ### 状态转移方程
 
-实际中写出「状态转移方程」是最困难的，《[动态规划详解（修订版）](https://mp.weixin.qq.com/s?__biz=MzAxODQxMDM0Mw==&mid=2247484731&idx=1&sn=f1db6dee2c8e70c42240aead9fd224e6)》文章给出了一个套路：
+实际中写出「状态转移方程」是最困难的，《[动态规划详解（修订版）](https://mp.weixin.qq.com/s/Cw39C9MY9Wr2JlcvBQZMcA)》文章给出了一个套路：
 
 > 明确「状态」 -> 定义 dp 数组/函数的含义 -> 明确「选择」-> 明确 base case
 
@@ -81,6 +81,7 @@ tags:
 
 {% highlight golang %}
 func exchangeRecursive(coins []int, amount int) int {
+
 }
 {% endhighlight %}
 
@@ -134,11 +135,13 @@ func coinChangeRecursive(coins []int, amount int) int {
 }
 {% endhighlight %}
 
-分析时间复杂度，由下图递归树可知为多叉树，是 O(n^k)，总之是指数级别的。
+分析时间复杂度，由下图递归树可知为多叉树，是 O(n^k)，k 是硬币个数，总之是指数级别的。
 
 ![](https://mmbiz.qpic.cn/mmbiz_png/OyweysCSeLU9gC99hDeLNlboZOHUEz1osIhg65Y6jKelL9nVjgSibPlC4icvGFkqNHiaBvB5YTK1cIkfB9ASiauJGQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 <center>图自《牛逼了，原来大神都是这样学动态规划的...》</center>
+
+------------
 
 自测通过，但是提交代码超时。分析可知递归解法存在大量重叠子问题，导致的大量重复计算，如上图中，节点9和节点8都被计算了两次，而且每个节点下面都可能是一颗巨大的子树。
 
@@ -192,15 +195,21 @@ func exchangeCut(coins []int, amount int, m []int) int {
 
 ### 3，动态规划解法
 
-按照套路，定义 dp[i] 为凑够零钱金额 i 需要的最小硬币值。前文推导递归公式如下：
+前文推导递归公式如下：
 
 	f(coins, amount) = min{f(coins, amount - coins[i]) + 1)}, 其中 i 的取值为所有硬币的序号
 
-则状态转移方程如下：
+按照套路，需要明确「状态」和「选择」。定义 dp[i] 为凑够零钱金额 i 需要的最小硬币值，此为状态。选择某一个硬币，此为选择。则状态转移方程如下：
 
 	dp[i] = min{dp[i - coins[j] + 1} = min{dp[i = coins[j]]} + 1, 其中 j 的取值为所有硬币的序号
 
-于是我们只要自底向上根据以上状态转移方程依次求解 dp[1], dp[2], dp[3] ...... dp[11]，最终的 dp[11]，即为我们所求的解。
+于是我们只要自底向上根据以上状态转移方程依次求解 dp[1], dp[2], dp[3] ...... dp[11]，最终的 dp[11]，即为我们所求的解。数学公式表达为：
+
+![](http://image99.renyit.com/2020-03-11-2.png)
+
+<center>图自《动态规划详解（修订版）》</center>
+
+再注意初始状态是 dp[0] = 0，表示金额为0的方法为0种。
 
 {% highlight golang %}
 func coinChangeDP(coins []int, amount int) int {
@@ -227,11 +236,59 @@ func coinChangeDP(coins []int, amount int) int {
 }
 {% endhighlight %}
 
+下图就很直观了：
+
+![](http://image99.renyit.com/2020-03-11-3.png)
+
+### 小结
+
+回头来看，可以看到零钱兑换问题符合之前定义的动态规划问题特点，即可以拆分子问题、符合最优子结构、自下而上存在状态转移方程。
+
+首先用普通迭代解法，存在大量重复计算；接着用剪枝消除重叠子问题；最后用动态规划解法。
+
+其实我们来看动态规划解法的 dp[] 数组，和迭代剪枝解法中的备忘录结构是一样的，不同在于自下而上还是自顶而下的方向。
+
 # 背包问题
+
+背包问题是动态规划中一个子类。
 
 ## 01背包问题
 
+问题描述：
+
+> 有n个物品，它们有各自的体积和价值，现有给定容量的背包，如何让背包里装入的物品具有最大的价值总和？
+
+问题分析：
+
+定义一些变量：Vi表示第 i 个物品的价值，Wi表示第 i 个物品的体积，背包问题抽象化（X1，X2，…，Xn，其中 Xi 取0或1，表示第 i 个物品选或不选）。
+
+1. 建立模型，即求max(V1X1+V2X2+…+VnXn)；
+2. 寻找约束条件，W1X1+W2X2+…+WnXn < capacity；
+
+举个例子：
+
+	n = 3, capacity = 4
+	weight = [2, 1, 3]
+	value = [4, 2, 3]
+	
+应该返回6，选择前两个物品。	
+
+
 ### 二维DP
+
+根据之前的套路，先明确「状态」，比较浅显的一种描述是「状态」是二维的，分别对应「可选的物品」和「背包的容量」，即 dp[i][j] 表示前 i 个物品的组合在容量 j 的背包的最大价值。
+
+再明确「选择」，很显然就是要不要第 i 个物品，根据选择情况，思考状态转移方程。对于第 i 个物品，如果不选择它，那么当前状态和前 i-1 个物品的状态一致：
+
+	dp[i][j] = dp[i-1][j]
+	
+如果要选择它，那么从当前状态倒推上一个状态是 dp[i-1][j-weight[i]，它们的关系是：
+
+	dp[i][j] = dp[i-1][j-weight[i]+value[i]
+	
+求最值：
+
+	dp[i][j] = max{dp[i-1][j], dp[i-1][j-weight[i]+value[i]}
 
 ### 一维DP
 
@@ -254,7 +311,9 @@ https://leetcode-cn.com/problems/coin-change-2/solution/dong-tai-gui-hua-wan-qua
 
 # 参考
 
-[牛逼了，原来大神都是这样学动态规划的...](https://mp.weixin.qq.com/s/uthpSrJIJQEpiU6g6z5FBg)
+* [牛逼了，原来大神都是这样学动态规划的...](https://mp.weixin.qq.com/s/uthpSrJIJQEpiU6g6z5FBg)
+* [动态规划详解（修订版）](https://mp.weixin.qq.com/s/Cw39C9MY9Wr2JlcvBQZMcA)
+* [【动态规划】01背包问题（通俗易懂，超基础讲解）](https://blog.csdn.net/qq_38410730/article/details/81667885)
 
 https://leetcode-cn.com/problems/coin-change/solution/yong-bei-bao-wen-ti-si-xiang-lai-li-jie-ying-bi-zh/
 
