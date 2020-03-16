@@ -17,7 +17,7 @@ tags:
 
 研读文章《[why kafka is so fast](https://medium.com/swlh/why-kafka-is-so-fast-bde0d987cd03)》（译文《[Kafka为什么这么快？](https://mp.weixin.qq.com/s/wq08nVDHVR1lOJBK4KZbyA)》），看看怎么来定义Kafka的**「快」**?
 
-快是指延迟低？还是吞吐量大？还是抖动小？还是指「实时性」？
+快是指延迟低？还是抖动小？还是指实时性？抑或是吞吐量大？
 
 ### 是延迟低吗
 
