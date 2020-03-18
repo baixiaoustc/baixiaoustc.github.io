@@ -57,7 +57,7 @@ tags:
 
 	dp[i][j] = max{dp[i-1][j], dp[i-1][j-weight[i]]+value[i]}
 
-再考虑初始条件后：
+再考虑初始条件，对于容量大于等于第一个物品的情况，值都是第一个物品的价值。
 
 {% highlight golang %}
 func knapsackZeroOne2DP(weight []int, value []int, capacity int) int {
@@ -107,7 +107,9 @@ func knapsackZeroOne2DP(weight []int, value []int, capacity int) int {
 		for j=capacity..0; 
 			dp[j]=max{dp[j],dp[j-weight[i]]+value[i]};
 			
-注意内部循环为降序，降序的理解是：为了保证 j-weight[i] 是「上一层」的状态，即 i 还在上一个循环的状态，即 j 在 j-weight[i] 的前面。
+注意内部循环为降序，降序的理解是：为了保证 j-weight[i] 是「上一层」的状态，即 i 还在上一个循环的状态，即 j 在 j-weight[i] 的前面。画图加深理解：
+
+![](http://image99.renyit.com/文章画图.001.png)
 
 {% highlight golang %}
 //01背包问题，1维dp
@@ -145,7 +147,7 @@ func knapsackZeroOne1DP(weight []int, value []int, capacity int) int {
 
 问题描述：
 
-> 有 n 个物品，它们有各自的体积和价值，现有给定容量的背包，如何让背包里装入的物品具有最大的价值总和？注意每种物品都有无限件可用。
+> 有 n 种物品，它们有各自的体积和价值，现有给定容量的背包，如何让背包里装入的物品具有最大的价值总和？注意每种物品都有无限件可用。
 
 问题分析：
 
@@ -155,7 +157,7 @@ func knapsackZeroOne1DP(weight []int, value []int, capacity int) int {
 
 按照套路，先定义状态。dp[i][j] 表示前 i 种物品的组合在容量 j 的背包的最大价值。由于每种物品可以选择0件或多件，可以定义状态转移方程如下：
 
-	dp[i][j] = max{dp[i-1][j], dp[i-1][j-weight[i]]+value[i], dp[i-1][j-2*weight[i]]+2*value[i], ... , dp[i-1][j-k*weight[i]]+k*value[i]} (满足 j >= k*weight[i]) 【公式4】
+	dp[i][j] = max{dp[i-1][j], dp[i-1][j-weight[i]]+value[i], dp[i-1][j-2*weight[i]]+2*value[i], ... , dp[i-1][j-k*weight[i]]+k*value[i]} (满足 j >= k*weight[i]) 【公式1】
 
 ### 一维DP
 
@@ -165,15 +167,21 @@ func knapsackZeroOne1DP(weight []int, value []int, capacity int) int {
 		for j=0..capacity; 
 			dp[j]=max{dp[j],dp[j-weight[i]]+value[i]};
 
-注意内部循环为升序，为了保证 j-weight[i] 是「本层」的状态，即保证 j 依赖 j-weight[i]，j 在 j-weight[i] 的后面。**注意完全背包的套路和01背包几乎完全一样，只是内循环的顺序颠倒了。**
+注意内部循环为升序，为了保证 j-weight[i] 是「本层」的状态，即保证 j 依赖 j-weight[i]，j 在 j-weight[i] 的后面。
+
+**注意完全背包的套路和01背包几乎完全一样，只是内循环的顺序颠倒了。区别就在于01背包依赖的两个项都是「上一层」的状态，而完全背包依赖了「上一层」和「本层」的状态**
+
+画图加深理解：
+
+![](http://image99.renyit.com/文章画图.002.png)
 
 ### 数学证明
 
-设 j = j-weight[i]，带入【公式4】：
+设 j = j-weight[i]，带入【公式1】：
 
-	dp[i][j-weight[i]] = max{dp[i-1][j-weight[i]], dp[i-1][j-2*weight[i]]+2*value[i], dp[i-1][j-3*weight[i]]+3*value[i], ... , dp[i-1][j-k*weight[i]]+k*value[i]} (满足 j >= k*weight[i]) 【公式5】
+	dp[i][j-weight[i]] = max{dp[i-1][j-weight[i]], dp[i-1][j-2*weight[i]]+2*value[i], dp[i-1][j-3*weight[i]]+3*value[i], ... , dp[i-1][j-k*weight[i]]+k*value[i]} (满足 j >= k*weight[i]) 【公式2】
 	
-将【公式4】和【公式5】合并：
+将【公式1】和【公式2】合并：
 
 	dp[i][j] = max{dp[i-1][j], dp[i][j-weight[i]]+value[i]}
 	
@@ -190,7 +198,7 @@ func knapsackZeroOne1DP(weight []int, value []int, capacity int) int {
 > 给定不同面额的硬币和一个总金额。写出函数来计算可以凑成总金额的硬币组合数。假设每一种面额的硬币有无限个。
 > 
 > 示例 1:
-
+>
 > 输入: amount = 5, coins = [1, 2, 5]
 > 
 > 输出: 4
@@ -255,7 +263,7 @@ func change(amount int, coins []int) int {
 }
 {% endhighlight %}
 
-## 多重背包问题
+
 
 # 参考
 
