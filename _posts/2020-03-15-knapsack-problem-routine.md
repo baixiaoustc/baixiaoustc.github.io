@@ -51,11 +51,13 @@ tags:
 	
 如果要选择它，那么从当前状态倒推上一个状态是 dp[i-1][j-weight[i]，它们的关系是：
 
-	dp[i][j] = dp[i-1][j-weight[i]+value[i]
+	dp[i][j] = dp[i-1][j-weight[i]]+value[i]
 	
 求最值：
 
 	dp[i][j] = max{dp[i-1][j], dp[i-1][j-weight[i]]+value[i]}
+
+再考虑初始条件后：
 
 {% highlight golang %}
 func knapsackZeroOne2DP(weight []int, value []int, capacity int) int {
@@ -99,13 +101,13 @@ func knapsackZeroOne2DP(weight []int, value []int, capacity int) int {
 
 	dp[i][j] = max{dp[i-1][j], dp[i-1][j-weight[i]]+value[i]}
 
-可以考虑优化空间复杂度。从`knapsackZeroOne2DP`的代码也可以看出来，是经历了两重循环，每一轮外层循环 i，算出二维 DP 的其中一行 dp[i][0..capacity]，且 dp[i][j] 仅与 dp[i-1][j], dp[i-1][j-weight[i]] 相关，即该行数据仅与前面一行 i-1 相关。那么可以把二维数据缩减为一维，dp[j] 的定义为容量j的背包的最大价值
+可以考虑优化空间复杂度。从`knapsackZeroOne2DP`的代码也可以看出来，是经历了两重循环，每一轮的外层循环 i，算出二维 DP 的其中一行 dp[i][0..capacity]，且 dp[i][j] 仅与 dp[i-1][j], dp[i-1][j-weight[i]] 相关，即该行数据仅与前面一行 i-1 相关。那么可以把二维数据缩减为一维，dp[j] 的定义为容量 j 的背包的最大价值，总结01背包的套路如下：
 
 	for i=1..N;
-		for j=sum..0; 
+		for j=capacity..0; 
 			dp[j]=max{dp[j],dp[j-weight[i]]+value[i]};
 			
-注意内部循环为降序，降序的理解是：为了保证 j-weight[i] 是「上一层」的状态，即 i 还在上一个循环的状态。
+注意内部循环为降序，降序的理解是：为了保证 j-weight[i] 是「上一层」的状态，即 i 还在上一个循环的状态，即 j 在 j-weight[i] 的前面。
 
 {% highlight golang %}
 //01背包问题，1维dp
@@ -137,15 +139,121 @@ func knapsackZeroOne1DP(weight []int, value []int, capacity int) int {
 }
 {% endhighlight %}
 
+时间复杂度并不会变。
+
 ## 完全背包问题
+
+问题描述：
+
+> 有 n 个物品，它们有各自的体积和价值，现有给定容量的背包，如何让背包里装入的物品具有最大的价值总和？注意每种物品都有无限件可用。
+
+问题分析：
+
+和01背包问题相比，不同的是有无限件可用。
 
 ### 二维DP
 
+按照套路，先定义状态。dp[i][j] 表示前 i 种物品的组合在容量 j 的背包的最大价值。由于每种物品可以选择0件或多件，可以定义状态转移方程如下：
+
+	dp[i][j] = max{dp[i-1][j], dp[i-1][j-weight[i]]+value[i], dp[i-1][j-2*weight[i]]+2*value[i], ... , dp[i-1][j-k*weight[i]]+k*value[i]} (满足 j >= k*weight[i]) 【公式4】
+
 ### 一维DP
 
-https://leetcode-cn.com/problems/coin-change-2/solution/dong-tai-gui-hua-wan-quan-bei-bao-wen-ti-by-liweiw/
+同样考虑空间优化。定义状态，dp[j] 的定义为容量 j 的背包的最大价值。总结完全背包的套路如下：
 
-### 套公式给零钱兑换问题，并比较
+	for i=1..N;
+		for j=0..capacity; 
+			dp[j]=max{dp[j],dp[j-weight[i]]+value[i]};
+
+注意内部循环为升序，为了保证 j-weight[i] 是「本层」的状态，即保证 j 依赖 j-weight[i]，j 在 j-weight[i] 的后面。**注意完全背包的套路和01背包几乎完全一样，只是内循环的顺序颠倒了。**
+
+### 数学证明
+
+设 j = j-weight[i]，带入【公式4】：
+
+	dp[i][j-weight[i]] = max{dp[i-1][j-weight[i]], dp[i-1][j-2*weight[i]]+2*value[i], dp[i-1][j-3*weight[i]]+3*value[i], ... , dp[i-1][j-k*weight[i]]+k*value[i]} (满足 j >= k*weight[i]) 【公式5】
+	
+将【公式4】和【公式5】合并：
+
+	dp[i][j] = max{dp[i-1][j], dp[i][j-weight[i]]+value[i]}
+	
+可见 dp[i][j] 只和上一层的状态 dp[i-1][j] 以及本层的前置状态 dp[i][j-weight[i]] 相关，故可以缩减为一维数组：
+
+	dp[j] = max{dp[j], dp[j-weight[i]]+value[i]}	
+
+### 示例
+
+前文的零钱兑换问题，就是每种硬币可以使用无限次。所以可以使用完全背包的套路，来解零钱兑换问题。考虑初始条件后，代码和前文动态规划的代码基本一致。代码略。
+
+另一个示例，来看看 LeetCode 的518题：
+
+> 给定不同面额的硬币和一个总金额。写出函数来计算可以凑成总金额的硬币组合数。假设每一种面额的硬币有无限个。
+> 
+> 示例 1:
+
+> 输入: amount = 5, coins = [1, 2, 5]
+> 
+> 输出: 4
+> 
+> 解释: 有四种方式可以凑成总金额:
+> 
+> 5=5
+> 
+> 5=2+2+1
+> 
+> 5=2+1+1+1
+> 
+> 5=1+1+1+1+1
+> 
+> 示例 2:
+> 
+> 输入: amount = 3, coins = [2]
+> 
+> 输出: 0
+> 
+> 解释: 只用面额2的硬币不能凑成总金额3。
+> 
+> 示例 3:
+> 
+> 输入: amount = 10, coins = [10]
+> 
+> 输出: 1
+> 
+> 注意:
+> 
+> 你可以假设：
+> 
+> 0 <= amount (总金额) <= 5000
+> 
+> 1 <= coin (硬币面额) <= 5000
+> 
+> 硬币种类不超过 500 种
+> 
+> 结果符合 32 位符号整数
+
+使用完全背包的套路，只不过根据本题题意，将状态转移方程替换为：
+
+	dp[j] = dp[j] + dp[j-weight[i]]
+	
+再考虑初始条件，如果 amount 为0，则只有一种组合情况为「空」。
+
+{% highlight golang %}
+//完全背包解法
+func change(amount int, coins []int) int {
+	dp := make([]int, amount+1)
+
+	//init
+	dp[0] = 1
+
+	for _, coin := range coins {
+		for i := coin; i <= amount; i++ {
+			dp[i] += dp[i-coin]
+		}
+	}
+
+	return dp[amount]
+}
+{% endhighlight %}
 
 ## 多重背包问题
 
