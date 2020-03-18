@@ -228,7 +228,21 @@ func canPartitionZeroOne(nums []int) bool {
 
 ### 一维DP
 
-同样考虑空间优化。定义状态，dp[j] 的定义为容量 j 的背包的最大价值。总结完全背包的套路如下：
+同样考虑空间优化。定义状态，dp[j] 的定义为容量 j 的背包的最大价值。数学公式推导一下：
+
+设 j = j-weight[i]，带入【公式1】：
+
+	dp[i][j-weight[i]] = max{dp[i-1][j-weight[i]], dp[i-1][j-2*weight[i]]+2*value[i], dp[i-1][j-3*weight[i]]+3*value[i], ... , dp[i-1][j-k*weight[i]]+k*value[i]} (满足 j >= k*weight[i]) 【公式2】
+	
+将【公式1】和【公式2】合并：
+
+	dp[i][j] = max{dp[i-1][j], dp[i][j-weight[i]]+value[i]}
+	
+可见 dp[i][j] 只和上一层的状态 dp[i-1][j] 以及本层的前置状态 dp[i][j-weight[i]] 相关，故可以缩减为一维数组：
+
+	dp[j] = max{dp[j], dp[j-weight[i]]+value[i]}
+	
+总结完全背包的套路如下：
 
 	for i=1..N;
 		for j=0..capacity; 
@@ -242,19 +256,7 @@ func canPartitionZeroOne(nums []int) bool {
 
 ![](http://image99.renyit.com/文章画图.002.png)
 
-### 数学证明
-
-设 j = j-weight[i]，带入【公式1】：
-
-	dp[i][j-weight[i]] = max{dp[i-1][j-weight[i]], dp[i-1][j-2*weight[i]]+2*value[i], dp[i-1][j-3*weight[i]]+3*value[i], ... , dp[i-1][j-k*weight[i]]+k*value[i]} (满足 j >= k*weight[i]) 【公式2】
 	
-将【公式1】和【公式2】合并：
-
-	dp[i][j] = max{dp[i-1][j], dp[i][j-weight[i]]+value[i]}
-	
-可见 dp[i][j] 只和上一层的状态 dp[i-1][j] 以及本层的前置状态 dp[i][j-weight[i]] 相关，故可以缩减为一维数组：
-
-	dp[j] = max{dp[j], dp[j-weight[i]]+value[i]}	
 
 ### 示例
 
