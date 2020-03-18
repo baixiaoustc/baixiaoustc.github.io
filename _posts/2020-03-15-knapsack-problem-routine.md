@@ -143,6 +143,73 @@ func knapsackZeroOne1DP(weight []int, value []int, capacity int) int {
 
 时间复杂度并不会变。
 
+### 示例
+
+来看看 LeetCode 的416题：
+
+> 给定一个只包含正整数的非空数组。是否可以将这个数组分割成两个子集，使得两个子集的元素和相等。
+> 
+> 注意:
+> 
+> 每个数组中的元素不会超过 100
+> 
+> 数组的大小不会超过 200
+> 
+> 示例 1:
+> 
+> 输入: [1, 5, 11, 5]
+> 
+> 输出: true
+> 
+> 解释: 数组可以分割成 [1, 5, 5] 和 [11].
+> 
+> 示例 2:
+> 
+> 输入: [1, 2, 3, 5]
+> 
+> 输出: false
+> 
+> 解释: 数组不能分割成两个元素和相等的子集.
+
+使用01背包的套路，根据题意，所有数字的总和肯定是个偶数，且总和的一半记为 sum，sum 就是背包问题的容量，dp[j] 定义为容量为 j 时的能分割的可能性。状态转移方程替换为：
+
+	dp[j] = dp[j] || dp[j-nums[i]]
+
+想一想怎么理解？再考虑初始条件，如果 sum 为0，解法为 true。
+
+{% highlight golang %}
+func canPartitionZeroOne(nums []int) bool {
+	length := len(nums)
+	if length == 0 || length > 200 {
+		return false
+	}
+
+	sum := 0
+	for _, n := range nums {
+		sum += n
+	}
+	if sum%2 != 0 || sum > 200*100 {
+		return false
+	}
+	sum = sum / 2
+
+	//高级背包解法
+	//dp[i]，表示和为i的可能性
+	dp := make([]bool, sum+1)
+
+	//init
+	dp[0] = true
+
+	for i := 0; i < length; i++ {
+		for j := sum; j >= nums[i]; j-- {
+			dp[j] = dp[j] || dp[j-nums[i]]
+		}
+	}
+
+	return dp[sum]
+}
+{% endhighlight %}
+
 ## 完全背包问题
 
 问题描述：
