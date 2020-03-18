@@ -123,14 +123,10 @@ func knapsackZeroOne1DP(weight []int, value []int, capacity int) int {
 	//dp[j]，表示容量和为i的最大价值
 	dp := make([]int, capacity+1)
 
-	//init
-	for j := range dp {
-		if weight[0] <= j {
-			dp[j] = value[0]
-		}
-	}
+	//init，容量为0，价值为0
+	dp[0] = 0
 
-	for i := 1; i < length; i++ {
+	for i := 0; i < length; i++ {
 		for j := capacity; j >= weight[i]; j-- {
 			//照搬公式
 			dp[j] = int(math.Max(float64(dp[j]), float64(dp[j-weight[i]]+value[i])))
