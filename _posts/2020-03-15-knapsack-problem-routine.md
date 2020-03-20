@@ -228,7 +228,7 @@ func canPartitionZeroOne(nums []int) bool {
 
 设 j = j-weight[i]，带入【公式1】：
 
-	dp[i][j-weight[i]] = max{dp[i-1][j-weight[i]], dp[i-1][j-2*weight[i]]+2*value[i], dp[i-1][j-3*weight[i]]+3*value[i], ... , dp[i-1][j-k*weight[i]]+k*value[i]} (满足 j >= k*weight[i]) 【公式2】
+	dp[i][j-weight[i]] = max{dp[i-1][j-weight[i]], dp[i-1][j-2*weight[i]]+value[i], dp[i-1][j-3*weight[i]]+2*value[i], ... , dp[i-1][j-k*weight[i]]+(k-1)*value[i]} (满足 j >= k*weight[i]) 【公式2】
 	
 将【公式1】和【公式2】合并：
 
@@ -251,8 +251,6 @@ func canPartitionZeroOne(nums []int) bool {
 画图加深理解：
 
 ![](http://image99.renyit.com/文章画图.002.png)
-
-	
 
 ### 示例
 

@@ -140,7 +140,7 @@ func coinChangeRecursive(coins []int, amount int) int {
 
 分析时间复杂度，由下图递归树可知为多叉树，是 O(n^k)，k 是硬币个数，总之是指数级别的。
 
-![](https://mmbiz.qpic.cn/mmbiz_png/OyweysCSeLU9gC99hDeLNlboZOHUEz1osIhg65Y6jKelL9nVjgSibPlC4icvGFkqNHiaBvB5YTK1cIkfB9ASiauJGQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+![](http://image99.renyit.com/image/2020-03-20-1.png)
 
 <center>图自《牛逼了，原来大神都是这样学动态规划的...》</center>
 
@@ -196,6 +196,8 @@ func exchangeCut(coins []int, amount int, m []int) int {
 
 ![](http://image99.renyit.com/2020-03-11-1.png)
 
+<center>图自《牛逼了，原来大神都是这样学动态规划的...》</center>
+
 ### 3，动态规划解法
 
 前文推导递归公式如下：
@@ -241,6 +243,8 @@ func coinChangeDP(coins []int, amount int) int {
 下图就很直观了：
 
 ![](http://image99.renyit.com/2020-03-11-3.png)
+
+<center>图自《动态规划详解（修订版）》</center>
 
 ### 小结
 
