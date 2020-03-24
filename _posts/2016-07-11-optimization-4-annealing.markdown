@@ -7,7 +7,7 @@ slug: 2016-07-11-optimization-4-annealing
 title: 优化算法之四：退火法
 wordpress_id: 175
 categories:
-- 优化算法
+- 算法
 tags:
 - golang
 - optimization

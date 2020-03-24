@@ -6,7 +6,7 @@ layout: post
 slug: 2020-03-08-dynamic-programming-routine
 title: 动态规划套路
 categories:
-- 后端技术
+- 算法
 tags:
 - algorithm 
 - golang 

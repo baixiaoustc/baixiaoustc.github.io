@@ -7,7 +7,7 @@ slug: 2016-06-26-optimization-1-description-and-cost
 title: 优化算法之一：描述题解和成本函数
 wordpress_id: 104
 categories:
-- 优化算法
+- 算法
 tags:
 - golang
 - optimization

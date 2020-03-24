@@ -6,7 +6,7 @@ layout: post
 slug: 2020-03-15-knapsack-problem-routine
 title: 背包问题套路
 categories:
-- 后端技术
+- 算法
 tags:
 - algorithm 
 - golang 

@@ -7,7 +7,7 @@ slug: 2016-07-23-optimization-5-genetic-algorithm
 title: 优化算法之五：遗传算法
 wordpress_id: 181
 categories:
-- 优化算法
+- 算法
 tags:
 - golang
 - optimization

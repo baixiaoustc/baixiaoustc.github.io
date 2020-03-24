@@ -3,11 +3,11 @@ author: baixiaoustc
 comments: true
 date: 2016-08-29 12:36:29+00:00
 layout: post
-slug: 2016-08-29-optimization-particle-swarm
+slug: 2016-08-29-optimization-6-particle-swarm
 title: 优化算法之六：粒子群算法
 wordpress_id: 194
 categories:
-- 优化算法
+- 算法
 tags:
 - golang
 - optimization

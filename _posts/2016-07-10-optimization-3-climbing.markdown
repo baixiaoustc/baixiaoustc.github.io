@@ -7,7 +7,7 @@ slug: 2016-07-10-optimization-3-climbing
 title: 优化算法之三：登山法
 wordpress_id: 150
 categories:
-- 优化算法
+- 算法
 tags:
 - golang
 - optimization

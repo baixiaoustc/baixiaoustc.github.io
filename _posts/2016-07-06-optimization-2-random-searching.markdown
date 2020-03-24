@@ -7,7 +7,7 @@ slug: 2016-07-06-optimization-2-random-searching
 title: 优化算法之二：随机搜索
 wordpress_id: 145
 categories:
-- 优化算法
+- 算法
 tags:
 - golang
 - optimization
