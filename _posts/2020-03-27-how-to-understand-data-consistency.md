@@ -4,7 +4,7 @@ comments: true
 date: 2020-03-27 12:12:46+00:00
 layout: post
 slug: 2020-03-27-how-to-understand-data-consistency
-title: 怎么理解数据一致性
+title: 数据一致性之一：怎么理解数据一致性
 categories:
 - 后端技术
 tags:
