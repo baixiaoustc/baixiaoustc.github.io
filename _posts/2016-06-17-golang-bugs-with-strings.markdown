@@ -36,6 +36,11 @@ func strings_split() {
 	needs [] 1
 	need 
 	false
+	
+其实 Split 函数的注释写的很清楚：
+
+	// If s does not contain sep and sep is not empty, Split returns a
+	// slice of length 1 whose only element is s.
 
 ### strings的剪切
 
