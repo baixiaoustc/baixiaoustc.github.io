@@ -98,5 +98,5 @@ tags:
 
 # 参考
 
-[一文读懂熔断器和重试机制](https://mp.weixin.qq.com/s/C6gBmwgYGAN7gsF40-JBgQ)
-[微服务高可用利器——Hystrix熔断降级原理&实践总结](https://juejin.im/post/5ddb9af4f265da7e1e7da671)
+* [一文读懂熔断器和重试机制](https://mp.weixin.qq.com/s/C6gBmwgYGAN7gsF40-JBgQ)
+* [微服务高可用利器——Hystrix熔断降级原理&实践总结](https://juejin.im/post/5ddb9af4f265da7e1e7da671)
