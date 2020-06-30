@@ -206,7 +206,7 @@ func exchangeCut(coins []int, amount int, m []int) int {
 
 按照动态规划的套路，需要明确「状态」和「选择」。定义 dp[n] 为凑够零钱金额 n 需要的最小硬币值，此为状态。选择某一个硬币，此为选择。则状态转移方程如下：
 
-	dp[n] = min{dp[n - coins[i] + 1} = min{dp[n - coins[i]]} + 1, 其中 i 的取值为所有硬币的序号
+	dp[n] = min{dp[n - coins[i]] + 1} = min{dp[n - coins[i]]} + 1, 其中 i 的取值为所有硬币的序号
 
 以示例1为例（示例 1: 输入: coins = [1, 2, 5], amount = 11），我们只要自底向上根据以上状态转移方程依次求解 dp[1], dp[2], dp[3] ...... dp[11]，最终的 dp[11]，即为我们所求的解。数学公式表达为：
 
