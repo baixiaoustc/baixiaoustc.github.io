@@ -34,4 +34,4 @@ Indexes:
 	
 结果为：
 
-![polygon_intersection](http://image99.renyit.com/image/polygon_intersection.png)
+![polygon_intersection](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/polygon_intersection.png)

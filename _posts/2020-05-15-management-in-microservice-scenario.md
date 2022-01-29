@@ -24,11 +24,11 @@ tags:
 >例如：一个依赖30个服务的系统，每个服务99.99%可用，99.99%的30次方 ≈ 99.7% ，0.3% 意味着1亿次请求会有 3,000,00次失败 ，换算成时间大约每月有2个小时服务不稳定，随着服务依赖数量的变多，服务总体可用性会变得更差。
 假设我们当前服务的外部依赖中，有一个服务出现了故障，可能是网络抖动出现了超时，亦或服务挂掉导致请求超时，短时间内看起来像下图这样：
 
->![](http://image99.renyit.com/image/2020-06-15-4.png)
+>![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2020-06-15-4.png)
 
 >慢慢的大量业务线程都会阻塞在对故障服务的调用上，请求排队，服务响应缓慢，系统资源渐渐消耗，最终导致服务崩溃，更可怕的是这种影响会持续的向上传递，进而导致服务雪崩。
 
->![](http://image99.renyit.com/image/2020-06-15-5.png)
+>![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2020-06-15-5.png)
 
 
 # 服务治理
@@ -39,11 +39,11 @@ tags:
 
 熔断器是在请求者的角度实施，保护接受者。当请求失败或超时达到一定的阈值时，触发熔断，使得之后的请求者在一定时间内不再发起调用，给予接受者一定的恢复时间，等其恢复正常后再发起调用。这种保护机制大大降低了链式异常引起的服务雪崩的可能性。
 
-![](http://image99.renyit.com/image/2020-06-15-2.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2020-06-15-2.png)
 
 我们实际基于 Netflex 开源的 hystrix 熔断组件进行开发。hystrix 熔断器的核心原理基于滑动窗口实现，每秒创建一个 bucket 进行统计。
 
-![](http://image99.renyit.com/image/2020-06-15-3.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2020-06-15-3.png)
 
 在熔断器里面有3种主要的状态：
 
@@ -60,7 +60,7 @@ tags:
 
 我们目前的选择是：
 
-![](http://image99.renyit.com/image/文章画图.009.jpeg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/文章画图.009.jpeg)
 
 
 可以看到降级是站在全站的角度，依次放弃不很重要的业务，保证系统核心能力，是一种业务和技术的妥协。
@@ -84,7 +84,7 @@ tags:
 
 详情可见[wiki](https://github.com/alibaba/sentinel-golang/wiki/%E6%B5%81%E9%87%8F%E6%8E%A7%E5%88%B6)。
 
-[](http://image99.renyit.com/image/2020-06-15-1.png)
+[](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2020-06-15-1.png)
 
 **值得注意的是，在计算限流配置的时候，一般从数据库压力入手。假设 Mysql 的极限 QPS 是1000，这个微服务有10个pod，那么限流的配置应该是 100 QPS**
 
@@ -96,7 +96,7 @@ tags:
 * 下游不想被上游击垮，使用限流
 * 全局的控制，使用降级
 
-![](http://image99.renyit.com/image/文章画图.010.jpeg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/文章画图.010.jpeg)
 
 # 参考
 

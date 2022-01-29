@@ -17,7 +17,7 @@ tags:
 
 ## 原文提出一种轨迹分割方法：在原轨迹中选取一些特征点，利用特征点的连线来近似原轨迹。特征点是多指轨迹中变化较大的点。 partition用特征点之间的线段表示。
 
-![trajectory_partitions](http://image99.renyit.com/image/trajectory_partitions.png)
+![trajectory_partitions](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/trajectory_partitions.png)
 
 对轨迹的分段要保证两个性质：准确性和简洁性。 准确性是指特征点不能太少，否则不足以概括轨迹特征； 简洁性是指特征点要利用尽可能少的点来概括轨迹特征。 这两个特性相互矛盾，因此算法要能够很好地平衡这两个特性。原文采用信息压缩中广泛采用的MDL(Minimum Description Length)原则来做平衡。
 
@@ -31,19 +31,19 @@ MDL原则包含两个部分：
 
 原文中对两部分的定义如下：
 
-![LDH_definition](http://image99.renyit.com/image/LDH_definition.png)
+![LDH_definition](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/LDH_definition.png)
 
 L(D/H)中没有包含水平距离是因为对于闭合的两条线段，其水平距离为零.
 
 例如：
 
-![formulation_of_the_MDL_cost](http://image99.renyit.com/image/formulation_of_the_MDL_cost.png)
+![formulation_of_the_MDL_cost](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/formulation_of_the_MDL_cost.png)
 
 原文又定义了两个概念。MDLpar(pi,pj)表示若点pi、pj为仅有的特征点时所需要的MDL开销，即L(H)+L(D/H)；MDLnopar(pi,pj)表示pi、pj之间没有特征点时的MDL开销，即退化为原始路径。具体来讲，MDLnopar(pi,pj)的L(D/H)部分为0（因为没有特征点所以partition跟原轨迹没有距离），L(H)部分为log2（原轨迹各线段的长度之和）。对于给定的一条线段，算法选择其特征点的标准是该点为特征点的MDL开销要小于不选择其作为特征点的MDL开销。
 
 算法流程如下：
 
-![algorithm_approximate_trajectory_partitioning](http://image99.renyit.com/image/algorithm_approximate_trajectory_partitioning.png)
+![algorithm_approximate_trajectory_partitioning](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/algorithm_approximate_trajectory_partitioning.png)
 
 我模拟的结果如下，红色代表特征点：
 

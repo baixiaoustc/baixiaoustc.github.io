@@ -35,7 +35,7 @@ Tensorflow提供了很多优化器，前文使用的tf.train.GradientDescentOpti
 
 先复习一下梯度下降的公式：
 
-![](http://image99.renyit.com/image/Jietu20171022-104909@2x.jpg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/Jietu20171022-104909@2x.jpg)
 
 「学习率（learning rate）」： 在整个梯度的长度上，你不能在每一次迭代的时候都对权重和偏置进行更新。这就会像是你穿着七里靴却试图到达一个山谷的底部。你会直接从山谷的一边到达另一边。为了到达底部，你需要一些更小的步伐，即只使用梯度的一部分，通常在 1/1000 区域中。我们称这个部分为「学习率（Learning rate）」。
 
@@ -43,7 +43,7 @@ Tensorflow提供了很多优化器，前文使用的tf.train.GradientDescentOpti
 * 此外，这种方法是对所有参数更新时应用同样的学习率，如果我们的数据是稀疏的，我们更希望对出现频率低的特征进行大一点的更新。
 * 对于非凸函数，还要避免陷于局部极小值处，或者鞍点处。鞍点如下图所示：
 
-![](http://image99.renyit.com/image/59439df75d2c5.png.jpeg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/59439df75d2c5.png.jpeg)
 
 为了应对上述这三点挑战，于是就有了下面这些算法。
 
@@ -51,7 +51,7 @@ Tensorflow提供了很多优化器，前文使用的tf.train.GradientDescentOpti
 
 momentum是模拟物理里动量的概念，积累之前的动量来替代真正的梯度。公式如下： 
 
-![](http://image99.renyit.com/image/Jietu20171022-105449@2x.jpg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/Jietu20171022-105449@2x.jpg)
 
 特点：
 
@@ -63,7 +63,7 @@ momentum是模拟物理里动量的概念，积累之前的动量来替代真正
 
 Adagrad其实是对学习率进行了一个约束。即： 
 
-![](http://image99.renyit.com/image/Jietu20171022-105730@2x.jpg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/Jietu20171022-105730@2x.jpg)
 
 特点：
 
@@ -75,7 +75,7 @@ Adagrad其实是对学习率进行了一个约束。即：
 
 Adam(Adaptive Moment Estimation)本质上是上述方法的结合进一步优化。公式如下： 
 
-![](http://image99.renyit.com/image/Jietu20171022-112718@2x.jpg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/Jietu20171022-112718@2x.jpg)
 
 特点：
 
@@ -93,11 +93,11 @@ Adam(Adaptive Moment Estimation)本质上是上述方法的结合进一步优化
 
 200次迭代的adam优化器，准确度均有提升：
 
-![](http://image99.renyit.com/image/201710221136image.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/201710221136image.png)
 
 1000次迭代的adam优化器，居然训练数据准确度达到100%：
 
-![](http://image99.renyit.com/image/2017102238image.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2017102238image.png)
 
 
 ## 结束

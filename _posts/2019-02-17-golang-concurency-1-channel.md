@@ -33,7 +33,7 @@ tags:
 
 本系列文章只谈golang的代码模型，因此取`并发`二字。下图很直观的区分了并发和并行：
 
-![](http://image99.renyit.com/image/2019-02-17-1.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-02-17-1.png)
 
 # goroutine
 

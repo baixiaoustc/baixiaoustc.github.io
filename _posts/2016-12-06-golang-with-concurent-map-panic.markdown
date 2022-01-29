@@ -71,7 +71,7 @@ tags:
 	
 在Write函数中申请新变量m，并不能解决问题：
 
-![image](http://image99.renyit.com/image/Jietu20170411-085651.jpg)
+![image](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/Jietu20170411-085651.jpg)
 
 可以通过拷贝map的做法来规避，将Write函数修改为：
 

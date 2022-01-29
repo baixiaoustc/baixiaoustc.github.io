@@ -109,7 +109,7 @@ func knapsackZeroOne2DP(weight []int, value []int, capacity int) int {
 			
 注意内部循环为降序，降序的理解是：为了保证 j-weight[i] 是「上一层」的状态，即 i 还在上一个循环的状态，即 j 在 j-weight[i] 的前面。画图加深理解：
 
-![](http://image99.renyit.com/文章画图.001.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/文章画图.001.png)
 
 {% highlight golang %}
 //01背包问题，1维dp
@@ -250,7 +250,7 @@ func canPartitionZeroOne(nums []int) bool {
 
 画图加深理解：
 
-![](http://image99.renyit.com/文章画图.002.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/文章画图.002.png)
 
 ### 示例
 

@@ -67,11 +67,11 @@ tags:
 
 业务服务B，从23号上线之后到26号运维发现CPU使用一直在呈上涨趋势。
 
-![](http://image99.renyit.com/image/2019-03-28-1.jpg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-03-28-1.jpg)
 
 分析pprof如下：
 
-![](http://image99.renyit.com/image/2019-03-28-2.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-03-28-2.png)
 
 runtime.siftdownTimer是定时器相关逻辑。对比一下上线代码可知是新引入的定时器的问题。[从99.9%CPU浅谈Golang的定时器实现原理](https://www.jianshu.com/p/c9e8aaa13415)对此讲解的比较清楚。最重要的概念是：time.After只会创建一个单次的timer，而time.Tick创建的是一个永久循环的timer。故前者不必须手动关闭，但是后者必须在不用时手动关闭掉：
 
@@ -98,15 +98,15 @@ runtime.siftdownTimer是定时器相关逻辑。对比一下上线代码可知�
 
 业务服务C，基本每天都有一两次内存超高报警，超过运维设置的1G的限制：
 
-![](http://image99.renyit.com/image/2019-03-28-3.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-03-28-3.png)
 
 分析pprof如下：
 
-![](http://image99.renyit.com/image/2019-03-28-4.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-03-28-4.png)
 
-![](http://image99.renyit.com/image/2019-03-28-5.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-03-28-5.png)
 
-![](http://image99.renyit.com/image/2019-03-28-6.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-03-28-6.png)
 
 可以看到是文件操作中申请了大量的内存，然后再json序列化使得情况恶劣翻倍。首先针对疑点处加日志，发现问题时间有超大文件的出现：
 

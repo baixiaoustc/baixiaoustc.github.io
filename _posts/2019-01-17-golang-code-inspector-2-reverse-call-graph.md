@@ -299,11 +299,11 @@ type CallerRelation struct {
 
 针对上面例子，`test4a`函数的反向调用关系应为：
 
-![](http://image99.renyit.com/image/2019-01-17-1.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-01-17-1.png)
 
 实际上可以将其转为树形结构，如图：
 
-![](http://image99.renyit.com/image/2019-01-17-2.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-01-17-2.png)
 
 那我们的工作就是构造出一棵树，其根节点为`test4a`函数。
 

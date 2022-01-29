@@ -156,7 +156,7 @@ func main() {
 
 结果很长就不贴出来了，整个AST的树形结构可以用如下图表示：
 
-![](http://image99.renyit.com/image/2019-01-14-1.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-01-14-1.png)
 
 **同样注意没有扫描出注释，需要的话要将`parser.ParseFile`的最后一个参数改为`parser.ParseComments`。**再对照如下ast.File的定义：
 

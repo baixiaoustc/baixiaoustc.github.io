@@ -39,15 +39,15 @@ redis 的普通用法不在本文普及，我们谈一谈使用中的几种特�
 
 正常情况时：
 
-![](http://image99.renyit.com/image/WeWork%20Helper20191125072043.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/WeWork%20Helper20191125072043.png)
 
 失效瞬间：
 
-![](http://image99.renyit.com/image/WeWork%20Helper20191125072141.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/WeWork%20Helper20191125072141.png)
 
 应对的办法就是，在缓存数据失效时遭遇并发多请求需要更新时，先用分布式锁锁住该资源，仅让一个服务/进程去更新，以此避免大量请求打到下游数据库。
 
-![](http://image99.renyit.com/image/WeWork%20Helper20191125073505.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/WeWork%20Helper20191125073505.png)
 
 
 # 缓存预加载

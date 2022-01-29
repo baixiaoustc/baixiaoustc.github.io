@@ -22,7 +22,7 @@ tags:
 
 文章[Elasticsearch Nested类型深入详解](https://blog.csdn.net/laoyang360/article/details/82950393)对其场景有较好描述：
 
-![](http://image99.renyit.com/image/2019-05-22-1.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-05-22-1.png)
 
 # 问题
 

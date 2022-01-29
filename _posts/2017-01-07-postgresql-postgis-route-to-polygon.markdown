@@ -93,4 +93,4 @@ tags:
 	
 模拟结果如图：
 
-![route_to_polygon](http://image99.renyit.com/image/route_to_polygon.png)
+![route_to_polygon](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/route_to_polygon.png)

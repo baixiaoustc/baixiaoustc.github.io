@@ -18,7 +18,7 @@ tags:
 
 引用https://github.com/tealeg/xlsx，使用不当会引发panic。当xlsx表格含有空行时，xlsx返回的行数和真实有效行数会造成困扰，如下图，23073之后的行都为无效数据，如果尝试获取cell数据会panic。
 
-![bad_xlsx](http://image99.renyit.com/image/bad_xlsx.png)
+![bad_xlsx](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/bad_xlsx.png)
 
 	package main
 	
@@ -47,6 +47,6 @@ tags:
 		}
 	}
 	
-![xlsx_panic](http://image99.renyit.com/image/xlsx_panic1.png)	
+![xlsx_panic](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/xlsx_panic1.png)	
 
 解决方法为获取cell数据前判断长度

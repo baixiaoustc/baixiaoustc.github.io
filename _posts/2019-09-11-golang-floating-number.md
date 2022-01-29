@@ -78,22 +78,22 @@ func math1() {
 ### 二进制表示
 大家都很清楚整数的二进制表示如下：
 
-![](http://image99.renyit.com/image/WeWork%20Helper20190911083219.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/WeWork%20Helper20190911083219.png)
 
 相对应的小数的二进制表示如下：
 
-![](http://image99.renyit.com/image/WeWork%20Helper20190911083258.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/WeWork%20Helper20190911083258.png)
 
 那么问题来了，对于无理数（Pi）或者是小数位很多的有理数而言，计算机不可能有足够多的或者无限多的bit位来保存它，那么不可避免的就有精度问题。相对的，如果能用有限个分母是2的幂次方的小数组成的话，就能精确表示。
 
 ### 浮点数的真正含义
 实际上浮点数用科学计数法来表示，运用尾数和指数，外加符号来表示。IEEE754定义的单精度和双精度浮点数如下：
 
-![](http://image99.renyit.com/image/WeWork%20Helper20190911090047.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/WeWork%20Helper20190911090047.png)
 
 需要注意符号位在首，且指数有127位（单精度）或者1023位（双精度）的偏移量来表示正负。举一个例子：比如十进制数123.125，其二进制表示为：1111011.001，规格化表示为：1.111011001×pow(2,6) 也就是1.111011001×pow(2,133−127)，f（尾数）= 111011001，E（指数） = 133 = 10000101，图示如下：
 
-![](http://image99.renyit.com/image/2019-09-11-1)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-09-11-1)
 
 ## how，如何避免精度问题
 ### 按照自身的需求对小数点后多少位进行截断

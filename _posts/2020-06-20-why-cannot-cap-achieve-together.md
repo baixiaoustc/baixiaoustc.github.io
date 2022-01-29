@@ -17,7 +17,7 @@ tags:
 
 再来细究一下 CAP 为啥无法同时达成？既然无法同时达成，总结一下各常见数据库分别适用其中哪两点：
 
-![](http://image99.renyit.com/image/2020-03-27-1.jpeg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2020-03-27-1.jpeg)
 
 # 必须优先满足P
 
@@ -33,7 +33,7 @@ tags:
 
 # C和A无法同时满足
 
-![](http://image99.renyit.com/image/2020-06-20-1.jpeg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2020-06-20-1.jpeg)
 
 假设数据库有两个拷贝在两个不同的数据中心。具体怎么做备份并不重要，可以是 Single-Master，或者多个 Leader，或者基于 Quorum 的备份（Dynamo 使用的方式）。要求是当数据被写到一个数据中心的时候，他也一定要被写到另一个数据中心。
 

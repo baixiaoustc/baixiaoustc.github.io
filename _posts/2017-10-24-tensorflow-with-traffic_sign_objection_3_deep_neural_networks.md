@@ -87,11 +87,11 @@ Sigmoid函数曾被广泛地应用，但由于其自身的一些缺陷，现在�
 
 ### 增加隐藏层
 
-![](http://image99.renyit.com/image/2019-06-04-2.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-06-04-2.png)
 
 为了提高识别的准确度，我们将为神经网络增加更多的层。第二层神经元将计算前一层神经元输出的加权和，而非计算像素的加权和。这里有一个 5 层全相连的神经网络的例子：
 
-![](http://image99.renyit.com/image/Jietu20171024-192925.jpg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/Jietu20171024-192925.jpg)
 
 我们继续用 softmax 来作为最后一层的激活函数，这也是为什么在分类这个问题上它性能优异的原因。但在中间层，我们要使用最经典的激活函数：sigmoid。实际中，我们只使用了一个三层的神经网络，代码：
 
@@ -126,25 +126,25 @@ Sigmoid函数曾被广泛地应用，但由于其自身的一些缺陷，现在�
 
 我们选取两个隐藏层的神经元个数分别为300和150（且Adam的学习率为0.003时），看看效果。200次迭代的效果如下，训练和测试的准确度分别为87%和83%，还没有上一篇文章的好呢？
 
-![](http://image99.renyit.com/image/201710241936image.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/201710241936image.png)
 
 再看下1000次迭代的效果为95%和81%，也是不及上一篇文章。
 
-![](http://image99.renyit.com/image/201710241939image.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/201710241939image.png)
 
 经过多次尝试，将两个隐藏层的神经元个数调整为为500和250（且Adam的学习率为0.002时），达到了最优效果。这也说明机器学习的调参是很重要的。调整后的效果如下：
 
 200次迭代，测试准确度达到98%，测试准确度达到85.6%：
 
-![](http://image99.renyit.com/image/201710241943image.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/201710241943image.png)
 
 1000次迭代早早的测试准确度达到100%，测试准确度停留在87.6%：
 
-![](http://image99.renyit.com/image/201710241945image.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/201710241945image.png)
 
 ### 学习速率衰退
 
-![](http://image99.renyit.com/image/2019-06-04-1.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-06-04-1.png)
 
 把上面1000次迭代的效果看完，你会发现从500次开始，测试数据的准确度和loss都在震荡。这是学习率过大的表现。但我们不能仅仅将学习率除以十或者永远不停地做训练。一个好的解决方案是开始很快随后将学习速率指数级衰减至比如说 0.001。代码如下：
 
@@ -181,7 +181,7 @@ Sigmoid函数曾被广泛地应用，但由于其自身的一些缺陷，现在�
 
 可见，1000次迭代把准确度提升到88.7%，且准确度没有在震荡：
 
-![](http://image99.renyit.com/image/201711010912image.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/201711010912image.png)
 
 **特别说明：通常情况下，我们工程中发现，3层神经网络效果优于2层神经网络，但是如果把层数再不断增加(4,5,6层)，对最后结果的帮助就没有那么大的跳变了。不过在卷积神经网上还是不一样的，深层的网络结构对于它的准确率有很大的帮助，直观理解的方式是，图像是一种深层的结构化数据，因此深层的卷积神经网络能够更准确地把这些层级信息表达出来。摘自[此文](https://whuhan2013.github.io/blog/2017/03/02/neural-network-learn/)，且我的实验过程也是如此**
 

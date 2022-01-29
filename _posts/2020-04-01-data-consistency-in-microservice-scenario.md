@@ -46,7 +46,7 @@ tags:
 
 下图是同步请求及重试的示意图：
 
-![](http://image99.renyit.com/文章画图.004.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/文章画图.004.png)
 
 ## 同步请求+轮询
 
@@ -73,7 +73,7 @@ tags:
 
 下图是同步请求+轮询及回执的示意图：
 
-![](http://image99.renyit.com/文章画图.005.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/文章画图.005.png)
 
 ## 异步队列
 
@@ -98,7 +98,7 @@ tags:
 
 下图是异步队列及落表的示意图：
 
-![](http://image99.renyit.com/image/文章画图.006.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/文章画图.006.png)
 
 *对照我们的 mns 系统。*
 
@@ -113,7 +113,7 @@ tags:
 * 本系统与下游服务交互后，通过注册的验证方式判断结果是否正常
 * 错误的结果通过队列重试，失败次数过多后落表报警手动处理
 
-![](http://image99.renyit.com/image/文章画图.007.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/文章画图.007.png)
 
 *对照我们的 notifier 系统。*
 
@@ -128,7 +128,7 @@ tags:
 * 本系统代替业务服务进行不断重试，并将最终结果返回给上游业务服务
 * 失败次数过多后落表报警手动处理
 
-![](http://image99.renyit.com/image/文章画图.008.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/文章画图.008.png)
 
 *对照我们的 replay_system 系统。*
 

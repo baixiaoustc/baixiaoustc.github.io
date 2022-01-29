@@ -60,7 +60,7 @@ tags:
 * Availability 可用性，指系统提供的服务必须一直处于可用的状态，对于用户的每一个操作请求总是能够在有限的时间内返回结果。这里的重点是"有限时间内"和"返回结果"。
 * Partition tolerance 分区容错性，约束了一个分布式系统具有如下特性：分布式系统在遇到任何网络分区故障的时候，仍然需要能够保证对外提供满足一致性和可用性的服务，除非是整个网络环境都发生了故障。
 
-![](http://image99.renyit.com/image/2020-03-28-3.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2020-03-28-3.png)
 
 CAP 理论认为，一个分布式系统中的 CAP三种属性，只能同时满足其中两种。
 
@@ -98,7 +98,7 @@ BASE 理论 是对 CAP 的妥协。对于普遍的互联网场景而言，保证
 > * 单读一致性。如果一个进程已经检测到对象的特殊值，那么后续的访问都不会返回任何历史值。
 > * 单写一致性。在这样一个例子中，系统保证同一进程的写入是连续的，要建造不能保证这个层次一致性的系统是有一定难度的。
 
-![](http://image99.renyit.com/image/2020-04-14-1.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2020-04-14-1.png)
 
 <center>图自《大数据日知录：架构与算法》</center>
 
@@ -125,7 +125,7 @@ CAP 理论中要求的一致性正是线性一致性（linearizable consistency�
 
 让我们来看一个例子。在这个例子中的系统并不是可线性化的。
 
-![](http://image99.renyit.com/2020-03-27-2.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2020-03-27-2.png)
 
 <center>图自《这可能是我看过最通俗也是最深刻的CAP理论》</center>
 

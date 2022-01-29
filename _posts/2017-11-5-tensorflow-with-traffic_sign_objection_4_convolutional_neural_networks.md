@@ -92,11 +92,11 @@ tags:
 
 回到我们具体的任务中，搭建一个卷积网络如下：
 
-![](http://image99.renyit.com/image/Jietu20171105-120418@2x.jpg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/Jietu20171105-120418@2x.jpg)
 
 为了将我们的代码转化为卷积模型，我们需要为卷积层定义适当的权重张量，然后将该卷积层添加到模型中。我们已经理解到卷积层需要以下形式的权重张量。下面代码是用 TensorFlow 语法来对其初始化：
 
-![](http://image99.renyit.com/image/Jietu20171105-120648@2x.jpg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/Jietu20171105-120648@2x.jpg)
 
 
 	W = tf.Variable(tf.truncated_normal([4, 4, 3, 2], stddev=0.1))
@@ -110,15 +110,15 @@ tags:
 
 我们再来看看运算步骤：
 
-![](http://image99.renyit.com/image/2019-06-04-4.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-06-04-4.png)
 
 200次迭代(cnn+sigmoid)，测试准确度达到100%，测试准确度达到87.5%：
 
-![](http://image99.renyit.com/image/201711051209.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/201711051209.png)
 
 增加到1000次，测试准确度只提高到88.1%，估计是过拟合了：
 
-![](http://image99.renyit.com/image/201711051212.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/201711051212.png)
 
 完整代码在[https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_3.0_convolutional.py](https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_3.0_convolutional.py)
 
@@ -127,11 +127,11 @@ tags:
 
 从上面的实验看到，测试准确度很早的达到了100%，但是测试数据这边没有提升。这是过拟合的表现，学习算法只是在训练数据上做工作并相应地优化训练的交叉熵，它再也看不到测试数据了。
 
-![](http://image99.renyit.com/image/2019-06-04-3.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/2019-06-04-3.png)
 
 它不会立刻影响你模型对于真实世界的识别能力，但是它会使你运行的众多迭代毫无用处，而且这基本上是一个信号——告诉我们训练已经不能再为模型提供进一步改进了。这种无法连接通常会被标明「过拟合（overfitting）」，而且当你看到这个的时候，你可以尝试采用一种规范化（regularization）技术，称之为「dropout」。
 
-![](http://image99.renyit.com/image/Jietu20171108-091103@2x.jpg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/Jietu20171108-091103@2x.jpg)
 
 在 dropout 里，在每一次训练迭代的时候，你可以从网络中随机地放弃一些神经元。你可以选择一个使神经元继续保留的概率 pkeep，通常是 50% 到 75% 之间，然后在每一次训练的迭代时，随机地把一些神经元连同它们的权重和偏置一起去掉。在一次迭代里，不同的神经元可以被一起去掉（而且你也同样需要等比例地促进剩余神经元的输出，以确保下一层的激活不会移动）。当测试你神经网络性能的时候，你再把所有的神经元都装回来 (pkeep=1)。
 
@@ -148,11 +148,11 @@ TensorFlow 提供一个 dropout 函数可以用在一层神经网络的输出上
 
 200次迭代(cnn+0.75的dropout)，测试准确度达到88.7%：
 
-![](http://image99.renyit.com/image/201711080921image.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/201711080921image.png)
 
 1000次迭代(cnn+0.75的dropout)，测试准确度达到89.1%，还是没能突破90%：
 
-![](http://image99.renyit.com/image/201711080923image.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/201711080923image.png)
 
 完整代码在[https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_3.1_convolutional_dropout.py](https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_3.1_convolutional_dropout.py)
 
@@ -167,15 +167,15 @@ TensorFlow 提供一个 dropout 函数可以用在一层神经网络的输出上
 	
 200次终于突破90%！！！
 
-![](http://image99.renyit.com/image/201711080954image.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/201711080954image.png)
 
 1000次达到最优效果91.6%！！！
 
-![](http://image99.renyit.com/image/201711080955image.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/201711080955image.png)
 
 最终效果：
 
-![](http://image99.renyit.com/image/201711080956image.png)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/201711080956image.png)
 
 完整代码在[https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_3.3_convolutional_color_dropout.py](https://github.com/baixiaoustc/tensorflow_tsc/blob/master/tsc_3.3_convolutional_color_dropout.py)
 

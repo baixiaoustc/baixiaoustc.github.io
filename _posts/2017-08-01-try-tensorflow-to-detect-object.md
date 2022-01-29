@@ -40,7 +40,7 @@ tags:
 
 tensorflow官方提供了如下几种训练模型，我们选择速度最快的“ssd_mobilenet_v1_coco_11_06_2017”：
 
-![](http://image99.renyit.com/image/Jietu20170801-185303@2x.jpg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/Jietu20170801-185303@2x.jpg)
 
 首先是加载计算图[graph](https://www.tensorflow.org/api_docs/python/tf/Graph)。一个TensorFlow的运算，被表示为一个数据流的图。一幅图中包含一些操作（Operation）对象，这些对象是计算节点。
 
@@ -55,7 +55,7 @@ tensorflow官方提供了如下几种训练模型，我们选择速度最快的�
             
 然后是加载识别标签，标签如下图：
 
-![](http://image99.renyit.com/image/Jietu20170801-193009@2x.jpg)
+![](https://baixiao-1309470472.cos.ap-chengdu.myqcloud.com/image/Jietu20170801-193009@2x.jpg)
 
 ### 识别图片
 
