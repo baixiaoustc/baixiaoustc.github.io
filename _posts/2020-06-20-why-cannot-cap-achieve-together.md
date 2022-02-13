@@ -64,4 +64,4 @@ ZooKeeper 要求达到大多数 Quorum，来达到共识，才能处理一个写
 
 # 参考
 
-[](https://mp.weixin.qq.com/s/6PgqyigrgVICl0JiI73oNg)
+[这可能是我看过最通俗也是最深刻的CAP理论](https://mp.weixin.qq.com/s/6PgqyigrgVICl0JiI73oNg)
