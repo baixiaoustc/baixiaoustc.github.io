@@ -1,0 +1,15 @@
+---
+author: baixiaoustc
+comments: false
+date: 2022-02-12 09:54:23+00:00
+layout: post
+slug: 2022-02-12-what-is-raising-a-girl-should-be-generously
+title:【转】什么叫富养女
+categories:
+- 随笔
+tags:
+- 教育
+---
+
+
+前几天想到「富养女」的富，不是富足的富，而是丰富的富。想就这个话题写一篇随笔，不过网上翻了一下别人写的比较好，故直接转载吧。
