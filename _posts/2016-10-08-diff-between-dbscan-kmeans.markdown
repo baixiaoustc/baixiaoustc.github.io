@@ -4,7 +4,7 @@ comments: true
 date: 2016-10-08 04:55:25+00:00
 layout: post
 slug: 2016-10-08-diff-between-dbscan-kmeans
-title: 转：基于密度聚类的DBSCAN和kmeans算法比较
+title: 【转】基于密度聚类的DBSCAN和kmeans算法比较
 wordpress_id: 264
 categories:
 - 路线聚集

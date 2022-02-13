@@ -4,7 +4,7 @@ comments: true
 date: 2016-09-07 01:11:45+00:00
 layout: post
 slug: 2016-09-07-diff-between-ai-ml-dl
-title: 转：一篇文章讲清楚人工智能、机器学习和深度学习的区别
+title: 【转】一篇文章讲清楚人工智能、机器学习和深度学习的区别
 wordpress_id: 200
 categories:
 - 机器学习
