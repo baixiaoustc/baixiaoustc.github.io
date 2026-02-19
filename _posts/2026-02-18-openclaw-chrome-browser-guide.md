@@ -29,20 +29,23 @@ tags: openclaw chrome browser extension tutorial
 
 ## 解决方案
 
-### 1. 安装 OpenClaw Browser Relay 扩展
+### 1. 📦 使用官方命令生成并安装扩展
 
-由于无法访问 Chrome 网上应用店，采用**手动安装**方式：
+1.  **安装扩展到本地路径**
+    打开你的终端，直接运行以下命令。这个命令会自动将 OpenClaw Chrome 扩展的文件释放到你的电脑上一个特定的位置 。
+    ```bash
+    openclaw browser extension install
+    ```
 
-**下载步骤：**
-1. 访问 https://github.com/openclaw/openclaw/tree/main/extensions
-2. 找到 `browser-relay` 或 `chrome` 文件夹
-3. 下载整个扩展文件夹
+2.  **获取扩展所在的具体目录**
+    安装完成后，你需要知道文件被放到了哪里。运行下面的命令，它会打印出完整的文件夹路径 。
+    ```bash
+    openclaw browser extension path
+    ```
+    **请复制这个命令输出的路径**，下一步会用到。
 
-**安装步骤：**
-1. 打开 Chrome，访问 `chrome://extensions/`
-2. 开启右上角「开发者模式」
-3. 点击「加载已解压的扩展程序」
-4. 选择下载的 `browser-relay` 文件夹
+3. **安装步骤：**
+打开 Chrome，访问 `chrome://extensions/`，开启右上角「开发者模式」，点击「加载已解压的扩展程序」，选择刚才的路径并安装。
 
 ### 2. 连接扩展
 
