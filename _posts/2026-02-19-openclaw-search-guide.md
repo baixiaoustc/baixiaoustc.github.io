@@ -264,18 +264,9 @@ openclaw browser snapshot <targetId>
 ### 6.3 相关资源链接
 
 - [OpenClaw 官方文档](https://docs.openclaw.ai)
-- [Jekyll 官方文档 - 文章](https://jekyllrb.com/docs/posts/)
 - [Brave Search API](https://brave.com/search/api/)
 - [Azure Bing Search API](https://portal.azure.com/)
 
----
-
-## 更新日志
-
-| 日期 | 版本 | 更新内容 |
-|------|------|---------|
-| 2026-02-19 | v1.0 | 初始版本，记录 OpenClaw 搜索功能使用经验 |
-| 2026-02-19 | v1.1 | 添加"未成功配置"标志，说明搜索 API 配置失败原因 |
 
 ---
 
