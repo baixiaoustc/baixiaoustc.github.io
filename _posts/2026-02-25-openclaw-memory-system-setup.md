@@ -60,7 +60,6 @@ OpenClaw 的"记忆"不是单一的，而是由 **3 个互补的配置文件** �
 | **基础信息** | 白想，称呼"白想/你"，时区 Asia/Shanghai，位置成都 |
 | **职业背景** | 蚂蚁集团，平台架构和开发，产品 derisk（AI-SRE 赛道） |
 | **关注领域** | AI 产品、LLM/Agent 进展、平台架构、技术风险智能化 |
-| **家庭情况** | 有两个女儿 |
 | **目标习惯** | 每天输出学习文档，持续学习 AI 领域最新技术 |
 | **协作偏好** | 金字塔原理（先结论后原因）、简洁直接、少套话 |
 
@@ -102,51 +101,6 @@ OpenClaw 的"记忆"不是单一的，而是由 **3 个互补的配置文件** �
 
 ---
 
-## 关键动作清单（能复制的动作）
-
-### 已完成的配置动作
-
-```bash
-# 1. 确认三大核心文件状态
-ls -la ~/.openclaw/workspace/*.md
-
-# 2. 查看 USER.md 内容
-cat ~/.openclaw/workspace/USER.md
-
-# 3. 查看 MEMORY.md 内容
-cat ~/.openclaw/workspace/MEMORY.md
-
-# 4. 确认定时任务
-cat ~/.openclaw/cron/*.json | grep -A5 "每日技术总结"
-
-# 5. 确认 AGENTS.md 已删除
-ls ~/.openclaw/workspace/AGENTS.md  # 应提示不存在
-```
-
-### 每日使用流程
-
-```
-1. 检查定时任务执行结果（每天 01:00 后）
-   → 查看飞书通知
-   → 检查 MEMORY.md 是否更新
-
-2. 开始学习任务
-   → 确认今日主题
-   → 按 MEMORY.md 中的"每日学习文档产出流程"执行
-
-3. 撰写笔记
-   → 遵循金字塔原理：先结论后原因
-   → 满足 MEMORY.md 中的"交付标准"
-
-4. 输出文件
-   → 保存到 workspace
-   → 文件名格式: YYYY-MM-DD-主题.md
-
-5. 发布（可选）
-   → 发布到 GitHub Pages
-```
-
----
 
 ## 总结
 
