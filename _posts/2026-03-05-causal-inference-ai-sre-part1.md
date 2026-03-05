@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "因果推断与 AI-SRE 技术解析（一）"
-date: 2026-03-01 00:00:00 +0800
+date: 2026-03-05 00:00:00 +0800
 categories: ai-sre causality
 tags: ai-sre causality dowhy econml traversal
 ---
@@ -10,7 +10,7 @@ tags: ai-sre causality dowhy econml traversal
 
 ## 从 Traversal 看因果推断基础与开源工具链
 
-**日期**: 2026-03-01  
+**日期**: 2026-03-05  
 **关键词**: 因果推断、AIOps、SRE、DoWhy、EconML、Traversal
 
 **系列说明**: 本文是"因果推断与 AI-SRE 技术解析"系列的第一篇，主要介绍因果推断基础概念、核心原理，以及 DoWhy 和 EconML 两大开源工具链。后续文章将继续深入探讨 Traversal 的技术架构、与 LLM Agent 的集成、以及在实际工作中的应用。
@@ -553,4 +553,4 @@ Step 4: 决策与执行
 
 ---
 
-*本文基于 2026-03-01 的技术讨论整理，主要探讨因果推断在 AI-SRE 领域的应用，以及 DoWhy、EconML 等开源工具的使用。*
+*本文基于 2026-03-05 的技术讨论整理，主要探讨因果推断在 AI-SRE 领域的应用，以及 DoWhy、EconML 等开源工具的使用。*
