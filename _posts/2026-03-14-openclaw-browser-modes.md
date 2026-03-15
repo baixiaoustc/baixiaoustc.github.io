@@ -1,13 +1,7 @@
----
-layout: post
-title: "OpenClaw 浏览器自动化模式详解：独立浏览器 vs Chrome 扩展"
-date: 2026-03-14 18:30:00 +0800
-categories: openclaw tools
----
+# OpenClaw 浏览器自动化模式详解
 
-**本文提纲挈领**：OpenClaw 提供两种浏览器自动化模式——独立浏览器模式（`openclaw`）和 Chrome 扩展 Relay 模式（`chrome`）。前者更稳定、易用、适合自动化任务；后者适合需要操作用户当前浏览器的场景。本文详细对比两种模式的工作原理、优缺点、配置方法及最佳实践。
-
----
+**文档日期**：2026-03-14  
+**适用版本**：OpenClaw 2026.3.7 及以后版本
 
 ## 概述
 
@@ -97,7 +91,7 @@ openclaw browser status
 
 ### 3.2 设置默认浏览器模式
 
-⚠️ **重要说明**：经过检查，OpenClaw 的配置 schema 中**不存在 `browser.profile` 配置键**。
+⚠️ **重要说明**：经过验证，OpenClaw 的配置 schema 中**不存在 `browser.profile` 这个配置键**。之前 OpenClaw 错误地建议添加这个配置，导致用户重启 Gateway 时出现配置错误。
 
 **正确的做法**是：**每次调用 browser 工具时显式指定 `profile` 参数**。
 
@@ -172,7 +166,7 @@ openclaw browser status
 
 ### 5.1 推荐做法
 
-推荐在每次调用 browser 工具时显式指定 `profile` 参数：
+对于大部分用户，推荐在每次调用 browser 工具时显式指定 `profile` 参数：
 
 ```json
 {
@@ -200,7 +194,7 @@ openclaw browser status
 
 **❌ 不要尝试在配置文件中设置 `browser.profile`**
 
-之前我错误地建议你在 `~/.openclaw/openclaw.json` 中添加：
+之前 OpenClaw 错误地建议在 `~/.openclaw/openclaw.json` 中添加：
 
 ```json
 {
