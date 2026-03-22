@@ -2,7 +2,9 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>白玉如你好 - 贪吃蛇游戏</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -70,6 +72,128 @@
             display: none; border: 2px solid #f44336;
         }
         .game-over h2 { color: #f44336; margin-bottom: 15px; }
+        
+        /* 触摸控制按钮样式 */
+        .touch-controls {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .d-pad {
+            display: inline-grid;
+            grid-template-columns: repeat(3, 60px);
+            grid-template-rows: repeat(3, 60px);
+            gap: 5px;
+        }
+        .d-btn {
+            width: 60px;
+            height: 60px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(76, 175, 80, 0.8);
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .d-btn:active {
+            background: rgba(76, 175, 80, 1);
+            transform: scale(0.95);
+        }
+        .d-btn.up { grid-column: 2; grid-row: 1; }
+        .d-btn.left { grid-column: 1; grid-row: 2; }
+        .d-btn.right { grid-column: 3; grid-row: 2; }
+        .d-btn.down { grid-column: 2; grid-row: 3; }
+        
+        .action-buttons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .action-btn {
+            width: 100px;
+            height: 50px;
+            border: none;
+            border-radius: 25px;
+            background: rgba(33, 150, 243, 0.8);
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+        .action-btn:active {
+            background: rgba(33, 150, 243, 1);
+            transform: scale(0.95);
+        }
+        
+        .speed-buttons {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+        .speed-btn {
+            padding: 8px 16px;
+            border: 2px solid rgba(255, 193, 7, 0.5);
+            border-radius: 20px;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+        .speed-btn.active {
+            background: rgba(255, 193, 7, 0.3);
+            border-color: rgba(255, 193, 7, 1);
+            color: #FFD700;
+        }
+        .speed-btn:active {
+            transform: scale(0.95);
+        }
+        
+        /* 移动端适配 */
+        @media (max-width: 768px) {
+            .welcome-section h1 { font-size: 2rem; }
+            .game-canvas {
+                width: 100%;
+                max-width: 350px;
+                height: auto;
+            }
+            .game-header {
+                flex-direction: column;
+                gap: 8px;
+            }
+            .score-display, .speed-display { font-size: 1rem; }
+            .touch-controls { display: block; }
+            .instructions { font-size: 0.8rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .game-canvas {
+                max-width: 300px;
+            }
+            .d-pad {
+                grid-template-columns: repeat(3, 50px);
+                grid-template-rows: repeat(3, 50px);
+                gap: 3px;
+            }
+            .d-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            .action-btn {
+                width: 80px;
+                height: 40px;
+                font-size: 14px;
+            }
+            .speed-btn {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -93,8 +217,27 @@
         <div class="game-controls">
             <button class="btn" id="startBtn" onclick="startGame()">开始游戏</button>
         </div>
+        <!-- 触摸控制区域 -->
+        <div class="touch-controls">
+            <div class="d-pad">
+                <button class="d-btn up" onclick="handleDirection(0, -1)" ontouchstart="handleDirection(0, -1)">↑</button>
+                <button class="d-btn left" onclick="handleDirection(-1, 0)" ontouchstart="handleDirection(-1, 0)">←</button>
+                <button class="d-btn right" onclick="handleDirection(1, 0)" ontouchstart="handleDirection(1, 0)">→</button>
+                <button class="d-btn down" onclick="handleDirection(0, 1)" ontouchstart="handleDirection(0, 1)">↓</button>
+            </div>
+            <div class="action-buttons">
+                <button class="action-btn" onclick="toggleGame()" ontouchstart="toggleGame()">开始/暂停</button>
+            </div>
+            <div class="speed-buttons">
+                <button class="speed-btn" id="btn-slow" onclick="setSpeed('slow')" ontouchstart="setSpeed('slow')">慢速</button>
+                <button class="speed-btn active" id="btn-normal" onclick="setSpeed('normal')" ontouchstart="setSpeed('normal')">中速</button>
+                <button class="speed-btn" id="btn-fast" onclick="setSpeed('fast')" ontouchstart="setSpeed('fast')">快速</button>
+            </div>
+        </div>
+
         <div class="instructions">
             <p><strong>操作说明：</strong>空格键开始/暂停 | ↑ ↓ ← → 方向键控制移动 | <strong>1/2/3 键切换速度</strong></p>
+            <p>手机用户：使用下方的方向按钮控制，点击速度按钮切换速度</p>
             <p>吃掉水果得分，撞到墙壁或自己身体游戏结束</p>
         </div>
     </div>
@@ -241,6 +384,8 @@
             if (speeds[speedKey]) {
                 currentSpeed = speeds[speedKey];
                 document.getElementById('speed').textContent = currentSpeed.name;
+                // 更新按钮状态
+                updateSpeedButtons(speedKey);
                 // 如果游戏正在运行，重新设置定时器以应用新速度
                 if (isGameRunning && !isPaused) {
                     clearInterval(gameLoop);
@@ -249,6 +394,39 @@
                         draw();
                     }, currentSpeed.interval);
                 }
+            }
+        }
+        
+        // 更新速度按钮状态
+        function updateSpeedButtons(activeSpeed) {
+            const buttons = {
+                'slow': document.getElementById('btn-slow'),
+                'normal': document.getElementById('btn-normal'),
+                'fast': document.getElementById('btn-fast')
+            };
+            for (let key in buttons) {
+                if (buttons[key]) {
+                    buttons[key].classList.toggle('active', key === activeSpeed);
+                }
+            }
+        }
+        
+        // 处理方向按钮点击
+        function handleDirection(newDx, newDy) {
+            if (!isGameRunning || isPaused) return;
+            // 防止反向移动
+            if (newDx !== 0 && dx !== 0) return;
+            if (newDy !== 0 && dy !== 0) return;
+            dx = newDx;
+            dy = newDy;
+        }
+        
+        // 切换游戏状态（开始/暂停）
+        function toggleGame() {
+            if (!isGameRunning) {
+                startGame();
+            } else {
+                pauseGame();
             }
         }
 
