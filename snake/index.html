@@ -39,6 +39,9 @@
         }
         .score-display { font-size: 1.2rem; font-weight: bold; }
         .score-display span { color: #4CAF50; }
+        .speed-display { font-size: 1rem; color: #fff; }
+        .speed-display span { color: #FFD700; }
+        .speed-hint { font-size: 0.8rem; color: #aaa; }
         .game-canvas {
             display: block; background: #1a1a2e;
             border: 2px solid #4CAF50; border-radius: 8px;
@@ -77,6 +80,7 @@
     <div class="game-container">
         <div class="game-header">
             <div class="score-display">得分: <span id="score">0</span></div>
+            <div class="speed-display">速度: <span id="speed">中速</span> <span class="speed-hint">(按1/2/3切换)</span></div>
         </div>
         <div style="position: relative; display: inline-block;">
             <canvas id="gameCanvas" class="game-canvas" width="400" height="400"></canvas>
@@ -90,7 +94,7 @@
             <button class="btn" id="startBtn" onclick="startGame()">开始游戏</button>
         </div>
         <div class="instructions">
-            <p><strong>操作说明：</strong>空格键开始/暂停 | ↑ ↓ ← → 方向键控制移动</p>
+            <p><strong>操作说明：</strong>空格键开始/暂停 | ↑ ↓ ← → 方向键控制移动 | <strong>1/2/3 键切换速度</strong></p>
             <p>吃掉水果得分，撞到墙壁或自己身体游戏结束</p>
         </div>
     </div>
@@ -112,6 +116,14 @@
         let gameLoop = null;
         let isPaused = false;
         let isGameRunning = false;
+        
+        // 游戏速度控制
+        const speeds = {
+            slow: { interval: 150, name: '慢速', key: '1' },
+            normal: { interval: 100, name: '中速', key: '2' },
+            fast: { interval: 60, name: '快速', key: '3' }
+        };
+        let currentSpeed = speeds.normal;
         
         function initGame() {
             snake = [{x: 10, y: 10}];
@@ -214,7 +226,7 @@
             gameLoop = setInterval(() => {
                 update();
                 draw();
-            }, 100);
+            }, currentSpeed.interval);
             document.getElementById('startBtn').textContent = '游戏中';
             document.getElementById('startBtn').disabled = true;
         }
@@ -224,6 +236,22 @@
             isPaused = !isPaused;
         }
         
+        // 速度控制函数
+        function setSpeed(speedKey) {
+            if (speeds[speedKey]) {
+                currentSpeed = speeds[speedKey];
+                document.getElementById('speed').textContent = currentSpeed.name;
+                // 如果游戏正在运行，重新设置定时器以应用新速度
+                if (isGameRunning && !isPaused) {
+                    clearInterval(gameLoop);
+                    gameLoop = setInterval(() => {
+                        update();
+                        draw();
+                    }, currentSpeed.interval);
+                }
+            }
+        }
+
         // 键盘事件监听 - 在脚本末尾添加
         document.onkeydown = function(e) {
             // 阻止所有方向键和空格键的默认行为
@@ -232,6 +260,11 @@
             }
             
             var code = e.keyCode;
+            
+            // 数字键 1/2/3 - 切换速度
+            if(code === 49) { setSpeed('slow'); return false; }      // 1 - 慢速
+            if(code === 50) { setSpeed('normal'); return false; }   // 2 - 中速
+            if(code === 51) { setSpeed('fast'); return false; }       // 3 - 快速
             
             // 空格键 - 开始/暂停
             if(code === 32) {
