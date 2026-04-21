@@ -2,8 +2,8 @@
 layout: post
 title: "Resolve AI 与 AI-SRE 技术路线对比分析：赋能而非取代"
 date: 2026-04-21 12:30:00 +0800
-categories: ai-sre devops
-tags: resolve-ai causal-inference sre ai-operations
+categories: [ai-sre, devops]
+tags: [resolve-ai, causal-inference, sre, ai-operations]
 ---
 
 > 本文深度对比分析了当前 AI-SRE 领域的两条技术路线：以 Resolve AI 为代表的"AI 工程师"路线，和基于因果推断的"AI 医生"路线。核心观点是：**AI-SRE 的目标应该是赋能 SRE，而非取代他们**。
