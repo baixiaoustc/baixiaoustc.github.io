@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Resolve AI 与 AI-SRE 技术路线对比分析：赋能而非取代"
-date: 2026-04-21 12:30:00 +0800
+date: 2026-04-21 00:30:00 +0800
 categories: [ai-sre, devops]
 tags: [resolve-ai, causal-inference, sre, ai-operations]
 ---
