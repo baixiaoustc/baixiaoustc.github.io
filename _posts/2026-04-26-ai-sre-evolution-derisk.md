@@ -28,7 +28,7 @@ AI SRE，是用大语言模型和智能体技术重构站点可靠性工程的�
 
 #### 背景与起点
 
-![pic24](/assets/images/posts/2026-04-26-ai-sre/pic24.png)
+![pic24](/assets/images/posts/2026-04-26-ai-sre/pic24.jpeg)
 
 2024年，我在QECon上海站做了第一次系统性对外分享，题目是「蚂蚁集团基于LLM的SRE智能体落地实践」。
 
@@ -75,7 +75,7 @@ AI SRE，是用大语言模型和智能体技术重构站点可靠性工程的�
 
 #### 从SRE智能体到DeRisk平台
 
-![pic25](/assets/images/posts/2026-04-26-ai-sre/pic25.png)
+![pic25](/assets/images/posts/2026-04-26-ai-sre/pic25.jpeg)
 
 2025年的CSDI峰会，分享主题变成了「DeRisk AI原生的智能运维平台实践」。从「SRE智能体」到「DeRisk平台」，我们开始尝试把之前两年零散的实践整合成一个相对完整的产品。
 
@@ -138,7 +138,7 @@ DeepRCA（深度根因分析）是这一阶段的标杆场景。架构是RCA mas
 2026年4月的GOPS深圳站，分享主题是「基于MCPs/SKILLs/SPECs的AI风险智能体系演进路径」。这个标题本身就是一个体系性的声明。
 
 
-![pic26](/assets/images/posts/2026-04-26-ai-sre/pic26.png)
+![pic26](/assets/images/posts/2026-04-26-ai-sre/pic26.jpeg)
 
 #### MCPs/SKILLs/SPECs：三层分工协作体系
 
