@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "中国星网成渝布局与产业生态调研"
-date: 2026-06-23 00:00:00 +0800
+date: 2026-06-23 08:00:00 +0800
 categories: research satellite-internet
 tags: "中国星网 成渝 重庆 成都 卫星互联网 产业生态 国星宇航"
 ---
