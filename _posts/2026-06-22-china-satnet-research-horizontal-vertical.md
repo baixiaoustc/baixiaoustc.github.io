@@ -3,7 +3,7 @@ layout: post
 title: "中国星网横纵法调研"
 date: 2026-06-22 00:00:00 +0800
 categories: research satellite-internet
- tags: "中国星网 卫星互联网 横纵法 产业调研 SpaceX 星链"
+tags: "中国星网 卫星互联网 横纵法 产业调研 SpaceX 星链"
 ---
 
 > 调研对象：中国卫星网络集团有限公司（中国星网）  
