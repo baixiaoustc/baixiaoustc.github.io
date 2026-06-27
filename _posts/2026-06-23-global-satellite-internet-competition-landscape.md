@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "全球卫星互联网竞争格局：从 SpaceX 星链到中国产业链"
-date: 2026-06-27 19:30:00 +0800
+date: 2026-06-23 19:30:00 +0800
 categories: research satellite-internet
 tags: "SpaceX 星链 Starlink 马斯克 中国星网 低轨卫星 卫星互联网 产业链 空天信息 成渝 竞争对比"
 ---
