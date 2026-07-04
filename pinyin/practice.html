@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>拼音练习 - 拼音小乐园</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="animal animal-panda"><div class="face"></div></div>
+  <div class="animal animal-bunny"><div class="face"></div></div>
+  <div class="animal animal-bird"><div class="face"></div><div class="beak"></div></div>
+  <div class="animal animal-cat"><div class="face"></div></div>
+
+  <div class="container">
+    <header>
+      <h1>🐾 拼音练习</h1>
+      <p id="level-name">难度加载中...</p>
+    </header>
+
+    <main class="card" id="practice-card">
+      <div class="practice-header">
+        <span id="current-index">第 1 题</span>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progress-fill" style="width: 5%;"></div>
+        </div>
+        <span id="score-display">✓ 0</span>
+      </div>
+
+      <div class="hanzi-display" id="hanzi-display"></div>
+
+      <div class="pinyin-input" id="pinyin-input">
+        <!-- Letter boxes rendered by JS -->
+      </div>
+
+      <div class="hint-box">
+        <div class="hint-text" id="hint-text"></div>
+        <div class="hint-help">提示：键盘上没有“ü”时，请按字母“v”代替。</div>
+      </div>
+
+      <div class="keyboard" id="keyboard">
+        <!-- Keyboard rows rendered by JS -->
+      </div>
+    </main>
+
+    <!-- Result card, hidden by default -->
+    <div class="card result-card hidden" id="result-card">
+      <h2>🎉 本轮完成！</h2>
+      <div class="result-score" id="result-score">0/20</div>
+      <div class="star-row" id="star-row">⭐⭐⭐</div>
+      <div class="result-message" id="result-message">继续加油哦！</div>
+      <a class="btn btn-primary" href="index.html">🏠 返回主页</a>
+    </div>
+  </div>
+
+  <!-- Success / error feedback overlay -->
+  <div class="feedback-overlay" id="feedback-overlay">
+    <div class="feedback-circle" id="feedback-circle"></div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/practice.js"></script>
+</body>
+</html>

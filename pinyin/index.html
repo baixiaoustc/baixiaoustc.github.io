@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>拼音小乐园</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Animal decorations -->
+  <div class="animal animal-panda"><div class="face"></div></div>
+  <div class="animal animal-bunny"><div class="face"></div></div>
+  <div class="animal animal-bird"><div class="face"></div><div class="beak"></div></div>
+  <div class="animal animal-cat"><div class="face"></div></div>
+
+  <div class="container">
+    <header>
+      <h1>🌈 拼音小乐园</h1>
+      <p>选择难度，开始拼音打字大冒险吧！</p>
+    </header>
+
+    <main class="card">
+      <div class="level-grid">
+        <a class="level-card" href="practice.html?level=easy">
+          <div class="icon">🐣</div>
+          <h2>简单</h2>
+          <p>单个汉字<br>适合刚开始学习拼音的小朋友</p>
+        </a>
+        <a class="level-card" href="practice.html?level=medium">
+          <div class="icon">🐰</div>
+          <h2>中等</h2>
+          <p>常见词语<br>练习连续拼读和键盘按键</p>
+        </a>
+        <a class="level-card" href="practice.html?level=hard">
+          <div class="icon">🦁</div>
+          <h2>困难</h2>
+          <p>长词语和成语<br>挑战更复杂的拼音组合</p>
+        </a>
+      </div>
+
+      <div class="nav-bar">
+        <a class="btn btn-secondary" href="stats.html">📊 查看学习统计</a>
+      </div>
+
+      <div class="text-center mt-20" id="home-summary">
+        <!-- Populated by main.js -->
+      </div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

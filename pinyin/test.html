@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>自检页面 - 拼音小乐园</title>
+  <style>
+    body { font-family: "PingFang SC", "Microsoft YaHei", sans-serif; padding: 40px; background: #fff8e7; }
+    h1 { color: #ff7582; }
+    .pass { color: #2e7d32; }
+    .fail { color: #c62828; }
+    pre { background: #fff; padding: 12px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>🧪 拼音小乐园自检</h1>
+  <p>在浏览器中打开此文件，查看下方测试结果。</p>
+  <div id="results"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script>
+    const results = [];
+    function assert(name, condition, detail) {
+      results.push({ name, pass: !!condition, detail });
+    }
+
+    assert("PINYIN_DATA 存在", typeof PINYIN_DATA === "object");
+    assert("简单难度有数据", Array.isArray(PINYIN_DATA.easy) && PINYIN_DATA.easy.length >= 20, "数量：" + (PINYIN_DATA.easy && PINYIN_DATA.easy.length));
+    assert("中等难度有数据", Array.isArray(PINYIN_DATA.medium) && PINYIN_DATA.medium.length >= 20, "数量：" + (PINYIN_DATA.medium && PINYIN_DATA.medium.length));
+    assert("困难难度有数据", Array.isArray(PINYIN_DATA.hard) && PINYIN_DATA.hard.length >= 20, "数量：" + (PINYIN_DATA.hard && PINYIN_DATA.hard.length));
+    assert("每个条目有汉字和拼音", PINYIN_DATA.easy.every(i => i.hanzi && i.pinyin));
+    assert("拼音只包含小写字母", PINYIN_DATA.easy.every(i => /^[a-z]+$/.test(i.pinyin)));
+
+    const before = getStats();
+    recordAttempt("easy", "测试字", true);
+    recordAttempt("easy", "测试字", false);
+    recordAttempt("medium", "测试词", true);
+    const stats = getStats();
+    assert("本地统计可写入并读取", stats.overall.total === before.overall.total + 3, "总次数：" + stats.overall.total);
+    assert("正确率计算正确", getAccuracy(3, 2) === 67, "getAccuracy(3,2)=" + getAccuracy(3, 2));
+
+    // Clean up test records
+    const cleaned = loadStats();
+    delete cleaned.items["easy::测试字"];
+    delete cleaned.items["medium::测试词"];
+    cleaned.overall.total -= 3;
+    cleaned.overall.correct -= 2;
+    cleaned.byLevel.easy.total -= 2;
+    cleaned.byLevel.easy.correct -= 1;
+    cleaned.byLevel.medium.total -= 1;
+    cleaned.byLevel.medium.correct -= 1;
+    saveStats(cleaned);
+
+    const container = document.getElementById("results");
+    container.innerHTML = results.map(r =>
+      `<p class="${r.pass ? 'pass' : 'fail'}">${r.pass ? '✓' : '✗'} ${r.name}${r.detail ? ' — ' + r.detail : ''}</p>`
+    ).join("");
+
+    console.log("自检结果:", results);
+  </script>
+</body>
+</html>

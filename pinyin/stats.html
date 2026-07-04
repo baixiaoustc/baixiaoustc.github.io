@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学习统计 - 拼音小乐园</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="animal animal-panda"><div class="face"></div></div>
+  <div class="animal animal-bunny"><div class="face"></div></div>
+  <div class="animal animal-bird"><div class="face"></div><div class="beak"></div></div>
+  <div class="animal animal-cat"><div class="face"></div></div>
+
+  <div class="container">
+    <header>
+      <h1>📊 学习统计</h1>
+      <p>看看你的拼音练习成果吧！</p>
+    </header>
+
+    <main class="card">
+      <div class="stats-grid">
+        <div class="stat-box">
+          <h3>总练习次数</h3>
+          <div class="value" id="stat-total">0</div>
+        </div>
+        <div class="stat-box">
+          <h3>总正确率</h3>
+          <div class="value" id="stat-accuracy">0%</div>
+        </div>
+        <div class="stat-box">
+          <h3>简单正确率</h3>
+          <div class="value" id="stat-easy">0%</div>
+        </div>
+        <div class="stat-box">
+          <h3>中等正确率</h3>
+          <div class="value" id="stat-medium">0%</div>
+        </div>
+        <div class="stat-box">
+          <h3>困难正确率</h3>
+          <div class="value" id="stat-hard">0%</div>
+        </div>
+      </div>
+
+      <div class="stats-section">
+        <h2>🌟 最熟悉的字词</h2>
+        <div class="word-list" id="strong-words">
+          <span class="empty-state">还没有足够的数据</span>
+        </div>
+      </div>
+
+      <div class="stats-section">
+        <h2>💪 需要多练习的字词</h2>
+        <div class="word-list" id="weak-words">
+          <span class="empty-state">还没有足够的数据</span>
+        </div>
+      </div>
+
+      <div class="nav-bar">
+        <a class="btn btn-primary" href="index.html">🏠 返回主页</a>
+        <button class="btn btn-danger" id="clear-btn">🗑️ 清空数据</button>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/stats.js"></script>
+</body>
+</html>
