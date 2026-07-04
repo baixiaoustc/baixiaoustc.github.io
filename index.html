@@ -47,6 +47,18 @@ layout: default
           <div class="panel docs-content">
             <div class="wrapper">
               <div class="home">
+                <div class="well" style="background: #fff8e7; border: 1px solid #ffe0b2; border-radius: 12px; padding: 18px; margin-bottom: 24px;">
+                  <h3 style="margin-top: 0; color: #ff7582;">🌈 小游戏</h3>
+                  <p style="margin-bottom: 12px;">
+                    <a href="/pinyin/" style="font-size: 1.2em; font-weight: bold; color: #ff7582;">拼音小乐园</a>
+                    — 儿童拼音打字练习
+                  </p>
+                  <p style="margin-bottom: 0;">
+                    <a href="/snake/" style="font-size: 1.2em; font-weight: bold; color: #4CAF50;">贪吃蛇</a>
+                    — 经典小游戏
+                  </p>
+                </div>
+
                 {% for post in site.posts  %}
                   {% capture this_year %}{{ post.date | date: "%Y" }}{% endcapture %}
                   {% capture this_month %}{{ post.date | date: "%B" }}{% endcapture %}
