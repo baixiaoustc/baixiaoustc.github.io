@@ -13,6 +13,9 @@ let currentInput = "";
 let score = 0;
 let isRoundFinished = false;
 let isTransitioning = false;
+let startTime = null;
+let timerInterval = null;
+let elapsedSeconds = 0;
 
 function init() {
   const params = new URLSearchParams(window.location.search);
@@ -29,6 +32,7 @@ function init() {
 
   renderKeyboard();
   questions = pickQuestions();
+  startTimer();
   loadQuestion();
 
   document.addEventListener("keydown", handleKeyDown);
@@ -51,6 +55,31 @@ function pickQuestions() {
     selected.push(pool.splice(idx, 1)[0]);
   }
   return selected;
+}
+
+function startTimer() {
+  startTime = Date.now();
+  elapsedSeconds = 0;
+  updateTimerDisplay();
+  timerInterval = setInterval(() => {
+    elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+    updateTimerDisplay();
+  }, 1000);
+}
+
+function stopTimer() {
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    timerInterval = null;
+  }
+  elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+}
+
+function updateTimerDisplay() {
+  const timerEl = document.getElementById("timer-display");
+  if (timerEl) {
+    timerEl.textContent = `⏱️ ${elapsedSeconds}s`;
+  }
 }
 
 function loadQuestion() {
@@ -220,9 +249,15 @@ function hideFeedback() {
 
 function finishRound() {
   isRoundFinished = true;
+  stopTimer();
+
+  const accuracy = getAccuracy(ROUND_SIZE, score);
+
   document.getElementById("practice-card").classList.add("hidden");
   document.getElementById("result-card").classList.remove("hidden");
   document.getElementById("result-score").textContent = `${score}/${ROUND_SIZE}`;
+  document.getElementById("result-accuracy").textContent = `${accuracy}%`;
+  document.getElementById("result-time").textContent = `${elapsedSeconds} 秒`;
 
   const stars = score >= 18 ? "⭐⭐⭐" : score >= 12 ? "⭐⭐" : score >= 1 ? "⭐" : "💪";
   document.getElementById("star-row").textContent = stars;
@@ -236,7 +271,7 @@ function finishRound() {
 
   setTimeout(() => {
     window.location.href = "index.html";
-  }, 4000);
+  }, 6000);
 }
 
 window.addEventListener("DOMContentLoaded", init);

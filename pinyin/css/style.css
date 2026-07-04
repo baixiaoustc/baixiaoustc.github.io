@@ -353,6 +353,13 @@ header p {
   overflow: hidden;
 }
 
+#timer-display {
+  font-variant-numeric: tabular-nums;
+  margin-right: 12px;
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
 .progress-fill {
   height: 100%;
   background: linear-gradient(90deg, var(--secondary), var(--accent2));
@@ -556,6 +563,36 @@ header p {
   font-weight: 800;
   color: var(--primary-dark);
   margin: 10px 0;
+}
+
+.result-stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.result-stat-box {
+  background: #f8f9fa;
+  border-radius: var(--radius-sm);
+  padding: 18px 28px;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result-stat-label {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-bottom: 6px;
+}
+
+.result-stat-value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--primary-dark);
 }
 
 .result-message {

@@ -24,6 +24,7 @@
         <div class="progress-bar">
           <div class="progress-fill" id="progress-fill" style="width: 5%;"></div>
         </div>
+        <span id="timer-display">⏱️ 0s</span>
         <span id="score-display">✓ 0</span>
       </div>
 
@@ -47,6 +48,16 @@
     <div class="card result-card hidden" id="result-card">
       <h2>🎉 本轮完成！</h2>
       <div class="result-score" id="result-score">0/20</div>
+      <div class="result-stats" id="result-stats">
+        <div class="result-stat-box">
+          <span class="result-stat-label">准确率</span>
+          <span class="result-stat-value" id="result-accuracy">0%</span>
+        </div>
+        <div class="result-stat-box">
+          <span class="result-stat-label">用时</span>
+          <span class="result-stat-value" id="result-time">0 秒</span>
+        </div>
+      </div>
       <div class="star-row" id="star-row">⭐⭐⭐</div>
       <div class="result-message" id="result-message">继续加油哦！</div>
       <a class="btn btn-primary" href="index.html">🏠 返回主页</a>
