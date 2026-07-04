@@ -280,8 +280,8 @@
         <div class="style-controls">
             <div class="style-section">
                 <span class="style-label">蛇样式:</span>
-                <button class="style-btn active" id="snake-style-classic" onclick="setSnakeStyle('classic')" ontouchstart="setSnakeStyle('classic')">经典</button>
-                <button class="style-btn" id="snake-style-cute" onclick="setSnakeStyle('cute')" ontouchstart="setSnakeStyle('cute')">可爱</button>
+                <button class="style-btn" id="snake-style-classic" onclick="setSnakeStyle('classic')" ontouchstart="setSnakeStyle('classic')">经典</button>
+                <button class="style-btn active" id="snake-style-cute" onclick="setSnakeStyle('cute')" ontouchstart="setSnakeStyle('cute')">可爱</button>
             </div>
             <div class="style-section">
                 <span class="style-label">背景:</span>
@@ -427,14 +427,6 @@
                     }
                 });
             });
-            
-                const rightX = endX + Math.cos(angle + 0.5) * forkLength;
-                const rightY = endY + Math.sin(angle + 0.5) * forkLength;
-                
-                ctx.lineWidth = tongueWidth - 1;
-                ctx.beginPath(); ctx.moveTo(endX, endY); ctx.lineTo(leftX, leftY); ctx.stroke();
-                ctx.beginPath(); ctx.moveTo(endX, endY); ctx.lineTo(rightX, rightY); ctx.stroke();
-            }
             
             ctx.font = '16px "Apple Color Emoji", "Segoe UI Emoji", sans-serif';
             ctx.textAlign = 'center';
