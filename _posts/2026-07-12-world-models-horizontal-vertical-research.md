@@ -25,7 +25,7 @@ tags: "世界模型 World-Models JEPA DreamerV3 Sora Genie3 NVIDIA-Cosmos AI-SRE
 
 ### 1.1 什么是世界模型
 
-世界模型（World Model）的概念源自认知科学——人类大脑构建的关于外部世界的内部模型，用于预测和决策。Jay Wright Forrester 将其描述为："我们脑海中关于世界周围形象的模型，只是 selected concepts 及其关系，用以代表真实系统。"
+世界模型（World Model）的概念源自认知科学——人类大脑构建的关于外部世界的内部模型，用于预测和决策。系统动力学奠基人 Jay Wright Forrester（1918–2016，MIT 教授、磁芯存储器发明人）曾如此描述心智模型（Ha & Schmidhuber 在 World Models 论文引言中引用了这段话）："我们头脑中携带的这个世界的图像，只是一个模型。没有人能在脑中想象整个世界，他只拥有一些经过挑选的概念（selected concepts）以及它们之间的关系，并用这些来代表真实系统。"
 
 在 AI 领域，世界模型指的是**AI 系统内部构建的关于环境动态变化的预测模型**。Ha & Schmidhuber 在 2018 年的开创性论文《World Models》中首次系统性地将这一概念引入深度学习，提出将 Agent 分为大型世界模型（V+M）和小型控制器（C）的架构，甚至可以在 Agent 自己"梦境"生成的环境中训练策略，再迁移回真实环境。
 
