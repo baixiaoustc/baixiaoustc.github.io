@@ -64,9 +64,7 @@
       card.style.setProperty('--player-color', animal.color);
       card.dataset.animal = id;
 
-      const emoji = document.createElement('span');
-      emoji.className = 'pick-emoji';
-      emoji.textContent = animal.icon;
+      const emoji = AdventureAvatar.node(id, 'pick-emoji');
 
       const name = document.createElement('span');
       name.className = 'pick-name';
@@ -132,7 +130,8 @@
       value.className = 'record-value';
       if (rec) {
         const winner = ANIMALS[rec.winner] ? `${ANIMALS[rec.winner].icon} ${ANIMALS[rec.winner].name}` : '有人';
-        value.textContent = `${winner} · ${rec.rounds} 轮 · ${Math.floor(rec.seconds / 60)} 分 ${String(rec.seconds % 60).padStart(2, '0')} 秒`;
+        AdventureAvatar.setText(value,
+          `${winner} · ${rec.rounds} 轮 · ${Math.floor(rec.seconds / 60)} 分 ${String(rec.seconds % 60).padStart(2, '0')} 秒`);
       } else {
         value.textContent = '还没有记录，去开一局吧';
         value.classList.add('empty');
@@ -160,7 +159,8 @@
       hint.textContent = '至少要点 2 只小动物才能开始哦～';
     } else {
       const order = selection.animals.map(id => `${ANIMALS[id].icon}${ANIMALS[id].name}`).join(' → ');
-      hint.textContent = `${size.emoji} ${size.label}棋盘 · ${count} 位选手，出牌顺序：${order}`;
+      AdventureAvatar.setText(hint,
+        `${size.emoji} ${size.label}棋盘 · ${count} 位选手，出牌顺序：${order}`);
     }
     startBtn.disabled = count < MIN_PLAYERS;
   }

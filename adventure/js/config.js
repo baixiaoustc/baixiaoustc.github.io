@@ -68,10 +68,12 @@ const TILE_META = {
   freeze:  { icon: '❄️', label: '冻结2轮',  color: '#74c0fc', note: '接下来 2 次轮到你都跳过' }
 };
 
-/* 四种小动物形象 = 四个玩家位 */
+/* 四种小动物形象 = 四个玩家位。
+   avatar 是「自己画的头像图片」：emoji 里只有 🐆 是全身像，和另外三只的头像
+   摆在一起又瘦又大，所以给雪豹单独画了一个头（见 img/snowleopard.svg）。 */
 const ANIMALS = {
   rabbit:      { id: 'rabbit',      name: '兔子', icon: '🐰', color: '#ff8fab' },
-  snowleopard: { id: 'snowleopard', name: '雪豹', icon: '🐆', color: '#4dabf7' },
+  snowleopard: { id: 'snowleopard', name: '雪豹', icon: '🐆', color: '#4dabf7', avatar: './img/snowleopard.svg' },
   tibetanfox:  { id: 'tibetanfox',  name: '藏狐', icon: '🦊', color: '#ff922b' },
   chick:       { id: 'chick',       name: '小鸡', icon: '🐤', color: '#fcc419' }
 };

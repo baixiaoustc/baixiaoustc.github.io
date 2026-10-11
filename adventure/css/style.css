@@ -758,3 +758,36 @@ header p {
   .animal-card.selected { background: #f7fbff; }
   .player-card.active { background: #f7fbff; }
 }
+
+/* ---------------- 头像 ----------------
+   兔子/藏狐/小鸡 的头像是 emoji 文字，雪豹是自己画的图片（img/snowleopard.svg）。
+   .avatar-img 负责「图片」这一种，尺寸按用在哪里分别给，和旁边 emoji 的大小对齐。 */
+.avatar-img {
+  display: inline-block;
+  object-fit: contain;
+  flex: none;
+  vertical-align: middle;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.pick-emoji.avatar-img {   /* 首页选小动物的卡片，和 emoji 的 34px 对齐 */
+  width: 34px;
+  height: 34px;
+}
+
+.pc-icon.avatar-img {      /* 对局页右侧玩家卡片 */
+  width: 26px;
+  height: 26px;
+}
+
+.piece .avatar-img {       /* 棋盘上的棋子：填满棋子内圈 */
+  width: 86%;
+  height: 86%;
+}
+
+.avatar-inline {           /* 夹在提示文字里的头像，跟着字号走 */
+  width: 1.15em;
+  height: 1.15em;
+  vertical-align: -0.2em;
+}

@@ -130,6 +130,24 @@ class El {
     this.parentNode = null;
   }
   addEventListener(type, fn) { (this.handlers[type] = this.handlers[type] || []).push(fn); }
+  replaceChild(next, old) {
+    const i = this.children.indexOf(old);
+    if (i < 0) return old;
+    if (next && next.parentNode) next.remove();
+    const at = this.children.indexOf(old); // next.remove() 可能改过数组，重新找一次
+    this.children[at < 0 ? i : at] = next;
+    if (next) next.parentNode = this;
+    old.parentNode = null;
+    return old;
+  }
+  insertBefore(next, ref) {
+    if (next && next.parentNode) next.remove();
+    let at = ref ? this.children.indexOf(ref) : -1;
+    if (at < 0) at = this.children.length;
+    this.children.splice(at, 0, next);
+    next.parentNode = this;
+    return next;
+  }
   dispatch(type, extra) {
     const ev = Object.assign({ type, target: this, preventDefault() {}, stopPropagation() {} }, extra || {});
     (this.handlers[type] || []).forEach(fn => fn(ev));
@@ -270,6 +288,20 @@ function makeLocalStorage(seed) {
 }
 
 /* 把一个页面（真实 HTML + 真实 JS）装进 vm 跑起来 */
+/* 一直按空格推进，直到轮到某只动物（卡片弹窗/结算会提前收手，避免误用卡牌） */
+async function waitForTurn(page, who, tries) {
+  for (let i = 0; i < (tries || 10); i++) {
+    await settle(page);
+    if (page.visible('result-modal')) return { ok: false, why: '游戏在轮到它之前就结束了' };
+    if (page.visible('card-modal')) return { ok: false, why: '意外弹出卡牌询问（有卡牌又踩到回起点）' };
+    const badge = page.el('turn-badge').textContent;
+    if (badge.includes(who)) return { ok: true };
+    pressSpace(page);
+    await sleep(10);
+  }
+  return { ok: false, why: '等不到它的回合：' + page.el('turn-badge').textContent };
+}
+
 function loadPage(htmlName, options) {
   const opts = options || {};
   const htmlPath = path.join(ADV, htmlName);
@@ -368,6 +400,8 @@ function loadPage(htmlName, options) {
   const epilogue = `
 ;globalThis.__PAGE__ = {
   AdventureUI: typeof AdventureUI !== 'undefined' ? AdventureUI : null,
+  AdventureAvatar: typeof AdventureAvatar !== 'undefined' ? AdventureAvatar : null,
+  ANIMALS: typeof ANIMALS !== 'undefined' ? ANIMALS : null,
   SIZES: typeof SIZES !== 'undefined' ? SIZES : null,
   RULES: typeof RULES !== 'undefined' ? RULES : null,
   TILE_META: typeof TILE_META !== 'undefined' ? TILE_META : null
@@ -682,6 +716,100 @@ function testSelfCheckPage() {
   page.cleanup();
 }
 
+/* ==================== 五、雪豹头像 ==================== */
+
+const AVATAR_SRC = 'img/snowleopard.svg';
+const isImg = n => !!n && String(n.tagName).toLowerCase() === 'img';
+
+async function testAvatar() {
+  /* 1) 首页：选小动物的卡片、出牌顺序提示 */
+  const home = loadPage('index.html');
+  ok('index.html（头像）脚本加载无异常', home.errors.length === 0, home.errors.join('；'));
+  const cards = home.el('animal-options').querySelectorAll('.pick-card');
+  const cardOf = id => cards.filter(c => c.dataset.animal === id)[0];
+  const iconOf = id => cardOf(id) && cardOf(id).querySelector('.pick-emoji');
+
+  ok('首页：雪豹卡片用的是自己画的小头像（图片）',
+    isImg(iconOf('snowleopard')) && String(iconOf('snowleopard').src).includes(AVATAR_SRC),
+    iconOf('snowleopard') && (iconOf('snowleopard').src || iconOf('snowleopard').textContent));
+  ok('首页：雪豹这张图带名字，鼠标放上去知道是谁', iconOf('snowleopard').title === '雪豹', iconOf('snowleopard').title);
+  ok('首页：兔子还是 emoji 文字（没被一起改坏）',
+    !isImg(iconOf('rabbit')) && iconOf('rabbit').textContent === '🐰', iconOf('rabbit').textContent);
+  ok('首页：藏狐、小鸡也还是 emoji',
+    ['tibetanfox', 'chick'].every(id => !isImg(iconOf(id)) && iconOf(id).textContent.length > 0),
+    ['tibetanfox', 'chick'].map(id => iconOf(id).textContent).join(' '));
+
+  /* 默认选中的就是兔子和雪豹，提示里应同时出现 emoji 和图片 */
+  const hint = home.el('select-hint');
+  ok('首页：出牌顺序里的雪豹也换成了头像（没有留下 🐆）',
+    !hint.textContent.includes('🐆') && hint.querySelectorAll('img.avatar-inline').length === 1,
+    hint.textContent + ' / img×' + hint.querySelectorAll('img.avatar-inline').length);
+  ok('首页：同一句话里的兔子 emoji 原样保留', hint.textContent.includes('🐰兔子'), hint.textContent);
+  ok('首页：出牌顺序文字没被拆丢', hint.textContent.includes('雪豹') && hint.textContent.includes('出牌顺序'), hint.textContent);
+  home.cleanup();
+
+  /* 2) 对局页：棋子、玩家卡片、轮到谁提示 */
+  const game = loadPage('game.html', { search: '?size=easy&players=rabbit,snowleopard' });
+  ok('game.html（带雪豹）脚本加载无异常', game.errors.length === 0, game.errors.join('；'));
+  const pieces = game.el('pieces').querySelectorAll('.piece');
+  const pieceOf = name => pieces.filter(p => p.title === name)[0];
+  const snowPiece = pieceOf('雪豹');
+  const rabbitPiece = pieceOf('兔子');
+
+  ok('棋盘上的雪豹棋子是一个头像图片',
+    snowPiece && isImg(snowPiece.querySelector('.avatar-img')) && String(snowPiece.querySelector('.avatar-img').src).includes(AVATAR_SRC),
+    snowPiece && snowPiece.textContent);
+  ok('棋盘上的兔子棋子还是 🐰', rabbitPiece && !isImg(rabbitPiece.querySelector('.avatar-img')) && rabbitPiece.textContent === '🐰',
+    rabbitPiece && rabbitPiece.textContent);
+  eq('两只棋子都还在棋盘上', pieces.length, 2);
+
+  const pcIcon = id => {
+    const card = game.el('player-panel').querySelectorAll(`.player-card[data-id="${id}"]`)[0];
+    return card ? card.querySelector('.pc-icon') : null;
+  };
+  ok('右侧玩家卡片：雪豹是图片头像', isImg(pcIcon('snowleopard')), pcIcon('snowleopard') && pcIcon('snowleopard').className);
+  ok('右侧玩家卡片：兔子还是 emoji', !isImg(pcIcon('rabbit')) && pcIcon('rabbit').textContent === '🐰', pcIcon('rabbit').textContent);
+
+  const tileImgs = game.el('board').querySelectorAll('.tile')
+    .reduce((n, t) => n + t.querySelectorAll('img').length, 0);
+  ok('棋盘格子上的 emoji（🏆🎁❄️…）没有被当成头像换掉', tileImgs === 0, String(tileImgs));
+
+  /* 配置层面：只有雪豹配了自定义头像，而且那张图真的在仓库里 */
+  const avatarIds = game.exports.AdventureAvatar.withAvatar();
+  eq('四只动物里只有雪豹配了自定义头像', avatarIds.join(','), 'snowleopard');
+  const avatarPath = game.exports.ANIMALS.snowleopard.avatar;
+  ok('配置指向的头像文件真的存在（上线不会 404）',
+    fs.existsSync(path.join(ADV, avatarPath)), avatarPath);
+
+  /* 轮到雪豹：提示条里也应该是图片头像（等它真的轮到，别跟抽签赛跑） */
+  const prompt = game.el('prompt-text');
+  const turn = await waitForTurn(game, '雪豹');
+  ok('等到了雪豹的回合', turn.ok, turn.why || '');
+  ok('轮到雪豹时提示条里的头像是图片',
+    prompt.querySelectorAll('img.avatar-inline').length === 1 && !prompt.textContent.includes('🐆'),
+    prompt.textContent + ' / img×' + prompt.querySelectorAll('img.avatar-inline').length);
+  ok('提示条的文字还完整（头像没把字吃掉）',
+    prompt.textContent.includes('雪豹') && prompt.textContent.includes('按空格摇骰子'), prompt.textContent);
+  ok('轮到谁的天花板提示也是图片头像',
+    game.el('turn-badge').querySelectorAll('img.avatar-inline').length === 1 &&
+    game.el('turn-badge').textContent.includes('的回合'), game.el('turn-badge').textContent);
+
+  /* 走一步之后，棋子上的头像要跟着走、不丢 */
+  pressSpace(game);
+  await settle(game);
+  const moved = pieceOf('雪豹');
+  ok('雪豹走完一步后，棋子上还是那张图片头像',
+    moved && isImg(moved.querySelector('.avatar-img')) && moved.style.transform.includes('translate'), moved && moved.style.transform);
+
+  /* 3) 图片加载不出来时退回 emoji，不留一块空白 */
+  const brokenImg = game.el('pieces').querySelectorAll('.avatar-img')[0];
+  const parent = brokenImg.parentNode;
+  brokenImg.dispatch('error');
+  ok('图片加载失败会自动退回 🐆 emoji（不会开天窗）',
+    parent.querySelectorAll('img').length === 0 && parent.textContent.includes('🐆'), parent.textContent);
+  game.cleanup();
+}
+
 /* ==================== 跑起来 ==================== */
 
 (async function main() {
@@ -704,6 +832,10 @@ function testSelfCheckPage() {
   console.log('四、自检页 test.html');
   testSelfCheckPage();
   console.log('');
+
+  console.log('五、雪豹头像（四个头像都是「一个头」）');
+  await testAvatar();
+  console.log('   首页卡片 / 棋子 / 玩家卡片 / 提示条 都是头像图片，图挂了还能退回 emoji\n');
 
   if (failures.length) {
     console.log('❌ 通过 ' + pass + ' 项，失败 ' + failures.length + ' 项：');

@@ -132,3 +132,15 @@
 - 效果（按公式推算）：1440×900 → 9×9 每格 70.5px；1280×800 → 62px 并出现滚动提示；三档难度都保留格子文字。
 - 状态：已修（`docs/adv-smoke.js` 新增「棋盘大小与缩放」一组检查：81 格、≥62px、不 dense、宽度=格子×9+间隙、缩放上下限、滚动提示收放）
 
+
+### ADV-6 · P1 · 四个玩家里只有雪豹不是「一个头」
+- 位置：`adventure/js/config.js`（`ANIMALS.snowleopard.icon`）、`adventure/js/ui.js`（棋子 `:180`、玩家卡片 `:291`、提示条 `setBanner :372`、回合徽章 `:379`、按空格提示 `:391`、结算 `:550`/`:583`）、`adventure/js/setup.js`（选动物卡片 `:67`、纪录 `:133`、出牌顺序 `:162`）
+- 现象：兔子 🐰 / 藏狐 🦊 / 小鸡 🐤 的 emoji 本身就是一个头，而雪豹只能用 🐆 —— 它是**全身像**（画出来的墨迹只占 35.0%，另三只是 47.1%~62.1%），摆在棋盘格子上又瘦又高，和另外三只完全不是一套形象；用户反馈「4 个玩家的 logo，只有雪豹是全身形象」。
+- 说明：系统 emoji 里**没有**灰白色的猫科「头」可以直接借（🐯 是橙色老虎、🐱 是橘猫、🐻‍❄️ 是北极熊，都试过量了尺寸/颜色），所以雪豹头像是自己画的矢量图 `adventure/img/snowleopard.svg`（100×100、29 个图元、耳朵+脸+7 个斑+绿眼睛+白吻部，只用手绘填色，任何系统上长得都一样）。
+- 修法：
+  1. 新增 `adventure/js/avatar.js`（`AdventureAvatar`）：`node(id, cls)` 把「有 `avatar` 图片」的小动物变成 `<img class="avatar-img">`（没配图片的仍旧输出 emoji），`setText(el, text)` 把文案里的雪豹 emoji 就地换成 `<img class="avatar-inline">`；图片加载失败自动退回 🐆，不会留一块空白；
+  2. `config.js` 给 `snowleopard` 加 `avatar: './img/snowleopard.svg'`（emoji 仍保留做兜底）；
+  3. 上面 10 处 `textContent = icon` 全部改走 `AdventureAvatar`，两个页面的 `<script>` 顺序都插在 config 之后、ui/setup 之前；
+  4. `style.css` 加 `.avatar-img` 与四档尺寸（选卡片 34px / 玩家卡片 26px / 棋子 86% / 行内 1.15em）。
+- 自检：`python3 docs/adv-avatar-preview.py` 用 PIL 量雪豹头像——左右对称（平均差 0.68/255）、墨迹 44.1%（与三张 emoji 脸同一量级）、缩到 32px / 24px 仍有 14 / 6 个深色特征像素；`node docs/adv-smoke.js` 新增「雪豹头像」一组 21 项断言（首页卡片、棋子、玩家卡片、提示条是图片；兔子/藏狐/小鸡仍是 emoji；棋盘格子 emoji 未被误换；图挂了退回 emoji）。
+- 状态：已修（艺术风格仍须家长/小朋友看一眼，`adventure/js/config.js` 里删掉 `avatar` 一行即可整体退回 🐆）

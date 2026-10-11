@@ -177,7 +177,7 @@ const AdventureUI = (function () {
       const el = document.createElement('div');
       el.className = 'piece';
       el.style.setProperty('--piece-color', p.color);
-      el.textContent = p.icon;
+      el.appendChild(AdventureAvatar.node(p.id, 'piece-face'));
       el.title = p.name;
       els.pieces.appendChild(el);
       pieceEls[p.id] = el;
@@ -288,9 +288,7 @@ const AdventureUI = (function () {
       card.dataset.id = p.id;
       card.style.setProperty('--player-color', p.color);
 
-      const icon = document.createElement('div');
-      icon.className = 'pc-icon';
-      icon.textContent = p.icon;
+      const icon = AdventureAvatar.node(p.id, 'pc-icon');
 
       const body = document.createElement('div');
       body.className = 'pc-body';
@@ -371,16 +369,16 @@ const AdventureUI = (function () {
 
   function setBanner(text, kind) {
     if (!els.bannerText) return;
-    els.bannerText.textContent = text;
+    AdventureAvatar.setText(els.bannerText, text);
     els.banner.className = 'banner' + (kind ? ' banner-' + kind : '');
   }
 
   function refresh() {
     const p = game.players[game.turn];
     if (els.turnBadge) {
-      els.turnBadge.textContent = game.winner
+      AdventureAvatar.setText(els.turnBadge, game.winner
         ? `${ANIMALS[game.winner].icon} ${ANIMALS[game.winner].name} 获胜`
-        : `${p.icon} ${p.name} 的回合`;
+        : `${p.icon} ${p.name} 的回合`);
       els.turnBadge.style.setProperty('--player-color', game.winner ? ANIMALS[game.winner].color : p.color);
     }
     if (els.roundDisplay) els.roundDisplay.textContent = `第 ${game.round} 轮`;
@@ -390,7 +388,7 @@ const AdventureUI = (function () {
       if (game.winner) els.prompt.textContent = '🎉 游戏结束，看看谁赢了！';
       else if (game.pending) els.prompt.textContent = '请决定要不要用卡牌抵消';
       else if (busy) els.prompt.textContent = '走棋中……';
-      else els.prompt.textContent = `${p.icon} ${p.name}，按空格摇骰子`;
+      else AdventureAvatar.setText(els.prompt, `${p.icon} ${p.name}，按空格摇骰子`);
     }
     if (els.rollBtn) {
       els.rollBtn.disabled = busy || !!game.winner || !!game.pending;
@@ -549,7 +547,7 @@ const AdventureUI = (function () {
     const winner = game.players.find(p => p.id === ev.player);
     const note = typeof opts.onWin === 'function' ? opts.onWin(ev) : '';
 
-    if (els.resultTitle) els.resultTitle.textContent = `${winner.icon} ${winner.name} 获胜！`;
+    if (els.resultTitle) AdventureAvatar.setText(els.resultTitle, `${winner.icon} ${winner.name} 获胜！`);
 
     const stats = [
       ['🎲 总回合', `${ev.round} 轮`],
@@ -582,7 +580,7 @@ const AdventureUI = (function () {
         .sort((a, b) => (b.pos - a.pos) || (a.seat - b.seat))
         .map((p, i) => `${i + 1}. ${p.icon} ${p.name} — 第 ${p.pos} 格`)
         .join('　');
-      els.resultRank.textContent = rank;
+      AdventureAvatar.setText(els.resultRank, rank);
     }
 
     if (els.resultNote) {
