@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>骰子大冒险 · 自检</title>
+  <style>
+    body { font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+           background: #fff8e7; color: #333; margin: 0; padding: 24px; line-height: 1.7; }
+    h1 { font-size: 22px; margin: 0 0 4px; }
+    h2 { font-size: 16px; margin: 22px 0 6px; color: #ff8fab; }
+    .sub { color: #888; font-size: 13px; margin-bottom: 18px; }
+    #summary { font-size: 18px; font-weight: 700; padding: 12px 16px; border-radius: 12px;
+               background: #e6f7ff; display: inline-block; margin-bottom: 8px; }
+    #summary.ok { background: #d3f9d8; color: #2b8a3e; }
+    #summary.bad { background: #ffe3e3; color: #c92a2a; }
+    ul { list-style: none; padding: 0; margin: 0; }
+    li { padding: 2px 0 2px 24px; position: relative; font-size: 14px; }
+    li::before { position: absolute; left: 0; }
+    li.pass::before { content: "✅"; }
+    li.fail::before { content: "❌"; }
+    li.fail { color: #c92a2a; font-weight: 600; }
+    .detail { color: #868e96; font-size: 12px; margin-left: 6px; font-weight: 400; }
+    .stats { margin-top: 18px; padding: 12px 16px; background: #fff; border-radius: 12px;
+             font-size: 13px; color: #555; white-space: pre-wrap; }
+    a { color: #4dabf7; }
+  </style>
+</head>
+<body>
+  <h1>骰子大冒险 · 自检</h1>
+  <p class="sub">检查棋盘数据和游戏规则引擎。多做几次模拟也不会影响你的存档。
+    · <a href="./index.html">回游戏首页</a></p>
+  <div id="summary">正在检查……</div>
+  <div id="results"></div>
+  <div class="stats" id="stats"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/engine.js"></script>
+  <script>
+    var pass = 0, fail = 0, fails = [], box = document.getElementById('results');
+    var currentUl = null;
+
+    function section(title) {
+      var h = document.createElement('h2');
+      h.textContent = title;
+      box.appendChild(h);
+      currentUl = document.createElement('ul');
+      currentUl.dataset.section = title;
+      box.appendChild(currentUl);
+    }
+
+    function assert(name, cond, detail) {
+      var ul = currentUl;
+      var li = document.createElement('li');
+      li.className = cond ? 'pass' : 'fail';
+      li.textContent = name;
+      if (detail && !cond) {
+        var span = document.createElement('span');
+        span.className = 'detail';
+        span.textContent = '（' + detail + '）';
+        li.appendChild(span);
+      }
+      ul.appendChild(li);
+      if (cond) { pass++; } else { fail++; fails.push(name + (detail ? ' — ' + detail : '')); }
+    }
+
+    /* 可重复的伪随机数，同一个种子每次结果一样 */
+    function mulberry32(a) {
+      return function () {
+        a |= 0; a = a + 0x6D2B79F5 | 0;
+        var t = Math.imul(a ^ a >>> 15, 1 | a);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+      };
+    }
+
+    /* ============ 一、棋盘数据 ============ */
+    section('一、棋盘数据');
+    var keys = Object.keys(SIZES);
+    assert('三个难度都在（简单 / 中等 / 复杂）', keys.join() === 'easy,medium,hard', keys.join());
+    assert('每个难度都有布局', keys.every(function (k) { return LAYOUTS[k] && LAYOUTS[k].length === SIZES[k].rows; }));
+    assert('冻结轮数是 2', FREEZE_TURNS === 2, String(FREEZE_TURNS));
+    assert('起点 / 终点 / 卡牌 / 回起点 / 再扔 / 冻结 六种特殊格都有说明',
+      ['start','goal','card','home','again','freeze','forward','back'].every(function (t) { return TILE_META[t]; }));
+    assert('每个格子代码都在说明表里有对应', Object.keys(TILE_CODES).every(function (c) { return TILE_META[TILE_CODES[c].type]; }));
+    assert('说明表里都有图标 / 名字 / 颜色', Object.keys(TILE_META).every(function (t) {
+      var m = TILE_META[t]; return !!(m.icon && m.label && m.color && m.note);
+    }));
+    assert('四种小动物都在（兔子 / 雪豹 / 藏狐 / 小鸡）', ANIMAL_ORDER.length === 4 &&
+      ['rabbit','snowleopard','tibetanfox','chick'].every(function (id) {
+        return ANIMALS[id] && ANIMALS[id].icon && ANIMALS[id].color && ANIMALS[id].name;
+      }));
+    assert('人数上限 4、下限 2', MAX_PLAYERS === 4 && MIN_PLAYERS === 2, MIN_PLAYERS + '~' + MAX_PLAYERS);
+    assert('玩法说明不为空', RULES.length >= 5, String(RULES.length));
+
+    keys.forEach(function (key) {
+      var size = SIZES[key], b = buildBoard(key);
+      var label = size.label;
+      assert(label + '：格子数 = ' + size.rows + '×' + size.cols,
+        b.tiles.length === size.rows * size.cols, String(b.tiles.length));
+      assert(label + '：第 1 格是起点、最后 1 格是终点',
+        b.tiles[0].type === 'start' && b.tiles[b.tiles.length - 1].type === 'goal');
+      assert(label + '：路径序号从 0 连续排到 ' + (b.tiles.length - 1),
+        b.tiles.every(function (t, i) { return t.index === i; }));
+      var snakeOk = true, adjOk = true;
+      for (var r = 0; r < size.rows; r++) {
+        var first = b.tiles.filter(function (t) { return t.row === r && t.pathOrder === 0; })[0];
+        var last = b.tiles.filter(function (t) { return t.row === r && t.pathOrder === size.cols - 1; })[0];
+        if (!first || !last) { snakeOk = false; continue; }
+        if (r % 2 === 0 && !(first.col === 0 && last.col === size.cols - 1)) snakeOk = false;
+        if (r % 2 === 1 && !(first.col === size.cols - 1 && last.col === 0)) snakeOk = false;
+      }
+      for (var i = 1; i < b.tiles.length; i++) {
+        var p = b.tiles[i - 1], c = b.tiles[i];
+        if (Math.abs(p.row - c.row) + Math.abs(p.col - c.col) !== 1) adjOk = false;
+      }
+      assert(label + '：一行一行来回拐弯（蛇形）', snakeOk);
+      assert(label + '：相邻两格在棋盘上真的挨着', adjOk);
+      var counts = {};
+      b.tiles.forEach(function (t) { counts[t.type] = (counts[t.type] || 0) + 1; });
+      assert(label + '：起点和终点各只有一个', counts.start === 1 && counts.goal === 1, JSON.stringify(counts));
+      assert(label + '：六种效果格都有（终点和起点除外）',
+        counts.card > 0 && counts.home > 0 && counts.again > 0 && counts.freeze > 0 && counts.forward > 0 && counts.back > 0);
+      assert(label + '：前进 / 后退的步数都是 2 或 3',
+        b.tiles.every(function (t) { return (t.type !== 'forward' && t.type !== 'back') || t.steps === 2 || t.steps === 3; }));
+      assert(label + '：冻结格写的是 2 轮', b.tiles.every(function (t) { return t.type !== 'freeze' || t.turns === 2; }));
+    });
+
+    /* ============ 二、跑很多局，看规则有没有出错 ============ */
+    section('二、模拟对局（3 个难度 × 2/3/4 人 × 200 局）');
+    var KNOWN = ['turnStart','roll','step','land','gainCard','freeze','again','jump','askCard','useCard','home','turnEnd','skip','againTurn','win'];
+    var animalSets = [['rabbit','chick'], ['rabbit','snowleopard','chick'], ['rabbit','snowleopard','tibetanfox','chick']];
+    var games = 0, actions = 0, rolls = 0, maxActions = 0, bad = [];
+    var stat = { freeze: 0, skip: 0, again: 0, jump: 0, home: 0, card: 0, useCard: 0, ask: 0 };
+
+    keys.forEach(function (key) {
+      animalSets.forEach(function (ids, si) {
+        for (var g = 0; g < 200; g++) {
+          var rng = mulberry32(g * 7919 + si * 104729 + key.length * 13);
+          var st = createGame({ sizeKey: key, animalIds: ids });
+          var problems = [], expectSkip = {}, pendingJump = null, againExpect = null, acts = 0;
+
+          function consume(list) {
+            list.forEach(function (ev) {
+              if (KNOWN.indexOf(ev.type) < 0) problems.push('出现了没定义的事件 ' + ev.type);
+              if (ev.type === 'roll') {
+                if (!(ev.value >= 1 && ev.value <= 6)) problems.push('骰子点数越界 ' + ev.value);
+                if (againExpect) {
+                  if (againExpect !== ev.player) problems.push('「再扔一次」之后换了人');
+                  againExpect = null;
+                }
+                stat.roll = (stat.roll || 0) + 1;
+              }
+              if (ev.type === 'jump') {
+                pendingJump = { player: ev.player, to: ev.to };
+                stat.jump++;
+                if (ev.to < 0 || ev.to > st.board.goalIndex) problems.push('前进/后退跑到棋盘外面了 ' + ev.to);
+              }
+              if (ev.type === 'freeze') { expectSkip[ev.player] = ev.turns; stat.freeze++;
+                if (ev.turns !== FREEZE_TURNS) problems.push('冻结轮数不是 2'); }
+              if (ev.type === 'skip') {
+                if (!(expectSkip[ev.player] > 0)) problems.push('不该被跳过的人被跳过了');
+                expectSkip[ev.player] = (expectSkip[ev.player] || 0) - 1;
+                if (ev.remaining !== expectSkip[ev.player]) problems.push('冻结倒计时数错了');
+                stat.skip++;
+              }
+              if (ev.type === 'turnStart' && !ev.frozen && expectSkip[ev.player] > 0) {
+                problems.push('被冻住的人居然还能走'); expectSkip[ev.player] = 0;
+              }
+              if (ev.type === 'againTurn') { againExpect = ev.player; stat.again++; }
+              if (ev.type === 'land' && pendingJump && ev.player === pendingJump.player && ev.pos === pendingJump.to) {
+                problems.push('前进/后退落到的格子被算了两次');
+              }
+              if (ev.type === 'home') stat.home++;
+              if (ev.type === 'gainCard') stat.card++;
+              if (ev.type === 'askCard') stat.ask++;
+              if (ev.type === 'useCard') stat.useCard++;
+              if (ev.type === 'turnStart') pendingJump = null;
+            });
+          }
+
+          var first = startGame(st);
+          if (!first.length || first[0].type !== 'turnStart' || first[0].player !== ids[0]) {
+            problems.push('开局没有把第一次行动交给第一位玩家');
+          } else {
+            consume(first);
+          }
+
+          var guard = 0;
+          while (!st.winner && guard++ < 40000) {
+            if (st.pending) {
+              var use = rng() < 0.5;
+              consume(resumeTurn(st, use ? 'use' : 'skip'));
+            } else {
+              var actor = st.players[st.turn].id;
+              var evs = playTurn(st, rng);
+              if (!evs.length) { problems.push('没有事件但也没人赢'); break; }
+              if (evs[0].type !== 'roll' || evs[0].player !== actor) problems.push('行动没有从当前玩家摇骰子开始');
+              if (!st.winner && !st.pending && !evs.some(function (e) { return e.type === 'turnEnd'; }) &&
+                  !evs.some(function (e) { return e.type === 'againTurn'; })) {
+                problems.push('一轮既没结束也没再扔一次');
+              }
+              consume(evs);
+              acts++;
+            }
+            st.players.forEach(function (p) {
+              if (p.pos < 0 || p.pos > st.board.goalIndex || p.pos !== Math.floor(p.pos)) problems.push('有人站在棋盘外面 ' + p.pos);
+              if (p.cards < 0 || p.frozen < 0 || p.skips < 0) problems.push('卡牌或冻结数变成负数');
+              if (p.frozen > FREEZE_TURNS) problems.push('冻结的轮数超过了上限');
+            });
+          }
+
+          games++; actions += acts; maxActions = Math.max(maxActions, acts);
+          rolls += st.players.reduce(function (s, p) { return s + p.rolls; }, 0);
+          if (problems.length) {
+            if (bad.length < 6) bad.push(key + ' / ' + ids.length + ' 人 / 第 ' + g + ' 局：' + problems[0]);
+          } else if (!st.winner) {
+            if (bad.length < 6) bad.push(key + ' / ' + ids.length + ' 人 / 第 ' + g + ' 局：' + guard + ' 步还没结束');
+          } else {
+            var w = playerById(st, st.winner);
+            if (w.pos !== st.board.goalIndex || st.phase !== 'over' || st.pending) {
+              if (bad.length < 10) bad.push(key + ' 结束时状态不对');
+            }
+          }
+        }
+      });
+    });
+
+    assert('一共跑了 ' + games + ' 局，局局都分出胜负', games === 3 * 3 * 200 && bad.length === 0,
+      bad.length ? bad.join('；') : (games + ' 局'));
+    assert('每局都没卡死（最多 ' + maxActions + ' 步结束）', maxActions > 0 && maxActions < 5000, String(maxActions));
+    assert('骰子只会摇出 1~6 点', stat.roll === rolls, stat.roll + ' vs ' + rolls);
+    assert('「再扔一次」真的发生过', stat.again > 100, String(stat.again));
+    assert('「冻结 2 轮」真的发生过', stat.freeze > 50 && stat.skip > 100, stat.freeze + ' 次冻结 / ' + stat.skip + ' 次跳过');
+    assert('「前进 / 后退」真的发生过', stat.jump > 100, String(stat.jump));
+    assert('「回到起点」真的发生过', stat.home > 100, String(stat.home));
+    assert('卡牌既能拿到也能用掉', stat.card > 100 && stat.useCard > 20, stat.card + ' 张拿到 / ' + stat.useCard + ' 张用掉');
+
+    /* ============ 三、逐条规则定点检查 ============ */
+    section('三、逐条规则检查');
+
+    function landOn(type, rngValue, cards) {
+      var st = createGame({ sizeKey: 'easy', animalIds: ['rabbit', 'chick'] });
+      if (cards) st.players[0].cards = cards;
+      var tile = st.board.tiles.filter(function (t) { return t.type === type && t.index > 3; })[0];
+      st.players[0].pos = tile.index - 3;
+      return { st: st, tile: tile, events: playTurn(st, function () { return rngValue; }) };
+    }
+
+    /* 1. 摇骰子前进 */
+    var one = createGame({ sizeKey: 'easy', animalIds: ['rabbit', 'chick'] });
+    startGame(one);
+    var rollEvents = playTurn(one, function () { return 0.5; }); // 4 点，简单棋盘第 4 格是「再扔一次」
+    assert('摇到几点就走几格', one.players[0].pos === 4, String(one.players[0].pos));
+    assert('走棋是一格一格走的（没有瞬移）',
+      rollEvents.filter(function (e) { return e.type === 'step'; }).length === 4,
+      String(rollEvents.filter(function (e) { return e.type === 'step'; }).length));
+    var plain = createGame({ sizeKey: 'easy', animalIds: ['rabbit', 'chick'] });
+    startGame(plain);
+    playTurn(plain, function () { return 0.34; }); // 3 点，落在一格普通效果上
+    assert('走完就轮到下一个人', plain.turn === 1 && plain.players[plain.turn].id === 'chick',
+      'turn=' + plain.turn + ' pos=' + plain.players[0].pos);
+
+    /* 2. 回到起点 */
+    var home = landOn('home', 0.34);
+    assert('踩到「回到起点」且手里没牌：直接回起点',
+      home.st.players[0].pos === 0 && !home.events.some(function (e) { return e.type === 'askCard'; }),
+      JSON.stringify(home.events.map(function (e) { return e.type; })));
+
+    /* 3. 卡牌 */
+    var card = landOn('card', 0.34);
+    assert('踩到「卡牌」格：多一张卡牌', card.st.players[0].cards === 1, String(card.st.players[0].cards));
+    var two = landOn('card', 0.34, 3);
+    assert('卡牌可以一直攒着（不设上限）', two.st.players[0].cards === 4, String(two.st.players[0].cards));
+
+    /* 4. 用卡牌抵消回起点 */
+    var shield = landOn('home', 0.34, 2);
+    assert('手里有卡牌踩到「回到起点」：会先问你要不要用',
+      shield.events.some(function (e) { return e.type === 'askCard'; }) && !!shield.st.pending);
+    assert('问你的时候不能偷偷摇骰子', playTurn(shield.st, function () { return 0.5; }).length === 0);
+    var used = resumeTurn(shield.st, 'use');
+    assert('用掉一张卡牌：留在原地不回起点',
+      shield.st.players[0].pos === shield.tile.index && shield.st.players[0].cards === 1 &&
+      shield.st.players[0].usedCards === 1 && !used.some(function (e) { return e.type === 'home'; }),
+      'pos=' + shield.st.players[0].pos + ' tile=' + shield.tile.index);
+    assert('用卡牌之后正常换人', shield.st.pending === null && shield.st.players[shield.st.turn].id === 'chick');
+    var refused = landOn('home', 0.34, 1);
+    resumeTurn(refused.st, 'skip');
+    assert('不用卡牌：回起点，卡牌留着',
+      refused.st.players[0].pos === 0 && refused.st.players[0].cards === 1 && refused.st.players[0].homeCount === 1);
+
+    /* 5. 前进 / 后退 */
+    var fwd = createGame({ sizeKey: 'easy', animalIds: ['rabbit', 'chick'] });
+    var fwdTile = fwd.board.tiles.filter(function (t) { return t.type === 'forward' && t.index > 3; })[0];
+    fwd.players[0].pos = fwdTile.index - 3;
+    var fwdEvents = playTurn(fwd, function () { return 0.34; });
+    assert('踩到「前进」格：按格子写的步数往前走',
+      fwdEvents.some(function (e) { return e.type === 'jump' && e.dir === 'forward'; }) &&
+      fwd.players[0].pos === Math.min(fwdTile.index + fwdTile.steps, fwd.board.goalIndex),
+      fwd.players[0].pos + ' vs ' + (fwdTile.index + fwdTile.steps));
+    var jumpIdx = -1;
+    fwdEvents.forEach(function (e, i) { if (e.type === 'jump') jumpIdx = i; });
+    assert('前进 / 后退落到的格子不会再触发一次效果',
+      !fwdEvents.slice(jumpIdx + 1).some(function (e) { return e.type === 'land'; }));
+
+    var back = createGame({ sizeKey: 'easy', animalIds: ['rabbit', 'chick'] });
+    var backTile = back.board.tiles.filter(function (t) { return t.type === 'back' && t.index > 3; })[0];
+    back.players[0].pos = backTile.index - 2;
+    var backEvents = playTurn(back, function () { return 0.2; }); // 2 点正好落到后退格
+    assert('踩到「后退」格：按格子写的步数往后退',
+      backEvents.some(function (e) { return e.type === 'jump' && e.dir === 'back'; }) &&
+      back.players[0].pos === Math.max(0, backTile.index - backTile.steps),
+      back.players[0].pos + ' vs ' + (backTile.index - backTile.steps));
+    assert('后退不会退到起点外面去', back.players[0].pos >= 0);
+
+    /* 6. 再扔一次 */
+    var again = createGame({ sizeKey: 'easy', animalIds: ['rabbit', 'chick'] });
+    var againTile = again.board.tiles.filter(function (t) { return t.type === 'again' && t.index > 3; })[0];
+    again.players[0].pos = againTile.index - 1;
+    var againEvents = playTurn(again, function () { return 0.0; }); // 1 点正好落到再扔格
+    assert('踩到「再扔一次」：同一个人接着摇',
+      againEvents.some(function (e) { return e.type === 'againTurn'; }) &&
+      again.players[again.turn].id === 'rabbit' &&
+      !againEvents.some(function (e) { return e.type === 'turnEnd'; }));
+    var againAgain = playTurn(again, function () { return 0.0; });
+    assert('「再扔一次」之后摇骰子的还是他', againAgain[0].type === 'roll' && againAgain[0].player === 'rabbit');
+
+    /* 7. 冻结 2 轮：一次 playTurn 会顺带把后面被冻住的人跳过去，所以用循环数清楚 */
+    var frozen = createGame({ sizeKey: 'easy', animalIds: ['rabbit', 'chick'] });
+    var freezeTile = frozen.board.tiles.filter(function (t) { return t.type === 'freeze' && t.index > 3; })[0];
+    frozen.players[0].pos = freezeTile.index - 3;
+    var freezeEvents = playTurn(frozen, function () { return 0.34; });
+    assert('踩到「冻结」格：被冻住 2 轮',
+      freezeEvents.some(function (e) { return e.type === 'freeze'; }) && frozen.players[0].frozen === 2,
+      String(frozen.players[0].frozen));
+
+    var rabbitSkips = 0, rabbitRolled = null, guard = 0;
+    while (rabbitRolled === null && !frozen.winner && guard++ < 40) {
+      if (frozen.pending) { resumeTurn(frozen, 'skip'); continue; }
+      playTurn(frozen, function () { return 0; }).forEach(function (e) { // 每次 1 点，慢慢走
+        if (e.type === 'skip' && e.player === 'rabbit') {
+          rabbitSkips++;
+          if (rabbitSkips === 1) assert('第 1 次轮到被冻住的人：直接跳过', e.remaining === 1, JSON.stringify(e));
+          if (rabbitSkips === 2) assert('第 2 次轮到被冻住的人：还是跳过', e.remaining === 0, JSON.stringify(e));
+        }
+        if (e.type === 'roll' && e.player === 'rabbit' && rabbitRolled === null) rabbitRolled = e.value;
+      });
+    }
+    assert('被冻住之后一共只跳过了 2 次', rabbitSkips === 2, String(rabbitSkips));
+    assert('第 3 次轮到他就能正常走了（刚好冻 2 轮）',
+      rabbitRolled !== null && frozen.players[0].frozen === 0,
+      'roll=' + rabbitRolled + ' frozen=' + frozen.players[0].frozen);
+
+    /* 8. 到终点就赢 */
+    var win = createGame({ sizeKey: 'easy', animalIds: ['rabbit', 'chick'] });
+    win.players[0].pos = win.board.goalIndex - 2;
+    var winEvents = playTurn(win, function () { return 0.999; }); // 6 点，会越过终点
+    assert('摇的点数超过终点也算到达（不会一直反弹）', win.players[0].pos === win.board.goalIndex, String(win.players[0].pos));
+    assert('到终点就赢，游戏结束', win.winner === 'rabbit' && win.phase === 'over');
+    assert('赢了以后不能再操作', playTurn(win, function () { return 0.5; }).length === 0 && resumeTurn(win, 'use').length === 0);
+    assert('赢的时候会报出总回合数', winEvents.some(function (e) { return e.type === 'win' && e.round === win.round; }));
+
+    /* 9. 人数与参数 */
+    var three = createGame({ sizeKey: 'medium', animalIds: ['rabbit', 'snowleopard', 'chick'] });
+    assert('三个人也能玩（排好座位）', three.players.length === 3 && three.players.every(function (p, i) { return p.seat === i; }));
+    var many = createGame({ sizeKey: 'hard', animalIds: ['rabbit', 'snowleopard', 'tibetanfox', 'chick', 'rabbit'] });
+    assert('超过 4 个人只留 4 个', many.players.length === 4, String(many.players.length));
+    var threw = 0;
+    try { createGame({ sizeKey: 'easy', animalIds: ['rabbit'] }); } catch (e) { threw++; }
+    try { createGame({ sizeKey: 'nope', animalIds: ['rabbit', 'chick'] }); } catch (e) { threw++; }
+    try { createGame({ sizeKey: 'easy', animalIds: ['rabbit', 'dragon'] }); } catch (e) { threw++; }
+    assert('人太少 / 难度不对 / 动物不认识 都会明确报错', threw === 3, String(threw));
+    assert('骰子只可能是 1~6', rollDice(function () { return 0; }) === 1 && rollDice(function () { return 0.999999; }) === 6);
+    assert('棋盘一开始所有人都站在起点', createGame({ sizeKey: 'hard', animalIds: ['rabbit', 'chick'] }).players.every(function (p) { return p.pos === 0; }));
+
+    /* ============ 汇总 ============ */
+    var summary = document.getElementById('summary');
+    summary.textContent = fail === 0
+      ? '🎉 全部通过：' + pass + ' 项检查都没问题'
+      : '⚠️ 通过 ' + pass + ' 项，失败 ' + fail + ' 项';
+    summary.className = fail === 0 ? 'ok' : 'bad';
+
+    document.getElementById('stats').textContent =
+      '模拟了 ' + games + ' 局：一共 ' + actions + ' 次行动、摇了 ' + rolls + ' 次骰子。\n' +
+      '其中 🎁 拿卡 ' + stat.card + ' 次、🛡️ 用卡 ' + stat.useCard + ' 次、❄️ 冻住 ' + stat.freeze + ' 次（跳过 ' + stat.skip + ' 次）、' +
+      '🎲 再扔一次 ' + stat.again + ' 次、➡️⬅️ 前进后退 ' + stat.jump + ' 次、🌀 回起点 ' + stat.home + ' 次。\n' +
+      (fails.length ? '失败明细：\n' + fails.slice(0, 20).join('\n') : '没有任何失败项。');
+
+    /* 方便命令行 / 自动化检查 */
+    window.__TEST_RESULT__ = { pass: pass, fail: fail, fails: fails, games: games, actions: actions };
+    document.title = (fail === 0 ? '✅ ' : '❌ ') + pass + '/' + (pass + fail) + ' · 骰子大冒险自检';
+  </script>
+</body>
+</html>

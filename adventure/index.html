@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>骰子大冒险</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎲 骰子大冒险</h1>
+      <p>2~4 只小动物一起跑格子，谁先到终点谁赢！</p>
+      <a class="back-link" href="../">← 回到博客首页</a>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>1️⃣ 选棋盘</h2>
+        <div class="pick-grid" id="size-options"></div>
+      </section>
+
+      <section class="card">
+        <h2>2️⃣ 选小动物（2~4 只一起玩）</h2>
+        <div class="pick-grid animals" id="animal-options"></div>
+      </section>
+
+      <section class="card start-card">
+        <p class="hint" id="select-hint"></p>
+        <button class="btn btn-primary big" id="start-btn" type="button">开始游戏 🚀</button>
+      </section>
+
+      <section class="card">
+        <h2>🏅 最好成绩</h2>
+        <p class="card-note">每个难度记的是「最快获胜」：回合数越少越好，回合数一样就比用时。</p>
+        <div id="record-list"></div>
+        <div class="nav-bar">
+          <button class="btn btn-secondary small" id="clear-records" type="button">清空纪录</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>📖 怎么玩</h2>
+        <ol class="rules" id="rules-list"></ol>
+        <h3>格子说明</h3>
+        <div class="legend" id="rules-legend"></div>
+      </section>
+    </main>
+
+    <footer class="page-footer">做给小朋友的桌游小实验 · 打开就能玩，不用注册</footer>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/setup.js"></script>
+</body>
+</html>

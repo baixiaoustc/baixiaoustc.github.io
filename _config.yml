@@ -15,7 +15,7 @@ banner: 学而不思则罔，思而不学则殆。
 permalink: /:year/:month/:day/:title/
 #paginate: 10
 
-exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile', '.DS_Store']
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile', '.DS_Store', 'docs']
 
 github_username: baixiaoustc
 highlighter: rouge

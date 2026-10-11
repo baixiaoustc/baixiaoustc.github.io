@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>骰子大冒险 · 对局</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="game-page">
+  <div class="game-shell">
+    <div class="game-top">
+      <div class="top-item">
+        <span class="top-label">棋盘</span>
+        <span class="top-value" id="size-name">—</span>
+        <span class="top-sub" id="size-desc"></span>
+      </div>
+      <div class="top-item">
+        <span class="top-label">现在轮到</span>
+        <span class="top-value" id="turn-badge">—</span>
+      </div>
+      <div class="top-item">
+        <span class="top-label">进行到</span>
+        <span class="top-value" id="round-display">第 1 轮</span>
+      </div>
+      <div class="top-item">
+        <span class="top-label">用时</span>
+        <span class="top-value" id="timer-display">0 分 00 秒</span>
+      </div>
+      <div class="top-actions">
+        <button class="btn btn-secondary small" id="zoom-out" type="button" title="格子小一点">🔍－</button>
+        <button class="btn btn-secondary small" id="zoom-in" type="button" title="格子大一点">🔍＋</button>
+        <button class="btn btn-secondary small" id="rules-btn" type="button">📖 规则</button>
+        <a class="btn btn-secondary small" href="./index.html">🏠 换难度</a>
+      </div>
+    </div>
+
+    <div class="banner" id="banner"><span id="banner-text">准备开始！</span></div>
+
+    <div class="play-area">
+      <aside class="side">
+        <div class="player-panel" id="player-panel"></div>
+      </aside>
+
+      <div class="board-wrap" id="board-wrap">
+        <div class="board" id="board">
+          <div class="pieces" id="pieces"></div>
+        </div>
+        <p class="board-hint hidden" id="board-hint">棋盘比屏幕大，可以滚动查看，或点 🔍－ 看全</p>
+      </div>
+
+      <aside class="side side-dice">
+        <div class="dice-box">
+          <div class="dice-face" id="dice-face">🎲</div>
+          <div class="dice-number" id="dice-number">还没摇</div>
+          <button class="btn btn-primary big" id="roll-btn" type="button">摇骰子（空格）</button>
+        </div>
+        <p class="prompt" id="prompt-text"></p>
+      </aside>
+    </div>
+  </div>
+
+  <!-- 卡牌询问 -->
+  <div class="modal hidden" id="card-modal">
+    <div class="modal-card">
+      <h2>🌀 回到起点！</h2>
+      <p id="card-modal-text"></p>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="card-use-btn" type="button">用一张卡牌 🛡️</button>
+        <button class="btn btn-secondary" id="card-skip-btn" type="button">接受惩罚 🌀</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 结果 -->
+  <div class="modal hidden" id="result-modal">
+    <div class="modal-card">
+      <h2 id="result-title">获胜！</h2>
+      <p class="result-note hidden" id="result-note"></p>
+      <div class="stat-grid" id="result-stats"></div>
+      <p class="result-rank" id="result-rank"></p>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="result-again" type="button">再来一局 🔁</button>
+        <button class="btn btn-secondary" id="result-home" type="button">换难度/换人 🏠</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 规则 -->
+  <div class="modal hidden" id="rules-modal">
+    <div class="modal-card">
+      <h2>📖 怎么玩</h2>
+      <ol class="rules" id="rules-list"></ol>
+      <div class="legend" id="rules-legend"></div>
+      <div class="modal-actions">
+        <button class="btn btn-primary" id="rules-close" type="button">知道啦</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
