@@ -14,6 +14,13 @@
   const esc = (s) =>
     String(s == null ? "" : s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
+  // 2026-10-06 -> 2026 年 10 月 6 日
+  const cnDate = (d) => {
+    const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(d || ""));
+    if (!m) return esc(d);
+    return `${m[1]} 年 ${Number(m[2])} 月 ${Number(m[3])} 日`;
+  };
+
   /* ---------- 首页 ---------- */
   function renderIndex() {
     const byDateDesc = (a, b) => (a.date < b.date ? 1 : -1);
@@ -175,12 +182,19 @@
     root.innerHTML = `
       <a class="back" href="index.html">← 回到博物馆首页</a>
 
-      <div class="q-head">
-        <span>${k.emoji} ${esc(k.name)}</span><span>·</span>
-        <span>${q.age} 岁时问</span><span>·</span>
-        <span>${esc(q.date)}</span>
+      <div class="asker" style="--c:${s.color}">
+        <div class="asker-avatar">${k.emoji}</div>
+        <div class="asker-meta">
+          <div class="asker-name">${esc(k.name)}<span class="asker-age">${q.age} 岁</span></div>
+          <div class="asker-date">${cnDate(q.date)} 问的</div>
+        </div>
+        <div class="asker-subjects">
+          <span class="asker-subject" style="background:${s.color}1f;color:${s.color}">${s.emoji} ${esc(s.name)}</span>
+          ${s2 ? `<span class="asker-subject" style="background:${s2.color}1f;color:${s2.color}">${s2.emoji} ${esc(s2.name)}</span>` : ""}
+        </div>
       </div>
 
+      <p class="quote-label">${esc(k.name)}当时的原话</p>
       <h1 class="q-title">「${esc(q.question)}」</h1>
 
       <figure class="figure">
