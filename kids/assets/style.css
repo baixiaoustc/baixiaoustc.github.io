@@ -448,4 +448,21 @@ footer {
   .asker-avatar { width: 44px; height: 44px; font-size: 22px; }
   .oneline p { font-size: 18px; }
   body { font-size: 16px; }
+
+  /* 筛选区压缩到屏高 1/5 以内：搜索变矮、标签变小且单行横向滑动 */
+  .filters { padding: 6px 0 5px; }
+  .search-row { gap: 8px; }
+  #search { font-size: 14px; padding: 7px 12px; border-width: 1.5px; }
+  .chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 6px;
+    margin-top: 5px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: 0 0 auto; font-size: 13px; line-height: 1.1; padding: 4px 10px; }
+  .chip .num { font-size: 11px; margin-left: 4px; }
 }
