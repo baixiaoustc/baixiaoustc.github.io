@@ -16,7 +16,8 @@ window.KQ = {
     { id: "society", name: "社会与经济", emoji: "🏙️", color: "#A78BFA", about: "钱、规则、公平、大家一起怎么过日子" },
     { id: "tech", name: "技术工具", emoji: "🔧", color: "#FFB347", about: "电脑、手机、插件、怎么把一件事做成" },
     { id: "life", name: "生命与健康", emoji: "❤️", color: "#FF7A7A", about: "身体、吃进去的东西、生病和保护自己" },
-    { id: "daily", name: "生活常识", emoji: "🍚", color: "#FFD166", about: "吃穿住行、时间、爸爸妈妈的小时候" }
+    { id: "daily", name: "生活常识", emoji: "🍚", color: "#FFD166", about: "吃穿住行、时间、爸爸妈妈的小时候" },
+    { id: "story", name: "故事与想象", emoji: "🎬", color: "#FF9BC0", about: "电影、故事、角色，还有那些还没发生的事" }
   ],
 
   questions: [
@@ -177,6 +178,26 @@ window.KQ = {
       ],
       followUp: "为什么它是橙红色的？（一是好认，二是鱼油怕光怕坏，颜色和外壳都在保护它。）",
       source: "2026-10-12 桃子"
+    },
+    {
+      id: "laputa-robot",
+      date: "2026-10-25",
+      kid: "taozi",
+      age: 4,
+      question: "天空之城里的机器人为什么死了？",
+      subject: "story",
+      secondary: "life",
+      depth: 2,
+      figure: "assets/figures/laputa-robot.svg",
+      figureAlt: "花园机器人、它的鸟窝，和拉普达城里的发光石头",
+      oneLine: "它不是流血死的，是「没劲了」：它的力气来自拉普达城，城塌了、它又被军队打坏，就再也不动了。",
+      points: [
+        "拉普达的机器人是古代人做来干活的，这一个在花园里照顾花草、护着鸟窝，特别温柔。",
+        "它不吃饭、不睡觉，力气来自整座城（那颗会发光的石头和巨树的根）。",
+        "电影里军队用大炮把它打坏；最后城塌了，它就没有力气了，停在那里不动。"
+      ],
+      followUp: "那它算不算「死」？（它不会长大、不会吃饭，更像是「停下来了」——但它护过的鸟窝里，小鸟还在。）",
+      source: "2026-10-25 桃子（看《天空之城》）"
     }
   ]
 };

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="花园机器人靠拉普达的发光石头才有劲，城塌了它就不动了">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="44" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="21" font-weight="700" fill="#2F3542">它不是流血死的，是「没劲了」</text>
+
+  <!-- 草地 -->
+  <rect x="24" y="268" width="280" height="14" rx="7" fill="#D7F0E1"/>
+  <g fill="#06D6A0">
+    <path d="M46 268 q4 -14 10 -18 q-2 12 2 18 z"/>
+    <path d="M76 268 q6 -12 12 -16 q-4 10 0 16 z"/>
+  </g>
+  <circle cx="62" cy="252" r="6" fill="#FF9BC0"/>
+  <circle cx="94" cy="256" r="5" fill="#FFD166"/>
+
+  <!-- 机器人 -->
+  <g>
+    <!-- 天线 -->
+    <path d="M168 118 v14" stroke="#8D97A5" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="168" cy="114" r="5" fill="#FF7A7A"/>
+    <!-- 头 -->
+    <rect x="138" y="132" width="60" height="48" rx="14" fill="#CBD5E1" stroke="#8D97A5" stroke-width="3.5"/>
+    <circle cx="156" cy="156" r="7" fill="#FFFFFF" stroke="#6B7280" stroke-width="2.5"/>
+    <circle cx="180" cy="156" r="7" fill="#FFFFFF" stroke="#6B7280" stroke-width="2.5"/>
+    <circle cx="156" cy="157" r="3" fill="#2F3542"/>
+    <circle cx="180" cy="157" r="3" fill="#2F3542"/>
+    <path d="M158 170 q10 5 20 0" stroke="#6B7280" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <!-- 身体 -->
+    <rect x="126" y="184" width="84" height="66" rx="16" fill="#D9E0E8" stroke="#8D97A5" stroke-width="3.5"/>
+    <rect x="146" y="202" width="44" height="24" rx="6" fill="#FFF3D6" stroke="#E0A800" stroke-width="2"/>
+    <!-- 腿 -->
+    <rect x="146" y="250" width="14" height="20" rx="6" fill="#B7C0CC" stroke="#8D97A5" stroke-width="3"/>
+    <rect x="176" y="250" width="14" height="20" rx="6" fill="#B7C0CC" stroke="#8D97A5" stroke-width="3"/>
+    <!-- 左手 -->
+    <rect x="108" y="196" width="20" height="10" rx="5" fill="#B7C0CC" stroke="#8D97A5" stroke-width="3"/>
+    <!-- 右手托着鸟窝 -->
+    <path d="M210 208 q22 6 24 20" stroke="#B7C0CC" stroke-width="9" fill="none" stroke-linecap="round"/>
+    <ellipse cx="240" cy="234" rx="26" ry="12" fill="#C8A278" stroke="#9B7B57" stroke-width="3"/>
+    <circle cx="231" cy="231" r="5" fill="#FFFFFF" stroke="#9B7B57" stroke-width="2"/>
+    <circle cx="242" cy="229" r="5" fill="#FFFFFF" stroke="#9B7B57" stroke-width="2"/>
+    <circle cx="252" cy="232" r="5" fill="#FFFFFF" stroke="#9B7B57" stroke-width="2"/>
+  </g>
+  <text x="164" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" font-weight="700" fill="#4B5563">看花园的机器人</text>
+  <text x="164" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13" fill="#6B7280">很温柔，护着鸟窝和花</text>
+
+  <!-- 拉普达（浮城断面） -->
+  <path d="M348 138 q62 -26 132 2 q16 44 -44 96 q-34 22 -64 -12 q-40 -48 -24 -86 z" fill="#C9B79A" stroke="#A08B6C" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M362 150 q56 -18 104 4" stroke="#A08B6C" stroke-width="2.5" fill="none"/>
+  <g stroke="#8A7550" stroke-width="4" stroke-linecap="round" fill="none">
+    <path d="M400 232 q-6 26 -18 40"/>
+    <path d="M424 236 q4 28 -4 44"/>
+    <path d="M446 230 q12 24 8 42"/>
+  </g>
+  <!-- 发光的石头 -->
+  <circle cx="414" cy="186" r="30" fill="#7FD6FF" opacity="0.25"/>
+  <path d="M414 164 l14 22 l-14 22 l-14 -22 z" fill="#4EC5F1" stroke="#1C7FA8" stroke-width="3" stroke-linejoin="round"/>
+  <text x="414" y="270" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="14" font-weight="700" fill="#1C7FA8">城里的「心脏」</text>
+
+  <!-- 能量传过去 -->
+  <path d="M386 184 q-70 24 -136 40" stroke="#4EC5F1" stroke-width="3" stroke-dasharray="7 6" fill="none"/>
+  <path d="M250 224 l14 -2 -6 12 z" fill="#4EC5F1"/>
+  <text x="316" y="238" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13" fill="#1C7FA8">靠它才有劲</text>
+
+  <!-- 底部三步 -->
+  <g font-family="PingFang SC,Hiragino Sans GB,sans-serif">
+    <rect x="26" y="344" width="186" height="40" rx="12" fill="#F3F4F6"/>
+    <text x="119" y="369" text-anchor="middle" font-size="14" fill="#374151">① 古代人做的干活机器人</text>
+
+    <rect x="228" y="344" width="186" height="40" rx="12" fill="#EAF7FD"/>
+    <text x="321" y="369" text-anchor="middle" font-size="14" fill="#1C7FA8">② 劲儿来自城里的石头</text>
+
+    <rect x="430" y="344" width="184" height="40" rx="12" fill="#FFF0F3"/>
+    <text x="522" y="369" text-anchor="middle" font-size="14" fill="#D9536F">③ 城塌了 → 它就不动了</text>
+  </g>
+</svg>
