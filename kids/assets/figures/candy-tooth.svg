@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="细菌吃糖吐出酸，酸把牙齿的盔甲泡出小洞，洞深了碰到牙神经就疼">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="44" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="21" font-weight="700" fill="#2F3542">烂牙的不是糖，是糖喂出来的「酸」</text>
+
+  <!-- 牙根 -->
+  <path d="M126 236 l10 56 q4 14 13 2 l5 -58 z" fill="#FFFFFF" stroke="#B9C6D4" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M224 236 l-10 56 q-4 14 -13 2 l-5 -58 z" fill="#FFFFFF" stroke="#B9C6D4" stroke-width="3.5" stroke-linejoin="round"/>
+  <!-- 牙冠 -->
+  <rect x="98" y="122" width="154" height="118" rx="30" fill="#FFFFFF" stroke="#B9C6D4" stroke-width="3.5"/>
+  <!-- 牙釉质（盔甲） -->
+  <rect x="108" y="132" width="134" height="98" rx="24" fill="none" stroke="#CFE8FF" stroke-width="9"/>
+  <text x="128" y="176" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13" fill="#5B8FB9">牙釉质</text>
+  <text x="128" y="194" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#8FA9C0">（牙齿的盔甲）</text>
+
+  <!-- 牙神经 -->
+  <path d="M175 240 q-12 -30 0 -46 q12 -16 0 -30" stroke="#FF9AA2" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <text x="175" y="330" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13" fill="#D9536F">牙神经（在里头）</text>
+
+  <!-- 蛀洞 -->
+  <path d="M206 126 q22 6 26 28 q4 24 -10 42 q-14 16 -26 2 q-10 -12 -6 -34 q4 -26 16 -38 z" fill="#8B5E3C" stroke="#6B4728" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M214 140 q12 10 10 26 q-2 14 -12 20" stroke="#A97A52" stroke-width="2.5" fill="none"/>
+  <text x="252" y="152" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13" font-weight="700" fill="#8B5E3C">小洞</text>
+  <path d="M268 158 q-12 2 -18 6" stroke="#8B5E3C" stroke-width="2" fill="none"/>
+
+  <!-- 酸滴下来 -->
+  <g fill="#7FD6FF" stroke="#1C7FA8" stroke-width="2.5">
+    <path d="M168 74 q9 12 9 19 a9 9 0 1 1 -18 0 q0 -7 9 -19 z"/>
+    <path d="M206 60 q9 12 9 19 a9 9 0 1 1 -18 0 q0 -7 9 -19 z" fill="#9BE1FF"/>
+    <path d="M240 80 q9 12 9 19 a9 9 0 1 1 -18 0 q0 -7 9 -19 z"/>
+  </g>
+  <text x="284" y="92" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" font-weight="700" fill="#1C7FA8">酸</text>
+  <text x="150" y="112" text-anchor="end" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13" fill="#1C7FA8">细菌吃完糖吐出来的</text>
+
+  <!-- 右侧三步 -->
+  <g font-family="PingFang SC,Hiragino Sans GB,sans-serif">
+    <rect x="364" y="78" width="248" height="60" rx="12" fill="#F3EEFF" stroke="#A78BFA" stroke-width="2.5"/>
+    <text x="488" y="104" text-anchor="middle" font-size="15" font-weight="700" fill="#6D4BB5">① 嘴里的细菌爱吃糖</text>
+    <text x="488" y="124" text-anchor="middle" font-size="13" fill="#4B5563">糖越黏、吃的时间越长，细菌越开心</text>
+
+    <path d="M488 142 v16" stroke="#CBD5E1" stroke-width="3"/>
+    <path d="M488 160 l-7 -10 h14 z" fill="#CBD5E1"/>
+
+    <rect x="364" y="168" width="248" height="60" rx="12" fill="#EAF7FD" stroke="#4EC5F1" stroke-width="2.5"/>
+    <text x="488" y="194" text-anchor="middle" font-size="15" font-weight="700" fill="#1C7FA8">② 细菌吐酸，把盔甲泡软</text>
+    <text x="488" y="214" text-anchor="middle" font-size="13" fill="#4B5563">一次一点点，泡久了就脱了一层</text>
+
+    <path d="M488 232 v16" stroke="#CBD5E1" stroke-width="3"/>
+    <path d="M488 250 l-7 -10 h14 z" fill="#CBD5E1"/>
+
+    <rect x="364" y="258" width="248" height="66" rx="12" fill="#FFF0F3" stroke="#FF9BC0" stroke-width="2.5"/>
+    <text x="488" y="284" text-anchor="middle" font-size="15" font-weight="700" fill="#C2415F">③ 洞越来越深，碰到神经就疼</text>
+    <text x="488" y="304" text-anchor="middle" font-size="13" fill="#4B5563">刷牙 + 含氟 + 少喝甜饮料，盔甲能补回来</text>
+  </g>
+
+  <text x="320" y="360" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#4B5563">一次吃完一块糖，比一整天慢慢吃要好——关键不是「吃了多少」，是「酸泡了多久」。</text>
+</svg>
