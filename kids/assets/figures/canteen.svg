@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="一个个包饺子太慢，一大锅菜很快">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="44" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="22" font-weight="700" fill="#2F3542">食堂要一次喂饱几百人，比的是「快」和「稳」</text>
+
+  <!-- 左：一个个包 -->
+  <rect x="24" y="70" width="286" height="264" rx="20" fill="#FDECEC"/>
+  <text x="167" y="102" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="17" font-weight="700" fill="#D9534F">水饺 / 圆子：一个一个包</text>
+  <g fill="#FFE6CF" stroke="#D98A54" stroke-width="2.5">
+    <path d="M48 150 A15 15 0 0 1 78 150 Q63 160 48 150 Z"/>
+    <path d="M92 150 A15 15 0 0 1 122 150 Q107 160 92 150 Z"/>
+    <path d="M136 150 A15 15 0 0 1 166 150 Q151 160 136 150 Z"/>
+    <path d="M180 150 A15 15 0 0 1 210 150 Q195 160 180 150 Z"/>
+    <path d="M48 194 A15 15 0 0 1 78 194 Q63 204 48 194 Z"/>
+    <path d="M92 194 A15 15 0 0 1 122 194 Q107 204 92 194 Z"/>
+    <path d="M136 194 A15 15 0 0 1 166 194 Q151 204 136 194 Z"/>
+    <path d="M180 194 A15 15 0 0 1 210 194 Q195 204 180 194 Z"/>
+    <path d="M48 238 A15 15 0 0 1 78 238 Q63 248 48 238 Z"/>
+    <path d="M92 238 A15 15 0 0 1 122 238 Q107 248 92 238 Z"/>
+    <path d="M136 238 A15 15 0 0 1 166 238 Q151 248 136 238 Z"/>
+  </g>
+  <text x="240" y="200" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="26" fill="#D9534F">…</text>
+
+  <circle cx="228" cy="272" r="26" fill="#FFFFFF" stroke="#D9534F" stroke-width="3"/>
+  <path d="M228 254 v18 l13 8" stroke="#D9534F" stroke-width="3" stroke-linecap="round" fill="none"/>
+  <text x="120" y="288" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#D9534F">一上午，好几个人</text>
+
+  <!-- 右：一大锅 -->
+  <rect x="330" y="70" width="286" height="264" rx="20" fill="#EAF7EE"/>
+  <text x="473" y="102" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="17" font-weight="700" fill="#059C77">大锅菜：一次做很多</text>
+
+  <g stroke="#9CA3AF" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M420 150 q10 -14 0 -26"/><path d="M452 148 q10 -14 0 -26"/><path d="M484 150 q10 -14 0 -26"/>
+  </g>
+  <ellipse cx="452" cy="176" rx="86" ry="18" fill="#D7F0E1" stroke="#059C77" stroke-width="4"/>
+  <path d="M366 176 h172 l-20 96 h-132 z" fill="#C9E9D8" stroke="#059C77" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M366 200 h-20" stroke="#059C77" stroke-width="6" stroke-linecap="round"/>
+  <path d="M538 200 h20" stroke="#059C77" stroke-width="6" stroke-linecap="round"/>
+  <ellipse cx="452" cy="192" rx="66" ry="12" fill="#A7DCC3"/>
+  <path d="M520 132 l-26 44" stroke="#8D6E63" stroke-width="6" stroke-linecap="round"/>
+  <ellipse cx="496" cy="172" rx="16" ry="10" fill="#8D6E63"/>
+
+  <text x="452" y="256" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#059C77">一锅够几百人</text>
+  <text x="452" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#4B5563">熟得透、够热、同样的钱更划算</text>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="很多人往一个池子里交钱，少数人出事时从池子里领钱">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="44" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="22" font-weight="700" fill="#2F3542">很多人各交一点点 → 攒成一个大池子</text>
+
+  <defs>
+    <g id="person">
+      <circle cx="0" cy="0" r="11" fill="#A78BFA"/>
+      <path d="M-14 34 a14 14 0 0 1 28 0 z" fill="#A78BFA"/>
+    </g>
+  </defs>
+
+  <!-- 交钱的人 -->
+  <use href="#person" x="70" y="112"/>
+  <use href="#person" x="126" y="112"/>
+  <use href="#person" x="182" y="112"/>
+  <use href="#person" x="238" y="112"/>
+  <text x="196" y="92" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">一万人各交 100 元</text>
+
+  <!-- 硬币飞向池子 -->
+  <g fill="#FFD166" stroke="#E0A800" stroke-width="2">
+    <circle cx="78" cy="176" r="9"/><circle cx="140" cy="196" r="9"/>
+    <circle cx="202" cy="206" r="9"/><circle cx="258" cy="190" r="9"/>
+  </g>
+  <g stroke="#E0A800" stroke-width="2.5" stroke-dasharray="6 6" fill="none">
+    <path d="M86 186 Q180 246 262 208"/>
+  </g>
+
+  <!-- 池子 -->
+  <path d="M276 196 h140 l-16 112 h-108 z" fill="#BFE9FF" stroke="#4EC5F1" stroke-width="4" stroke-linejoin="round"/>
+  <ellipse cx="346" cy="196" rx="70" ry="14" fill="#DFF3FF" stroke="#4EC5F1" stroke-width="4"/>
+  <text x="346" y="264" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="20" font-weight="700" fill="#1C7FA8">100 万元</text>
+  <text x="346" y="290" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#1C7FA8">大家的钱放在一起</text>
+
+  <!-- 赔给少数人 -->
+  <path d="M418 246 h56" stroke="#FF7A7A" stroke-width="4" stroke-linecap="round"/>
+  <path d="M474 246 l-12 -7 v14 z" fill="#FF7A7A"/>
+  <circle cx="500" cy="230" r="10" fill="#FFD166" stroke="#E0A800" stroke-width="2"/>
+  <circle cx="516" cy="252" r="10" fill="#FFD166" stroke="#E0A800" stroke-width="2"/>
+  <circle cx="500" cy="274" r="10" fill="#FFD166" stroke="#E0A800" stroke-width="2"/>
+  <text x="512" y="196" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#FF7A7A">出事的人来领钱</text>
+
+  <text x="320" y="352" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="17" fill="#2F3542">一年真出事的只有几十人，剩下的是成本、准备着明年赔的钱，再剩下才是赚的。</text>
+</svg>

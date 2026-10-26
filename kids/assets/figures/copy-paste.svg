@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="把图片复制到WPS的三步：找到图片、Ctrl+C复制、Ctrl+V粘贴">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="46" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="22" font-weight="700" fill="#2F3542">把图片放进 WPS：三步就好</text>
+
+  <!-- 步骤一：找到图片 -->
+  <rect x="30" y="96" width="170" height="150" rx="14" fill="#FFF6E5" stroke="#FFB347" stroke-width="3"/>
+  <path d="M48 128 h40 l10 12 h60 v66 h-110 z" fill="#FFD166" stroke="#E0A800" stroke-width="3" stroke-linejoin="round"/>
+  <rect x="66" y="160" width="66" height="44" rx="4" fill="#7FD6FF" stroke="#3B82F6" stroke-width="2.5"/>
+  <circle cx="84" cy="174" r="6" fill="#FFD166"/>
+  <path d="M68 200 l18 -18 l14 12 l12 -10 l20 16 z" fill="#06D6A0"/>
+  <text x="115" y="228" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" font-weight="700" fill="#B5730F">① 找到图片，点一下选中</text>
+
+  <path d="M212 171 h36" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+  <path d="M248 171 l-12 -7 v14 z" fill="#CBD5E1"/>
+
+  <!-- 步骤二：Ctrl+C -->
+  <rect x="262" y="140" width="120" height="66" rx="12" fill="#FFFFFF" stroke="#94A3B8" stroke-width="3"/>
+  <rect x="262" y="140" width="120" height="66" rx="12" fill="#E2E8F0" opacity="0.55"/>
+  <text x="322" y="172" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="20" font-weight="700" fill="#334155">Ctrl + C</text>
+  <text x="322" y="194" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="14" fill="#64748B">复制</text>
+  <text x="322" y="232" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" font-weight="700" fill="#334155">② 按 Ctrl+C</text>
+
+  <path d="M394 171 h36" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+  <path d="M430 171 l-12 -7 v14 z" fill="#CBD5E1"/>
+
+  <!-- 步骤三：WPS -->
+  <rect x="444" y="96" width="166" height="150" rx="14" fill="#EFF4FF" stroke="#3B82F6" stroke-width="3"/>
+  <rect x="470" y="114" width="114" height="112" rx="6" fill="#FFFFFF" stroke="#93B4F5" stroke-width="2.5"/>
+  <g stroke="#C7D7F5" stroke-width="4" stroke-linecap="round">
+    <path d="M484 134 h60"/><path d="M484 150 h44"/>
+  </g>
+  <rect x="484" y="162" width="86" height="52" rx="4" fill="#7FD6FF" stroke="#3B82F6" stroke-width="2"/>
+  <circle cx="502" cy="176" r="6" fill="#FFD166"/>
+  <path d="M486 210 l20 -20 l16 14 l12 -10 l22 16 z" fill="#06D6A0"/>
+  <text x="527" y="232" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" font-weight="700" fill="#1D4ED8">③ 按 Ctrl+V 粘贴</text>
+
+  <text x="320" y="292" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" fill="#2F3542">网页上的图片：在图上点右键 →「复制图片」</text>
+  <text x="320" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" fill="#2F3542">手机上：长按 →「复制」，到 WPS 里长按 →「粘贴」</text>
+  <text x="320" y="356" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">Ctrl+X 是「剪切」：把它搬走，原来的位置就空了</text>
+</svg>

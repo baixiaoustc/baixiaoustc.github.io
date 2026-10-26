@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>小问号博物馆 · 玉米和桃子的问题</title>
+<meta name="description" content="记录玉米和桃子每天提出的问题，按学科分好，每个问题配一张一眼看懂的图。">
+<link rel="icon" type="image/svg+xml" href="assets/figures/logo.svg">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="index">
+
+<header class="hero">
+  <div class="wrap">
+    <h1>小问号博物馆 <span class="qm">?</span></h1>
+    <p class="sub">玉米和桃子问过的每一个问题，都在这里收好。<br>先给一张图，让你一眼看懂；再给你三句话，把道理说清楚。</p>
+    <div class="stats" id="stats"></div>
+  </div>
+</header>
+
+<section class="filters">
+  <div class="wrap">
+    <div class="search-row">
+      <input id="search" type="search" placeholder="搜一搜：螃蟹、蚊子、插件、保险…" autocomplete="off">
+    </div>
+    <div class="chips" id="kidChips"></div>
+    <div class="chips" id="subjectChips"></div>
+  </div>
+</section>
+
+<main class="wrap">
+  <div id="board"></div>
+</main>
+
+<footer>
+  <div class="wrap">
+    问题来自玉米和桃子，答案由爸爸整理 · 每个问题都配一张自己画的图<br>
+    想加一个新问题？在 <code>data/questions.js</code> 里加一条，再补一张 SVG 图解就好。
+  </div>
+</footer>
+
+<script src="data/questions.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

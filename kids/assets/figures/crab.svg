@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="母蟹是圆脐，公蟹是尖脐">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="46" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="22" font-weight="700" fill="#2F3542">把螃蟹翻过来，看肚子上那块「脐」</text>
+
+  <!-- 母蟹 -->
+  <g stroke="#D98A54" stroke-width="7" stroke-linecap="round" fill="none">
+    <path d="M96 168 L44 136"/><path d="M92 190 L34 186"/><path d="M96 212 L46 244"/><path d="M108 230 L70 272"/>
+    <path d="M244 168 L296 136"/><path d="M248 190 L306 186"/><path d="M244 212 L294 244"/><path d="M232 230 L270 272"/>
+  </g>
+  <g stroke="#D98A54" stroke-width="8" stroke-linecap="round" fill="none">
+    <path d="M108 152 L84 116"/><path d="M232 152 L256 116"/>
+  </g>
+  <circle cx="80" cy="108" r="13" fill="#F4A26B" stroke="#D98A54" stroke-width="4"/>
+  <circle cx="260" cy="108" r="13" fill="#F4A26B" stroke="#D98A54" stroke-width="4"/>
+  <ellipse cx="170" cy="192" rx="76" ry="54" fill="#F4A26B" stroke="#C87A47" stroke-width="4"/>
+  <circle cx="170" cy="196" r="27" fill="#FFE6CF" stroke="#C87A47" stroke-width="4"/>
+  <text x="170" y="203" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="20" font-weight="700" fill="#C87A47">圆</text>
+  <text x="170" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="21" font-weight="700" fill="#06A87A">母蟹 · 圆脐</text>
+  <text x="170" y="350" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" fill="#6B7280">要抱一肚子卵宝宝，所以又圆又宽</text>
+
+  <!-- 公蟹 -->
+  <g stroke="#D98A54" stroke-width="7" stroke-linecap="round" fill="none">
+    <path d="M376 168 L324 136"/><path d="M372 190 L314 186"/><path d="M376 212 L326 244"/><path d="M388 230 L350 272"/>
+    <path d="M524 168 L576 136"/><path d="M528 190 L586 186"/><path d="M524 212 L574 244"/><path d="M512 230 L550 272"/>
+  </g>
+  <g stroke="#D98A54" stroke-width="8" stroke-linecap="round" fill="none">
+    <path d="M388 152 L364 116"/><path d="M512 152 L536 116"/>
+  </g>
+  <circle cx="360" cy="108" r="13" fill="#F4A26B" stroke="#D98A54" stroke-width="4"/>
+  <circle cx="540" cy="108" r="13" fill="#F4A26B" stroke="#D98A54" stroke-width="4"/>
+  <ellipse cx="450" cy="192" rx="76" ry="54" fill="#F4A26B" stroke="#C87A47" stroke-width="4"/>
+  <path d="M450 172 L478 220 L422 220 Z" fill="#FFE6CF" stroke="#C87A47" stroke-width="4" stroke-linejoin="round"/>
+  <text x="450" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="21" font-weight="700" fill="#3B82F6">公蟹 · 尖脐</text>
+  <text x="450" y="350" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" fill="#6B7280">脐是窄窄的小三角</text>
+
+  <path d="M300 200 h40" stroke="#CBD5E1" stroke-width="3" stroke-dasharray="7 7"/>
+</svg>
