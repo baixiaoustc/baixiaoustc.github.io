@@ -21,6 +21,53 @@
     return `${m[1]} 年 ${Number(m[2])} 月 ${Number(m[3])} 日`;
   };
 
+  /* ---------- 图片全屏查看（点图放大） ---------- */
+  let lbInstance = null;
+  function lightbox() {
+    if (lbInstance) return lbInstance;
+    const box = document.createElement("div");
+    box.className = "lightbox";
+    box.innerHTML = `<button class="lb-close" type="button" aria-label="关闭">✕</button><img alt="">`;
+    document.body.appendChild(box);
+    const img = box.querySelector("img");
+
+    const close = () => {
+      box.classList.remove("open", "zoomed");
+      document.body.style.overflow = "";
+    };
+    const open = (src, alt) => {
+      img.src = src;
+      img.alt = alt || "";
+      box.classList.add("open");
+      box.classList.remove("zoomed");
+      document.body.style.overflow = "hidden";
+      box.scrollTop = 0;
+      box.scrollLeft = 0;
+    };
+
+    // 点图片：在「适应屏幕」与「放大」之间切换；点背景 / ✕ / Esc：关闭
+    img.addEventListener("click", (e) => {
+      e.stopPropagation();
+      if (!box.classList.contains("zoomed")) {
+        box.classList.add("zoomed");
+        requestAnimationFrame(() => {
+          box.scrollLeft = (box.scrollWidth - box.clientWidth) / 2;
+          box.scrollTop = (box.scrollHeight - box.clientHeight) / 2;
+        });
+      } else {
+        box.classList.remove("zoomed");
+      }
+    });
+    box.addEventListener("click", (e) => {
+      if (e.target === box || e.target.classList.contains("lb-close")) close();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && box.classList.contains("open")) close();
+    });
+
+    return (lbInstance = { box, open, close });
+  }
+
   /* ---------- 首页 ---------- */
   function renderIndex() {
     const byDateDesc = (a, b) => (a.date < b.date ? 1 : -1);
@@ -91,7 +138,7 @@
       const s = subjectOf(q.subject);
       const k = kidOf(q.kid);
       return `<a class="card" href="question.html?id=${encodeURIComponent(q.id)}" style="--c:${s.color}">
-        <div class="card-fig"><img src="${esc(q.figure)}" alt="${esc(q.figureAlt || q.question)}" loading="lazy"></div>
+        <div class="card-fig"><img src="${esc(q.figure)}" alt="${esc(q.figureAlt || q.question)}" loading="lazy"><span class="card-zoom" role="button" tabindex="0" aria-label="放大看这张图" data-src="${esc(q.figure)}" data-alt="${esc(q.figureAlt || q.question)}">🔍</span></div>
         <div class="card-body">
           <p class="q">${esc(q.question)}</p>
           <p class="ans">${esc(q.oneLine)}</p>
@@ -148,6 +195,28 @@
       search.addEventListener("input", () => {
         keyword = search.value.trim();
         render();
+      });
+    }
+
+    // 卡片右上角的 🔍：只放大看图，不进详情页
+    if (board) {
+      const zoomFrom = (el) => {
+        const z = el.closest && el.closest(".card-zoom");
+        if (!z) return false;
+        lightbox().open(z.dataset.src, z.dataset.alt);
+        return true;
+      };
+      board.addEventListener("click", (e) => {
+        if (zoomFrom(e.target)) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      });
+      board.addEventListener("keydown", (e) => {
+        if ((e.key === "Enter" || e.key === " ") && zoomFrom(e.target)) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
       });
     }
 
@@ -234,6 +303,18 @@
         <span>${next ? `<a href="question.html?id=${encodeURIComponent(next.id)}">${esc(next.question)} →</a>` : ""}</span>
       </div>
     `;
+
+    // 点图片全屏查看
+    const figImg = root.querySelector(".figure img");
+    if (figImg) {
+      const figEl = figImg.closest(".figure");
+      figEl.classList.add("zoomable");
+      const hint = document.createElement("span");
+      hint.className = "zoom-hint";
+      hint.textContent = "🔍 点击放大";
+      figEl.appendChild(hint);
+      figImg.addEventListener("click", () => lightbox().open(figImg.currentSrc || figImg.src, figImg.alt));
+    }
   }
 
   document.addEventListener("DOMContentLoaded", () => {
