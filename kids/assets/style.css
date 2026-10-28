@@ -215,6 +215,15 @@ main { padding: 34px 0 60px; }
   display: block;
 }
 
+/* 还没有图解时：一块安静的空位，别装成坏图 */
+.card-fig-soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--c) 12%, #FFFDF7);
+}
+.card-fig-soon span { font-size: 40px; opacity: .35; }
+
 .card-body { padding: 14px 18px 18px; flex: 1; display: flex; flex-direction: column; }
 
 .card-body .q {

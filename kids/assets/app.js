@@ -138,7 +138,11 @@
       const s = subjectOf(q.subject);
       const k = kidOf(q.kid);
       return `<a class="card" href="question.html?id=${encodeURIComponent(q.id)}" style="--c:${s.color}">
-        <div class="card-fig"><img src="${esc(q.figure)}" alt="${esc(q.figureAlt || q.question)}" loading="lazy"><span class="card-zoom" role="button" tabindex="0" aria-label="放大看这张图" data-src="${esc(q.figure)}" data-alt="${esc(q.figureAlt || q.question)}">🔍</span></div>
+        ${
+          q.figure
+            ? `<div class="card-fig"><img src="${esc(q.figure)}" alt="${esc(q.figureAlt || q.question)}" loading="lazy"><span class="card-zoom" role="button" tabindex="0" aria-label="放大看这张图" data-src="${esc(q.figure)}" data-alt="${esc(q.figureAlt || q.question)}">🔍</span></div>`
+            : `<div class="card-fig card-fig-soon" aria-hidden="true"><span>${s.emoji}</span></div>`
+        }
         <div class="card-body">
           <p class="q">${esc(q.question)}</p>
           <p class="ans">${esc(q.oneLine)}</p>
@@ -266,10 +270,14 @@
       <p class="quote-label">${esc(k.name)}当时的原话</p>
       <h1 class="q-title">「${esc(q.question)}」</h1>
 
-      <figure class="figure">
+      ${
+        q.figure
+          ? `<figure class="figure">
         <img src="${esc(q.figure)}" alt="${esc(q.figureAlt || q.question)}">
         <figcaption>一眼看懂：${esc(q.figureAlt || q.question)}</figcaption>
-      </figure>
+      </figure>`
+          : ''
+      }
 
       <div class="oneline" style="--c:${s.color}">
         <div class="label">一句话答案</div>
