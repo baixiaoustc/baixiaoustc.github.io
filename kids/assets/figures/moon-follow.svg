@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="三段图解：你往前走几步，近处的树很快退到身后；月亮离得太远，方向几乎不变，所以看上去像在跟着你">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="46" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="22" font-weight="700" fill="#2F3542">为什么你走，月亮也跟着走？</text>
+
+  <!-- ① 往前走几步 -->
+  <rect x="30" y="74" width="180" height="176" rx="16" fill="#EFFBF5" stroke="#06D6A0" stroke-width="2.5"/>
+  <line x1="44" y1="224" x2="196" y2="224" stroke="#BBD8CB" stroke-width="3" stroke-linecap="round"/>
+  <!-- 小人 -->
+  <g stroke="#B98246" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M72 196 v22"/>
+    <path d="M58 206 h28"/>
+    <path d="M72 218 l-8 6"/>
+    <path d="M72 218 l8 6"/>
+  </g>
+  <circle cx="72" cy="186" r="10" fill="#FFD9A0" stroke="#B98246" stroke-width="3"/>
+  <!-- 近处的树 -->
+  <rect x="150" y="188" width="7" height="36" rx="3" fill="#B98246"/>
+  <circle cx="153" cy="176" r="17" fill="#8FD6BA"/>
+  <circle cx="139" cy="186" r="12" fill="#A8E0C8"/>
+  <circle cx="167" cy="186" r="12" fill="#A8E0C8"/>
+  <!-- 走路方向 -->
+  <path d="M96 148 h44" stroke="#6B7280" stroke-width="2.5" stroke-dasharray="6 5"/>
+  <path d="M146 148 l-9 -5 v10 z" fill="#6B7280"/>
+
+  <!-- ② 树退到身后 -->
+  <rect x="230" y="74" width="180" height="176" rx="16" fill="#EFFBF5" stroke="#06D6A0" stroke-width="2.5"/>
+  <line x1="244" y1="224" x2="396" y2="224" stroke="#BBD8CB" stroke-width="3" stroke-linecap="round"/>
+  <!-- 小人 -->
+  <g stroke="#B98246" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M330 196 v22"/>
+    <path d="M316 206 h28"/>
+    <path d="M330 218 l-8 6"/>
+    <path d="M330 218 l8 6"/>
+  </g>
+  <circle cx="330" cy="186" r="10" fill="#FFD9A0" stroke="#B98246" stroke-width="3"/>
+  <!-- 树退到左后方 -->
+  <rect x="262" y="188" width="7" height="36" rx="3" fill="#B98246"/>
+  <circle cx="265" cy="176" r="17" fill="#8FD6BA"/>
+  <circle cx="251" cy="186" r="12" fill="#A8E0C8"/>
+  <circle cx="279" cy="186" r="12" fill="#A8E0C8"/>
+  <!-- 后退箭头 -->
+  <path d="M300 140 q-14 14 -30 6" stroke="#E4572E" stroke-width="2.5" fill="none" stroke-dasharray="6 5"/>
+  <path d="M272 144 l10 -6 v11 z" fill="#E4572E"/>
+
+  <!-- ③ 月亮没变 -->
+  <rect x="430" y="74" width="180" height="176" rx="16" fill="#EFF7FB" stroke="#4EC5F1" stroke-width="2.5"/>
+  <line x1="444" y1="224" x2="596" y2="224" stroke="#C6DCE6" stroke-width="3" stroke-linecap="round"/>
+  <!-- 小人 -->
+  <g stroke="#B98246" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M478 196 v22"/>
+    <path d="M464 206 h28"/>
+    <path d="M478 218 l-8 6"/>
+    <path d="M478 218 l8 6"/>
+  </g>
+  <circle cx="478" cy="186" r="10" fill="#FFD9A0" stroke="#B98246" stroke-width="3"/>
+  <!-- 月亮 -->
+  <circle cx="560" cy="128" r="22" fill="#FFE9A8" stroke="#E8B84B" stroke-width="2.5"/>
+  <circle cx="552" cy="122" r="4" fill="#F0D27C"/>
+  <circle cx="566" cy="134" r="3" fill="#F0D27C"/>
+  <!-- 两条视线，几乎同向 -->
+  <path d="M478 174 L540 140" stroke="#9AA7B2" stroke-width="2" stroke-dasharray="5 4"/>
+  <path d="M470 200 L538 146" stroke="#9AA7B2" stroke-width="2" stroke-dasharray="5 4" opacity="0.6"/>
+
+  <!-- 分段说明 -->
+  <text x="120" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#0B7A57">① 往前走几步</text>
+  <text x="120" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">近处的树</text>
+  <text x="120" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">几步就到身后</text>
+
+  <text x="320" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#0B7A57">② 树退到身后了</text>
+  <text x="320" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">近处的东西</text>
+  <text x="320" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">一退就很明显</text>
+
+  <text x="520" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#1D7FA6">③ 月亮没怎么变</text>
+  <text x="520" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">它离得太远</text>
+  <text x="520" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">你的几步等于没动</text>
+
+  <line x1="60" y1="342" x2="580" y2="342" stroke="#E6E1D6" stroke-width="2"/>
+  <text x="320" y="372" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" fill="#6B7280">不是月亮在跟着你，是一路上的东西退得太快</text>
+</svg>
