@@ -90,6 +90,7 @@
     let kidFilter = "all";
     let subjectFilter = "all";
     let keyword = "";
+    let view = "subject"; // subject：按学科聚，学科之间按最新时间倒排；time：纯时间倒排
 
     const kidChips = document.getElementById("kidChips");
     const subjectChips = document.getElementById("subjectChips");
@@ -161,15 +162,29 @@
         board.innerHTML = `<p class="empty">没有找到这样的问题 🌱<br>换个词试试，比如「螃蟹」「蚊子」「插件」。</p>`;
         return;
       }
-      // 按学科分组
+
+      // 分组：同学科的放一起；学科之间的顺序 = 该学科最近一条的时间（新的在前）
       const groups = D.subjects
-        .map((s) => ({ s, items: list.filter((q) => q.subject === s.id) }))
-        .filter((g) => g.items.length);
-      // 有副学科的、主学科没有的，也归到主学科分组里（上面已按 subject 归，这里补一眼提示）
+        .map((s, i) => ({ s, i, items: list.filter((q) => q.subject === s.id) }))
+        .filter((g) => g.items.length)
+        .sort((a, b) => (a.items[0].date === b.items[0].date ? a.i - b.i : (a.items[0].date < b.items[0].date ? 1 : -1)));
+
       const emptySubjects =
         subjectFilter === "all" && !keyword
           ? D.subjects.filter((s) => !qs.some((q) => q.subject === s.id))
           : [];
+
+      if (view === "time") {
+        board.innerHTML = `<section class="subject" id="s-time">
+          <div class="subject-head">
+            <h2>最新在前</h2>
+            <span class="count">${list.length} 个问题</span>
+            <span class="about">按提问日期倒排</span>
+          </div>
+          <div class="grid">${list.map(card).join("")}</div>
+        </section>`;
+        return;
+      }
 
       board.innerHTML =
         groups
@@ -197,6 +212,16 @@
         keyword = search.value.trim();
         render();
       });
+    }
+
+    // 按学科 / 按时间 切换
+    const viewBtn = document.getElementById("viewToggle");
+    if (viewBtn) {
+      viewBtn.onclick = () => {
+        view = view === "subject" ? "time" : "subject";
+        viewBtn.textContent = view === "subject" ? "按时间" : "按学科";
+        render();
+      };
     }
 
     // 卡片右上角的 🔍：只放大看图，不进详情页

@@ -94,6 +94,22 @@ img { max-width: 100%; }
 #search::placeholder { color: #B3B8BF; }
 #search:focus { border-color: #C9C6BE; }
 
+.view-toggle {
+  flex: 0 0 auto;
+  font: inherit;
+  font-size: 13.5px;
+  line-height: 1.2;
+  padding: 8px 12px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--hair);
+  background: #fff;
+  color: var(--ink-2);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color .12s ease, border-color .12s ease;
+}
+.view-toggle:hover { color: var(--ink); border-color: #D6D2C9; }
+
 .chips { display: flex; gap: 2px; flex-wrap: wrap; margin-top: 8px; }
 
 .chip {
