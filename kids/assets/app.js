@@ -76,14 +76,14 @@
     const usedSubjects = D.subjects.filter((s) => qs.some((q) => q.subject === s.id || q.secondary === s.id));
     const primarySubjects = D.subjects.filter((s) => qs.some((q) => q.subject === s.id));
 
-    // 顶部统计
+    // 顶部统计：一行字，不抢眼
     const stats = document.getElementById("stats");
     if (stats) {
       stats.innerHTML =
-        `<span class="stat"><b>${qs.length}</b> 个问题</span>` +
-        `<span class="stat"><b>${D.kids.length}</b> 位小问号</span>` +
-        `<span class="stat"><b>${primarySubjects.length}</b> 个学科</span>` +
-        `<span class="stat">最近一条：<b>${esc(qs[0] ? qs[0].date : "—")}</b></span>`;
+        `<span>${qs.length} 个问题</span>` +
+        `<span>${D.kids.length} 位小问号</span>` +
+        `<span>${primarySubjects.length} 个学科</span>` +
+        `<span>最近更新 ${esc(qs[0] ? qs[0].date : "—")}</span>`;
     }
 
     // 筛选条
@@ -94,17 +94,17 @@
     const kidChips = document.getElementById("kidChips");
     const subjectChips = document.getElementById("subjectChips");
 
-    const chip = (label, on, num) =>
-      `<button class="chip${on ? " on" : ""}" type="button">${label}${num != null ? `<span class="num">${num}</span>` : ""}</button>`;
+    const chip = (label, on) =>
+      `<button class="chip${on ? " on" : ""}" type="button">${label}</button>`;
 
     function paintChips() {
       kidChips.innerHTML =
-        chip("全部小朋友", kidFilter === "all", qs.length) +
-        D.kids.map((k) => chip(`${k.emoji} ${esc(k.name)}`, kidFilter === k.id, qs.filter((q) => q.kid === k.id).length)).join("");
+        chip("全部", kidFilter === "all") +
+        D.kids.map((k) => chip(`${k.emoji} ${esc(k.name)}`, kidFilter === k.id)).join("");
 
       subjectChips.innerHTML =
         chip("全部学科", subjectFilter === "all") +
-        usedSubjects.map((s) => chip(`${s.emoji} ${esc(s.name)}`, subjectFilter === s.id, qs.filter((q) => q.subject === s.id || q.secondary === s.id).length)).join("");
+        usedSubjects.map((s) => chip(`${s.emoji} ${esc(s.name)}`, subjectFilter === s.id)).join("");
 
       [...kidChips.querySelectorAll(".chip")].forEach((el, i) => {
         el.onclick = () => {
@@ -177,7 +177,7 @@
             (g) => `<section class="subject" id="s-${g.s.id}" style="--c:${g.s.color}">
           <div class="subject-head">
             <h2>${g.s.emoji} ${esc(g.s.name)}</h2>
-            <span class="count">${g.items.length}</span>
+            <span class="count">${g.items.length} 个问题</span>
             <span class="about">${esc(g.s.about)}</span>
           </div>
           <div class="grid">${g.items.map(card).join("")}</div>
@@ -185,12 +185,9 @@
           )
           .join("") +
         (emptySubjects.length
-          ? `<section class="waiting">
-              <p>还在等第一个问题的学科 🌱</p>
-              <div class="chips">${emptySubjects
-                .map((s) => `<span class="chip" style="cursor:default">${s.emoji} ${esc(s.name)}</span>`)
-                .join("")}</div>
-            </section>`
+          ? `<p class="waiting">还等着第一个问题的学科：<span class="chips">${emptySubjects
+                .map((s) => `<span class="chip">${s.emoji} ${esc(s.name)}</span>`)
+                .join("")}</span></p>`
           : "");
     }
 
@@ -255,16 +252,11 @@
     root.innerHTML = `
       <a class="back" href="index.html">← 回到博物馆首页</a>
 
-      <div class="asker" style="--c:${s.color}">
-        <div class="asker-avatar">${k.emoji}</div>
-        <div class="asker-meta">
-          <div class="asker-name">${esc(k.name)}<span class="asker-age">${q.age} 岁</span></div>
-          <div class="asker-date">${cnDate(q.date)} 问的</div>
-        </div>
-        <div class="asker-subjects">
-          <span class="asker-subject" style="background:${s.color}1f;color:${s.color}">${s.emoji} ${esc(s.name)}</span>
-          ${s2 ? `<span class="asker-subject" style="background:${s2.color}1f;color:${s2.color}">${s2.emoji} ${esc(s2.name)}</span>` : ""}
-        </div>
+      <div class="byline" style="--c:${s.color}">
+        <span>${k.emoji} ${esc(k.name)}</span><span class="sep">·</span>
+        <span>${q.age} 岁</span><span class="sep">·</span>
+        <span>${cnDate(q.date)}</span><span class="sep">·</span>
+        <span><i class="dot"></i>${esc(s.name)}${s2 ? ` / ${esc(s2.name)}` : ""}</span>
       </div>
 
       <p class="quote-label">${esc(k.name)}当时的原话</p>
@@ -284,7 +276,7 @@
         <p>${esc(q.oneLine)}</p>
       </div>
 
-      <h2 class="block-title" style="--c:${s.color}">🧩 三句话说清楚</h2>
+      <h2 class="block-title">三句话说清楚</h2>
       <ol class="points" style="--c:${s.color}">
         ${(q.points || []).map((p) => `<li>${esc(p)}</li>`).join("")}
       </ol>
@@ -296,12 +288,12 @@
       }
 
       <div class="related">
-        <h3>这个学科还有（${s.emoji} ${esc(s.name)}${s2 ? ` · 也沾一点 ${s2.emoji} ${esc(s2.name)}` : ""}）</h3>
+        <h3>同一学科的问题</h3>
         <div class="related-list">
           ${
             related.length
               ? related.map((r) => `<a href="question.html?id=${encodeURIComponent(r.id)}">「${esc(r.question)}」</a>`).join("")
-              : `<span style="color:#98A2B3;font-size:15px">这个学科还在等第二个问题。</span>`
+              : `<p style="margin:0;padding:11px 0;font-size:14px;color:var(--muted)">这个学科还在等第二个问题。</p>`
           }
         </div>
       </div>
