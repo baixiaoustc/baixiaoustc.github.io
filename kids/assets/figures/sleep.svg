@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="三段图解：醒着的时候腺苷越攒越多，睡着后脑脊液把它冲走，同时把白天的记忆抄进长期本">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="46" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="22" font-weight="700" fill="#2F3542">困，是大脑攒了一天的「垃圾」</text>
+
+  <!-- ① 醒着：腺苷越攒越多 -->
+  <rect x="30" y="74" width="180" height="176" rx="16" fill="#FFF3F3" stroke="#FF7A7A" stroke-width="2.5"/>
+  <circle cx="120" cy="160" r="54" fill="#FFFFFF" stroke="#E88A8A" stroke-width="3"/>
+  <!-- 脑里的褶皱 -->
+  <path d="M92 141 q14 -10 26 0 q14 10 26 0" stroke="#F3C3C3" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M92 178 q14 -10 26 0 q14 10 26 0" stroke="#F3C3C3" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- 腺苷：从少到多 -->
+  <g fill="#E4655F">
+    <circle cx="104" cy="152" r="3.5"/>
+    <circle cx="130" cy="166" r="3.5"/>
+    <circle cx="112" cy="180" r="3.5"/>
+    <circle cx="146" cy="150" r="3.5"/>
+    <circle cx="136" cy="192" r="3.5"/>
+    <circle cx="96" cy="164" r="3.5"/>
+    <circle cx="152" cy="178" r="3.5"/>
+  </g>
+  <!-- 进度条：困意 -->
+  <rect x="70" y="228" width="100" height="8" rx="4" fill="#FBE0E0"/>
+  <rect x="70" y="228" width="82" height="8" rx="4" fill="#FF7A7A"/>
+
+  <!-- ② 睡着：冲走 -->
+  <rect x="230" y="74" width="180" height="176" rx="16" fill="#FFF3F3" stroke="#FF7A7A" stroke-width="2.5"/>
+  <circle cx="320" cy="156" r="54" fill="#FFFFFF" stroke="#E88A8A" stroke-width="3"/>
+  <path d="M292 137 q14 -10 26 0 q14 10 26 0" stroke="#F3C3C3" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <path d="M292 174 q14 -10 26 0 q14 10 26 0" stroke="#F3C3C3" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- 残留的少量 -->
+  <g fill="#E4655F" opacity="0.5">
+    <circle cx="312" cy="158" r="3.5"/>
+    <circle cx="334" cy="170" r="3.5"/>
+  </g>
+  <!-- 往外冲的箭头（脑脊液带走废物） -->
+  <g stroke="#5FB4D8" stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M370 130 q18 -6 26 -18"/>
+    <path d="M376 160 h22"/>
+    <path d="M370 190 q18 6 26 18"/>
+  </g>
+  <path d="M394 108 l-8 2 l5 7 z" fill="#5FB4D8"/>
+  <path d="M396 160 l-9 -5 v10 z" fill="#5FB4D8"/>
+  <path d="M394 212 l-8 -2 l5 -7 z" fill="#5FB4D8"/>
+  <text x="404" y="164" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13" fill="#3D8FB0">冲走</text>
+  <!-- Z Z Z -->
+  <text x="252" y="110" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="20" font-weight="700" fill="#E88A8A">z</text>
+  <text x="266" y="96" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#E88A8A">z</text>
+
+  <!-- ③ 顺便存档 -->
+  <rect x="430" y="74" width="180" height="176" rx="16" fill="#FFF3F3" stroke="#FF7A7A" stroke-width="2.5"/>
+  <!-- 临时本 -->
+  <rect x="450" y="132" width="46" height="60" rx="6" fill="#FFFFFF" stroke="#E88A8A" stroke-width="2.5"/>
+  <line x1="458" y1="148" x2="488" y2="148" stroke="#F3C3C3" stroke-width="2.5"/>
+  <line x1="458" y1="160" x2="482" y2="160" stroke="#F3C3C3" stroke-width="2.5"/>
+  <line x1="458" y1="172" x2="488" y2="172" stroke="#F3C3C3" stroke-width="2.5"/>
+  <text x="473" y="210" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13" fill="#8A6A6A">临时</text>
+  <!-- 箭头 -->
+  <path d="M506 162 h24" stroke="#C9CDD3" stroke-width="3"/>
+  <path d="M534 162 l-9 -5 v10 z" fill="#C9CDD3"/>
+  <!-- 长期本 -->
+  <rect x="546" y="124" width="46" height="76" rx="6" fill="#FFFFFF" stroke="#E4655F" stroke-width="3"/>
+  <line x1="556" y1="142" x2="582" y2="142" stroke="#F3C3C3" stroke-width="2.5"/>
+  <line x1="556" y1="154" x2="576" y2="154" stroke="#F3C3C3" stroke-width="2.5"/>
+  <line x1="556" y1="166" x2="582" y2="166" stroke="#F3C3C3" stroke-width="2.5"/>
+  <line x1="556" y1="178" x2="572" y2="178" stroke="#F3C3C3" stroke-width="2.5"/>
+  <text x="569" y="216" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13" fill="#8A6A6A">长期</text>
+
+  <!-- 分段说明 -->
+  <text x="120" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#C2453F">① 醒着就在攒</text>
+  <text x="120" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">「腺苷」越攒越多</text>
+  <text x="120" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">攒够了就困</text>
+
+  <text x="320" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#C2453F">② 睡着开始冲</text>
+  <text x="320" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">脑脊液像水流</text>
+  <text x="320" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">把废物带走</text>
+
+  <text x="520" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#C2453F">③ 顺便存个档</text>
+  <text x="520" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">白天学的，从临时本</text>
+  <text x="520" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">抄进长期本</text>
+
+  <line x1="60" y1="342" x2="580" y2="342" stroke="#E6E1D6" stroke-width="2"/>
+  <text x="320" y="372" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" fill="#6B7280">所以睡觉不是浪费时间，是大脑在打扫 + 存档</text>
+</svg>
