@@ -21,6 +21,11 @@
     return `${m[1]} 年 ${Number(m[2])} 月 ${Number(m[3])} 日`;
   };
 
+  // 排序用的「日期 + 时刻」；没有 time 的老题当作 00:00:00
+  const stampOf = (q) => `${q.date} ${q.time || "00:00:00"}`;
+  // 卡片上显示：10-30 18:29:59（没时刻就只显示 10-30）
+  const shortStamp = (q) => `${String(q.date).slice(5)}${q.time ? " " + q.time : ""}`;
+
   /* ---------- 图片全屏查看（点图放大） ---------- */
   let lbInstance = null;
   function lightbox() {
@@ -150,7 +155,7 @@
           <div class="meta">
             <span class="pill">${k.emoji} ${esc(k.name)}</span>
             <span class="pill">${q.age} 岁</span>
-            <span class="pill">${esc(q.date)}</span>
+            <span class="pill">${esc(shortStamp(q))}</span>
           </div>
         </div>
       </a>`;
@@ -167,7 +172,7 @@
       const groups = D.subjects
         .map((s, i) => ({ s, i, items: list.filter((q) => q.subject === s.id) }))
         .filter((g) => g.items.length)
-        .sort((a, b) => (a.items[0].date === b.items[0].date ? a.i - b.i : (a.items[0].date < b.items[0].date ? 1 : -1)));
+        .sort((a, b) => (stampOf(a.items[0]) === stampOf(b.items[0]) ? a.i - b.i : stampOf(a.items[0]) < stampOf(b.items[0]) ? 1 : -1));
 
       const emptySubjects =
         subjectFilter === "all" && !keyword
@@ -179,7 +184,7 @@
           <div class="subject-head">
             <h2>最新在前</h2>
             <span class="count">${list.length} 个问题</span>
-            <span class="about">按提问日期倒排</span>
+            <span class="about">按提问时刻倒排（时:分:秒）</span>
           </div>
           <div class="grid">${list.map(card).join("")}</div>
         </section>`;
@@ -280,7 +285,7 @@
       <div class="byline" style="--c:${s.color}">
         <span>${k.emoji} ${esc(k.name)}</span><span class="sep">·</span>
         <span>${q.age} 岁</span><span class="sep">·</span>
-        <span>${cnDate(q.date)}</span><span class="sep">·</span>
+        <span>${cnDate(q.date)}${q.time ? ` ${q.time}` : ""}</span><span class="sep">·</span>
         <span><i class="dot"></i>${esc(s.name)}${s2 ? ` / ${esc(s2.name)}` : ""}</span>
       </div>
 
