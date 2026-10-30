@@ -31,14 +31,14 @@ window.KQ = {
     },
     {
       "id": "math",
-      "name": "数学与逻辑",
+      "name": "数学逻辑",
       "emoji": "🔢",
       "color": "#4EC5F1",
       "about": "数、比较、因果、如果……会怎样"
     },
     {
       "id": "society",
-      "name": "社会与经济",
+      "name": "社会经济",
       "emoji": "🏙️",
       "color": "#A78BFA",
       "about": "钱、规则、公平、大家一起怎么过日子"
@@ -52,7 +52,7 @@ window.KQ = {
     },
     {
       "id": "life",
-      "name": "生命与健康",
+      "name": "生命健康",
       "emoji": "❤️",
       "color": "#FF7A7A",
       "about": "身体、吃进去的东西、生病和保护自己"
@@ -66,7 +66,7 @@ window.KQ = {
     },
     {
       "id": "story",
-      "name": "故事与想象",
+      "name": "故事想象",
       "emoji": "🎬",
       "color": "#FF9BC0",
       "about": "电影、故事、角色，还有那些还没发生的事"
