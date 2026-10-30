@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="三段图解：最早是拿东西换东西，谁都麻烦；后来大家约定一张票，谁拿着都能用；你拿走东西留一张票，老板再拿票去换他要的东西">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="46" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="22" font-weight="700" fill="#2F3542">钱，是大家都认的一张「票」</text>
+
+  <!-- ① 用东西换东西 -->
+  <rect x="30" y="74" width="180" height="176" rx="16" fill="#F6F1FF" stroke="#A78BFA" stroke-width="2.5"/>
+  <!-- 鸡 -->
+  <ellipse cx="82" cy="150" rx="26" ry="20" fill="#FFFFFF" stroke="#9B7FE0" stroke-width="3"/>
+  <circle cx="106" cy="124" r="11" fill="#FFFFFF" stroke="#9B7FE0" stroke-width="3"/>
+  <path d="M116 122 l9 3 l-9 5 z" fill="#E0A46A"/>
+  <circle cx="110" cy="121" r="1.8" fill="#3B3450"/>
+  <line x1="72" y1="168" x2="70" y2="186" stroke="#9B7FE0" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="92" y1="168" x2="94" y2="186" stroke="#9B7FE0" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- 米袋 -->
+  <path d="M154 132 q-6 -12 4 -14 h32 q10 2 4 14 v44 q0 6 -6 6 h-28 q-6 0 -6 -6 z" fill="#FFFFFF" stroke="#9B7FE0" stroke-width="3"/>
+  <text x="174" y="172" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="17" font-weight="700" fill="#6B4FBB">米</text>
+  <!-- 换 -->
+  <path d="M124 210 q10 -8 20 0" stroke="#C9B8F0" stroke-width="2.5" fill="none"/>
+  <text x="134" y="224" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13" fill="#8A73C7">换</text>
+
+  <!-- ② 大家都认的票 -->
+  <rect x="230" y="74" width="180" height="176" rx="16" fill="#F6F1FF" stroke="#A78BFA" stroke-width="2.5"/>
+  <rect x="286" y="102" width="68" height="44" rx="8" fill="#FFFFFF" stroke="#9B7FE0" stroke-width="3"/>
+  <circle cx="302" cy="124" r="11" fill="#EFE7FF" stroke="#9B7FE0" stroke-width="2"/>
+  <text x="302" y="129" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13" font-weight="700" fill="#6B4FBB">钱</text>
+  <line x1="320" y1="114" x2="344" y2="114" stroke="#C9B8F0" stroke-width="2.5"/>
+  <line x1="320" y1="126" x2="338" y2="126" stroke="#C9B8F0" stroke-width="2.5"/>
+  <line x1="320" y1="138" x2="344" y2="138" stroke="#C9B8F0" stroke-width="2.5"/>
+  <!-- 能换到的东西 -->
+  <g font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13" fill="#6B7280">
+    <circle cx="262" cy="198" r="18" fill="#FFFFFF" stroke="#C9B8F0" stroke-width="2.5"/>
+    <text x="262" y="203" text-anchor="middle">米</text>
+    <circle cx="320" cy="198" r="18" fill="#FFFFFF" stroke="#C9B8F0" stroke-width="2.5"/>
+    <text x="320" y="203" text-anchor="middle">菜</text>
+    <circle cx="378" cy="198" r="18" fill="#FFFFFF" stroke="#C9B8F0" stroke-width="2.5"/>
+    <text x="378" y="203" text-anchor="middle">玩具</text>
+  </g>
+
+  <!-- ③ 拿走东西，留一张票 -->
+  <rect x="430" y="74" width="180" height="176" rx="16" fill="#F6F1FF" stroke="#A78BFA" stroke-width="2.5"/>
+  <!-- 买东西的人 -->
+  <circle cx="468" cy="118" r="11" fill="#FFFFFF" stroke="#9B7FE0" stroke-width="2.5"/>
+  <path d="M460 134 h16 v36 h-16 z" fill="#FFFFFF" stroke="#9B7FE0" stroke-width="2.5" stroke-linejoin="round"/>
+  <line x1="460" y1="142" x2="446" y2="158" stroke="#9B7FE0" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="476" y1="142" x2="494" y2="154" stroke="#9B7FE0" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="464" y1="170" x2="463" y2="188" stroke="#9B7FE0" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="472" y1="170" x2="473" y2="188" stroke="#9B7FE0" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- 递出去的票 -->
+  <rect x="500" y="146" width="26" height="16" rx="4" fill="#FFF3C4" stroke="#E0A46A" stroke-width="2.5"/>
+  <path d="M486 144 q8 -8 12 -2" stroke="#C9B8F0" stroke-width="2.5" fill="none"/>
+  <!-- 老板 -->
+  <circle cx="580" cy="118" r="11" fill="#FFFFFF" stroke="#9B7FE0" stroke-width="2.5"/>
+  <path d="M572 134 h16 v36 h-16 z" fill="#FFFFFF" stroke="#9B7FE0" stroke-width="2.5" stroke-linejoin="round"/>
+  <line x1="572" y1="142" x2="556" y2="158" stroke="#9B7FE0" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="588" y1="142" x2="598" y2="156" stroke="#9B7FE0" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="576" y1="170" x2="575" y2="188" stroke="#9B7FE0" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="584" y1="170" x2="585" y2="188" stroke="#9B7FE0" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- 老板再拿票去换他要的 -->
+  <path d="M534 178 q22 12 38 -6" stroke="#E0A46A" stroke-width="2.5" fill="none" stroke-dasharray="6 5"/>
+  <text x="552" y="206" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13" fill="#B57A43">再去换米</text>
+
+  <!-- 分段说明 -->
+  <text x="120" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#6B4FBB">① 最早是「换东西」</text>
+  <text x="120" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">一只鸡换一袋米</text>
+  <text x="120" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">要换的人不一定在</text>
+
+  <text x="320" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#6B4FBB">② 于是大家约定一张票</text>
+  <text x="320" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">谁拿着都能用</text>
+  <text x="320" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">这张票就是「钱」</text>
+
+  <text x="520" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#6B4FBB">③ 拿东西，留一张票</text>
+  <text x="520" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">钱不是给老板的「礼」</text>
+  <text x="520" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">是换走东西的凭证</text>
+
+  <line x1="60" y1="342" x2="580" y2="342" stroke="#E6E1D6" stroke-width="2"/>
+  <text x="320" y="372" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" fill="#6B7280">钱本身不能吃也不能玩，它只是一张大家都肯认的「换东西的票」</text>
+</svg>
