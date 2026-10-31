@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="三段图解：光撞到镜子像球撞墙一样原路弹回；左右两手的光直去直回，左手还在左边；把镜子平放在地上，左右没变、上下却反了">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="46" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="22" font-weight="700" fill="#2F3542">镜子翻的是「前后」，不是左右</text>
+
+  <!-- ① 光像球撞墙一样原路弹回 -->
+  <rect x="30" y="74" width="180" height="176" rx="16" fill="#EFF6FB" stroke="#5FB4D8" stroke-width="2.5"/>
+  <!-- 人 -->
+  <circle cx="76" cy="140" r="11" fill="#FFFFFF" stroke="#7FC6A8" stroke-width="3"/>
+  <path d="M66 158 h20 v34 h-20 z" fill="#FFFFFF" stroke="#7FC6A8" stroke-width="3" stroke-linejoin="round"/>
+  <line x1="86" y1="166" x2="104" y2="152" stroke="#7FC6A8" stroke-width="3" stroke-linecap="round"/>
+  <!-- 镜子 -->
+  <rect x="138" y="94" width="9" height="132" rx="4" fill="#DCEBF7" stroke="#5FB4D8" stroke-width="2.5"/>
+  <line x1="142" y1="98" x2="142" y2="222" stroke="#8FC7E4" stroke-width="2" stroke-dasharray="4 5"/>
+  <!-- 去的光 / 回来的光 -->
+  <line x1="106" y1="152" x2="132" y2="152" stroke="#E4655F" stroke-width="3" stroke-linecap="round"/>
+  <path d="M132 152 l-9 -5 v10 z" fill="#E4655F"/>
+  <line x1="132" y1="176" x2="106" y2="176" stroke="#E4655F" stroke-width="3" stroke-linecap="round"/>
+  <path d="M106 176 l9 -5 v10 z" fill="#E4655F"/>
+  <text x="162" y="150" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#C2453F">撞上去</text>
+  <text x="162" y="180" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#C2453F">原路弹回</text>
+
+  <!-- ② 左手的光回到左边，右手的光回到右边 -->
+  <rect x="230" y="74" width="180" height="176" rx="16" fill="#EFF6FB" stroke="#5FB4D8" stroke-width="2.5"/>
+  <!-- 镜面（俯视看是一条横线） -->
+  <rect x="246" y="96" width="148" height="8" rx="4" fill="#DCEBF7" stroke="#5FB4D8" stroke-width="2.5"/>
+  <text x="320" y="90" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="11" fill="#3D8FB0">镜子</text>
+  <!-- 人（俯视：两个手的位置） -->
+  <circle cx="320" cy="214" r="12" fill="#FFFFFF" stroke="#7FC6A8" stroke-width="3"/>
+  <circle cx="286" cy="176" r="6" fill="#E4655F"/>
+  <circle cx="354" cy="176" r="6" fill="#3D8FB0"/>
+  <line x1="286" y1="182" x2="308" y2="206" stroke="#E4655F" stroke-width="2.5"/>
+  <line x1="354" y1="182" x2="332" y2="206" stroke="#3D8FB0" stroke-width="2.5"/>
+  <!-- 两手的光直去直回 -->
+  <line x1="286" y1="170" x2="286" y2="108" stroke="#E4655F" stroke-width="2.5" stroke-dasharray="5 4"/>
+  <line x1="286" y1="108" x2="286" y2="170" stroke="none"/>
+  <line x1="354" y1="170" x2="354" y2="108" stroke="#3D8FB0" stroke-width="2.5" stroke-dasharray="5 4"/>
+  <text x="278" y="196" text-anchor="end" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#C2453F">左手</text>
+  <text x="362" y="196" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#3D8FB0">右手</text>
+  <text x="320" y="240" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#6B7280">光直着去、直着回，没有交叉</text>
+
+  <!-- ③ 镜子平放：左右没变，上下反了 -->
+  <rect x="430" y="74" width="180" height="176" rx="16" fill="#EFF6FB" stroke="#5FB4D8" stroke-width="2.5"/>
+  <!-- 平放的镜子 -->
+  <ellipse cx="520" cy="196" rx="62" ry="12" fill="#DCEBF7" stroke="#5FB4D8" stroke-width="2.5"/>
+  <!-- 站着的人 -->
+  <circle cx="520" cy="140" r="11" fill="#FFFFFF" stroke="#7FC6A8" stroke-width="3"/>
+  <line x1="520" y1="151" x2="520" y2="180" stroke="#7FC6A8" stroke-width="3" stroke-linecap="round"/>
+  <!-- 倒过来的像 -->
+  <line x1="520" y1="212" x2="520" y2="234" stroke="#7FC6A8" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 4"/>
+  <circle cx="520" cy="240" r="11" fill="none" stroke="#7FC6A8" stroke-width="3" stroke-dasharray="5 4"/>
+  <!-- 左右没变 / 上下反了 -->
+  <line x1="456" y1="160" x2="484" y2="160" stroke="#5FB4D8" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M456 160 l8 -5 v10 z" fill="#5FB4D8"/>
+  <path d="M484 160 l-8 -5 v10 z" fill="#5FB4D8"/>
+  <text x="470" y="150" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="11" fill="#3D8FB0">左右不变</text>
+  <line x1="576" y1="132" x2="576" y2="164" stroke="#E4655F" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M576 132 l-5 8 h10 z" fill="#E4655F"/>
+  <path d="M576 164 l-5 -8 h10 z" fill="#E4655F"/>
+  <text x="576" y="122" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="11" fill="#C2453F">上下反了</text>
+
+  <!-- 分段说明 -->
+  <text x="120" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#2F6E8C">① 光原路弹回</text>
+  <text x="120" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">镜子不是门，是墙</text>
+  <text x="120" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">光撞上去，直着弹回来</text>
+
+  <text x="320" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#2F6E8C">② 左还是左，右还是右</text>
+  <text x="320" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">被换掉的只有「前和后」</text>
+  <text x="320" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">你的右手还在你右边</text>
+
+  <text x="520" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#2F6E8C">③ 平放镜子：上下反了</text>
+  <text x="520" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">说明它只翻正对着的方向</text>
+  <text x="520" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">是大脑把它当成了「转过身」</text>
+
+  <line x1="60" y1="342" x2="580" y2="342" stroke="#E6E1D6" stroke-width="2"/>
+  <text x="320" y="372" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" fill="#6B7280">镜子把正对你的那一面原样送回来；觉得「反了」，是大脑替你脑补了一次转身</text>
+</svg>
