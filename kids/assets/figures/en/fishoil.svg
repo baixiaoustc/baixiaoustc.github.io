@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="A little orange-red capsule of DHA, the building block for brain and eyes">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="44" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="22" font-weight="700" fill="#2F3542">Orange-red capsule: material for brain and eyes</text>
+
+  <!-- 胶囊 -->
+  <g transform="rotate(-28 150 200)">
+    <rect x="86" y="176" width="128" height="52" rx="26" fill="#FFA24D" stroke="#E07020" stroke-width="3.5"/>
+    <path d="M150 176 v52" stroke="#E07020" stroke-width="3"/>
+    <rect x="98" y="186" width="34" height="10" rx="5" fill="#FFFFFF" opacity="0.55"/>
+    <ellipse cx="150" cy="202" rx="60" ry="22" fill="none" stroke="#FFFFFF" stroke-width="2" opacity="0.35"/>
+  </g>
+  <text x="150" y="272" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#B5623F">Fish-oil DHA capsule</text>
+  <text x="150" y="296" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="14" fill="#6B7280">Soft and shiny — not candy</text>
+
+  <!-- 箭头 -->
+  <path d="M236 200 h44" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/>
+  <path d="M282 200 l-12 -7 v14 z" fill="#CBD5E1"/>
+
+  <!-- 大脑 -->
+  <g>
+    <circle cx="372" cy="176" r="34" fill="#FFC8DD" stroke="#E86A92" stroke-width="3.5"/>
+    <circle cx="404" cy="196" r="26" fill="#FFC8DD" stroke="#E86A92" stroke-width="3.5"/>
+    <circle cx="352" cy="206" r="23" fill="#FFC8DD" stroke="#E86A92" stroke-width="3.5"/>
+    <g stroke="#E86A92" stroke-width="2.5" fill="none" opacity="0.75">
+      <path d="M352 158 q14 12 0 26 q-14 12 2 24"/>
+      <path d="M386 170 q12 12 -2 22"/>
+    </g>
+    <text x="378" y="256" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" font-weight="700" fill="#C24D77">Brain</text>
+  </g>
+
+  <!-- 眼睛 -->
+  <g>
+    <ellipse cx="520" cy="188" rx="52" ry="32" fill="#FFFFFF" stroke="#4B5563" stroke-width="3"/>
+    <circle cx="520" cy="188" r="19" fill="#7FD6FF" stroke="#3B82F6" stroke-width="3"/>
+    <circle cx="520" cy="188" r="9" fill="#1F2937"/>
+    <circle cx="528" cy="180" r="4.5" fill="#FFFFFF"/>
+    <text x="520" y="256" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" font-weight="700" fill="#1D4ED8">Eyes</text>
+  </g>
+
+  <text x="320" y="332" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#2F3542">DHA is a building brick: brain and eyes need a little, but eating well matters more.</text>
+</svg>

@@ -11,65 +11,83 @@ window.KQ = {
     {
       "id": "yumi",
       "name": "玉米",
+      "nameEn": "Yumi",
       "emoji": "🌽",
-      "note": "大女儿 · 2017 年生"
+      "note": "大女儿 · 2017 年生",
+      "noteEn": "Older daughter · born 2017"
     },
     {
       "id": "taozi",
       "name": "桃子",
+      "nameEn": "Taozi",
       "emoji": "🍑",
-      "note": "小女儿 · 2022 年生"
+      "note": "小女儿 · 2022 年生",
+      "noteEn": "Younger daughter · born 2022"
     }
   ],
   "subjects": [
     {
       "id": "nature",
       "name": "自然科学",
+      "nameEn": "Nature",
       "emoji": "🌱",
       "color": "#06D6A0",
-      "about": "动物、植物、天气、身体外面的大世界"
+      "about": "动物、植物、天气、身体外面的大世界",
+      "aboutEn": "Animals, plants, weather — the big world outside our bodies"
     },
     {
       "id": "math",
       "name": "数学逻辑",
+      "nameEn": "Math & Logic",
       "emoji": "🔢",
       "color": "#4EC5F1",
-      "about": "数、比较、因果、如果……会怎样"
+      "about": "数、比较、因果、如果……会怎样",
+      "aboutEn": "Numbers, comparisons, cause and effect, what if…"
     },
     {
       "id": "society",
       "name": "社会经济",
+      "nameEn": "Society & Money",
       "emoji": "🏙️",
       "color": "#A78BFA",
-      "about": "钱、规则、公平、大家一起怎么过日子"
+      "about": "钱、规则、公平、大家一起怎么过日子",
+      "aboutEn": "Money, rules, fairness — how people live together"
     },
     {
       "id": "tech",
       "name": "技术工具",
+      "nameEn": "Tech & Tools",
       "emoji": "🔧",
       "color": "#FFB347",
-      "about": "电脑、手机、插件、怎么把一件事做成"
+      "about": "电脑、手机、插件、怎么把一件事做成",
+      "aboutEn": "Computers, phones, plugins — how to get a thing done"
     },
     {
       "id": "life",
       "name": "生命健康",
+      "nameEn": "Body & Health",
       "emoji": "❤️",
       "color": "#FF7A7A",
-      "about": "身体、吃进去的东西、生病和保护自己"
+      "about": "身体、吃进去的东西、生病和保护自己",
+      "aboutEn": "Your body, what goes into it, staying safe"
     },
     {
       "id": "daily",
       "name": "生活常识",
+      "nameEn": "Everyday Life",
       "emoji": "🍚",
       "color": "#FFD166",
-      "about": "吃穿住行、时间、爸爸妈妈的小时候"
+      "about": "吃穿住行、时间、爸爸妈妈的小时候",
+      "aboutEn": "Food, clothes, home, time, and when Mum and Dad were little"
     },
     {
       "id": "story",
       "name": "故事想象",
+      "nameEn": "Stories & Imagination",
       "emoji": "🎬",
       "color": "#FF9BC0",
-      "about": "电影、故事、角色，还有那些还没发生的事"
+      "about": "电影、故事、角色，还有那些还没发生的事",
+      "aboutEn": "Films, stories, characters, and things not yet happened"
     }
   ],
   "questions": [
@@ -83,7 +101,19 @@ window.KQ = {
       "secondary": "math",
       "depth": 3,
       "figure": "assets/figures/mirror-flip.svg",
+      "figureEn": "assets/figures/en/mirror-flip.svg",
       "figureAlt": "三段图解：光撞到镜子像球撞墙一样原路弹回；左右两个手的光直去直回，左手还在左边；把镜子平放在地上，左右没变、上下却反了",
+      "en": {
+        "question": "Why is everything in a mirror backwards?",
+        "oneLine": "A mirror flips front and back, not left and right: it sends back exactly the side that faces it. It feels like left and right are swapped because your brain reads the person in the mirror as someone who turned around to face you — and someone facing you has their right hand on your left.",
+        "points": [
+          "Behind the glass there is a coat of metal. Light does not pass through the way it does through a window; it bounces straight back like a ball off a wall. So what you see in a mirror is always the side facing the mirror — the direction that gets swapped is front and back.",
+          "Left and right are not swapped at all. Light from your left hand goes straight there and straight back and lands on the left again; raise your right hand and the mirror's hand is on your right too. The mirror is like a sheet of clear paper that only turns facing the mirror into lit by the mirror.",
+          "So why does it feel wrong? Because your brain has a default translation: a face looking straight at you is read as a person who turned round, and a person facing you has their right hand on your left, so the brain translates the whole picture into swapped left and right. The proof is blunt: lay the mirror flat on the floor and left and right stay put while up and down flip — a mirror only flips the direction it faces."
+        ],
+        "followUp": "Then why do clocks in a mirror run backwards, and letters look reversed?",
+        "figureAlt": "Three panels: light bounces off a mirror like a ball off a wall; light from both hands goes straight there and back, so the left hand stays on the left; laid flat on the floor the mirror keeps left and right but flips up and down"
+      },
       "oneLine": "镜子只翻「前后」，不翻「左右」：它把正对着它的那一面原样送回来。你觉得左右反了，是因为大脑把镜子里的人当成「转过身来的人」——而转过身的人，右手正好在你左边。",
       "points": [
         "镜子背面涂了一层金属，光照上去不像照进窗户那样穿过去，而是像球撞墙一样直线弹回来。所以你在镜子里看到的，永远是「正对着镜子的那一面」——被换掉的是「前和后」这一个方向。",
@@ -104,7 +134,19 @@ window.KQ = {
       "secondary": "daily",
       "depth": 2,
       "figure": "assets/figures/money-why.svg",
+      "figureEn": "assets/figures/en/money-why.svg",
       "figureAlt": "三段图解：最早是拿东西换东西，谁都麻烦；后来大家约定一张票，谁拿着都能用；你拿走东西留一张票，老板再拿票去换他要的东西",
+      "en": {
+        "question": "Why do we have to pay money when we buy things?",
+        "oneLine": "Money is a ticket everyone agrees on: you take someone's thing and leave a ticket behind, and the shopkeeper takes the ticket and trades it for what he needs.",
+        "points": [
+          "Long ago there was no money: people swapped things, one chicken for a bag of rice. The trouble was that the person who wanted rice did not always happen to have a chicken.",
+          "So people agreed on a kind of ticket that anyone would accept — for rice, for vegetables, for toys. That ticket everyone trusts is money.",
+          "Paying is not handing in homework, and it is not a present for the shopkeeper. It is leaving a mark: I took this, and I left something of the same value. Money cannot be eaten or played with; it is just the ticket that holds your place in the queue for things."
+        ],
+        "followUp": "So who makes money? And who decides how much a ticket can buy?",
+        "figureAlt": "Three panels: at first people swapped things and it was awkward for everyone; then everyone agreed on a ticket anybody would accept; you take the goods and leave a ticket, and the shopkeeper trades the ticket for what he needs"
+      },
       "oneLine": "钱是一张大家都认的「票」：你拿走别人的东西，就留一张票；老板拿着票，再去换他自己需要的东西。",
       "points": [
         "很早以前没有钱，是拿东西换东西：一只鸡换一袋米。麻烦的是——想要米的人，不一定正好有一只鸡。",
@@ -126,7 +168,19 @@ window.KQ = {
       "secondary": "math",
       "depth": 3,
       "figure": "assets/figures/cloud-float.svg",
+      "figureEn": "assets/figures/en/cloud-float.svg",
       "figureAlt": "三段图解：云是无数极小的水珠，一点点上升的风就托得住；人是一整块大东西，风托不动；人想飞要靠机翼推空气或靠比空气轻的热气球",
+      "en": {
+        "question": "Why can clouds float but people can't?",
+        "oneLine": "A cloud is not a ball of cotton; it is countless tiny water droplets. When something tiny falls, the air resistance is huge compared with its weight, so even a gentle updraught pushes it back — a person is too big and heavy, and the same breeze cannot hold them.",
+        "points": [
+          "A droplet in a cloud is a fraction of a hair's width. Falling on its own it drops only a few millimetres a second, slower than a speck of dust. A little rising warm air nudges it back where it was — so the cloud we see floating is really falling extremely slowly.",
+          "Swap in a person of a few dozen kilos and the same breeze is basically nothing. To fly, a person has two options: push air down with wings and the air pushes you up (birds and planes), or get inside something lighter than air (a hot-air balloon). You do not get lighter — you change how you use the air.",
+          "The real trick is spreading out: the same weight broken into tiny pieces with a wide face to the wind can be held up, while one lump cannot. That is why flour drifts in the sunshine for ages, but a lump of dough dropped straight down lands at once."
+        ],
+        "followUp": "So when it rains, is that the cloud finally unable to hold on, falling down?",
+        "figureAlt": "Three panels: a cloud is countless tiny droplets a gentle updraught can hold; a person is one big lump the wind cannot lift; to fly you need wings that push air, or a balloon lighter than air"
+      },
       "oneLine": "云不是一块棉花，是无数极小的水珠——小东西往下掉时，空气的阻力相对它的重量特别大，一点点上升的风就把它托回去了；人太大太重，同样的风托不动。",
       "points": [
         "一朵云里的水珠只有头发丝的几分之一宽，单独一颗往下掉，每秒才落几毫米，比一片灰尘还慢。上升的暖空气轻轻一顶，它就回到原处——所以我们看到的是「飘着」的云，其实是掉得极慢。",
@@ -148,7 +202,19 @@ window.KQ = {
       "secondary": "nature",
       "depth": 3,
       "figure": "assets/figures/sleep.svg",
+      "figureEn": "assets/figures/en/sleep.svg",
       "figureAlt": "三段图解：醒着的时候腺苷越攒越多；睡着后脑脊液把它冲走；同时把白天的记忆从临时本抄进长期本",
+      "en": {
+        "question": "Why do people get sleepy and need to sleep?",
+        "oneLine": "Sleepiness is a used-too-long signal: while you are awake your brain cells keep making a waste called adenosine, and the more it builds up the sleepier you get. Once you are asleep the brain washes it away with cerebrospinal fluid and copies what you learned into long-term memory.",
+        "points": [
+          "Every waking minute, working brain cells leave a little adenosine behind, like dust in a room — the more you use it, the more there is. When enough has piled up, the brain sends a time-to-rest signal: that is sleepiness.",
+          "Once you are asleep, cerebrospinal fluid flows through the brain like water and carries the waste away; at the same time the brain copies what you learned today from a scratch pad into a long-term book — that step is called memory consolidation.",
+          "Coffee and tea do not clear the waste, they only block the sleepy signal while the debt stays. So the time you borrow by staying up late comes back the next day as forgetting things and reacting slowly."
+        ],
+        "followUp": "Why is it sometimes harder to fall asleep when you are really tired?",
+        "figureAlt": "Three panels: adenosine builds up while you are awake; while you sleep, fluid washes it away; and the day's memories are copied from the scratch pad into the long-term book"
+      },
       "oneLine": "困是「用了太久的信号」：醒着的时候脑细胞一直在产生一种叫腺苷的废物，攒得越多你越困；睡着后大脑一边用脑脊液把它冲走，一边把白天学到的东西抄进长期记忆。",
       "points": [
         "你醒着的每一分钟，脑细胞干活都会留下一点「腺苷」，它像房间里的灰，越用越多；攒到一定量，大脑就发出「该休息了」的信号——这就是困。",
@@ -169,7 +235,19 @@ window.KQ = {
       "subject": "society",
       "depth": 2,
       "figure": "assets/figures/why-scold.svg",
+      "figureEn": "assets/figures/en/why-scold.svg",
       "figureAlt": "三段图解：打翻水是做错的那件事；大人着急是因为怕你受伤；批评的是这件事，喜欢你这件事没变",
+      "en": {
+        "question": "Why do grown-ups tell kids off when they do something wrong?",
+        "oneLine": "Grown-ups are telling off the thing that went wrong, not you as a person — they are afraid you will get hurt, or someone else will, and when they are worried their voice gets a bit loud.",
+        "points": [
+          "Some mistakes can hurt you (touching boiling water, running down the stairs), and some can hurt others (pushing, grabbing toys). Grown-ups get worried because they care and they are scared, not because they do not like you.",
+          "When grown-ups are worried they often only say 'no' and forget to say why. You can ask: Why can't I? Once you know, you know what to do next time.",
+          "It is a telling-off about one thing, not about a person. Fix it and that thing is over; being told off never means I am a naughty kid."
+        ],
+        "followUp": "Then when grown-ups do something wrong, who tells them off?",
+        "figureAlt": "Three panels: spilling the water is the thing that went wrong; grown-ups get worried because they are afraid you will be hurt; the telling-off is about the thing, and liking you has not changed"
+      },
       "oneLine": "大人批评的是「做错的那件事」，不是你这个人——他们怕你受伤、怕别人受伤，一着急声音就大了一点。",
       "points": [
         "有些错会伤到你自己（摸开水、跑下楼），有些会伤到别人（推人、抢玩具）。大人着急，是因为心疼和害怕，不是不喜欢你。",
@@ -191,7 +269,19 @@ window.KQ = {
       "secondary": "math",
       "depth": 2,
       "figure": "assets/figures/moon-follow.svg",
+      "figureEn": "assets/figures/en/moon-follow.svg",
       "figureAlt": "三段图解：你往前走几步，近处的树很快退到身后；月亮离得太远，方向几乎不变，所以看上去像在跟着你",
+      "en": {
+        "question": "Why does the moon follow us when we walk?",
+        "oneLine": "The moon is not following you; it is just very far away. Your few steps are too small for it to notice, while everything around you slides backwards — put side by side, it looks as if the moon is chasing you.",
+        "points": [
+          "Nearby trees, houses and streetlights are close: after a few steps they jump from in front of you to behind you, which is very obvious.",
+          "The moon is very far away; the few dozen metres you walk around the block are almost too small to measure up there, so its direction barely changes.",
+          "The things beside you keep sliding backwards while the moon stays in the same direction, so it feels as if it is walking along with you."
+        ],
+        "followUp": "If you ride a fast train, does the moon still follow? Why is that?",
+        "figureAlt": "Three panels: walk a few steps and nearby trees slide behind you; the moon is so far that its direction hardly changes, so it looks like it is following"
+      },
       "oneLine": "月亮没有跟着你走，它只是离得太远：你走的几步对它来说小得看不见，而你身边的东西一路往后退，一对比就成了「它在追我」。",
       "points": [
         "近处的树、房子、路灯离你近，你走几步，它们就从前面跑到身后，变化特别明显。",
@@ -213,7 +303,19 @@ window.KQ = {
       "secondary": "math",
       "depth": 3,
       "figure": "assets/figures/calculator.svg",
+      "figureEn": "assets/figures/en/calculator.svg",
       "figureAlt": "按下一个键就接通一根线，芯片照程序算，屏幕用七根小横条显示结果",
+      "en": {
+        "question": "How does the calculator pupils use actually work?",
+        "oneLine": "A calculator does not think: pressing a key just connects one wire, a chip runs a program written in advance, and the answer lights up on the screen.",
+        "points": [
+          "Under the keys is a grid of lines. Pressing a key connects one row to one column, and the chip knows which key it was.",
+          "The chip holds a set of programs written long ago; 'add two numbers' is just one of them. It also has to remember the numbers you typed.",
+          "Each digit on the screen is made of seven little bars; whichever bars light up make that digit — so when a calculator breaks, it is often one bar that stopped lighting."
+        ],
+        "followUp": "Is the calculator in a phone the same? What extra step does it do?",
+        "figureAlt": "Press a key and a wire connects; a chip runs its program; the screen shows the answer with seven small bars"
+      },
       "oneLine": "计算器不会思考：你按的每个键只是接通了一根线，芯片照提前写好的程序算完，再把结果亮在屏幕上。",
       "points": [
         "键盘底下像一张格子网，按下一个键，就是让那一行和那一列接通一下，芯片就知道你按的是谁。",
@@ -233,7 +335,19 @@ window.KQ = {
       "secondary": "nature",
       "depth": 2,
       "figure": "assets/figures/pangu-axe.svg",
+      "figureEn": "assets/figures/en/pangu-axe.svg",
       "figureAlt": "三层时间线：三国的盘古只用身体撑开天地，明代的书写他执斧执凿，今天的动画照着画",
+      "en": {
+        "question": "When Pangu split heaven and earth, he had an axe. Where did that axe come from?",
+        "oneLine": "That axe was not Pangu's — a Ming-dynasty storyteller gave it to him. In the oldest myth he only used his body to hold heaven and earth apart.",
+        "points": [
+          "The earliest record is Xu Zheng's third-century account: the world was like an egg with Pangu inside, and he grew ten feet a day while heaven rose ten feet and earth thickened ten feet — he was holding them apart.",
+          "Only in a Ming-dynasty retelling does he first hold a chisel in one hand and an axe in the other, to chop or chisel it open: a story needs a chopping motion you can see.",
+          "Later cartoons and picture books copied that, and the axe became Pangu's fixed prop while the chisel was forgotten — so the axe comes from a Ming storyteller's hands."
+        ],
+        "followUp": "Then who gave him the chisel? And where did Nuwa's five-coloured stone come from? (Myths love explaining where the world came from, and rarely explain where their own props came from.)",
+        "figureAlt": "A timeline in three layers: Pangu in the third-century story only holds the sky with his body; the Ming book gives him an axe and a chisel; today's cartoons copy that"
+      },
       "oneLine": "那把斧子不是盘古的，是明朝说书人给他配的——最早的神话里他只靠身体把天地撑开。",
       "points": [
         "最早的记载是三国吴人徐整的《三五历纪》：天地混沌如鸡子，盘古生在其中，每天长一丈，天日高一丈、地日厚一丈——天地是被他「撑」开的。",
@@ -253,7 +367,19 @@ window.KQ = {
       "secondary": "nature",
       "depth": 2,
       "figure": "assets/figures/candy-tooth.svg",
+      "figureEn": "assets/figures/en/candy-tooth.svg",
       "figureAlt": "牙齿的盔甲被酸泡出小洞，洞深了碰到牙神经",
+      "en": {
+        "question": "Why does eating sweets rot your teeth?",
+        "oneLine": "What rots teeth is not the sugar itself but the acid that sugar feeds: the bacteria in your mouth eat sugar and spit out acid, and the acid soaks little holes into the tooth's armour, deeper and deeper.",
+        "points": [
+          "A tooth wears a very hard coat called enamel, like armour — hard enough to grind bone, but afraid of acid.",
+          "Sugar sticks to the teeth, and the mouth bacteria eat it and give off acid. Sugar is not the villain directly; it is delivering dinner to the bacteria.",
+          "The acid pulls calcium out little by little (that is called demineralisation): first a chalky spot, then a small hole; when the hole reaches the nerve, it hurts."
+        ],
+        "followUp": "Why is eating several sweets slowly through the day worse than eating them all at once? (The bacteria are served a meal every time and the acid baths add up; brushing with fluoride can rebuild the armour.)",
+        "figureAlt": "Acid soaks a hole into the tooth's armour; deep enough, it reaches the nerve"
+      },
       "oneLine": "真正烂牙的不是糖，是糖养出来的「酸」：嘴里的细菌吃糖、吐酸，酸把牙齿的盔甲泡出小洞，洞越来越深。",
       "points": [
         "牙齿外面包着一层很硬的牙釉质，像盔甲；硬到能磨碎骨头，但它怕酸。",
@@ -273,7 +399,19 @@ window.KQ = {
       "secondary": "life",
       "depth": 2,
       "figure": "assets/figures/laputa-robot.svg",
+      "figureEn": "assets/figures/en/laputa-robot.svg",
       "figureAlt": "花园机器人、它的鸟窝，和拉普达城里的发光石头",
+      "en": {
+        "question": "Why did the robot in Castle in the Sky die?",
+        "oneLine": "It did not die from bleeding — it ran out of power. Its strength came from Laputa itself, and when the city fell and the army shot it apart, it could not move any more.",
+        "points": [
+          "The robots of Laputa were built by an ancient people to do work. This one looked after the garden and guarded a bird's nest, and it was very gentle.",
+          "It did not eat or sleep. Its power came from the whole city — the glowing stone and the roots of the great tree.",
+          "In the film the army breaks it with cannon fire; then the city falls, it has no power left, and it stops there, still."
+        ],
+        "followUp": "So did it die? (It will not grow or eat — it is more like it stopped. But the chicks in the nest it guarded are still there.)",
+        "figureAlt": "The garden robot, the nest it guarded, and the glowing stone under Laputa"
+      },
       "oneLine": "它不是流血死的，是「没劲了」：它的力气来自拉普达城，城塌了、它又被军队打坏，就再也不动了。",
       "points": [
         "拉普达的机器人是古代人做来干活的，这一个在花园里照顾花草、护着鸟窝，特别温柔。",
@@ -293,7 +431,19 @@ window.KQ = {
       "secondary": "nature",
       "depth": 2,
       "figure": "assets/figures/mosquito.svg",
+      "figureEn": "assets/figures/en/mosquito.svg",
       "figureAlt": "蚊子在皮肤上吸血吐口水，身体的卫士释放组胺，让皮肤起包、让神经觉得痒",
+      "en": {
+        "question": "Why does a mosquito bite itch?",
+        "oneLine": "It is not the bite that itches — your own little guards are fighting: they release something called histamine, which puffs up the skin and makes nerves feel itchy.",
+        "points": [
+          "Before a mosquito drinks, it spits a little saliva so the blood will not clot and block its straw.",
+          "Your body treats that saliva as an enemy, sends immune cells to deal with it, and those release histamine on the way.",
+          "Histamine widens the blood vessels there (so it swells into a bump) and tickles the nerves (so it itches). The more you scratch, the more it releases — which is why scratching makes it worse."
+        ],
+        "followUp": "Why do some kids swell up more after a bite? And why does something cold feel good? (Chill it and the nerves are harder to trigger.)",
+        "figureAlt": "A mosquito drinks and spits saliva; the body's guards release histamine; the skin puffs up and the nerves feel itchy"
+      },
       "oneLine": "不是蚊子咬得痒，是你自己的「小卫士」在打架：它们放出一种叫组胺的东西，让皮肤起包、让神经觉得痒。",
       "points": [
         "蚊子吸血前会先吐一点口水，防止血凝固堵住它的吸管。",
@@ -313,7 +463,19 @@ window.KQ = {
       "secondary": "daily",
       "depth": 1,
       "figure": "assets/figures/fishoil.svg",
+      "figureEn": "assets/figures/en/fishoil.svg",
       "figureAlt": "一颗橘红色的小胶囊，里面是给大脑和眼睛用的 DHA",
+      "en": {
+        "question": "What was that orange thing I ate this morning?",
+        "oneLine": "That was a little orange-red fish-oil capsule. The DHA inside is a building block for the brain and the eyes.",
+        "points": [
+          "It is not a sweet, it is a supplement — one capsule a day is enough.",
+          "DHA comes from deep-sea fish; the capsule feels soft and looks shiny.",
+          "A growing brain and eyes need a little of that material, but eating well matters more than taking capsules."
+        ],
+        "followUp": "Why is it orange-red? (One, so it is easy to recognise. Two, fish oil is sensitive to light, so the colour and the shell both protect it.)",
+        "figureAlt": "A little orange-red capsule holding DHA for the brain and eyes"
+      },
       "oneLine": "那是鱼油 DHA 的小胶囊，橙红色的；里面的 DHA 是大脑和眼睛的「建筑材料」。",
       "points": [
         "它不是糖，是营养补充，一次吃一颗就够。",
@@ -332,7 +494,19 @@ window.KQ = {
       "subject": "tech",
       "depth": 1,
       "figure": "assets/figures/plugin.svg",
+      "figureEn": "assets/figures/en/plugin.svg",
       "figureAlt": "U 盘装的是东西，插件像插头，插上就多一种本领",
+      "en": {
+        "question": "What is a plugin? Is it like a USB stick?",
+        "oneLine": "A plugin is like an extra skill socket you plug into a program: plug it in and the program learns a new skill, without replacing the whole program.",
+        "points": [
+          "A USB stick carries things — photos, files. A plugin carries a skill.",
+          "It plugs into a program that already exists. Add an ad blocker to a browser and the browser gains the skill of blocking ads.",
+          "When you no longer need it, unplug it. The original program is still there — it just loses that one skill."
+        ],
+        "followUp": "Can plugins make a computer slow? (They use a bit of memory, and too many will drag it down — like stuffing too much into a school bag.)",
+        "figureAlt": "A USB stick carries stuff; a plugin is a socket that adds a skill"
+      },
       "oneLine": "插件像给软件多插一个「本领插头」：插上去就多会一样本事，不用换掉整个软件。",
       "points": [
         "U 盘装的是「东西」（照片、文件）；插件装的是「本领」。",
@@ -351,7 +525,19 @@ window.KQ = {
       "subject": "tech",
       "depth": 3,
       "figure": "assets/figures/copy-paste.svg",
+      "figureEn": "assets/figures/en/copy-paste.svg",
       "figureAlt": "三步：找到图片、按 Ctrl+C 复制、到 WPS 按 Ctrl+V 粘贴",
+      "en": {
+        "question": "How do I copy a picture into WPS on the computer?",
+        "oneLine": "Three steps: find the picture, press Ctrl+C to copy, then press Ctrl+V in WPS to paste.",
+        "points": [
+          "If the picture is in a folder: click it once to select it, then press Ctrl+C.",
+          "If the picture is on a web page: right-click on it and choose Copy Image.",
+          "Click where you want it in WPS and press Ctrl+V. On a phone it is long-press to copy and long-press to paste."
+        ],
+        "followUp": "Ctrl+X is cut: it moves the thing, and the original spot is empty. You can also drag a picture file straight onto the WPS window.",
+        "figureAlt": "Three steps: find the picture, press Ctrl+C, then press Ctrl+V in WPS"
+      },
       "oneLine": "三步：找到图片 → 按 Ctrl+C 复制 → 在 WPS 里按 Ctrl+V 粘贴。",
       "points": [
         "图片在文件夹里：点一下选中它，按 Ctrl+C。",
@@ -371,7 +557,19 @@ window.KQ = {
       "secondary": "daily",
       "depth": 2,
       "figure": "assets/figures/canteen.svg",
+      "figureEn": "assets/figures/en/canteen.svg",
       "figureAlt": "左边一个个包饺子很慢，右边一大锅菜很快",
+      "en": {
+        "question": "Why doesn't the school canteen make rice balls and dumplings?",
+        "oneLine": "Because it has to feed hundreds of pupils at once: rice balls and dumplings have to be wrapped one by one, which is far too slow, while a big pot of food can be made all at once.",
+        "points": [
+          "Little time: the lunch break is only a few dozen minutes, and hundreds of kids are in line.",
+          "Few hands: wrapping a whole meal of dumplings takes several people half a morning, and then you have to boil pot after pot.",
+          "Safety and cost: one big pot is easier to cook through and keep hot, and the same money buys more nutrition."
+        ],
+        "followUp": "Then why does the family wrap dumplings at New Year? (Fewer people, more time — and everyone likes sitting round together to make them.)",
+        "figureAlt": "Left: wrapping dumplings one by one is slow. Right: one big pot is quick."
+      },
       "oneLine": "因为要一次喂饱几百个人：圆子和水饺只能一个一个包，太慢；大锅菜能一次做很多。",
       "points": [
         "时间短：午饭只有几十分钟，几百人排队。",
@@ -391,7 +589,19 @@ window.KQ = {
       "secondary": "life",
       "depth": 1,
       "figure": "assets/figures/crab.svg",
+      "figureEn": "assets/figures/en/crab.svg",
       "figureAlt": "两只螃蟹翻过来的肚子：母蟹是圆脐，公蟹是尖脐",
+      "en": {
+        "question": "How can you tell a boy crab from a girl crab?",
+        "oneLine": "Turn the crab over and look at its belly: a round flap means a female, a pointed one means a male.",
+        "points": [
+          "Under a crab's belly there is a flap that can open — it is called the apron, and it is where the crab tucks its tail away.",
+          "A mother crab has to carry a whole bellyful of eggs, so her apron is wide and round, like a little apron.",
+          "A male crab's apron is narrow and pointed, like a small triangle."
+        ],
+        "followUp": "Then why are mother crabs often more expensive at the market? (Because of the orange roe — those are her eggs before she lays them, and they are only full for one season.)",
+        "figureAlt": "Two crabs flipped over: a round apron for the female, a pointed apron for the male"
+      },
       "oneLine": "把螃蟹翻过来看肚子：圆肚子（圆脐）是母蟹，尖肚子（尖脐）是公蟹。",
       "points": [
         "螃蟹肚子下面有一片能翻开的「盖子」，叫蟹脐，那是它藏尾巴的地方。",
@@ -411,7 +621,19 @@ window.KQ = {
       "secondary": "math",
       "depth": 3,
       "figure": "assets/figures/insurance.svg",
+      "figureEn": "assets/figures/en/insurance.svg",
       "figureAlt": "很多人往一个大池子里投硬币，少数人从池子里领钱",
+      "en": {
+        "question": "If an insurance company has to pay out, how does it still make money?",
+        "oneLine": "Many people each pay a little, and together it becomes one big pool. Only a few people ever need a payout; what is left pays the costs, and the rest is profit.",
+        "points": [
+          "Ten thousand people pay 100 yuan each, and the pool holds a million.",
+          "In one year, maybe only a few dozen of them ever come to claim.",
+          "The rest has to pay salaries, rent and taxes, and a big chunk is kept for next year's payouts. If payouts cost more than the money coming in, the company loses — that is why they measure so carefully."
+        ],
+        "followUp": "Then why does each person pay a different price for car insurance? (Different drivers, different cars, different chances of a crash — that is what they call different risk.)",
+        "figureAlt": "Many people dropping coins into one big pool, and a few people taking money out"
+      },
       "oneLine": "很多人各交一点点钱，攒成一个大池子；真正出事要赔的只是少数人，剩下的钱付成本，剩下才是赚的。",
       "points": [
         "一万个人各交 100 元，池子里就有 100 万元。",
@@ -431,7 +653,19 @@ window.KQ = {
       "secondary": "society",
       "depth": 1,
       "figure": "assets/figures/toys.svg",
+      "figureEn": "assets/figures/en/toys.svg",
       "figureAlt": "铁环、毽子、沙包三样老玩具，和一块平板电脑",
+      "en": {
+        "question": "What did you play with when you were little?",
+        "oneLine": "No phones, no tablets — everything was hands-on and outdoors: iron hoops, shuttlecocks, beanbags, skipping ropes, marbles and picture cards.",
+        "points": [
+          "Toys were cheap, and many we made ourselves: Mum sewed the beanbag out of cloth, and the shuttlecock was a coin with a few chicken feathers.",
+          "Our playmates were every kid on the street — one shout and a whole team showed up.",
+          "We came home only when it got dark, and grown-ups called you in from the balcony by shouting."
+        ],
+        "followUp": "So why are there so few photos from back then? (One roll of film took only 36 pictures, and you still had to pay to get them developed.)",
+        "figureAlt": "Three old toys — an iron hoop, a shuttlecock, a beanbag — next to a tablet"
+      },
       "oneLine": "没有手机和平板，玩的东西都是「动手做 + 出门跑」：铁环、毽子、沙包、跳皮筋、弹珠、拍画片。",
       "points": [
         "玩具多半很便宜，有的是自己做的：沙包是妈妈用布缝的，毽子用铜钱和鸡毛扎。",

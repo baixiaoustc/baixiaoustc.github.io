@@ -1,0 +1,297 @@
+{
+  "_README": "图解英文翻译。键是 assets/figures 下的文件名，text 里是「原文 → 英文」逐条替换；aria 是整张图的无障碍描述。跑 node tools/build-figures-en.mjs 生成 assets/figures/en/*.svg。",
+  "calculator.svg": {
+    "aria": "How a calculator works: a key connects a wire, the chip runs a program, the screen shows digits with seven little bars",
+    "text": {
+      "按下 3 + 5 = 以后，机器里发生了什么": "What happens inside after you press 3 + 5 =",
+      "程序": "Program",
+      "① 按键": "① Keys",
+      "按下一格，": "Press a key,",
+      "就接通一根线": "one wire connects",
+      "② 芯片": "② Chip",
+      "照早就写好的": "runs a program",
+      "程序，把两数相加": "written in advance",
+      "③ 屏幕": "③ Screen",
+      "七根小横条，": "Seven little bars,",
+      "亮哪几根显示哪个数": "whichever light up",
+      "它不会思考，只是把「怎么算」提前写死在芯片里": "It does not think — someone wrote how to calculate into the chip long ago"
+    }
+  },
+  "candy-tooth.svg": {
+    "aria": "Bacteria eat sugar and spit acid; the acid soaks holes in the tooth's armour; deep enough, it reaches the nerve",
+    "text": {
+      "烂牙的不是糖，是糖喂出来的「酸」": "What rots teeth is not sugar — it is the acid that sugar feeds",
+      "牙釉质": "Enamel",
+      "（牙齿的盔甲）": "(the tooth's armour)",
+      "牙神经（在里头）": "Nerve (inside)",
+      "小洞": "Hole",
+      "酸": "Acid",
+      "细菌吃完糖吐出来的": "spat out by bacteria",
+      "① 嘴里的细菌爱吃糖": "① Mouth bacteria love sugar",
+      "糖越黏、吃的时间越长，细菌越开心": "The stickier and longer, the happier they are",
+      "② 细菌吐酸，把盔甲泡软": "② They spit acid, softening the armour",
+      "一次一点点，泡久了就脱了一层": "A little each time — wear it down",
+      "③ 洞越来越深，碰到神经就疼": "③ Deeper, until it hits the nerve",
+      "刷牙 + 含氟 + 少喝甜饮料，盔甲能补回来": "Brush + fluoride rebuilds the armour",
+      "一次吃完一块糖，比一整天慢慢吃要好——关键不是「吃了多少」，是「酸泡了多久」。": "One sweet at once beats one all day: what counts is how long the acid soaks."
+    }
+  },
+  "canteen.svg": {
+    "aria": "Wrapping dumplings one by one is too slow; one big pot is quick",
+    "text": {
+      "食堂要一次喂饱几百人，比的是「快」和「稳」": "A canteen feeds hundreds: it needs speed and safety",
+      "水饺 / 圆子：一个一个包": "Dumplings / rice balls: one by one",
+      "一上午，好几个人": "Half a morning, many hands",
+      "大锅菜：一次做很多": "Big-pot dishes: lots at once",
+      "一锅够几百人": "One pot feeds hundreds",
+      "熟得透、够热、同样的钱更划算": "Cooked through, still hot, more for the same money"
+    }
+  },
+  "cloud-float.svg": {
+    "aria": "Three panels: a cloud is countless tiny droplets a gentle updraught can hold; a person is one big lump the wind cannot lift; to fly you need wings that push air, or a balloon lighter than air",
+    "text": {
+      "小水珠会飘，人只会往下掉": "Tiny droplets float; people just fall",
+      "上升的风": "Rising air",
+      "几十公斤": "Dozens of kilos",
+      "风托不住": "The wind cannot hold it",
+      "往下推空气": "Push down",
+      "比空气轻": {
+        "en": "Lighter than air",
+        "x": 558
+      },
+      "① 云是无数小水珠": "① Clouds are tiny droplets",
+      "每颗只有头发丝的几分之一": "Each a fraction of a hair",
+      "掉得比灰尘还慢": "Falling slower than dust",
+      "② 人是一整块": "② A person is one lump",
+      "再大的风也托不住": "No wind can hold that",
+      "只会一直往下掉": "Down you go, always",
+      "③ 想飞得换个办法": "③ Flying takes a trick",
+      "翅膀把空气往下推": "Wings push air down",
+      "或者像热气球，比空气轻": "Or a balloon, lighter than air",
+      "关键不是「轻」，是「摊得开」：同样重量，越小、迎风面越大，风越托得住": "Not lightness but spreading out: small pieces catch the wind"
+    }
+  },
+  "copy-paste.svg": {
+    "aria": "Three steps to put a picture into WPS: find it, Ctrl+C to copy, Ctrl+V to paste",
+    "text": {
+      "把图片放进 WPS：三步就好": "Put a picture into WPS in three steps",
+      "① 找到图片，点一下选中": "① Find it, click to select",
+      "复制": "Copy",
+      "② 按 Ctrl+C": "② Press Ctrl+C",
+      "③ 按 Ctrl+V 粘贴": "③ Press Ctrl+V to paste",
+      "网页上的图片：在图上点右键 →「复制图片」": "On a web page: right-click the picture → Copy Image",
+      "手机上：长按 →「复制」，到 WPS 里长按 →「粘贴」": "On a phone: long-press → Copy; long-press in WPS → Paste",
+      "Ctrl+X 是「剪切」：把它搬走，原来的位置就空了": "Ctrl+X is cut: it moves the thing, leaving an empty spot"
+    }
+  },
+  "crab.svg": {
+    "aria": "Female crabs have a round apron, males a pointed one",
+    "text": {
+      "把螃蟹翻过来，看肚子上那块「脐」": "Flip the crab over and look at the flap on its belly",
+      "圆": "Round",
+      "母蟹 · 圆脐": "Female · round apron",
+      "要抱一肚子卵宝宝，所以又圆又宽": "Full of eggs, so it is wide and round",
+      "公蟹 · 尖脐": "Male · pointed apron",
+      "脐是窄窄的小三角": "A narrow little triangle"
+    }
+  },
+  "fishoil.svg": {
+    "aria": "A little orange-red capsule of DHA, the building block for brain and eyes",
+    "text": {
+      "橘红色的小胶囊里，装的是大脑和眼睛的材料": "Orange-red capsule: material for brain and eyes",
+      "鱼油 DHA 胶囊": "Fish-oil DHA capsule",
+      "软软的、亮亮的，不是糖": "Soft and shiny — not candy",
+      "大脑": "Brain",
+      "眼睛": "Eyes",
+      "DHA 就像盖房子用的砖：大脑和眼睛长好要用一点点，但好好吃饭比吃胶囊更重要。": "DHA is a building brick: brain and eyes need a little, but eating well matters more."
+    }
+  },
+  "insurance.svg": {
+    "aria": "Many people pay into one pool; the few who need help draw from it",
+    "text": {
+      "很多人各交一点点 → 攒成一个大池子": "Many people each pay a little → one big pool",
+      "一万人各交 100 元": "10,000 people pay 100 yuan each",
+      "100 万元": "1 million yuan",
+      "大家的钱放在一起": "Everyone's money, together",
+      "出事的人来领钱": "The few who claim draw from it",
+      "一年真出事的只有几十人，剩下的是成本、准备着明年赔的钱，再剩下才是赚的。": "A few dozen claim a year; after costs, the rest is profit."
+    }
+  },
+  "laputa-robot.svg": {
+    "aria": "The garden robot runs on Laputa's glowing stone; when the city fell it stopped",
+    "text": {
+      "它不是流血死的，是「没劲了」": "It did not bleed to death — it ran out of power",
+      "看花园的机器人": "The garden robot",
+      "很温柔，护着鸟窝和花": "Gentle, guarding nest and flowers",
+      "城里的「心脏」": "The city's heart",
+      "靠它才有劲": "Its power source",
+      "① 古代人做的干活机器人": "① Robots built to work",
+      "② 劲儿来自城里的石头": "② Power from the city's stone",
+      "③ 城塌了 → 它就不动了": "③ City fell → it stopped"
+    }
+  },
+  "mirror-flip.svg": {
+    "aria": "Three panels: light bounces off a mirror like a ball off a wall; light from both hands goes straight there and back, so the left hand stays left; laid flat, the mirror keeps left and right but flips up and down",
+    "text": {
+      "镜子翻的是「前后」，不是左右": "A mirror flips front-and-back, not left-and-right",
+      "撞上去": "Hits the glass",
+      "原路弹回": "Bounces straight back",
+      "镜子": "Mirror",
+      "左手": "Left",
+      "右手": "Right",
+      "光直着去、直着回，没有交叉": "Light goes straight there and back — no crossing",
+      "左右不变": "Left stays left",
+      "上下反了": "Up and down flip",
+      "① 光原路弹回": "① Light bounces back",
+      "镜子不是门，是墙": "A wall, not a door",
+      "光撞上去，直着弹回来": "Light hits, straight back",
+      "② 左还是左，右还是右": "② Left is left, right is right",
+      "被换掉的只有「前和后」": "Only front-and-back swaps",
+      "你的右手还在你右边": "Right hand stays right",
+      "③ 平放镜子：上下反了": "③ Flat: up and down flip",
+      "说明它只翻正对着的方向": "Only the facing side flips",
+      "是大脑把它当成了「转过身」": "Brain: someone turned round",
+      "镜子把正对你的那一面原样送回来；觉得「反了」，是大脑替你脑补了一次转身": "Mirror returns the facing side; reversed is your brain adding a turn."
+    }
+  },
+  "money-why.svg": {
+    "aria": "Three panels: barter was awkward; then everyone agreed on a ticket anyone accepts; you take the goods, leave a ticket, and the shopkeeper trades it for what he needs",
+    "text": {
+      "钱，是大家都认的一张「票」": "Money is a ticket everyone accepts",
+      "米": "Rice",
+      "换": "for",
+      "钱": "Money",
+      "菜": "Veggies",
+      "玩具": "Toys",
+      "再去换米": "Buys rice again",
+      "① 最早是「换东西」": "① At first, swapping",
+      "一只鸡换一袋米": "One chicken for a bag of rice",
+      "要换的人不一定在": "The right person may be away",
+      "② 于是大家约定一张票": "② So they agreed a ticket",
+      "谁拿着都能用": "Anyone can use it",
+      "这张票就是「钱」": "That ticket is money",
+      "③ 拿东西，留一张票": "③ Goods out, ticket in",
+      "钱不是给老板的「礼」": "It is not a gift to the shop",
+      "是换走东西的凭证": "A receipt for what you took",
+      "钱本身不能吃也不能玩，它只是一张大家都肯认的「换东西的票」": "Money is not food or a toy: it is the ticket everyone trusts."
+    }
+  },
+  "moon-follow.svg": {
+    "aria": "Three panels: walk a few steps and nearby trees slide behind you; the moon is so far that its direction hardly changes, so it seems to follow",
+    "text": {
+      "为什么你走，月亮也跟着走？": "Why does the moon follow you?",
+      "① 往前走几步": "① Walk a few steps",
+      "近处的树": "Nearby tree",
+      "几步就到身后": "Behind you in a few steps",
+      "② 树退到身后了": "② The tree is behind you",
+      "近处的东西": "Nearby things",
+      "一退就很明显": "Slide back, obviously",
+      "③ 月亮没怎么变": "③ The moon barely moves",
+      "它离得太远": "It is far too far",
+      "你的几步等于没动": "Your steps amount to nothing",
+      "不是月亮在跟着你，是一路上的东西退得太快": "The moon is not following; everything else is sliding back too fast"
+    }
+  },
+  "mosquito.svg": {
+    "aria": "A mosquito spits saliva; your body's guards release histamine; the skin swells and itches",
+    "text": {
+      "不是蚊子咬得痒，是你的小卫士在打架": "The bite does not itch — your little guards are fighting",
+      "表皮": "Epidermis",
+      "真皮（血管在这儿）": "Dermis (vessels here)",
+      "血管": "Blood vessel",
+      "组胺": "Histamine",
+      "血管变宽 → 鼓包": "Vessels widen → bump",
+      "① 蚊子先吐一点口水": "① First, a little saliva",
+      "防止血凝固、堵住吸管": "So blood will not clot its straw",
+      "② 身体的卫士赶来": "② Your guards arrive",
+      "把口水当成敌人来处理": "Treating saliva as an enemy",
+      "③ 放出组胺 → 觉得痒": "③ Histamine → itch",
+      "越抓放得越多，越抓越痒": {
+        "en": "Scratch more, itch more",
+        "x": 505
+      }
+    }
+  },
+  "pangu-axe.svg": {
+    "aria": "A timeline in three layers: Pangu in the third-century story has no axe; the Ming book gives him an axe and a chisel; today's cartoons copy that",
+    "text": {
+      "那把斧子，是明朝人给他配上的": "The axe was given to him by a Ming storyteller",
+      "天": "Sky",
+      "地": "Earth",
+      "三国·吴《三五历纪》：没有斧子": "3rd century (Wu), Records: no axe",
+      "只写「天地混沌如鸡子，盘古生其中」": "Only: heaven and earth like an egg, Pangu inside",
+      "天地是他一天长一丈撑开的——靠身体，不靠工具": "He held them apart, ten feet a day — his body, not tools",
+      "明代《开辟衍绎》：左手执凿，右手持斧": "Ming retelling: chisel left, axe right",
+      "这部书第一次给他配上两件工具，「或斧劈，或以凿开」": "First to give him tools — cutting with axe or chisel",
+      "因为说书人要一个看得见的动作：劈开": "A storyteller needs a visible motion: splitting",
+      "动画里": "In cartoons",
+      "今天的动画、绘本：照着画": "Today's cartoons copy it",
+      "斧子成了盘古的「标配」，凿子反而常被忘掉": "The axe became his standard prop; the chisel was forgotten",
+      "所以「斧子哪来的」——答案在明代说书人手里": "So where did the axe come from? From a Ming storyteller's hands",
+      "神话会解释世界怎么来的，却很少解释自己的道具哪来的。": "Myths explain where the world came from, rarely where their props did."
+    }
+  },
+  "plugin.svg": {
+    "aria": "A USB stick carries stuff; a plugin is a socket that adds a skill",
+    "text": {
+      "U 盘装的是「东西」，插件装的是「本领」": "A USB stick carries things; a plugin carries skills",
+      "U 盘：往里装东西": "USB stick: put things in",
+      "照片、作业、电影": "Photos, homework, films",
+      "拔掉以后，东西还在盘里": "Unplug it and the things stay",
+      "插件：给软件加一样本领": "Plugin: gives a program a skill",
+      "已经有的软件": "A program you already have",
+      "插件": "Plugin",
+      "插上→": "Plug in →",
+      "比如浏览器装了挡广告插件，就多会挡广告": "Add an ad blocker and the browser blocks ads"
+    }
+  },
+  "sleep.svg": {
+    "aria": "Three panels: adenosine builds up while you are awake; while asleep, fluid washes it away; the day's memories are copied into the long-term book",
+    "text": {
+      "困，是大脑攒了一天的「垃圾」": "Sleepiness is a day's rubbish piled up",
+      "冲走": "Washed away",
+      "临时": "Scratch",
+      "长期": "Long-term",
+      "① 醒着就在攒": "① Piling up while awake",
+      "「腺苷」越攒越多": "More and more adenosine",
+      "攒够了就困": "Enough, and you are sleepy",
+      "② 睡着开始冲": "② Washing starts asleep",
+      "脑脊液像水流": "Fluid flows like water",
+      "把废物带走": "Carrying waste away",
+      "③ 顺便存个档": "③ And saving a file",
+      "白天学的，从临时本": "Today's learning, from scratch",
+      "抄进长期本": "copied into the long-term book",
+      "所以睡觉不是浪费时间，是大脑在打扫 + 存档": "Sleep is not wasted time: it is cleaning plus saving"
+    }
+  },
+  "toys.svg": {
+    "aria": "Old toys were a hoop, a shuttlecock and a beanbag; now it is a tablet",
+    "text": {
+      "爸爸妈妈小时候的玩具：动手做 + 出门跑": "Toys when Mum and Dad were little: make it, run outside",
+      "厂院子里、院子里": "In the yard, in the lane",
+      "现在": "Now",
+      "滚铁环": "Iron hoop",
+      "踢毽子": "Shuttlecock",
+      "丢沙包": "Beanbag toss",
+      "便宜、能自己做、要出门找伙伴": "Cheap, home-made, needs friends outside",
+      "一个人、一块屏幕、随时能玩": "One kid, one screen, any time"
+    }
+  },
+  "why-scold.svg": {
+    "aria": "Three panels: spilling the water is the mistake; grown-ups worry you will get hurt; the telling-off is about the thing, and liking you has not changed",
+    "text": {
+      "大人批评的，是那件事，不是你": "Grown-ups scold the thing, not you",
+      "不行！": "No!",
+      "① 打翻了水": "① The water spilled",
+      "做错的是这件事": "This is what went wrong",
+      "它就在那儿": "It is right there",
+      "② 大人着急了": "② Grown-up gets worried",
+      "怕你被开水烫到": "Afraid you will get burned",
+      "声音就变大了": "The voice gets loud",
+      "③ 喜欢你不变": "③ Liking you: unchanged",
+      "批评的是一件小事": "It is about a small thing",
+      "不是你这个人": "Not about who you are",
+      "下次可以问一句：为什么不可以？": "Next time ask: why can't I?"
+    }
+  }
+}

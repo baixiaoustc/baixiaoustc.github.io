@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="A timeline in three layers: Pangu in the third-century story has no axe; the Ming book gives him an axe and a chisel; today's cartoons copy that">
+  <defs>
+    <g id="axe">
+      <path d="M0 8 Q20 0 34 8 L34 28 Q18 36 0 28 Z" fill="#C9D6E3" stroke="#7B8CA1" stroke-width="3" stroke-linejoin="round"/>
+      <line x1="32" y1="18" x2="68" y2="54" stroke="#A9744F" stroke-width="8" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="44" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="21" font-weight="700" fill="#2F3542">The axe was given to him by a Ming storyteller</text>
+
+  <!-- ① 三国：撑开，不用斧 -->
+  <rect x="40" y="64" width="560" height="88" rx="14" fill="#F4F6F9" stroke="#C3CEDA" stroke-width="2.5"/>
+  <line x1="66" y1="88" x2="188" y2="88" stroke="#8FA9C0" stroke-width="4" stroke-linecap="round"/>
+  <text x="70" y="82" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#8FA9C0">Sky</text>
+  <line x1="66" y1="140" x2="188" y2="140" stroke="#B08A62" stroke-width="4" stroke-linecap="round"/>
+  <text x="70" y="134" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#B08A62">Earth</text>
+  <circle cx="127" cy="102" r="8" fill="#FFD9A0" stroke="#E0A85B" stroke-width="2.5"/>
+  <line x1="127" y1="110" x2="127" y2="126" stroke="#E0A85B" stroke-width="4" stroke-linecap="round"/>
+  <line x1="127" y1="114" x2="112" y2="93" stroke="#E0A85B" stroke-width="4" stroke-linecap="round"/>
+  <line x1="127" y1="114" x2="142" y2="93" stroke="#E0A85B" stroke-width="4" stroke-linecap="round"/>
+  <line x1="127" y1="126" x2="117" y2="139" stroke="#E0A85B" stroke-width="4" stroke-linecap="round"/>
+  <line x1="127" y1="126" x2="137" y2="139" stroke="#E0A85B" stroke-width="4" stroke-linecap="round"/>
+  <g font-family="PingFang SC,Hiragino Sans GB,sans-serif">
+    <text x="210" y="92" font-size="16" font-weight="700" fill="#3D4859">3rd century (Wu), Records: no axe</text>
+    <text x="210" y="116" font-size="13" fill="#4B5563">Only: heaven and earth like an egg, Pangu inside</text>
+    <text x="210" y="138" font-size="13" fill="#4B5563">He held them apart, ten feet a day — his body, not tools</text>
+  </g>
+
+  <!-- ② 明代：斧凿出场 -->
+  <rect x="40" y="162" width="560" height="88" rx="14" fill="#FFF3F7" stroke="#FF9BC0" stroke-width="2.5"/>
+  <use href="#axe" transform="translate(84,176)"/>
+  <line x1="158" y1="228" x2="176" y2="184" stroke="#9AA9B8" stroke-width="7" stroke-linecap="round"/>
+  <path d="M171 188 L185 179 L190 191 L177 197 Z" fill="#B7C4D2" stroke="#7B8CA1" stroke-width="2" stroke-linejoin="round"/>
+  <g font-family="PingFang SC,Hiragino Sans GB,sans-serif">
+    <text x="210" y="190" font-size="16" font-weight="700" fill="#C2415F">Ming retelling: chisel left, axe right</text>
+    <text x="210" y="214" font-size="13" fill="#4B5563">First to give him tools — cutting with axe or chisel</text>
+    <text x="210" y="236" font-size="13" fill="#4B5563">A storyteller needs a visible motion: splitting</text>
+  </g>
+
+  <!-- ③ 今天：照着画 -->
+  <rect x="40" y="260" width="560" height="88" rx="14" fill="#FFF8EA" stroke="#FFB347" stroke-width="2.5"/>
+  <rect x="78" y="272" width="104" height="64" rx="8" fill="none" stroke="#FFB347" stroke-width="2.5"/>
+  <use href="#axe" transform="translate(100,282) scale(0.62)"/>
+  <text x="172" y="330" text-anchor="end" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="11" fill="#C98A2E">In cartoons</text>
+  <g font-family="PingFang SC,Hiragino Sans GB,sans-serif">
+    <text x="210" y="288" font-size="16" font-weight="700" fill="#B5761C">Today's cartoons copy it</text>
+    <text x="210" y="312" font-size="13" fill="#4B5563">The axe became his standard prop; the chisel was forgotten</text>
+    <text x="210" y="334" font-size="13" fill="#4B5563">So where did the axe come from? From a Ming storyteller's hands</text>
+  </g>
+
+  <text x="320" y="376" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="14" fill="#4B5563">Myths explain where the world came from, rarely where their props did.</text>
+</svg>

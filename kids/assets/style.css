@@ -62,6 +62,30 @@ img { max-width: 100%; }
 
 .stats span + span::before { content: "·"; margin: 0 8px; }
 
+/* ---------- 语言切换 ---------- */
+.hero-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+
+.lang-toggle {
+  flex: 0 0 auto;
+  font: inherit;
+  font-size: 12.5px;
+  line-height: 1.2;
+  padding: 6px 11px;
+  margin-top: 6px;
+  border-radius: 999px;
+  border: 1px solid var(--hair);
+  background: #fff;
+  color: var(--ink-2);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color .12s ease, border-color .12s ease;
+}
+.lang-toggle:hover { color: var(--ink); border-color: #D6D2C9; }
+
+.topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 22px; }
+.topbar .back { margin-bottom: 0; }
+.topbar .lang-toggle { margin-top: 0; }
+
 /* ---------- 筛选 ---------- */
 .filters {
   position: sticky;
@@ -522,6 +546,7 @@ footer {
   .hero h1 { font-size: 25px; }
   .hero .sub { font-size: 14.5px; }
   .stats { margin-top: 12px; font-size: 13px; }
+  .lang-toggle { font-size: 12px; padding: 5px 10px; margin-top: 2px; }
 
   .filters { padding: 8px 0 6px; }
   #search { font-size: 14px; padding: 8px 12px; }

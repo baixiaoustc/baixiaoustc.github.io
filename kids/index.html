@@ -12,8 +12,11 @@
 
 <header class="hero">
   <div class="wrap">
-    <h1>小问号博物馆</h1>
-    <p class="sub">玉米和桃子问过的每一个问题，都收在这里。一张图看懂，三句话说清。</p>
+    <div class="hero-top">
+      <h1 data-i18n="siteTitle">小问号博物馆</h1>
+      <button class="lang-toggle" type="button" aria-label="Switch to English">EN</button>
+    </div>
+    <p class="sub" data-i18n="siteSub">玉米和桃子问过的每一个问题，都收在这里。一张图看懂，三句话说清。</p>
     <div class="stats" id="stats"></div>
   </div>
 </header>
@@ -21,7 +24,7 @@
 <section class="filters">
   <div class="wrap">
     <div class="search-row">
-      <input id="search" type="search" placeholder="搜一搜：螃蟹、蚊子、插件、保险…" autocomplete="off">
+      <input id="search" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="搜一搜：螃蟹、蚊子、插件、保险…" autocomplete="off">
       <button id="viewToggle" class="view-toggle" type="button">按时间</button>
     </div>
     <div class="chips" id="kidChips"></div>
@@ -34,7 +37,7 @@
 </main>
 
 <footer>
-  <div class="wrap">
+  <div class="wrap" data-i18n="footerIndex">
     问题来自玉米和桃子，答案由爸爸整理 · 每个问题配一张手绘的图
   </div>
 </footer>
