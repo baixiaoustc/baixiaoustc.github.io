@@ -92,6 +92,39 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "photo-pink",
+      "date": "2026-11-02",
+      "kid": "yumi",
+      "age": 9,
+      "question": "照片久了之后，照射阳光为什么会转成粉色？",
+      "subject": "nature",
+      "secondary": "tech",
+      "depth": 3,
+      "figure": "assets/figures/photo-pink.svg",
+      "figureEn": "assets/figures/en/photo-pink.svg",
+      "figureAlt": "三段图解：老照片是青、品红、黄三种染料叠出来的；青色最怕太阳的紫外光和热，被一点点打散；青色退场后蓝少了，红显得多，照片就泛粉",
+      "en": {
+        "question": "Why do photos turn pink after a long time in the sun?",
+        "oneLine": "Colour photos are printed with three dyes — cyan, magenta and yellow — and cyan is the one that fears sunlight most. When the sun breaks the cyan apart, the blue goes away, red stands out, and the photo drifts pink.",
+        "points": [
+          "An old colour photo is not a painting. It is made of three dyes laid on the paper: cyan (blue-green), magenta and yellow. Only all three together look like the right colour.",
+          "The three dyes do not age at the same speed. Cyan is the most fragile: ultraviolet light and heat slowly break its molecules apart. Each sunny day takes away a little more, and after decades the cyan simply leaves. That is the whole trick — nothing was added, something was lost.",
+          "With less blue the same red and yellow look much stronger, and the picture slides toward pink. The proof is easy: leave one photo in a drawer and hang another by the window for a few months, and the two will no longer match. Old photos want dark, dry, and away from glass that lets the sun in."
+        ],
+        "followUp": "Then why do old black-and-white photos go yellow-brown instead of pink?",
+        "figureAlt": "Three panels: old photos are built from cyan, magenta and yellow dyes; cyan fears sunlight and heat most, and is slowly broken apart; once the cyan is gone there is too little blue, red looks strong, and the photo turns pink"
+      },
+      "oneLine": "彩色照片是用青、品红、黄三种染料印出来的，其中「青色」最怕太阳——紫外光和热把它一点点打散；蓝色没了，红就显得多，照片就泛粉。",
+      "points": [
+        "老彩色照片不是画上去的，是三种染料摊在纸上：青（蓝绿）、品红、黄。三种叠在一起，颜色才正常；少一种，颜色就偏。",
+        "三种染料老得不一样快。青色最脆，阳光里的紫外线和热会一点点把它的分子打散。晒一天少一点，几十年下来青色干脆退场——不是多了什么，是少了一样。",
+        "蓝色少了，剩下的红和黄就显得特别多，整张照片慢慢滑向粉色。这个能验证：同一张照片，一张放抽屉、一张贴窗边几个月，颜色就对不上了。所以老照片要避光、干燥、别贴着玻璃晒。"
+      ],
+      "followUp": "那黑白老照片为什么是发黄变褐色，不是发粉？",
+      "source": "2026-11-02 玉米",
+      "time": "07:38:07"
+    },
+    {
       "id": "mirror-flip",
       "date": "2026-10-31",
       "kid": "yumi",

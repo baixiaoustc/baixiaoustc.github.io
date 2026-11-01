@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="三段图解：老照片是青、品红、黄三种染料叠出来的；青色最怕太阳的紫外光和热，被一点点打散；青色退场后蓝少了，红显得多，照片就泛粉">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="46" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="22" font-weight="700" fill="#2F3542">老照片为什么会变成粉色</text>
+
+  <!-- ① 三种染料叠在一起 -->
+  <rect x="30" y="74" width="180" height="176" rx="16" fill="#FFF6F2" stroke="#E9A8B8" stroke-width="2.5"/>
+  <g style="mix-blend-mode:multiply">
+    <circle cx="84" cy="146" r="30" fill="#2BB3C0" fill-opacity="0.85"/>
+    <circle cx="120" cy="146" r="30" fill="#E4559A" fill-opacity="0.85"/>
+    <circle cx="156" cy="146" r="30" fill="#F2C744" fill-opacity="0.85"/>
+  </g>
+  <text x="84" y="200" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#6B7280">青</text>
+  <text x="120" y="200" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#6B7280">品红</text>
+  <text x="156" y="200" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#6B7280">黄</text>
+  <text x="120" y="226" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#A8748A">三层叠好，颜色才正常</text>
+
+  <!-- ② 青色最怕紫外光 -->
+  <rect x="230" y="74" width="180" height="176" rx="16" fill="#FFF6F2" stroke="#E9A8B8" stroke-width="2.5"/>
+  <!-- 太阳 -->
+  <circle cx="272" cy="106" r="15" fill="#F7C34E" stroke="#E0A93A" stroke-width="2.5"/>
+  <g stroke="#E0A93A" stroke-width="2.5" stroke-linecap="round">
+    <line x1="272" y1="82" x2="272" y2="88"/>
+    <line x1="272" y1="124" x2="272" y2="130"/>
+    <line x1="248" y1="106" x2="254" y2="106"/>
+    <line x1="290" y1="106" x2="296" y2="106"/>
+    <line x1="255" y1="89" x2="259" y2="93"/>
+    <line x1="289" y1="89" x2="285" y2="93"/>
+  </g>
+  <text x="272" y="146" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#B57A43">紫外光 + 热</text>
+  <!-- 射向青色染料的光 -->
+  <line x1="294" y1="120" x2="322" y2="146" stroke="#E4655F" stroke-width="3" stroke-linecap="round"/>
+  <path d="M322 146 l-9 -4 v9 z" fill="#E4655F"/>
+  <line x1="310" y1="112" x2="338" y2="138" stroke="#E4655F" stroke-width="3" stroke-linecap="round"/>
+  <path d="M338 138 l-9 -4 v9 z" fill="#E4655F"/>
+  <!-- 被晒散的青色 -->
+  <circle cx="362" cy="170" r="26" fill="#2BB3C0" fill-opacity="0.35" stroke="#2BB3C0" stroke-width="2.5" stroke-dasharray="5 6"/>
+  <g fill="#2BB3C0" fill-opacity="0.45">
+    <circle cx="386" cy="146" r="3.5"/>
+    <circle cx="396" cy="160" r="3"/>
+    <circle cx="390" cy="180" r="3"/>
+  </g>
+  <text x="340" y="222" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#2A8E99">青色先被晒散</text>
+
+  <!-- ③ 剩下红，就泛粉 -->
+  <rect x="430" y="74" width="180" height="176" rx="16" fill="#FFF6F2" stroke="#E9A8B8" stroke-width="2.5"/>
+  <rect x="458" y="96" width="124" height="86" rx="6" fill="#F3B9CE" stroke="#D98BA6" stroke-width="2.5"/>
+  <!-- 相片里的小人 -->
+  <circle cx="520" cy="122" r="10" fill="#FFFDF7" stroke="#D98BA6" stroke-width="2"/>
+  <path d="M510 136 h20 v30 h-20 z" fill="#FFFDF7" stroke="#D98BA6" stroke-width="2" stroke-linejoin="round"/>
+  <text x="520" y="200" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#A8748A">只剩品红 + 黄</text>
+  <text x="520" y="226" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#A8748A">蓝没了，红显得多</text>
+
+  <!-- 分段说明 -->
+  <text x="120" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#B05575">① 三种染料叠起来</text>
+  <text x="120" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">青 + 品红 + 黄</text>
+  <text x="120" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">叠在一起才显出正常颜色</text>
+
+  <text x="320" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#B05575">② 青色最怕太阳</text>
+  <text x="320" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">紫外光把它的分子打散</text>
+  <text x="320" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">晒一次，少一点</text>
+
+  <text x="520" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#B05575">③ 青没了，就泛粉</text>
+  <text x="520" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">蓝变少，红显得多</text>
+  <text x="520" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">剩下的两色混成粉色</text>
+
+  <line x1="60" y1="342" x2="580" y2="342" stroke="#E6E1D6" stroke-width="2"/>
+  <text x="320" y="372" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" fill="#6B7280">不是「变旧」，是青色先退场 —— 老照片要避光、干燥、别贴窗玻璃</text>
+</svg>

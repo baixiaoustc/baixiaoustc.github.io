@@ -293,5 +293,29 @@
       "不是你这个人": "Not about who you are",
       "下次可以问一句：为什么不可以？": "Next time ask: why can't I?"
     }
+  },
+  "photo-pink.svg": {
+    "aria": "Three panels: old photos are built from cyan, magenta and yellow dyes; cyan fears sunlight and heat most and is slowly broken apart; once cyan is gone there is too little blue, red looks strong, and the photo turns pink",
+    "text": {
+      "老照片为什么会变成粉色": "Why old photos turn pink",
+      "青": "cyan",
+      "品红": "magenta",
+      "黄": "yellow",
+      "三层叠好，颜色才正常": "all three, right colour",
+      "紫外光 + 热": "UV + heat",
+      "青色先被晒散": "cyan goes first",
+      "只剩品红 + 黄": "magenta + yellow",
+      "蓝没了，红显得多": "no blue, red wins",
+      "① 三种染料叠起来": "① three dyes",
+      "青 + 品红 + 黄": "cyan + magenta + yellow",
+      "叠在一起才显出正常颜色": "stacked = true colour",
+      "② 青色最怕太阳": "② cyan fears sun",
+      "紫外光把它的分子打散": "UV breaks its molecules",
+      "晒一次，少一点": "a little less each day",
+      "③ 青没了，就泛粉": "③ pink is left",
+      "蓝变少，红显得多": "less blue, red wins",
+      "剩下的两色混成粉色": "two lefts make pink",
+      "不是「变旧」，是青色先退场 —— 老照片要避光、干燥、别贴窗玻璃": "Not aging: the cyan leaves first — keep old photos dark and dry"
+    }
   }
 }
