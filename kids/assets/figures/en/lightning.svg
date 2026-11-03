@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Three panels: tiny ice crystals and droplets bumping in a cloud prise charge apart, positive rising to the cloud top and negative staying at the bottom; when the charge piles up, the air between acts like a wall and gets punched through; the current races to the ground and the burned channel is the flash, while the suddenly heated air exploding outward is the thunder">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="46" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="22" font-weight="700" fill="#2F3542">How lightning happens</text>
+
+  <!-- ① 云里的小冰晶和小水珠撞出电 -->
+  <rect x="30" y="74" width="180" height="176" rx="16" fill="#F4F8FF" stroke="#A9C3E8" stroke-width="2.5"/>
+  <ellipse cx="110" cy="112" rx="40" ry="20" fill="#CBD9EC"/>
+  <circle cx="86" cy="98" r="15" fill="#CBD9EC"/>
+  <circle cx="126" cy="94" r="19" fill="#CBD9EC"/>
+  <!-- 两颗小东西在撞 -->
+  <circle cx="100" cy="152" r="4.5" fill="#6E9BD1"/>
+  <circle cx="118" cy="156" r="4" fill="#FFFFFF" stroke="#6E9BD1" stroke-width="2"/>
+  <g stroke="#E0665F" stroke-width="2" stroke-linecap="round">
+    <line x1="109" y1="146" x2="109" y2="140"/>
+    <line x1="103" y1="144" x2="98" y2="139"/>
+    <line x1="115" y1="144" x2="120" y2="139"/>
+  </g>
+  <!-- 正电往上、负电往下 -->
+  <line x1="168" y1="168" x2="168" y2="108" stroke="#E0665F" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M168 100 l-6 11 h12 z" fill="#E0665F"/>
+  <text x="168" y="186" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#C4554F">+ rises to top</text>
+  <line x1="68" y1="106" x2="68" y2="166" stroke="#4C6FBF" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M68 174 l-6 -11 h12 z" fill="#4C6FBF"/>
+  <text x="68" y="192" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#3F5C9E">− sinks to base</text>
+  <text x="120" y="218" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#55708F">one bump splits charge</text>
+
+  <!-- ② 中间隔着空气这堵墙 -->
+  <rect x="230" y="74" width="180" height="176" rx="16" fill="#F4F8FF" stroke="#A9C3E8" stroke-width="2.5"/>
+  <ellipse cx="320" cy="96" rx="44" ry="18" fill="#CBD9EC"/>
+  <text x="320" y="128" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="14" fill="#3F5C9E">− − − − −</text>
+  <line x1="246" y1="196" x2="394" y2="196" stroke="#8E9AA8" stroke-width="3"/>
+  <text x="320" y="220" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13" fill="#8A6A3E">+ + + + + +</text>
+  <!-- 撑不住的空气 -->
+  <polyline points="316,140 328,152 308,164 330,176 312,188" fill="none" stroke="#9AA9BF" stroke-width="2.5" stroke-dasharray="6 6"/>
+  <text x="320" y="238" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#55708F">charges split, air between</text>
+
+  <!-- ③ 一通到底：亮是闪电，响是雷 -->
+  <rect x="430" y="74" width="180" height="176" rx="16" fill="#F4F8FF" stroke="#A9C3E8" stroke-width="2.5"/>
+  <ellipse cx="510" cy="96" rx="44" ry="18" fill="#CBD9EC"/>
+  <polyline points="506,112 492,146 516,152 498,190" fill="none" stroke="#F7C34E" stroke-width="7" stroke-linejoin="round"/>
+  <polyline points="506,112 492,146 516,152 498,190" fill="none" stroke="#FFFDF7" stroke-width="2.5" stroke-linejoin="round"/>
+  <line x1="446" y1="192" x2="594" y2="192" stroke="#8E9AA8" stroke-width="3"/>
+  <g fill="none" stroke="#B08AB0" stroke-width="2.5">
+    <path d="M524 184 a16 16 0 0 1 0 24"/>
+    <path d="M536 176 a26 26 0 0 1 0 40"/>
+    <path d="M548 168 a36 36 0 0 1 0 56"/>
+  </g>
+  <text x="522" y="238" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="12" fill="#55708F">flash, then bang</text>
+
+  <!-- 分段说明 -->
+  <text x="120" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#3F5C86">① bumping inside</text>
+  <text x="120" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">ice hits droplets</text>
+  <text x="120" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">charges split apart</text>
+
+  <text x="320" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#3F5C86">② piling up</text>
+  <text x="320" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">the air wall gives way</text>
+  <text x="320" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">punched through</text>
+
+  <text x="520" y="276" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" font-weight="700" fill="#3F5C86">③ down to ground</text>
+  <text x="520" y="300" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">channel burns bright</text>
+  <text x="520" y="322" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">hot air pops: thunder</text>
+
+  <line x1="60" y1="342" x2="580" y2="342" stroke="#E6E1D6" stroke-width="2"/>
+  <text x="320" y="372" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" fill="#6B7280">Collisions split the charge — water is the battery, not the current</text>
+</svg>

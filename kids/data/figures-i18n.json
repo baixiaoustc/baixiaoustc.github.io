@@ -317,5 +317,26 @@
       "剩下的两色混成粉色": "two lefts make pink",
       "不是「变旧」，是青色先退场 —— 老照片要避光、干燥、别贴窗玻璃": "Not aging: the cyan leaves first — keep old photos dark and dry"
     }
+  },
+  "lightning.svg": {
+    "aria": "Three panels: tiny ice crystals and droplets bumping in a cloud prise charge apart, positive rising to the cloud top and negative staying at the bottom; when the charge piles up, the air between acts like a wall and gets punched through; the current races to the ground and the burned channel is the flash, while the suddenly heated air exploding outward is the thunder",
+    "text": {
+      "闪电是怎么来的": "How lightning happens",
+      "+ 上云顶": "+ rises to top",
+      "− 下云底": "− sinks to base",
+      "撞一下，电就分家": "one bump splits charge",
+      "电荷分开了，中间全是空气": "charges split, air between",
+      "亮是闪电，响是雷": "flash, then bang",
+      "① 云里在撞": "① bumping inside",
+      "小冰晶撞小水珠": "ice hits droplets",
+      "正负电荷被撞开": "charges split apart",
+      "② 越攒越多": "② piling up",
+      "空气这堵墙撑不住": "the air wall gives way",
+      "被一下打穿": "punched through",
+      "③ 一路通到地面": "③ down to ground",
+      "通道烧得极亮": "channel burns bright",
+      "热空气炸开就是雷": "hot air pops: thunder",
+      "水不是变成电，是碰撞把电分开 —— 云里的水是电池的原料": "Collisions split the charge — water is the battery, not the current"
+    }
   }
 }

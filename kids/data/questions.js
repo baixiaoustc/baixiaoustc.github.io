@@ -92,6 +92,39 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "lightning",
+      "date": "2026-11-03",
+      "kid": "yumi",
+      "age": 9,
+      "question": "闪电是怎么来的？云里面的水有关系吗？",
+      "subject": "nature",
+      "secondary": "tech",
+      "depth": 3,
+      "figure": "assets/figures/lightning.svg",
+      "figureEn": "assets/figures/en/lightning.svg",
+      "figureAlt": "三段图解：云里的小冰晶和小水珠互相碰撞，把电荷撞开，正电飘到云顶、负电留在云底；电荷越攒越多，中间隔着的空气像一堵墙，撑不住被一下子打穿；电顺着这条路冲到地面，通道被烧得极亮就是闪电，被烤热的空气猛地膨胀炸开就是雷",
+      "oneLine": "有关系，但不是水变成电：云里的小冰晶和小水珠撞来撞去，把电荷撞开——正电上了云顶、负电留在云底，整块云就成了电池；电攒够了，把空气打穿、一路冲到地面，那就是闪电。",
+      "points": [
+        "云里的水有关系，但它不是「变成电」，是「帮忙把电分开」。云里全是小水珠和小冰晶，被上升的气流托着不停乱撞，撞的时候像摩擦毛衣一样，把电子从一个撞到另一个身上。轻的正电被气流带到云顶，重的负电留在云底，整块云就变成一节充好电的电池。",
+        "分开的电荷越攒越多，云底和地面之间的电压差就越大。中间隔着的东西是空气，空气平时不导电，像一堵墙。墙撑到某个程度就守不住了，被一下子打穿，中间裂开一条能通电的路——这个过程叫「击穿」，一条细细的先导从云里朝地面探下来。",
+        "路一通，云和地面之间的巨大电压差就把电荷一股脑送过去，通道被烧到两三万度，亮得晃眼，那就是闪电。通道里的空气被瞬间烤热，猛地膨胀，把周围的空气推开——那声炸响就是雷。所以先看到亮、后听到响：光一秒跑三十万公里，声音一秒才三公里多。下次打雷可以自己数：看见闪电就开始数秒，听到雷声停下，每 3 秒大约就是 1 公里远。"
+      ],
+      "followUp": "那为什么雷声总是「轰隆隆」拖很久，而不是短短一声？",
+      "en": {
+        "question": "How does lightning happen? Does the water in the cloud have anything to do with it?",
+        "oneLine": "Yes, but the water does not turn into electricity — it helps split it. Tiny ice crystals and droplets bumping into each other inside a cloud knock electric charge apart, positive up to the top and negative down to the base, so the cloud becomes a charged battery; when enough charge builds up it punches through the air and races to the ground, and that is lightning.",
+        "points": [
+          "The water in the cloud matters, but it is not turned into electricity — it helps separate it. A cloud is full of tiny droplets and ice crystals, held up by rising air and constantly colliding. Each collision works like rubbing a sweater: electrons get knocked from one particle onto another. The light positive charge is carried up to the cloud top, the heavy negative charge stays near the base, and the whole cloud becomes a charged battery.",
+          "The more charge that piles up, the bigger the voltage difference between the cloud base and the ground. What sits in between is air, and air does not normally conduct — it is like a wall. Past a certain point the wall gives way and gets punched through, cracking open a path that current can flow along. That is called breakdown, and a thin leader reaches down from the cloud toward the ground.",
+          "Once the path is open, the huge voltage difference drives the charge down in one go. The channel is heated to tens of thousands of degrees and blazes — that is the flash we see. The air inside it is suddenly roasted and expands violently, shoving the surrounding air outward — that bang is thunder. That is why you see the flash first and hear the bang later: light covers 300,000 km in a second, sound only about 3 km. Next time it thunders, count the seconds from flash to bang — every 3 seconds is roughly 1 km of distance."
+        ],
+        "followUp": "Then why does thunder roll on and on instead of giving one short crack?",
+        "figureAlt": "Three panels: tiny ice crystals and droplets bumping in a cloud prise charge apart, positive rising to the cloud top and negative staying at the bottom; when the charge piles up, the air between acts like a wall and gets punched through; the current races to the ground and the burned channel is the flash, while the suddenly heated air exploding outward is the thunder"
+      },
+      "source": "2026-11-03 玉米",
+      "time": "21:51:00"
+    },
+    {
       "id": "photo-pink",
       "date": "2026-11-02",
       "kid": "yumi",
