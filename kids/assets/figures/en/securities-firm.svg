@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="A flow diagram: an investor opens an account and places orders with a securities firm, which sends the order to the exchange to be matched and reports the fill back; a listed company issues shares for cash through the exchange; the firm earns commissions and service fees, not a share of the investor gains or losses">
+  <rect x="0" y="0" width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="44" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="22" fill="#2A2A2A">A broker is the counter in between</text>
+
+  <rect x="34" y="120" width="140" height="96" rx="14" fill="#EAF1FF" stroke="#B7CFE8" stroke-width="1.5"/>
+  <text x="104" y="158" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="17" fill="#1F4E79">Investor</text>
+  <text x="104" y="182" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#5C7691">you, buying shares</text>
+
+  <rect x="232" y="96" width="164" height="212" rx="14" fill="#FFF1D6" stroke="#E8C97A" stroke-width="1.5"/>
+  <text x="314" y="132" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="18" fill="#8A5A0B">Securities firm</text>
+  <text x="314" y="162" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B5320">1 open account, order</text>
+  <text x="314" y="186" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B5320">2 hold cash & shares</text>
+  <text x="314" y="210" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B5320">3 help firms list</text>
+  <text x="314" y="252" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#9A7B3A">it does not guess prices</text>
+  <text x="314" y="274" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#9A7B3A">it just gets things done</text>
+
+  <rect x="452" y="92" width="160" height="92" rx="14" fill="#E8F3E6" stroke="#B5D3B0" stroke-width="1.5"/>
+  <text x="532" y="126" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="17" fill="#2F6B34">Exchange</text>
+  <text x="532" y="150" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#4F7A52">matches buys & sells</text>
+
+  <rect x="452" y="214" width="160" height="92" rx="14" fill="#FDE8E8" stroke="#E8B4B4" stroke-width="1.5"/>
+  <text x="532" y="248" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="17" fill="#8C2F2F">Listed company</text>
+  <text x="532" y="272" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#8C5A5A">issues shares for cash</text>
+
+  <path d="M180 168 L222 168 L214 162 M222 168 L214 174" fill="none" stroke="#5C7691" stroke-width="2"/>
+  <path d="M400 126 L442 126 L434 120 M442 126 L434 132" fill="none" stroke="#6B5320" stroke-width="2"/>
+  <path d="M442 166 L400 166 L408 160 M400 166 L408 172" fill="none" stroke="#8A5A0B" stroke-width="2"/>
+  <path d="M532 210 L532 192 L526 200 M532 192 L538 200" fill="none" stroke="#8C5A5A" stroke-width="2"/>
+
+  <text x="204" y="160" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11" fill="#5C7691">order</text>
+  <text x="420" y="118" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11" fill="#6B5320">send</text>
+  <text x="420" y="186" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11" fill="#8A5A0B">fill</text>
+
+  <text x="320" y="336" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="15" fill="#2A2A2A">It earns fees, not your luck</text>
+  <text x="320" y="360" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#6A6A6A">commission | fund sales | margin interest | listing & bond fees</text>
+</svg>

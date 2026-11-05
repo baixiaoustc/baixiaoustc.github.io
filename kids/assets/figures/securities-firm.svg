@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="流程图：投资者到证券公司开户下单，证券公司把单子送进交易所撮合，再把成交回报给投资者；上市公司通过交易所发股票换钱；证券公司赚的是佣金和各类服务费，不是投资者赚亏的钱">
+  <rect x="0" y="0" width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="44" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="22" fill="#2A2A2A">证券公司是中间那道柜台</text>
+
+  <rect x="34" y="120" width="140" height="96" rx="14" fill="#EAF1FF" stroke="#B7CFE8" stroke-width="1.5"/>
+  <text x="104" y="158" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="17" fill="#1F4E79">投资者</text>
+  <text x="104" y="182" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#5C7691">想买股票的你</text>
+
+  <rect x="232" y="96" width="164" height="212" rx="14" fill="#FFF1D6" stroke="#E8C97A" stroke-width="1.5"/>
+  <text x="314" y="132" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="18" fill="#8A5A0B">证券公司</text>
+  <text x="314" y="162" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B5320">① 帮你开户、下单</text>
+  <text x="314" y="186" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B5320">② 保管钱和股票</text>
+  <text x="314" y="210" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B5320">③ 帮公司上市发债</text>
+  <text x="314" y="252" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#9A7B3A">它不替你猜涨跌</text>
+  <text x="314" y="274" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#9A7B3A">只保证把事办成</text>
+
+  <rect x="452" y="92" width="160" height="92" rx="14" fill="#E8F3E6" stroke="#B5D3B0" stroke-width="1.5"/>
+  <text x="532" y="126" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="17" fill="#2F6B34">交易所</text>
+  <text x="532" y="150" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#4F7A52">把买和卖对上</text>
+
+  <rect x="452" y="214" width="160" height="92" rx="14" fill="#FDE8E8" stroke="#E8B4B4" stroke-width="1.5"/>
+  <text x="532" y="248" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="17" fill="#8C2F2F">上市公司</text>
+  <text x="532" y="272" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#8C5A5A">发股票换钱</text>
+
+  <path d="M180 168 L222 168 L214 162 M222 168 L214 174" fill="none" stroke="#5C7691" stroke-width="2"/>
+  <path d="M400 126 L442 126 L434 120 M442 126 L434 132" fill="none" stroke="#6B5320" stroke-width="2"/>
+  <path d="M442 166 L400 166 L408 160 M400 166 L408 172" fill="none" stroke="#8A5A0B" stroke-width="2"/>
+  <path d="M532 210 L532 192 L526 200 M532 192 L538 200" fill="none" stroke="#8C5A5A" stroke-width="2"/>
+
+  <text x="204" y="160" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11" fill="#5C7691">委托</text>
+  <text x="420" y="118" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11" fill="#6B5320">送单</text>
+  <text x="420" y="186" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11" fill="#8A5A0B">回报</text>
+
+  <text x="320" y="336" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="15" fill="#2A2A2A">它赚的是服务费，不是你的运气</text>
+  <text x="320" y="360" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#6A6A6A">佣金 ｜ 代销基金 ｜ 融资融券利息 ｜ 上市发债服务费</text>
+</svg>

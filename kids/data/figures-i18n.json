@@ -350,5 +350,28 @@
       "双黄实线：对向车道，两边都不许跨": "Double solid yellow: opposite traffic, nobody may cross",
       "黄虚线才准借道超车 ｜ 路边黄实线＝不能停车": "only dashed yellow may be crossed to overtake ｜ solid yellow at the kerb = no parking"
     }
+  },
+  "securities-firm.svg": {
+    "aria": "A flow diagram: an investor opens an account and places orders with a securities firm, which sends the order to the exchange to be matched and reports the fill back; a listed company issues shares for cash through the exchange; the firm earns commissions and service fees, not a share of the investor gains or losses",
+    "text": {
+      "证券公司是中间那道柜台": "A broker is the counter in between",
+      "投资者": "Investor",
+      "想买股票的你": "you, buying shares",
+      "证券公司": "Securities firm",
+      "① 帮你开户、下单": "1 open account, order",
+      "② 保管钱和股票": "2 hold cash & shares",
+      "③ 帮公司上市发债": "3 help firms list",
+      "它不替你猜涨跌": "it does not guess prices",
+      "只保证把事办成": "it just gets things done",
+      "交易所": "Exchange",
+      "把买和卖对上": "matches buys & sells",
+      "上市公司": "Listed company",
+      "发股票换钱": "issues shares for cash",
+      "委托": "order",
+      "送单": "send",
+      "回报": "fill",
+      "它赚的是服务费，不是你的运气": "It earns fees, not your luck",
+      "佣金 ｜ 代销基金 ｜ 融资融券利息 ｜ 上市发债服务费": "commission | fund sales | margin interest | listing & bond fees"
+    }
   }
 }

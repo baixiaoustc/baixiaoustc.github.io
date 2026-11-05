@@ -92,6 +92,39 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "securities-firm",
+      "date": "2026-11-05",
+      "kid": "yumi",
+      "age": 9,
+      "question": "证券公司是做什么的？",
+      "subject": "society",
+      "secondary": "math",
+      "depth": 3,
+      "figure": "assets/figures/securities-firm.svg",
+      "figureEn": "assets/figures/en/securities-firm.svg",
+      "figureAlt": "流程图：投资者到证券公司开户下单，证券公司把单子送进交易所撮合，再把成交回报给投资者；上市公司通过交易所发股票换钱；证券公司赚的是佣金和各类服务费，不是投资者赚亏的钱",
+      "oneLine": "证券公司是市场里的「中间柜台」：你不能直接进交易所买卖，得通过它开户、下单、把钱和股票托管好；另一边它还帮公司上市、发债。它赚的是服务费，不替你赌涨跌。",
+      "points": [
+        "第一件事是当你的柜台。交易所不是谁都能进的大卖场，只对会员开放——证券公司就是那个会员。你在它那儿开户，它替你验明身份、把钱转进来；你按一下「买入」，它把你的委托单送进交易所排队，跟别人的卖单对上，成交后再帮你把钱和股票各自记好账。这一整套叫「经纪业务」，它抽的费叫佣金。",
+        "第二件事是当公司那边的帮手。一家公司想上市，得有人帮它把账整理清楚、写招股说明书、找投资人、定发行价，这些活儿也是证券公司干的（叫投行或承销）。公司发股票、发债拿到的钱进了公司口袋，证券公司收一笔服务费。所以同一家券商，左边柜台对着散户，右边会议室对着老板。",
+        "它靠什么赚钱？佣金、代销基金和理财的手续费、融资融券的利息（借钱给你买、借股票给你卖），还有给公司做上市和发债的服务费，外加自己拿钱投资的自营业务。关键在于：它不保证你赚钱，也不从你的亏损里抽成——它赚的是「把事办成」的服务费，涨跌的风险是投资者自己承担的。这也是它和银行最大的不同：银行给你存款利息、替你把钱借出去，证券公司只帮你参与投资。"
+      ],
+      "followUp": "那为什么买股票的钱亏了，证券公司不用赔？",
+      "source": "2026-11-05 玉米",
+      "en": {
+        "question": "What does a securities firm do?",
+        "oneLine": "A securities firm — a broker — is the counter between you and the market: you cannot trade on the exchange directly, so you open an account with it, place orders through it, and it keeps your cash and shares straight. On the other side it helps companies list and issue bonds. It earns service fees; it does not gamble on prices for you.",
+        "points": [
+          "The first job is being your counter. The exchange is not a market anyone can walk into — it only admits members, and a securities firm is one of those members. You open an account there, it verifies who you are and takes in your money; when you tap “buy”, it sends your order to the exchange, where it queues up and gets matched against someone’s sell order, and afterwards it records the cash and the shares on both sides. This whole service is called brokerage, and the cut it takes is the commission.",
+          "The second job is helping companies. A company that wants to list needs someone to tidy up its books, write the prospectus, find investors and set an issue price — that is also the securities firm’s work, called investment banking or underwriting. The money from shares and bonds goes into the company’s pocket, and the firm charges a service fee. So the same firm has a counter facing ordinary savers and a meeting room facing bosses.",
+          "Where does the money come from? Commissions, fees for selling funds and wealth products, interest on margin lending (lending you cash to buy or shares to sell short), fees for taking companies public or issuing bonds, plus proprietary trading with its own capital. The key point: it does not promise you a profit and does not take a cut of your losses — it earns fees for getting things done, while the risk of prices going up or down stays with the investor. That is the biggest difference from a bank: a bank pays you deposit interest and lends your money out, while a broker only helps you take part in investing."
+        ],
+        "followUp": "Then why doesn't the securities firm have to pay me back when my shares lose money?",
+        "figureAlt": "A flow diagram: an investor opens an account and places orders with a securities firm, which sends the order to the exchange to be matched and reports the fill back; a listed company issues shares for cash through the exchange; the firm earns commissions and service fees, not a share of the investor's gains or losses"
+      },
+      "time": "08:15:26"
+    },
+    {
       "id": "traffic-lines",
       "date": "2026-11-05",
       "kid": "yumi",
