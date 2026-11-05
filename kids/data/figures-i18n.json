@@ -338,5 +338,17 @@
       "热空气炸开就是雷": "hot air pops: thunder",
       "水不是变成电，是碰撞把电分开 —— 云里的水是电池的原料": "Collisions split the charge — water is the battery, not the current"
     }
+  },
+  "traffic-lines.svg": {
+    "aria": "A top-down view of a two-way road: a dashed white line separates lanes going the same way and may be crossed, a solid white line may not; a double solid yellow line down the middle separates opposite directions and neither side may cross it; only a dashed yellow line allows overtaking, and a solid yellow line by the kerb means no parking",
+    "text": {
+      "白线管同向，黄线管对向": "White = same way, Yellow = opposite",
+      "白虚线": "White dashed",
+      "同向分开，可变道": "same way · switch okay",
+      "白实线": "White solid",
+      "同向，但跨不过去": "same way · no crossing",
+      "双黄实线：对向车道，两边都不许跨": "Double solid yellow: opposite traffic, nobody may cross",
+      "黄虚线才准借道超车 ｜ 路边黄实线＝不能停车": "only dashed yellow may be crossed to overtake ｜ solid yellow at the kerb = no parking"
+    }
   }
 }

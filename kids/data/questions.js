@@ -92,6 +92,39 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "traffic-lines",
+      "date": "2026-11-05",
+      "kid": "yumi",
+      "age": 9,
+      "question": "地上的交通线，白的和黄的有什么区别？",
+      "subject": "society",
+      "secondary": "daily",
+      "depth": 3,
+      "figure": "assets/figures/traffic-lines.svg",
+      "figureEn": "assets/figures/en/traffic-lines.svg",
+      "figureAlt": "俯视一条双向道路：白虚线分开同方向的车道、可以变道，白实线不能变；中间的双黄实线隔开对向车道，两边都不许跨；黄虚线才准借道超车，路边黄实线表示不能停车",
+      "oneLine": "两种线是两套命令：白线管同一个方向的车怎么排——虚线可以变道、实线不行；黄线管对面来的车别越界——中间的黄线、路边的黄线都是在说「不许」。",
+      "points": [
+        "白线的任务只有一件：让朝同一个方向走的车排好队。车道中间画成白虚线，意思是「我可以让开，你可以借我的位置换道」；画成白实线，意思是「现在谁都别动，不能换道」。斑马线、路口前的停止线、路口中间那块斜纹的导流区，也都是白色的——它们管的是「这个方向的车该走哪儿、该停在哪儿」。",
+        "黄线的任务正相反：它不是排队，是把人分开。两条车道相对着开，中间那道黄线就是一堵画在地上的墙。双黄实线谁都不能跨；一条实一条虚，只有靠虚线那一边的车可以借道超车；路边的黄实线表示「这一段不许停车」。所以看到一条线，可以先问一句：它是在安排同一队人排队（白），还是在拦住对面来的人（黄）？",
+        "为什么偏偏选白色和黄色？因为这是给夜里看的问题：车灯一照，湿路面上白线和黄线反光最亮、对比最清楚，有色觉障碍的人也能分开。而且只要两种颜色就够用——一种是「同一方向内部的事」，一种是「两个方向之间的事」，规则不需要第三种颜色。顺带一句：各国规矩有差别，美国的中线也是黄色、边线白色，欧洲则大量用白色，去别的地方开车得先看当地怎么定。"
+      ],
+      "followUp": "那为什么路口的斑马线要画成一条一条横的，而不是刷一整块白？",
+      "source": "2026-11-05 玉米",
+      "en": {
+        "question": "What is the difference between the white and yellow lines on the road?",
+        "oneLine": "Two colours, two sets of orders: white lines organise cars going the same way — dashed means you may change lanes, solid means you may not. Yellow lines keep traffic coming the other way out — the yellow line down the middle and the yellow line by the kerb both mean “do not”.",
+        "points": [
+          "White lines do exactly one job: they keep cars heading the same direction in order. Painted dashed, it means “I will make room, you may borrow my spot to change lanes”; painted solid, it means “nobody moves now — no lane change”. Zebra crossings, the stop line before a junction, and the hatched chevron area in the middle of an intersection are all white too — they say where cars going that way may drive and where they must stop.",
+          "Yellow lines do the opposite job: they do not queue people, they separate them. Where two lanes face each other, the yellow line between them is a wall painted on the ground. Nobody may cross a double solid yellow; where one is solid and one dashed, only the side facing the dashed line may cross to overtake; a solid yellow line along the kerb means “no parking on this stretch”. So whenever you see a line, ask first: is it queueing one direction (white), or blocking the traffic coming the other way (yellow)?",
+          "Why white and yellow in particular? Because this is a problem for the eyes at night: under headlights on wet asphalt, white and yellow reflect brightest and contrast most clearly, and people with colour-vision deficiency can still tell them apart. Two colours are also enough — one for “things inside a single direction”, one for “things between two directions” — the rules need no third colour. One aside: countries differ. In the United States the centre line is yellow and edge lines are white; in Europe white is used almost everywhere, so before driving abroad, check the local rules."
+        ],
+        "followUp": "Then why is a zebra crossing painted as separate stripes instead of one solid white block?",
+        "figureAlt": "A top-down view of a two-way road: a dashed white line separates lanes going the same way and may be crossed, a solid white line may not; a double solid yellow line down the middle separates opposite directions and neither side may cross it; only a dashed yellow line allows overtaking, and a solid yellow line by the kerb means no parking"
+      },
+      "time": "07:59:31"
+    },
+    {
       "id": "lightning",
       "date": "2026-11-03",
       "kid": "yumi",
