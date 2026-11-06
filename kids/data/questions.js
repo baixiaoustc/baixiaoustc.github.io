@@ -92,6 +92,39 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "human-origin",
+      "date": "2026-11-06",
+      "kid": "taozi",
+      "age": 4,
+      "question": "为什么以前没有人，现在有人了？",
+      "subject": "nature",
+      "secondary": "story",
+      "depth": 3,
+      "figure": "assets/figures/human-origin.svg",
+      "figureAlt": "三段图解：很久以前地球上有植物、鱼和恐龙，还没有人；我们的祖先长得像猴子，慢慢学会站着走、用石头；现在的人会说话、用火、写字",
+      "oneLine": "以前真的没有人。我们不是一下子冒出来的，是一代一代慢慢变来的，变了几百万年。",
+      "points": [
+        "地球先有植物、鱼和恐龙。很久很久以后，才出现我们的祖先——它们长得像猴子，会用手抓东西、会用石头。",
+        "它们的孩子、孩子的孩子……每一代都变那么一点点：站得更直一点、脑袋更大一点、会用火、会说话。",
+        "这么多「一点点」攒了几百万年，才变成现在的人。所以不是某一天突然冒出一个人，是慢慢来的。"
+      ],
+      "followUp": "那现在的猴子，为什么没有变成人？",
+      "source": "2026-11-06 桃子",
+      "time": "08:58:55",
+      "en": {
+        "question": "Why were there no people before, but now there are?",
+        "oneLine": "There really were no people before. We did not pop up all at once — we changed bit by bit, over millions of years.",
+        "points": [
+          "First there were plants, fish and dinosaurs. Only much, much later came our ancestors: they looked like apes and could grip things with their hands and use stones.",
+          "Their children, and their children's children… each generation changed a tiny bit: standing a little straighter, a bigger brain, using fire, talking.",
+          "All those tiny changes piled up over millions of years and became the people we are now. So nobody appeared on some single day — it happened slowly."
+        ],
+        "followUp": "Then why don't today's apes turn into people?",
+        "figureAlt": "Three panels: long ago the Earth had plants, fish and dinosaurs but no people; our ancestors looked like apes and slowly learned to stand up and use stones; people today talk, use fire and write"
+      },
+      "figureEn": "assets/figures/en/human-origin.svg"
+    },
+    {
       "id": "securities-firm",
       "date": "2026-11-05",
       "kid": "yumi",

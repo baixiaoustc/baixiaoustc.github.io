@@ -373,5 +373,24 @@
       "它赚的是服务费，不是你的运气": "It earns fees, not your luck",
       "佣金 ｜ 代销基金 ｜ 融资融券利息 ｜ 上市发债服务费": "commission | fund sales | margin interest | listing & bond fees"
     }
+  },
+  "human-origin.svg": {
+    "aria": "People did not appear all at once: long ago the Earth had only fish and dinosaurs; then came ancestors that looked like apes; one generation at a time, they slowly became the people of today",
+    "text": {
+      "人是慢慢变来的，不是一下子冒出来的": "People came about slowly, not all at once",
+      "还没有人": "No people yet",
+      "学会用石头": "Learned to use stones",
+      "会说话、会做东西": "Talks, makes things",
+      "① 很久以前": "① Long, long ago",
+      "地球上有植物、": "Plants on Earth,",
+      "有鱼、有恐龙": "fish, dinosaurs",
+      "② 我们的祖先": "② Our ancestors",
+      "长得像猴子，": "Looked like apes,",
+      "慢慢学会站着走": "learned to stand up",
+      "③ 现在的人": "③ People today",
+      "会说话、用火、": "Talk, use fire,",
+      "写字、造房子": "write, build houses",
+      "中间隔了几百万年：一代一代，只变那么一点点": "Millions of years in between — one tiny change per generation"
+    }
   }
 }

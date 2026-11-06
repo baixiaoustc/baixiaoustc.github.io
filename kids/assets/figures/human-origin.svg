@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="人类不是突然出现的：很久以前地球上只有鱼和恐龙，后来出现像猴子一样的祖先，一代一代慢慢变成现在的人">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="46" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="22" font-weight="700" fill="#2F3542">人是慢慢变来的，不是一下子冒出来的</text>
+
+  <!-- ① 很久以前 -->
+  <rect x="30" y="90" width="150" height="140" rx="16" fill="#EEF3F6" stroke="#7FA8C0" stroke-width="3"/>
+  <!-- 鱼 -->
+  <ellipse cx="85" cy="150" rx="24" ry="12" fill="#A8CFE0"/>
+  <path d="M61 150 l-13 -10 v20 z" fill="#A8CFE0"/>
+  <circle cx="97" cy="146" r="2.6" fill="#2F3542"/>
+  <!-- 恐龙 -->
+  <ellipse cx="130" cy="170" rx="17" ry="10" fill="#9FBF8F"/>
+  <path d="M113 170 l-14 6" stroke="#9FBF8F" stroke-width="4" stroke-linecap="round"/>
+  <path d="M143 163 l8 -14" stroke="#9FBF8F" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="153" cy="146" r="7" fill="#9FBF8F"/>
+  <path d="M124 180 v11" stroke="#9FBF8F" stroke-width="4" stroke-linecap="round"/>
+  <path d="M137 180 v11" stroke="#9FBF8F" stroke-width="4" stroke-linecap="round"/>
+  <text x="105" y="212" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="14" fill="#5B7B8C">还没有人</text>
+
+  <!-- 箭头 1 -->
+  <path d="M190 160 h34" stroke="#C7CDD6" stroke-width="3"/>
+  <path d="M224 160 l-9 -6 v12 z" fill="#C7CDD6"/>
+
+  <!-- ② 猴子样的祖先 -->
+  <rect x="245" y="90" width="150" height="140" rx="16" fill="#FFF6E8" stroke="#FFB347" stroke-width="3"/>
+  <circle cx="320" cy="140" r="13" fill="#E8B27A"/>
+  <ellipse cx="320" cy="137" rx="13" ry="11" fill="#C98E5A"/>
+  <circle cx="304" cy="140" r="5" fill="#C98E5A"/>
+  <circle cx="336" cy="140" r="5" fill="#C98E5A"/>
+  <path d="M318 148 v6" stroke="#C98E5A" stroke-width="5"/>
+  <rect x="308" y="153" width="24" height="30" rx="10" fill="#C98E5A"/>
+  <path d="M309 160 l-14 22" stroke="#C98E5A" stroke-width="5" stroke-linecap="round"/>
+  <path d="M331 160 l14 22" stroke="#C98E5A" stroke-width="5" stroke-linecap="round"/>
+  <path d="M315 183 v20" stroke="#C98E5A" stroke-width="5" stroke-linecap="round"/>
+  <path d="M325 183 v20" stroke="#C98E5A" stroke-width="5" stroke-linecap="round"/>
+  <!-- 石头 -->
+  <path d="M272 184 l14 -8 l12 9 l-3 11 l-15 1 z" fill="#B9B3A6"/>
+  <text x="320" y="215" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="14" fill="#8A5A22">学会用石头</text>
+
+  <!-- 箭头 2 -->
+  <path d="M405 160 h34" stroke="#C7CDD6" stroke-width="3"/>
+  <path d="M439 160 l-9 -6 v12 z" fill="#C7CDD6"/>
+
+  <!-- ③ 现在的人 -->
+  <rect x="460" y="90" width="150" height="140" rx="16" fill="#EEF7EE" stroke="#06A87A" stroke-width="3"/>
+  <circle cx="535" cy="138" r="13" fill="#F0C9A6"/>
+  <path d="M529 132 q6 -8 12 0" stroke="#6B4A2F" stroke-width="4" fill="none"/>
+  <rect x="523" y="151" width="24" height="31" rx="8" fill="#7FBF9E"/>
+  <path d="M525 158 l-13 16" stroke="#F0C9A6" stroke-width="5" stroke-linecap="round"/>
+  <path d="M545 158 l13 -14" stroke="#F0C9A6" stroke-width="5" stroke-linecap="round"/>
+  <path d="M529 182 v22" stroke="#6B7B94" stroke-width="5" stroke-linecap="round"/>
+  <path d="M541 182 v22" stroke="#6B7B94" stroke-width="5" stroke-linecap="round"/>
+  <text x="535" y="215" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="14" fill="#0B7A57">会说话、会做东西</text>
+
+  <!-- 三段说明 -->
+  <text x="105" y="258" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="17" font-weight="700" fill="#4C7A94">① 很久以前</text>
+  <text x="105" y="284" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">地球上有植物、</text>
+  <text x="105" y="306" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">有鱼、有恐龙</text>
+
+  <text x="320" y="258" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="17" font-weight="700" fill="#E8801F">② 我们的祖先</text>
+  <text x="320" y="284" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">长得像猴子，</text>
+  <text x="320" y="306" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">慢慢学会站着走</text>
+
+  <text x="535" y="258" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="17" font-weight="700" fill="#0B7A57">③ 现在的人</text>
+  <text x="535" y="284" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">会说话、用火、</text>
+  <text x="535" y="306" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" fill="#6B7280">写字、造房子</text>
+
+  <line x1="60" y1="336" x2="580" y2="336" stroke="#E6E1D6" stroke-width="2"/>
+  <text x="320" y="366" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="16" fill="#6B7280">中间隔了几百万年：一代一代，只变那么一点点</text>
+</svg>
