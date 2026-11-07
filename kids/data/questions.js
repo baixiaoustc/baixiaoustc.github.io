@@ -92,6 +92,39 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "skewer-sticks",
+      "date": "2026-11-07",
+      "kid": "yumi",
+      "question": "吃烧烤的时候为什么有些是一根签，有的有几根签？",
+      "subject": "daily",
+      "secondary": "tech",
+      "depth": 3,
+      "figure": "assets/figures/skewer-sticks.svg",
+      "figureAlt": "三格对比图：紧实成块的羊肉串用一根签就够；软而薄的韭菜、金针菇要两根签夹住才不会卷着打转；整根玉米、整只鸡翅又大又重，要两三根签分担重量才翻得动",
+      "oneLine": "不是越贵越多根，而是越难固定越多根：一根签只是一根轴，东西能绕着它转；软、薄、重的，得再来一根才锁得住。",
+      "points": [
+        "先看它自己站不站得住。切成块、紧实的肉，一根签穿过去就卡住了；韭菜、金针菇、豆皮又软又薄，一根签上会打转、往下滑，得两根平行夹住，方向才锁死。",
+        "再看它有多重。整根玉米、整只鸡翅、大块排骨又大又不规则，一根签要扛全部重量，一翻面就往下垂，甚至会把食材撕开；两三根并排，重量分成几份，每根都只担一点。",
+        "还有受热和翻面。多根签像小架子，食材不会卷起来，也能贴着烤网放稳；烤的人一把就能翻过去，不用一片一片夹。签子数其实是在说：这东西有多难固定。"
+      ],
+      "followUp": "那为什么两根签要平行穿，不能交叉穿成一个十字？",
+      "source": "2026-11-07 玉米",
+      "en": {
+        "question": "At a barbecue, why do some things need one stick and some need a few?",
+        "oneLine": "It is not about price — the harder a thing is to pin down, the more sticks it needs. One stick is just one axis, so the food can spin around it; soft, thin or heavy things need another stick to lock them.",
+        "points": [
+          "First, can it hold itself? Firm chunks of meat grip a single stick; chives, enoki mushrooms and bean-curd skin are soft and thin, so on one stick they spin and slide down — two parallel sticks clamp them and kill the twist.",
+          "Second, how heavy is it? A whole corn cob, a whole chicken wing or a big rib is large and irregular; one stick carries all the weight, sags when you turn it, and can even tear the food apart. Two or three sticks side by side split the load.",
+          "Third, heat and turning. Several sticks act like a little rack: the food cannot curl up, it sits flat on the grill, and the cook flips it in one go instead of picking up piece by piece. The number of sticks tells you how hard the food is to hold."
+        ],
+        "followUp": "Then why are the two sticks parallel instead of crossed in an X?",
+        "figureAlt": "Three panels: firm cubed lamb skewers need just one stick; soft, thin chives and enoki mushrooms need two sticks to clamp them so they do not curl and spin; a whole corn cob or whole chicken wing is big and heavy, needing two or three sticks to share the weight so it can be turned"
+      },
+      "figureEn": "assets/figures/en/skewer-sticks.svg",
+      "age": 9,
+      "time": "12:11:51"
+    },
+    {
       "id": "recycler",
       "date": "2026-11-07",
       "kid": "yumi",

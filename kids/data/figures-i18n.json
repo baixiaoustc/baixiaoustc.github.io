@@ -419,5 +419,28 @@
       "差价 = 卖掉的钱 − 收进的钱": "Profit = sold for − paid for",
       "不是秤上占便宜，是把几十家的「一点点」攒成了一大车": "Not a trick on the scale: many households' small piles into one big load"
     }
+  },
+  "skewer-sticks.svg": {
+    "aria": "Three panels comparing skewers: firm cubed lamb needs just one stick; soft thin chives and enoki mushrooms need two sticks to clamp them so they do not curl and spin; a whole corn cob or whole chicken wing is big and heavy and needs two or three sticks to share the weight so it can be turned",
+    "text": {
+      "签子几根，看它会不会打转": "How many sticks? Depends on whether it spins",
+      "羊肉串": "Lamb skewer",
+      "切得方正、紧实": "cubed and firm",
+      "一根": "one stick",
+      "有块头，穿上就抓得住": "chunky: it grips the stick",
+      "翻面也不打转": "turn it, it stays put",
+      "韭菜 · 金针菇": "Chives · enoki",
+      "软、薄、长，会卷起来": "soft, thin, curls up",
+      "两根": "two sticks",
+      "一根它会绕着转、往下滑": "on one it spins and slides",
+      "两根夹住，方向就锁死了": "two clamp it, no twisting",
+      "整根玉米 · 鸡翅": "Whole corn · chicken wing",
+      "又大、又重、形状歪": "big, heavy, awkward shape",
+      "两三根": "two or three",
+      "多几根，重量分成好几份": "more sticks share the weight",
+      "一根签只是一根轴，东西能绕着它转；两根签就是两个支点": "One stick is one axis: the food can spin around it. Two sticks are two pivots.",
+      "越软、越薄、越重，就越需要多一根——不是为了多，是为了不转、不散": "Softer, thinner, heavier needs one more — not for show, but so it will not spin or fall apart",
+      "一根扛不住，翻面就垂": "one sags when turned"
+    }
   }
 }
