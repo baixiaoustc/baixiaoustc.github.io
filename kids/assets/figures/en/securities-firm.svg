@@ -9,14 +9,14 @@
   <rect x="232" y="96" width="164" height="212" rx="14" fill="#FFF1D6" stroke="#E8C97A" stroke-width="1.5"/>
   <text x="314" y="132" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="18" fill="#8A5A0B">Securities firm</text>
   <text x="314" y="162" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B5320">1 open account, order</text>
-  <text x="314" y="186" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B5320">2 hold cash & shares</text>
+  <text x="314" y="186" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B5320">2 hold cash &amp; shares</text>
   <text x="314" y="210" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#6B5320">3 help firms list</text>
   <text x="314" y="252" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#9A7B3A">it does not guess prices</text>
   <text x="314" y="274" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#9A7B3A">it just gets things done</text>
 
   <rect x="452" y="92" width="160" height="92" rx="14" fill="#E8F3E6" stroke="#B5D3B0" stroke-width="1.5"/>
   <text x="532" y="126" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="17" fill="#2F6B34">Exchange</text>
-  <text x="532" y="150" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#4F7A52">matches buys & sells</text>
+  <text x="532" y="150" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#4F7A52">matches buys &amp; sells</text>
 
   <rect x="452" y="214" width="160" height="92" rx="14" fill="#FDE8E8" stroke="#E8B4B4" stroke-width="1.5"/>
   <text x="532" y="248" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="17" fill="#8C2F2F">Listed company</text>
@@ -32,5 +32,5 @@
   <text x="420" y="186" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11" fill="#8A5A0B">fill</text>
 
   <text x="320" y="336" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="15" fill="#2A2A2A">It earns fees, not your luck</text>
-  <text x="320" y="360" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#6A6A6A">commission | fund sales | margin interest | listing & bond fees</text>
+  <text x="320" y="360" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#6A6A6A">commission | fund sales | margin interest | listing &amp; bond fees</text>
 </svg>

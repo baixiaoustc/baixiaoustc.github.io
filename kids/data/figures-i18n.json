@@ -392,5 +392,32 @@
       "写字、造房子": "write, build houses",
       "中间隔了几百万年：一代一代，只变那么一点点": "Millions of years in between — one tiny change per generation"
     }
+  },
+  "recycler.svg": {
+    "aria": "A flow diagram: cardboard boxes, empty bottles and old appliances that a household or neighbourhood wants to throw away are bought by weight at a very low price by the scrap collector, who then sorts them into paper, plastic and metal, bales them into one big pack and sells them by the tonne to paper mills, plastics plants, aluminium smelters and steel works; he earns the gap between the buying price and the selling price by collecting many households' small piles into one big truckload",
+    "text": {
+      "他赚的是「把散的攒成一堆」的钱": "He earns the gap of gathering the scattered into one pile",
+      "家里 · 小区": "Home · neighbourhood",
+      "旧纸箱": "Old cardboard",
+      "空瓶子": "Empty bottles",
+      "旧家电": "Old appliances",
+      "在你手里：想扔": "to you: just rubbish",
+      "按斤收": "buys by weight",
+      "收废品的人": "The scrap collector",
+      "① 按斤、很低的价收": "1 buys cheap, by weight",
+      "② 分开：纸 / 塑料 / 金属": "2 sorts paper / plastic / metal",
+      "③ 压成一大包": "3 bales into one pack",
+      "混在一起没人要": "mixed, nobody wants it",
+      "分开了才有工厂要": "sorted, factories want it",
+      "按吨卖": "sells by the tonne",
+      "造纸厂": "Paper mill",
+      "废纸打成浆，做新纸箱": "pulp to new boxes",
+      "塑料厂": "Plastics plant",
+      "熔成小颗粒，做桶和衣架": "pellets for buckets, hangers",
+      "铝厂 · 钢厂": "Aluminium & steel",
+      "回炉变成铝锭、钢筋": "remelt into ingots, rebar",
+      "差价 = 卖掉的钱 − 收进的钱": "Profit = sold for − paid for",
+      "不是秤上占便宜，是把几十家的「一点点」攒成了一大车": "Not a trick on the scale: many households' small piles into one big load"
+    }
   }
 }

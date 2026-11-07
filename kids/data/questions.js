@@ -92,6 +92,39 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "recycler",
+      "date": "2026-11-07",
+      "kid": "yumi",
+      "question": "收废品的他怎么可以赚钱？",
+      "subject": "society",
+      "secondary": "math",
+      "depth": 3,
+      "figure": "assets/figures/recycler.svg",
+      "figureAlt": "流程图：家里和小区里要扔的旧纸箱、空瓶子、旧家电，收废品的人按很低的价按斤收走，再按纸、塑料、金属分开，压成一大包，按吨卖给造纸厂、塑料厂、铝厂和钢厂；他赚的是收进价和卖出价之间的差价，靠的是把很多家的一点点攒成一大车",
+      "oneLine": "他赚的是「收进来的价」和「卖出去的价」之间的差价：你嫌麻烦要扔的东西，到他手里就是工厂要的原料。",
+      "points": [
+        "纸箱、空瓶子、旧家电在你手里是要扔的垃圾，在收废品的人手里是原料。他按斤、用很低的价收走——这么便宜，是因为你只想把它们清出去。",
+        "最值钱的一步是分开：纸归纸、塑料归塑料、铝归铝、铁归铁。混成一堆谁也不收；分开了，每一种都有工厂抢着要，价钱能差好几倍。这就是他的「加工」。",
+        "攒够了他就压成一大包，按吨卖给造纸厂、塑料厂、铝厂和钢厂：废纸打成浆做新纸箱，废塑料熔成颗粒做桶和衣架，废铝回炉变铝锭。卖出的钱减去收进的钱，就是他的收入；一车越大、分得越干净，赚得越多。"
+      ],
+      "followUp": "那我们把旧纸箱直接扔了，为什么就不值钱了？",
+      "source": "2026-11-07 玉米",
+      "en": {
+        "question": "How does the scrap collector make money?",
+        "oneLine": "He earns the difference between the low price he pays and the price the factories pay him: what you want to throw away is raw material to him.",
+        "points": [
+          "To you, cardboard boxes, empty bottles and old appliances are rubbish to get rid of; to the scrap collector they are raw material. He buys them by weight at a very low price — so cheap because all you want is to clear them out.",
+          "The valuable step is sorting: paper with paper, plastic with plastic, aluminium with aluminium, iron with iron. Piled together nobody wants them; sorted, each kind has a factory eager to buy, at prices several times higher. That sorting is his real 'processing'.",
+          "When he has enough he bales it and sells it by the tonne to paper mills, plastics plants, aluminium smelters and steel works: waste paper is pulped into new boxes, waste plastic melted into pellets for buckets and coat hangers, aluminium remelted into ingots. What he sells for minus what he paid is his income — a bigger load and cleaner sorting means more money."
+        ],
+        "followUp": "Then why is the cardboard we throw away worth nothing?",
+        "figureAlt": "A flow diagram: cardboard boxes, empty bottles and old appliances that a household or neighbourhood wants to throw away are bought by weight at a very low price by the scrap collector, who then sorts them into paper, plastic and metal, bales them into one big pack and sells them by the tonne to paper mills, plastics plants, aluminium smelters and steel works; he earns the gap between the buying price and the selling price by collecting many households' small piles into one big truckload"
+      },
+      "figureEn": "assets/figures/en/recycler.svg",
+      "age": 9,
+      "time": "11:05:16"
+    },
+    {
       "id": "human-origin",
       "date": "2026-11-06",
       "kid": "taozi",
