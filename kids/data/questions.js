@@ -97,27 +97,27 @@ window.KQ = {
       "kid": "yumi",
       "question": "吃烧烤的时候为什么有些是一根签，有的有几根签？",
       "subject": "daily",
-      "secondary": "tech",
+      "secondary": "society",
       "depth": 3,
       "figure": "assets/figures/skewer-sticks.svg",
       "figureAlt": "三格对比图：紧实成块的羊肉串用一根签就够；软而薄的韭菜、金针菇要两根签夹住才不会卷着打转；整根玉米、整只鸡翅又大又重，要两三根签分担重量才翻得动",
-      "oneLine": "不是越贵越多根，而是越难固定越多根：一根签只是一根轴，东西能绕着它转；软、薄、重的，得再来一根才锁得住。",
+      "oneLine": "签子数不决定价钱——一根竹签才一两分钱；但它和价钱常常同向：越难串、越费人工的东西，既要多几根签，也往往卖得更贵。签数是「这串有多费事」的影子。",
       "points": [
-        "先看它自己站不站得住。切成块、紧实的肉，一根签穿过去就卡住了；韭菜、金针菇、豆皮又软又薄，一根签上会打转、往下滑，得两根平行夹住，方向才锁死。",
-        "再看它有多重。整根玉米、整只鸡翅、大块排骨又大又不规则，一根签要扛全部重量，一翻面就往下垂，甚至会把食材撕开；两三根并排，重量分成几份，每根都只担一点。",
-        "还有受热和翻面。多根签像小架子，食材不会卷起来，也能贴着烤网放稳；烤的人一把就能翻过去，不用一片一片夹。签子数其实是在说：这东西有多难固定。"
+        "先算签子自己的账：一根竹签批发也就一两分钱，一串插五根也才一毛。一串差十块钱，绝不会是签子贵出来的——签子只是把东西固定住的那根「轴」。",
+        "一串卖多少钱，看的是食材本身多少钱、处理起来费不费人工、损耗多少、炭火调料多少。难串的东西（韭菜要理顺、金针菇要分朵、鸡翅要穿定型）人工贵、损耗也大；这几样恰好就是常要多根签的那些。",
+        "所以两者确实有关系，但方向是「同一个原因推着两边走」，不是「签多所以贵」。反例就在同一张桌上：两签的烤韭菜两三块，比一签的羊肉串还便宜；一签的烤肠两块，比两签的鸡翅十块便宜得多。唯一签数直接等于价钱的情况，是按根计价的店——那时签数是尺子，不是成本。"
       ],
-      "followUp": "那为什么两根签要平行穿，不能交叉穿成一个十字？",
+      "followUp": "那为什么费人工的东西，有时候反而卖得更便宜，比如韭菜？",
       "source": "2026-11-07 玉米",
       "en": {
         "question": "At a barbecue, why do some things need one stick and some need a few?",
-        "oneLine": "It is not about price — the harder a thing is to pin down, the more sticks it needs. One stick is just one axis, so the food can spin around it; soft, thin or heavy things need another stick to lock them.",
+        "oneLine": "The number of sticks does not set the price — a bamboo stick costs a cent or two. But the two usually move together: the harder a food is to skewer and the more labour it takes, the more sticks it gets and the more it tends to cost. Stick count is a shadow of how much work that skewer is.",
         "points": [
-          "First, can it hold itself? Firm chunks of meat grip a single stick; chives, enoki mushrooms and bean-curd skin are soft and thin, so on one stick they spin and slide down — two parallel sticks clamp them and kill the twist.",
-          "Second, how heavy is it? A whole corn cob, a whole chicken wing or a big rib is large and irregular; one stick carries all the weight, sags when you turn it, and can even tear the food apart. Two or three sticks side by side split the load.",
-          "Third, heat and turning. Several sticks act like a little rack: the food cannot curl up, it sits flat on the grill, and the cook flips it in one go instead of picking up piece by piece. The number of sticks tells you how hard the food is to hold."
+          "Do the stick maths first: a bamboo skewer costs one or two cents wholesale, so even five sticks is about ten cents. A ten-yuan gap between two skewers cannot come from sticks — a stick is only the axis that holds the food.",
+          "What sets a skewer's price is the ingredient cost, how much labour the prep takes, how much is wasted, plus charcoal and seasoning. Hard-to-skewer items — chives to straighten, enoki to split into strands, wings to shape — cost more labour and lose more, and those are exactly the ones that get extra sticks.",
+          "So the two really are related, but the arrow runs from one shared cause to both, not from sticks to price. Counter-examples sit on the same table: two-stick chives at two or three yuan are cheaper than a one-stick lamb skewer; a one-stick sausage at two yuan is far cheaper than a two-stick chicken wing at ten. The only case where stick count equals price is a shop that charges per stick — there the stick is the ruler, not the cost."
         ],
-        "followUp": "Then why are the two sticks parallel instead of crossed in an X?",
+        "followUp": "Then why do some labour-heavy things still sell cheap, like chives?",
         "figureAlt": "Three panels: firm cubed lamb skewers need just one stick; soft, thin chives and enoki mushrooms need two sticks to clamp them so they do not curl and spin; a whole corn cob or whole chicken wing is big and heavy, needing two or three sticks to share the weight so it can be turned"
       },
       "figureEn": "assets/figures/en/skewer-sticks.svg",
