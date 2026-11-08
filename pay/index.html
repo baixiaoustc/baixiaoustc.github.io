@@ -3,716 +3,96 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1">
-<title>一本书读懂支付 · 第 1 章｜支付的基本概念</title>
-<meta name="description" content="《一本书读懂支付》第 1 章学习站点：交易、支付、结算、清算怎么分，资金链路怎么走，风险敞口在哪里。">
+<title>一本书读懂支付 · 章节索引｜PAYMENT PRIMER</title>
+<meta name="description" content="《一本书读懂支付》逐章可视化笔记：第 1 章 支付的基本概念。">
 <meta name="theme-color" content="#0E2233">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E2233'/%3E%3Cpath d='M16 6 L26 16 L16 26 L6 16 Z' fill='none' stroke='%23C8A45C' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23C8A45C'/%3E%3C/svg%3E">
-<link rel="stylesheet" href="assets/style.css">
+<style>
+  :root{
+    --ink:#0E2233; --ink-0:#08151F; --ink-1:#102435;
+    --line:rgba(242,245,247,.14); --line-soft:rgba(242,245,247,.07);
+    --text:#E9EEF2; --dim:#8FA2B2; --dimmer:#7A8D9E;
+    --gold:#C8A45C; --gold-dim:#8C7139;
+    --mono:"SFMono-Regular",ui-monospace,Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;min-height:100vh;background:var(--ink-0);color:var(--text);
+    font-family:var(--sans);line-height:1.7;-webkit-font-smoothing:antialiased;
+    background-image:linear-gradient(rgba(242,245,247,.028) 1px,transparent 1px),
+                      linear-gradient(90deg,rgba(242,245,247,.028) 1px,transparent 1px);
+    background-size:34px 34px;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:72px 24px 56px}
+  .mono{font-family:var(--mono);letter-spacing:.04em}
+  .meta{display:flex;flex-wrap:wrap;gap:16px;font-size:10px;letter-spacing:.16em;color:var(--dimmer);text-transform:uppercase}
+  .meta span+span::before{content:"/";margin-right:16px;color:var(--gold-dim)}
+  h1{font-size:clamp(30px,5.4vw,44px);line-height:1.2;margin:26px 0 12px;font-weight:600}
+  .sub{color:var(--dim);font-size:15px;margin:0 0 40px}
+  .sub b{color:var(--gold);font-weight:600}
+  .list{border:1px solid var(--line);background:linear-gradient(180deg,var(--ink-1),rgba(10,25,37,.5))}
+  .row{display:grid;grid-template-columns:64px 1fr 128px 30px;gap:14px;align-items:center;
+       padding:20px 22px;border-bottom:1px solid var(--line-soft);text-decoration:none;color:inherit;transition:.2s}
+  .row:last-child{border-bottom:0}
+  .row:hover{background:rgba(200,164,92,.07)}
+  .row .no{font-size:10px;letter-spacing:.18em;color:var(--gold-dim)}
+  .row .t{font-size:17px;font-weight:600}
+  .row .d{font-size:11.5px;color:var(--dimmer);margin-top:2px}
+  .row .tag{font-size:10px;letter-spacing:.08em;color:var(--gold);text-align:right}
+  .row .go{color:var(--gold);text-align:center;font-size:14px}
+  .row.soon{opacity:.55;cursor:default}
+  .row.soon:hover{background:none}
+  .row.soon .tag{color:var(--dimmer)}
+  .note{margin-top:20px;padding:14px 18px;border-left:2px solid var(--gold-dim);
+        background:rgba(200,164,92,.045);color:var(--dim);font-size:12.5px;line-height:1.8}
+  .note b{color:var(--text)}
+  footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--line-soft);
+         display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
+         font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--dimmer)}
+  footer a{color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-dim)}
+  @media(max-width:640px){
+    .wrap{padding:52px 18px 40px}
+    .row{grid-template-columns:44px 1fr 24px;gap:10px;padding:16px}
+    .row .tag{display:none}
+  }
+</style>
 </head>
-<body data-page="primer">
+<body>
+<div class="wrap">
+  <div class="meta mono"><span>PAYMENT PRIMER</span><span>一本书读懂支付</span><span>陈斌</span></div>
+  <h1>章节索引</h1>
+  <p class="sub">按章读，也按章拆。每章一个独立页面，动态部分只服务于<b>这一章</b>的理解难点。</p>
 
-<div class="scrollbar" aria-hidden="true"><i id="progress"></i></div>
-
-<header class="topbar">
-  <div class="wrap topbar-in">
-    <div class="brand">
-      <span class="mark">◈</span>
-      <span class="brand-t">PAYMENT PRIMER</span>
-      <span class="brand-s">CH.01 / 支付的基本概念</span>
-    </div>
-    <nav class="topnav">
-      <a href="#s04">资金链路</a>
-      <a href="#s05">结算清算</a>
-      <a href="#s06">敞口精算</a>
-      <a href="#s07">风险矩阵</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-
-<!-- ───────────────────────── HERO ───────────────────────── -->
-<section class="hero">
-  <div class="wrap hero-in">
-    <div class="hero-meta mono">
-      <span>BOOK / 一本书读懂支付</span><span>CH.01</span><span>陈斌</span><span>PP.14–40</span>
-    </div>
-    <h1 class="hero-title">支付的基本概念</h1>
-    <p class="hero-sub">把「交易 · 支付 · 结算 · 清算」四个词摆正，<br>后面所有资金链路与风险点才有地方挂。</p>
-
-    <div class="hero-law">
-      <div class="law-cell">
-        <span class="law-k mono">信息流</span>
-        <span class="law-v">是意图</span>
-        <span class="law-n mono">Payment Request / Instruction</span>
+  <div class="list">
+    <a class="row" href="ch01/">
+      <span class="no mono">CH.01</span>
+      <div>
+        <div class="t">支付的基本概念</div>
+        <div class="d">交易 / 支付 / 结算 / 清算 · 资金链路 · 风险敞口</div>
       </div>
-      <div class="law-sep" aria-hidden="true"></div>
-      <div class="law-cell">
-        <span class="law-k mono">资金流</span>
-        <span class="law-v gold">是事实</span>
-        <span class="law-n mono">Debit / Settlement / Clearing</span>
+      <span class="tag">7 个动效</span>
+      <span class="go">↗</span>
+    </a>
+    <div class="row soon">
+      <span class="no mono">CH.02</span>
+      <div>
+        <div class="t">待补</div>
+        <div class="d">读完再拆，不提前造目录</div>
       </div>
-    </div>
-
-    <div class="hero-stats">
-      <div class="stat"><b id="st1">5</b><span>交易要素</span></div>
-      <div class="stat"><b id="st2">7</b><span>资金链路环节</span></div>
-      <div class="stat"><b id="st3">8</b><span>风险敞口点</span></div>
-      <div class="stat"><b id="st4">1<small>天</small></b><span>默认在途时长 T+1</span></div>
-    </div>
-
-    <div class="stamp" aria-hidden="true">
-      <span class="stamp-in mono">CLEARING · 清算 · 净额</span>
+      <span class="tag">未上线</span>
+      <span class="go">·</span>
     </div>
   </div>
-</section>
 
-<!-- ───────────────────────── 01 四词校准 ───────────────────────── -->
-<section id="s01" class="sec">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-no mono">§ 01</span>
-      <h2>四个词，先摆正</h2>
-      <p class="sec-lead">这一章只做一件事：给「交易 / 支付 / 结算 / 清算」划清边界。混用这四个词，排查资金差错时会直接走错方向。</p>
-    </div>
-
-    <div class="term-grid">
-      <article class="term is-set" data-term="0">
-        <div class="term-top"><span class="mono">T</span><h3>交易</h3></div>
-        <p class="term-def">买卖双方对有价值的物品及服务进行互通有无的行为。</p>
-        <p class="term-scope mono">范围：全集 · 含五个步骤</p>
-      </article>
-      <article class="term" data-term="1">
-        <div class="term-top"><span class="mono">P</span><h3>支付</h3></div>
-        <p class="term-def">付款人向收款人转移<em>可接受的货币债权</em>的过程。</p>
-        <p class="term-scope mono">范围：交易五步中的一步</p>
-      </article>
-      <article class="term" data-term="2">
-        <div class="term-top"><span class="mono">S</span><h3>结算</h3></div>
-        <p class="term-def">按合约周期与费率，对一个周期内所有支付请求做总结性计算。</p>
-        <p class="term-scope mono">范围：支付机构 ↔ 商户</p>
-      </article>
-      <article class="term" data-term="3">
-        <div class="term-top"><span class="mono">C</span><h3>清算</h3></div>
-        <p class="term-def">金融机构相互对长款短款轧差，只转移净额。</p>
-        <p class="term-scope mono">范围：金融机构 ↔ 金融机构</p>
-      </article>
-    </div>
-
-    <div class="formula-bar">
-      <span class="mono">一句话区分</span>
-      <p><b class="w">结算是「算给商户多少钱」</b><span class="arrow">／</span><b class="w">清算是「银行之间谁欠谁多少」</b></p>
-    </div>
+  <div class="note">
+    第 1 章的重点是<b>资金安全的风险敞口</b>：在途、信用、操作、对手方四类，配上八个环节的巡检清单。页面里的滑杆与模拟器都可以自己拖、自己点。
   </div>
-</section>
 
-<!-- ───────────────────────── 02 交易五要素 ───────────────────────── -->
-<section id="s02" class="sec alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-no mono">§ 02</span>
-      <h2>交易五要素：支付排在最后，却是闭环开关</h2>
-      <p class="sec-lead">前四步做得再漂亮，支付失败，交易就失败。点每一步看它在传统与数字形态下分别长什么样。</p>
-    </div>
-
-    <div class="form-toggle" role="group" aria-label="形态切换">
-      <button class="tg is-on" data-form="trad">传统形态</button>
-      <button class="tg" data-form="digi">数字形态</button>
-    </div>
-
-    <div class="steps" id="txSteps">
-      <button class="tx-step is-on" data-i="0">
-        <span class="tx-n mono">01</span><h3>签约</h3>
-        <span class="tx-tag">共识固定</span>
-      </button>
-      <button class="tx-step" data-i="1">
-        <span class="tx-n mono">02</span><h3>认证</h3>
-        <span class="tx-tag">验明正身</span>
-      </button>
-      <button class="tx-step" data-i="2">
-        <span class="tx-n mono">03</span><h3>交付</h3>
-        <span class="tx-tag">给出标的</span>
-      </button>
-      <button class="tx-step" data-i="3">
-        <span class="tx-n mono">04</span><h3>记录</h3>
-        <span class="tx-tag">留下凭证</span>
-      </button>
-      <button class="tx-step is-key" data-i="4">
-        <span class="tx-n mono">05</span><h3>支付</h3>
-        <span class="tx-tag">闭环开关</span>
-      </button>
-    </div>
-
-    <div class="step-detail" id="txDetail">
-      <div class="sd-side">
-        <span class="sd-n mono" id="sdN">01 / SIGN</span>
-        <h4 id="sdTitle">签约</h4>
-        <p class="sd-role" id="sdRole">对标的、数量、质量、价值、时间地点达成共识并固定下来。</p>
-      </div>
-      <div class="sd-main">
-        <div class="sd-box">
-          <span class="sd-k mono">传统形态</span>
-          <p id="sdTrad">纸质合同、销售确认书、口头承诺。</p>
-        </div>
-        <div class="sd-box">
-          <span class="sd-k mono">数字形态</span>
-          <p id="sdDigi">电子合同、电子签章、区块链智能合约。</p>
-        </div>
-        <p class="sd-note" id="sdNote">没有签约，后面四步都没有依据可谈。</p>
-      </div>
-    </div>
-
-    <p class="aside">易混的根源：日常话术把两个词并着用——「支付交易」「交易金额」「交易系统」。严格说，<b>交易是全集，支付是子集中的一个环节</b>。还有一种情形是「有支付、无交易」：还债、慈善捐赠、缴罚款。</p>
-  </div>
-</section>
-
-<!-- ───────────────────────── 03 支付的三个要素 ───────────────────────── -->
-<section id="s03" class="sec">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-no mono">§ 03</span>
-      <h2>「可接受的」三个字，不能删</h2>
-      <p class="sec-lead">支付转移的不是「钱」，而是「被对方接受的一种债权凭证」。货币形态可以变，被双方信任才是硬条件。点一枚凭证试试。</p>
-    </div>
-
-    <div class="cred-wrap">
-      <div class="cred-line">
-        <span class="cred-part"><b>付款人</b><em>通常为买方；可为第三方代付，也可为智能设备</em></span>
-        <span class="op mono">+</span>
-        <span class="cred-part"><b>收款人</b><em>通常为卖方；电商场景常被支付机构代收</em></span>
-        <span class="op mono">+</span>
-        <span class="cred-part hi"><b>可接受的货币债权</b><em>时间 / 币种 / 金额 / 方式，四项约定</em></span>
-        <span class="op mono">=</span>
-        <span class="cred-res"><b>支付成立</b></span>
-      </div>
-
-      <div class="chips" id="credChips">
-        <button class="chip is-on" data-ok="1" data-y="公元前"><span class="chip-t mono">SCHELL</span><span class="chip-n">贝壳</span><span class="chip-s">双方都认 → 成立</span></button>
-        <button class="chip" data-ok="1" data-y="宋代"><span class="chip-t mono">PAPER</span><span class="chip-n">交子</span><span class="chip-s">有信用背书 → 成立</span></button>
-        <button class="chip" data-ok="1" data-y="今日"><span class="chip-t mono">FIAT</span><span class="chip-n">法定货币</span><span class="chip-s">国家信用 → 成立</span></button>
-        <button class="chip" data-ok="1" data-y="未来"><span class="chip-t mono">CBDC</span><span class="chip-n">数字货币</span><span class="chip-s">被接受即成立</span></button>
-        <button class="chip is-bad" data-ok="0" data-y="假设"><span class="chip-t mono">VOID</span><span class="chip-n">对方不认的凭证</span><span class="chip-s">形态再漂亮 → 不成立</span></button>
-      </div>
-
-      <div class="cred-read" id="credRead">
-        <span class="mono">判定</span>
-        <p><b class="ok">✓ 支付成立</b>：贝壳能换米，因为买卖双方都接受它作为债权凭证。货币形态一直在变，<b>「被双方信任」这条没变</b>。</p>
-      </div>
-    </div>
-
-    <div class="agreements">
-      <div class="ag" data-ag="0"><span class="ag-k mono">TIME</span><h4>支付时间</h4><p>如货到后 N 天。约定被拖长，就是在途敞口被拖长。</p></div>
-      <div class="ag" data-ag="1"><span class="ag-k mono">CCY</span><h4>支付货币</h4><p>币种。跨币种就天然暴露在汇率波动下。</p></div>
-      <div class="ag" data-ag="2"><span class="ag-k mono">AMT</span><h4>支付金额</h4><p>本次实际转移的债权数额，不等于交易金额。</p></div>
-      <div class="ag" data-ag="3"><span class="ag-k mono">METHOD</span><h4>支付方式</h4><p>支票 / 信用证 / 现钞 / 信用卡 / 电子转账。</p></div>
-    </div>
-    <p class="aside">资金安全的大部分事故，都发生在这四个约定<b>被违约、被误解或被篡改</b>的地方。四个约定里，唯一需要「谈」的是第三个整体——前两个（付款人、收款人）是身份，第三个才是条款。</p>
-  </div>
-</section>
-
-<!-- ───────────────────────── 04 资金链路 ───────────────────────── -->
-<section id="s04" class="sec alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-no mono">§ 04</span>
-      <h2>资金链路走廊：两条流，永远对不齐</h2>
-      <p class="sec-lead">信息流走的是指令，资金流走的是事实。信息流 200 毫秒到终点，资金流要 1 天。这段时差，就是所有在途敞口的出生地。</p>
-    </div>
-
-    <div class="legend">
-      <span><i class="lg lg-info"></i>虚线 · 信息流（意图）</span>
-      <span><i class="lg lg-fund"></i>实线 · 资金流（事实）</span>
-      <span><i class="lg lg-recon"></i>金点 · 对账锚</span>
-    </div>
-
-    <div class="corridor-scroll">
-      <div class="corridor" id="corridor">
-        <div class="track">
-          <div class="line line-info"></div>
-          <div class="line line-fund"></div>
-          <div class="dot dot-info" id="dotInfo" title="信息流"></div>
-          <div class="dot dot-fund" id="dotFund" title="资金流"></div>
-
-          <div class="nodes" id="nodeRow">
-            <div class="node" data-n="0"><span class="nid mono">N01</span><h4>买家账户</h4><p>卡 / 钱包 / 余额</p><span class="recon mono">对账锚</span></div>
-            <div class="node" data-n="1"><span class="nid mono">N02</span><h4>收单接入</h4><p>受理 · 风控 · 路由</p><span class="recon mono">对账锚</span></div>
-            <div class="node" data-n="2"><span class="nid mono">N03</span><h4>备付金账户</h4><p>客户资金池</p><span class="recon mono">对账锚</span></div>
-            <div class="node" data-n="3"><span class="nid mono">N04</span><h4>结算引擎</h4><p>周期汇总 · 扣费</p><span class="recon mono">对账锚</span></div>
-            <div class="node" data-n="4"><span class="nid mono">N05</span><h4>商户账户</h4><p>结算净额到账</p><span class="recon mono">对账锚</span></div>
-          </div>
-        </div>
-
-        <div class="crossbank" id="crossbank">
-          <div class="cb-label mono">跨行路径 · 只在日终汇成一条线</div>
-          <div class="cb-rail">
-            <div class="cb-node" data-n="5"><span class="nid mono">N06</span><h4>银行群</h4><p>发卡行 / 收单行</p></div>
-            <div class="cb-link"><span class="mono">长款 / 短款</span></div>
-            <div class="cb-node" data-n="6"><span class="nid mono">N07</span><h4>清算所</h4><p>轧差 · 只搬净额</p></div>
-            <div class="cb-net"><span class="mono">NET</span><b id="cbNet">200</b><span class="mono">万元</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="runner">
-      <div class="runner-ctl">
-        <button id="btnPlay" class="btn">▶ 播放一笔支付</button>
-        <button id="btnStep" class="btn ghost">单步 →</button>
-        <button id="btnReset" class="btn ghost">↻ 重置</button>
-      </div>
-      <div class="runner-time mono" id="clock">T+0</div>
-    </div>
-
-    <div class="runner-body">
-      <div class="evlog" id="evlog" aria-live="polite">
-        <div class="ev ev-idle"><span class="ev-t mono">IDLE</span><p>等待播放。每一步都会写明「信息流到哪」与「资金流到哪」。</p></div>
-      </div>
-      <div class="expose" id="expose">
-        <span class="ex-k mono">在途敞口</span>
-        <div class="ex-v"><b id="exAmt">0</b><span class="mono">万元</span></div>
-        <div class="ex-formula mono">敞口 = 资金量 × 暴露时长</div>
-        <p id="exNote">资金还停在 N01，没有离开买家账户，敞口为 0。</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───────────────────────── 05 结算 vs 清算 ───────────────────────── -->
-<section id="s05" class="sec">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-no mono">§ 05</span>
-      <h2>结算 vs 清算：一个轧差模拟器</h2>
-      <p class="sec-lead">书中宋江李逵的例子值得背下来。点两次取款，看两家银行的长短款怎么在日终被轧成 200 万元。</p>
-    </div>
-
-    <div class="clear-sim">
-      <div class="cs-left">
-        <div class="cs-bank">
-          <span class="cb-name mono">BANK A · 中行</span>
-          <div class="cs-row" id="rowA">
-            <span class="cs-who">宋江用中行卡，在建行 ATM 取 700 元</span>
-            <b class="cs-amt mono">700</b>
-          </div>
-          <div class="cs-row" id="rowA2">
-            <span class="cs-who">李逵用建行卡，在中行 ATM 取 500 元</span>
-            <b class="cs-amt mono">−500</b>
-          </div>
-          <div class="cs-total"><span class="mono">应收（净）</span><b id="aNet" class="mono">0</b></div>
-        </div>
-        <div class="cs-bank">
-          <span class="cb-name mono">BANK B · 建行</span>
-          <div class="cs-row" id="rowB">
-            <span class="cs-who">宋江取现 700 → 建行垫付</span>
-            <b class="cs-amt mono">−700</b>
-          </div>
-          <div class="cs-row" id="rowB2">
-            <span class="cs-who">李逵取现 500 → 建行收单</span>
-            <b class="cs-amt mono">500</b>
-          </div>
-          <div class="cs-total"><span class="mono">应收（净）</span><b id="bNet" class="mono">0</b></div>
-        </div>
-      </div>
-
-      <div class="cs-right">
-        <div class="cs-actions">
-          <button class="btn" id="btnTake1">① 宋江取 700 元</button>
-          <button class="btn" id="btnTake2">② 李逵取 500 元</button>
-          <button class="btn ghost" id="btnNet">③ 日终轧差</button>
-          <button class="btn ghost" id="btnCsReset">↻ 重置</button>
-        </div>
-        <div class="cs-out">
-          <div class="cs-metric">
-            <span class="mono">不轧差 · 实际搬动</span>
-            <b id="grossMove">0</b><i class="mono">元</i>
-          </div>
-          <div class="cs-metric">
-            <span class="mono">轧差后 · 实际搬动</span>
-            <b id="netMove" class="gold">0</b><i class="mono">元</i>
-          </div>
-          <div class="cs-bar"><i id="grossBar"></i><i id="netBar" class="gold"></i></div>
-          <p class="cs-note" id="csNote">两家银行互不相欠时，轧差没有意义。先取款，再算净额。</p>
-        </div>
-      </div>
-    </div>
-
-    <p class="aside"><b>口径提醒</b>：结算的主体是「支付机构 ↔ 商户」，对象是一个周期内所有支付请求的总额，输出是扣费后的应付净额；清算的主体是「金融机构 ↔ 金融机构」，对象是机构间的长款与短款，输出是轧差后的净额划拨。支付机构做结算，不做清算。</p>
-  </div>
-</section>
-
-<!-- ───────────────────────── 06 备付金敞口 ───────────────────────── -->
-<section id="s06" class="sec alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-no mono">§ 06</span>
-      <h2>备付金：整条链路最大的在途敞口</h2>
-      <p class="sec-lead">拖两个滑杆，看池子有多大。结算周期每多一天，池子里就多压一整天的交易额——这是精算，不是修辞。</p>
-    </div>
-
-    <div class="calc">
-      <div class="calc-in">
-        <label class="ctl">
-          <span class="ctl-k">日交易额 <b class="mono gold" id="vVol">1,000</b> 万元</span>
-          <input type="range" id="rVol" min="100" max="5000" step="100" value="1000">
-          <span class="ctl-scale mono"><i>100</i><i>2,500</i><i>5,000</i></span>
-        </label>
-        <label class="ctl">
-          <span class="ctl-k">商户结算周期</span>
-          <div class="seg" id="segCycle">
-            <button data-d="0.5">T+0</button>
-            <button data-d="1" class="is-on">T+1</button>
-            <button data-d="3">T+3</button>
-            <button data-d="7">T+7</button>
-          </div>
-        </label>
-        <label class="ctl">
-          <span class="ctl-k">支付费率 <b class="mono gold" id="vFee">0.60</b> %</span>
-          <input type="range" id="rFee" min="0.1" max="1.2" step="0.05" value="0.6">
-        </label>
-      </div>
-
-      <div class="calc-out">
-        <div class="calc-hero">
-          <span class="mono">备付金池（同时在途）</span>
-          <div class="calc-big"><b id="oPool">1,000</b><i class="mono">万元</i></div>
-          <div class="tank"><i id="tankFill"></i></div>
-        </div>
-        <div class="calc-rows">
-          <div class="calc-row"><span>年化在途敞口（资金·日）</span><b id="oDays" class="mono">0</b></div>
-          <div class="calc-row"><span>按年化 1.5% 计的占用成本</span><b id="oCost" class="mono">0</b></div>
-          <div class="calc-row"><span>结算手续费收入 / 年</span><b id="oFee" class="mono">0</b></div>
-          <div class="calc-row"><span>单点挪用情形下的最大暴露</span><b id="oMax" class="mono">0</b></div>
-        </div>
-        <p class="calc-note"><b>制度约束</b>：自 2019 年 1 月起，支付机构客户备付金 <b>100% 集中交存央行</b>，机构不得以任何形式挪用。池子越大，越必须靠制度而不是靠自觉。</p>
-      </div>
-    </div>
-
-    <div class="aside grid3">
-      <div><span class="mono">商户视角</span><p>结算周期内即将结算给我的待付资金，是我的应收账款。</p></div>
-      <div><span class="mono">用户视角</span><p>钱包余额、下单未确认收货而托管在第三方的金额。</p></div>
-      <div><span class="mono">机构视角</span><p>预收待付的客户资金。它不属于机构自己的资产。</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ───────────────────────── 07 风险敞口矩阵 ───────────────────────── -->
-<section id="s07" class="sec">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-no mono">§ 07</span>
-      <h2>风险敞口：把概念翻译成工作清单</h2>
-      <p class="sec-lead">把八个环节排成一列，每个环节标出该盯什么。这一章就从「知识」变成了「值班表」。</p>
-    </div>
-
-    <div class="ex-types">
-      <div class="ex-type"><span class="mono">在途</span><h4>在途资金敞口</h4><p class="ex-f mono">资金量 × 滞留时长</p><p>备付金池、结算批次、跨行在途。时间里全是钱。</p></div>
-      <div class="ex-type"><span class="mono">信用</span><h4>信用敞口</h4><p class="ex-f mono">授信余额 × 违约概率 × 违约损失率</p><p>信用支付与分期，本质是把未来的钱先挪过来用。</p></div>
-      <div class="ex-type"><span class="mono">操作</span><h4>操作敞口</h4><p class="ex-f mono">可绕过校验的路径 × 单笔上限</p><p>重复提交、直接改余额、重复结算。人为与技术双来源。</p></div>
-      <div class="ex-type"><span class="mono">对手方</span><h4>对手方敞口</h4><p class="ex-f mono">净额头寸 × 对手方违约概率</p><p>清算所与银行群，日终才见分晓。</p></div>
-    </div>
-
-    <div class="matrix" id="matrix">
-      <button class="mx-row" data-m="0">
-        <span class="mx-i mono">01</span>
-        <span class="mx-k">交易成立</span>
-        <span class="mx-c mono">签约 / 认证 / 交付 / 记录</span>
-        <span class="mx-tag">欺诈 · 信用</span>
-        <span class="mx-x" aria-hidden="true">+</span>
-        <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：伪造身份、持卡人拒付（chargeback）、货钱不同步。
-          <strong>我们能做的</strong>：设备指纹与风险评分、商户准入（KYC/KYB）、订单状态机。
-        </span></span>
-      </button>
-      <button class="mx-row" data-m="1">
-        <span class="mx-i mono">02</span>
-        <span class="mx-k">支付发起</span>
-        <span class="mx-c mono">支付请求 Payment Request</span>
-        <span class="mx-tag">操作</span>
-        <span class="mx-x" aria-hidden="true">+</span>
-        <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：重复提交、参数篡改、金额与订单不一致。
-          <strong>我们能做的</strong>：幂等键、请求与订单强绑定校验、金额从订单推导而非前端传入。
-        </span></span>
-      </button>
-      <button class="mx-row" data-m="2">
-        <span class="mx-i mono">03</span>
-        <span class="mx-k">支付执行</span>
-        <span class="mx-c mono">支付指令 Payment Instruction</span>
-        <span class="mx-tag">操作 · 在途</span>
-        <span class="mx-x" aria-hidden="true">+</span>
-        <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：一个请求拆成 N 个指令后部分成功、超时重试放大。
-          <strong>我们能做的</strong>：指令级状态机、按指令对账、超时与补偿策略。监控要盯 instruction 成功率与幂等，而不是只看 request 的 QPS。
-        </span></span>
-      </button>
-      <button class="mx-row" data-m="3">
-        <span class="mx-i mono">04</span>
-        <span class="mx-k">资金归集</span>
-        <span class="mx-c mono">备付金 Customer Funds</span>
-        <span class="mx-tag">在途 · 合规</span>
-        <span class="mx-x" aria-hidden="true">+</span>
-        <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：挪用、混同、账实不符。
-          <strong>我们能做的</strong>：备付金与自有资金账户隔离、100% 集中交存、余额日切核对。
-        </span></span>
-      </button>
-      <button class="mx-row" data-m="4">
-        <span class="mx-i mono">05</span>
-        <span class="mx-k">商户结算</span>
-        <span class="mx-c mono">结算 / 费率 / 应收账款</span>
-        <span class="mx-tag">操作</span>
-        <span class="mx-x" aria-hidden="true">+</span>
-        <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：费率算错、漏结、重复结算。
-          <strong>我们能做的</strong>：结算批次可重算可回溯、结算单与明细双向可查、净额公式留痕。
-        </span></span>
-      </button>
-      <button class="mx-row" data-m="5">
-        <span class="mx-i mono">06</span>
-        <span class="mx-k">机构清算</span>
-        <span class="mx-c mono">清算 / 轧差</span>
-        <span class="mx-tag">对手方</span>
-        <span class="mx-x" aria-hidden="true">+</span>
-        <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：头寸不足、净额算错、跨行差错。
-          <strong>我们能做的</strong>：日终批量监控、轧差结果双人复核、差错分类（少给商户还是头寸错）。
-        </span></span>
-      </button>
-      <button class="mx-row" data-m="6">
-        <span class="mx-i mono">07</span>
-        <span class="mx-k">记账</span>
-        <span class="mx-c mono">账户 / 账务 / 账户模型</span>
-        <span class="mx-tag">操作</span>
-        <span class="mx-x" aria-hidden="true">+</span>
-        <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：借贷不平、直接改余额、冻结与解冻错配。
-          <strong>我们能做的</strong>：复式记账强制校验、只允许分录驱动余额、冻结与解冻配对。
-        </span></span>
-      </button>
-      <button class="mx-row" data-m="7">
-        <span class="mx-i mono">08</span>
-        <span class="mx-k">信用敞口</span>
-        <span class="mx-c mono">信用支付 / FICO</span>
-        <span class="mx-tag">信用</span>
-        <span class="mx-x" aria-hidden="true">+</span>
-        <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：坏账、额度失控、欺诈申请。
-          <strong>我们能做的</strong>：额度与风险分层、拒付率监控、近期行为权重高于远期（FICO 支付历史约 35%）。
-        </span></span>
-      </button>
-    </div>
-
-    <div class="three-law">
-      <div class="law"><span class="mono">RULE 01</span><p>信息流可以重放，<b>资金流不能重来</b>。对外指令必须幂等，内部记账必须能回滚到分录层。</p></div>
-      <div class="law"><span class="mono">RULE 02</span><p>结算错是「少给或多给商户」，清算错是「银行之间头寸错」。<b>先分类，再动手</b>。</p></div>
-      <div class="law"><span class="mono">RULE 03</span><p>余额是推导值，不是事实源。<b>事实源是分录与流水</b>，账实差异必须能追到凭证。</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ───────────────────────── 08 幂等事故 ───────────────────────── -->
-<section id="s08" class="sec alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-no mono">§ 08</span>
-      <h2>一个超时，怎么变成 200 万挂账</h2>
-      <p class="sec-lead">支付指令没有幂等键时，网关的每一次重试都是一次新的扣款。点一下，看敞口怎么长出来。</p>
-    </div>
-
-    <div class="idem">
-      <div class="idem-ctl">
-        <label class="switch"><input type="checkbox" id="idemKey"><span class="sw-ui"></span><span class="sw-t">开启幂等键</span></label>
-        <button class="btn" id="btnRetry">模拟网络超时 → 重试 3 次</button>
-        <button class="btn ghost" id="btnIdemReset">↻ 重置</button>
-      </div>
-
-      <div class="idem-grid">
-        <div class="idem-log" id="idemLog">
-          <div class="il-row is-idle mono">等待模拟…</div>
-        </div>
-        <div class="idem-out">
-          <div class="io-row"><span>应收</span><b class="mono" id="ioDue">100 万</b></div>
-          <div class="io-row"><span>实际扣款</span><b class="mono" id="ioActual">0</b></div>
-          <div class="io-row hi"><span>挂账敞口</span><b class="mono" id="ioGap">0</b></div>
-          <div class="io-bar"><i id="ioBar"></i></div>
-          <p id="ioNote">未发生扣款。</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───────────────────────── 09 余额与分录 ───────────────────────── -->
-<section id="s09" class="sec">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-no mono">§ 09</span>
-      <h2>余额是结果，分录是原因</h2>
-      <p class="sec-lead">资金系统的铁律：余额只能由分录推导出来。任何直接改余额的路径，都是事故源。试两种加法。</p>
-    </div>
-
-    <div class="ledger">
-      <div class="lg-card">
-        <div class="lg-head"><span class="mono">ACCOUNT / 6217 **** 0042</span><span class="lg-state" id="lgState">平衡</span></div>
-        <div class="lg-balance">
-          <span class="mono">账面余额</span>
-          <div><b id="lgBal">1,000.00</b><i class="mono">CNY</i></div>
-          <p class="lg-calc mono">Σ 分录 = <span id="lgSum">1,000.00</span></p>
-          <p class="lg-diff" id="lgDiff" hidden>差额 <b id="lgDiffV">0</b></p>
-        </div>
-      </div>
-
-      <div class="lg-rows" id="lgRows">
-        <div class="lg-row"><span class="mono">D1</span><span>期初入账</span><b class="mono">+1,000.00</b></div>
-      </div>
-
-      <div class="lg-actions">
-        <button class="btn danger" id="btnBad">直接改余额 +500</button>
-        <button class="btn" id="btnGood">记一笔分录 +500</button>
-        <button class="btn ghost" id="btnLedgerReset">↻ 重置</button>
-      </div>
-      <div class="lg-alarm" id="lgAlarm" hidden>
-        <span class="mono">ALERT</span>
-        <p><b>违规路径</b>：余额被改到 1,500.00，但分录合计仍是 1,000.00。账实不平 500.00，且找不到凭证。上线后这类差异只会在对账日炸出来，届时无法定位到人。</p>
-      </div>
-    </div>
-
-    <div class="model8">
-      <h3>账户模型的八类属性（做资金建模几乎逐条对应）</h3>
-      <div class="m8">
-        <div><span class="mono">01</span><h4>账户编号</h4><p>含从属关系与业务标识，不是随机数，便于凭证与审计。</p></div>
-        <div><span class="mono">02</span><h4>账户余额</h4><p>现存未使用数量，含可用与不可用两部分。</p></div>
-        <div><span class="mono">03</span><h4>可用余额</h4><p>当前场景、当前时刻可动用的金额。</p></div>
-        <div><span class="mono">04</span><h4>冻结余额</h4><p>不可动用。来源三类：业务冻结、政策法律、营销协议。</p></div>
-        <div><span class="mono">05</span><h4>货币种类</h4><p>余额 + 币种 = 真实价值。缺一个都不能算钱。</p></div>
-        <div><span class="mono">06</span><h4>借贷属性</h4><p>借增资产费用，贷增负债收入权益。方向错了，全盘错。</p></div>
-        <div><span class="mono">07</span><h4>所属科目</h4><p>按经济内容对六类会计要素进一步分类。</p></div>
-        <div><span class="mono">08</span><h4>账套</h4><p>科目、凭证、账簿、报表的集合。</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ───────────────────────── 10 术语 + 自测 ───────────────────────── -->
-<section id="s10" class="sec alt">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-no mono">§ 10</span>
-      <h2>术语表与八道自测</h2>
-      <p class="sec-lead">读完这一章，应该能不看笔记答出下面八个问题。点开对答案。</p>
-    </div>
-
-    <div class="glossary">
-      <div class="gl"><span class="mono">Transaction</span><span>交易</span><span>买卖双方互通有无的全过程，含五要素</span></div>
-      <div class="gl"><span class="mono">Payment</span><span>支付</span><span>付款人向收款人转移可接受的货币债权</span></div>
-      <div class="gl"><span class="mono">Payment Request</span><span>支付请求</span><span>商户发给支付机构的处理请求</span></div>
-      <div class="gl"><span class="mono">Payment Instruction</span><span>支付指令</span><span>支付机构发给银行的具体划款命令，一请求可拆 N 个</span></div>
-      <div class="gl"><span class="mono">Account Receivable</span><span>应收账款</span><span>因销售商品或服务产生的债权</span></div>
-      <div class="gl"><span class="mono">Factoring</span><span>保理</span><span>把应收账款转让给保理商换取融资与服务</span></div>
-      <div class="gl"><span class="mono">Acquiring</span><span>收单</span><span>接收并处理消费者留下的交易单据</span></div>
-      <div class="gl"><span class="mono">Customer Funds</span><span>备付金</span><span>支付机构预收待付的客户资金</span></div>
-      <div class="gl"><span class="mono">Settlement</span><span>结算</span><span>支付机构与商户之间算清一个周期的应付款</span></div>
-      <div class="gl"><span class="mono">Clearing</span><span>清算</span><span>金融机构之间轧差，只转移净额</span></div>
-      <div class="gl"><span class="mono">Account Set</span><span>账套</span><span>一套完整的账簿体系</span></div>
-      <div class="gl"><span class="mono">Credit Reporting</span><span>征信</span><span>采集信用行为并计算信用分</span></div>
-    </div>
-
-    <div class="quiz" id="quiz">
-      <button class="q-item"><span class="q-i mono">Q1</span><span class="q-t">交易的五个要素是什么？支付排第几，为什么它决定交易成败？</span><span class="q-a">签约、认证、交付、记录、支付。支付排第五，但它是唯一能让前四步闭环的一步。</span></button>
-      <button class="q-item"><span class="q-i mono">Q2</span><span class="q-t">「交易」和「支付」在什么情况下会各自单独存在？</span><span class="q-a">有支付无交易：还债、慈善捐赠、缴罚款。有交易无支付：以货易货，如十袋化肥换一个西瓜。</span></button>
-      <button class="q-item"><span class="q-i mono">Q3</span><span class="q-t">支付的定义里，「可接受的」三个字为什么不能删？</span><span class="q-a">因为转移的不是「钱」本身，而是「被对方接受的一种债权凭证」。形态可以变（贝壳、金银、纸币、数字货币），被双方信任才是硬条件。</span></button>
-      <button class="q-item"><span class="q-i mono">Q4</span><span class="q-t">一个支付请求为什么可能变成多个支付指令？这对幂等设计意味着什么？</span><span class="q-a">按协议约定，一个请求可拆成 N 个指令（如分账、跨行拆分）。意味着幂等键要落到指令级，状态机也要按指令维度建，否则「部分成功」无法表达。</span></button>
-      <button class="q-item"><span class="q-i mono">Q5</span><span class="q-t">备付金从三个视角分别是什么？</span><span class="q-a">商户：应收账款。用户：钱包余额或托管金额。机构：预收待付的客户资金，不是自己的资产。</span></button>
-      <button class="q-item"><span class="q-i mono">Q6</span><span class="q-t">结算与清算在主体、对象、结果上有什么区别？</span><span class="q-a">结算：支付机构↔商户，对象是一周期支付请求总额，结果是扣费后的应付净额加结算报告。清算：金融机构↔金融机构，对象是长款短款，结果是轧差后的净额划拨。</span></button>
-      <button class="q-item"><span class="q-i mono">Q7</span><span class="q-t">账户八个属性里，哪两个最容易在工程上被绕过？</span><span class="q-a">余额与借贷属性。绕过方式是直接 UPDATE 余额、跳过复式记账校验，导致账实不符且无法追凭证。</span></button>
-      <button class="q-item"><span class="q-i mono">Q8</span><span class="q-t">信用支付的本质是什么？FICO 为何近期行为权重更高？</span><span class="q-a">本质是花未来的钱做超前消费。近期行为更能预测近期违约，故支付历史权重最高（约 35%）。</span></button>
-    </div>
-
-    <div class="aside small">
-      <b>原文勘误</b>：「对薄公堂」应为「对簿公堂」；书中清算写作 Clearance，业内更常见是 Clearing；FICO 公司名写作 FairIssac，规范写法为 Fair, Isaac and Company；书中的信用分档（350 以下 / 351–590 / 591–610 / 611–680 / 681 以上）是作者简化分档，标准 FICO 区间通常为 300–850。
-    </div>
-  </div>
-</section>
-
-<!-- ───────────────────────── 11 动效索引 ───────────────────────── -->
-<section id="s11" class="sec">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-no mono">§ 11</span>
-      <h2>动效索引：每个动效对应哪个理解难点</h2>
-      <p class="sec-lead">静态文字解决「定义」，动效解决「关系」。这一页七个交互，各自只回答一个问题。</p>
-    </div>
-
-    <div class="fx">
-      <a class="fx-row" href="#s04">
-        <span class="fx-n mono">01</span>
-        <span class="fx-t">资金链路走廊</span>
-        <span class="fx-c">信息流 vs 资金流的时间差</span>
-        <span class="fx-w">200 毫秒对 1 天。两条流的距离，就是敞口的宽度。</span>
-      </a>
-      <a class="fx-row" href="#s05">
-        <span class="fx-n mono">02</span>
-        <span class="fx-t">轧差模拟器</span>
-        <span class="fx-c">清算是谁的账</span>
-        <span class="fx-w">先看到 1,200 元要搬，再看到只剩 200 元。净额是被算出来的，不是被定义的。</span>
-      </a>
-      <a class="fx-row" href="#s06">
-        <span class="fx-n mono">03</span>
-        <span class="fx-t">备付金滑杆</span>
-        <span class="fx-c">在途敞口怎么长出来</span>
-        <span class="fx-w">拖一天，池子多一整天的交易额。敞口是可计算的，不是形容词。</span>
-      </a>
-      <a class="fx-row" href="#s08">
-        <span class="fx-n mono">04</span>
-        <span class="fx-t">重试放大器</span>
-        <span class="fx-c">一个超时如何变成挂账</span>
-        <span class="fx-w">开关幂等键，同一场超时，一个结束于 0，一个结束于 200 万。</span>
-      </a>
-      <a class="fx-row" href="#s09">
-        <span class="fx-n mono">05</span>
-        <span class="fx-t">余额与分录</span>
-        <span class="fx-c">为什么不能直接改余额</span>
-        <span class="fx-w">直接改 500，账就不平；记一笔分录，账才平。两种加法，两种系统。</span>
-      </a>
-      <a class="fx-row" href="#s07">
-        <span class="fx-n mono">06</span>
-        <span class="fx-t">风险矩阵</span>
-        <span class="fx-c">概念怎么变成值班表</span>
-        <span class="fx-w">每个环节展开就是「典型风险 + 我们能做的」，八行就是八条巡检项。</span>
-      </a>
-      <a class="fx-row" href="#s03">
-        <span class="fx-n mono">07</span>
-        <span class="fx-t">凭证切换</span>
-        <span class="fx-c">「可接受的」到底指什么</span>
-        <span class="fx-w">换成对方不认的凭证，支付立刻不成立。形态可变，信任不可省。</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ───────────────────────── 来源 ───────────────────────── -->
-<footer class="foot">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-main">
-        <span class="mono">SOURCE / 原书</span>
-        <h3>《一本书读懂支付》</h3>
-        <p>陈斌 · 第 1 章「支付的基本概念」（PDF 第 14–40 页）</p>
-        <a class="db-link" href="https://book.douban.com/subject/36422205/" target="_blank" rel="noopener">
-          <span class="mono">DOUBAN</span>
-          <b>豆瓣条目 · 36422205</b>
-          <i aria-hidden="true">↗</i>
-        </a>
-      </div>
-      <div class="foot-side">
-        <span class="mono">本页</span>
-        <p>第 1 章学习笔记的可视化版本。内容依据原书，补充处（备付金 100% 交存、FICO 权重、清算英文写法）已在文中标注。</p>
-        <span class="mono">另一条产品线</span>
-        <p><a class="inline-link" href="https://baixiaoustc.github.io/kids/">小问号博物馆</a>：把孩子的提问做成图解卡片。</p>
-      </div>
-    </div>
-    <div class="foot-bottom mono">
-      <span>PAYMENT PRIMER · CH.01</span>
-      <span>信息流是意图，资金流是事实</span>
-      <span id="footDate">2026-11</span>
-    </div>
-  </div>
-</footer>
-
-</main>
-
-<script src="assets/app.js"></script>
+  <footer>
+    <span>PAYMENT PRIMER · INDEX</span>
+    <a href="https://book.douban.com/subject/36422205/" target="_blank" rel="noopener">豆瓣 · 一本书读懂支付 ↗</a>
+  </footer>
+</div>
 </body>
 </html>
