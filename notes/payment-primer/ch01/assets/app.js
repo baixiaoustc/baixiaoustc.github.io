@@ -135,7 +135,7 @@
     { t: 'T+2d 02:00', info: 4, fund: 4, nodes: [3, 5, 6], exp: 200,
       tag: '清算',
       log: '跨行部分：银行群（N06）→ 清算所（N07）日终批量轧差，<b>只搬净额</b>。',
-      note: '清算只搬净额，200 万元。剩下 800 万在两两之间互相抵消。' },
+      note: '清算只搬净额：两两相抵之后，真正搬动的只是差额，不是每笔都搬。' },
     { t: 'T+2d 09:00', info: 4, fund: 4, nodes: [0, 1, 2, 3, 4], exp: 0,
       tag: '对账',
       log: '对账：按<b>指令</b>逐笔比对信息流与资金流。差异挂账，不进「待处理池」不算完。',
@@ -149,7 +149,7 @@
     dotInfo.style.left = NODE_CENTERS[0] + '%';
     dotFund.style.left = NODE_CENTERS[0] + '%';
     clock.textContent = 'T+0';
-    cbNet.textContent = '200';
+    cbNet.textContent = '差额';
   };
 
   function paint(i) {

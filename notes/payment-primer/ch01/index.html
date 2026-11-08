@@ -250,7 +250,7 @@
             <div class="cb-node" data-n="5"><span class="nid mono">N06</span><h4>银行群</h4><p>发卡行 / 收单行</p></div>
             <div class="cb-link"><span class="mono">长款 / 短款</span></div>
             <div class="cb-node" data-n="6"><span class="nid mono">N07</span><h4>清算所</h4><p>轧差 · 只搬净额</p></div>
-            <div class="cb-net"><span class="mono">NET</span><b id="cbNet">200</b><span class="mono">万元</span></div>
+            <div class="cb-net"><span class="mono">NET</span><b id="cbNet">差额</b></div>
           </div>
         </div>
       </div>
@@ -285,7 +285,7 @@
     <div class="sec-head">
       <span class="sec-no mono">§ 05</span>
       <h2>结算 vs 清算：一个轧差模拟器</h2>
-      <p class="sec-lead">书中宋江李逵的例子值得背下来。点两次取款，看两家银行的长短款怎么在日终被轧成 200 万元。</p>
+      <p class="sec-lead">书中宋江李逵的例子值得背下来。点两次取款，看两家银行的长短款怎么在日终被轧成 <b>200 元</b>。</p>
     </div>
 
     <div class="clear-sim">
@@ -338,7 +338,7 @@
       </div>
     </div>
 
-    <p class="aside"><b>口径提醒</b>：结算的主体是「支付机构 ↔ 商户」，对象是一个周期内所有支付请求的总额，输出是扣费后的应付净额；清算的主体是「金融机构 ↔ 金融机构」，对象是机构间的长款与短款，输出是轧差后的净额划拨。支付机构做结算，不做清算。</p>
+    <p class="aside"><b>量级提醒</b>：这里用书中的 700 元 / 500 元，数字小是为了看清机制；上面走廊里的示例是 1,000 万元的一笔支付——两个例子别混着读。真正的净额只跟同一批轧差里的长款短款有关。<br><br><b>口径提醒</b>：结算的主体是「支付机构 ↔ 商户」，对象是一个周期内所有支付请求的总额，输出是扣费后的应付净额；清算的主体是「金融机构 ↔ 金融机构」，对象是机构间的长款与短款，输出是轧差后的净额划拨。支付机构做结算，不做清算。</p>
   </div>
 </section>
 
