@@ -1,0 +1,146 @@
+<style>
+  /* ── 首页模块：学习笔记（仅首页，前缀 np- 避免污染主题） ── */
+  .np-wrap { margin: 8px 0 34px; }
+  .np {
+    position: relative;
+    border: 1px solid #E2DAC8;
+    background: linear-gradient(135deg, #FBF8F1 0%, #F4F0E6 100%);
+    padding: 20px 22px 16px;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 rgba(14, 34, 51, .04);
+    overflow: hidden;
+  }
+  .np::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(14, 34, 51, .035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(14, 34, 51, .035) 1px, transparent 1px);
+    background-size: 28px 28px;
+    pointer-events: none;
+  }
+  .np > * { position: relative; }
+
+  .np-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .np-eyebrow {
+    font-family: Monaco, Menlo, Consolas, monospace;
+    font-size: 9.5px; letter-spacing: .18em; color: #8C7139;
+  }
+  .np-date { font-family: Monaco, Menlo, Consolas, monospace; font-size: 9px; letter-spacing: .1em; color: #9AA3AC; }
+
+  .np-main { display: flex; gap: 22px; align-items: flex-start; margin-top: 10px; }
+  .np-left { flex: 1 1 auto; min-width: 0; }
+  .np-right { flex: 0 0 232px; padding-left: 20px; border-left: 1px solid #E2DAC8; }
+
+  .np-title { font-size: 21px; font-weight: 700; color: #0E2233; line-height: 1.35; letter-spacing: .01em; }
+  .np-badge {
+    display: inline-block; vertical-align: 2px; margin-left: 8px;
+    font-family: Monaco, Menlo, Consolas, monospace;
+    font-size: 9px; letter-spacing: .12em; color: #8C7139;
+    border: 1px solid #D8C08A; padding: 1px 6px; border-radius: 2px;
+  }
+  .np-lede { font-size: 12.5px; line-height: 1.85; color: #5C6672; margin: 7px 0 12px; }
+
+  .np-stats { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 14px; }
+  .np-stats span { font-size: 11px; color: #6B7480; }
+  .np-stats b {
+    font-family: Monaco, Menlo, Consolas, monospace;
+    font-size: 15px; color: #0E2233; margin-right: 3px; font-weight: 500;
+  }
+
+  .np-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+  .np-btn {
+    display: inline-block; background: #0E2233; color: #EDF1F4 !important;
+    padding: 8px 16px; font-size: 12px; letter-spacing: .04em;
+    text-decoration: none !important; border-radius: 2px;
+    transition: background .2s;
+  }
+  .np-btn:hover { background: #1B3A50; }
+  .np-link { font-size: 11.5px; color: #8C7139 !important; text-decoration: none !important; border-bottom: 1px solid #D8C08A; }
+  .np-link:hover { color: #0E2233 !important; border-bottom-color: #0E2233; }
+
+  .np-rlabel { font-family: Monaco, Menlo, Consolas, monospace; font-size: 9px; letter-spacing: .14em; color: #8C7139; }
+  .np-flow { margin-top: 12px; }
+  .np-flow-row { margin-bottom: 14px; }
+  .np-flow-k { display: flex; justify-content: space-between; font-size: 10px; color: #6B7480; margin-bottom: 4px; }
+  .np-flow-k em { font-style: normal; font-family: Monaco, Menlo, Consolas, monospace; font-size: 9px; color: #9AA3AC; }
+  .np-flow-track { position: relative; height: 8px; }
+  .np-dash {
+    position: absolute; left: 0; right: 0; top: 3px; height: 2px;
+    background: repeating-linear-gradient(90deg, #3E5A6E 0 5px, transparent 5px 10px);
+  }
+  .np-solid {
+    position: absolute; left: 0; top: 3px; height: 2px; width: 52%;
+    background: #C8A45C;
+  }
+  .np-hold {
+    position: absolute; left: 52%; right: 0; top: 1px; height: 6px;
+    background: rgba(200, 164, 92, .18);
+    border: 1px solid rgba(200, 164, 92, .45); border-left: 0;
+    box-sizing: border-box;
+  }
+  .np-hold span {
+    position: absolute; right: 0; top: -15px;
+    font-family: Monaco, Menlo, Consolas, monospace; font-size: 8.5px; letter-spacing: .1em;
+    color: #8C7139;
+  }
+  .np-flow-note { font-size: 10.5px; line-height: 1.7; color: #6B7480; margin: 0; }
+
+  .np-foot {
+    margin-top: 14px; padding-top: 10px; border-top: 1px dashed #E2DAC8;
+    font-family: Monaco, Menlo, Consolas, monospace; font-size: 9px; letter-spacing: .04em; color: #9AA3AC;
+  }
+
+  @media (max-width: 700px) {
+    .np { padding: 18px 16px 14px; }
+    .np-main { flex-direction: column; gap: 14px; }
+    .np-right { flex: 1 1 auto; width: 100%; padding-left: 0; padding-top: 14px; border-left: 0; border-top: 1px solid #E2DAC8; }
+    .np-title { font-size: 19px; }
+  }
+</style>
+
+<div class="np-wrap">
+  <section class="np" aria-label="学习笔记：一本书读懂支付">
+    <div class="np-top">
+      <span class="np-eyebrow">STUDY NOTES / 学习笔记</span>
+      <span class="np-date">2026 · 逐章更新</span>
+    </div>
+
+    <div class="np-main">
+      <div class="np-left">
+        <div class="np-title">一本书读懂支付<span class="np-badge">CH.01</span></div>
+        <p class="np-lede">把「交易 / 支付 / 结算 / 清算」四个词摆正，再看资金链路怎么走、风险敞口落在哪里——概念能读，链路能拖，敞口能算。</p>
+        <div class="np-stats">
+          <span><b>5</b>交易要素</span>
+          <span><b>7</b>链路环节</span>
+          <span><b>8</b>敞口点</span>
+          <span><b>7</b>个动效</span>
+        </div>
+        <div class="np-cta">
+          <a class="np-btn" href="/notes/">进入学习笔记 →</a>
+          <a class="np-link" href="/notes/payment-primer/ch01/">第 1 章 · 支付的基本概念</a>
+        </div>
+      </div>
+
+      <div class="np-right">
+        <span class="np-rlabel">两条流，永远对不齐</span>
+        <div class="np-flow">
+          <div class="np-flow-row">
+            <div class="np-flow-k">信息流（意图）<em>T+0.2s</em></div>
+            <div class="np-flow-track"><i class="np-dash"></i></div>
+          </div>
+          <div class="np-flow-row">
+            <div class="np-flow-k">资金流（事实）<em>T+1d</em></div>
+            <div class="np-flow-track">
+              <i class="np-solid"></i>
+              <i class="np-hold"><span>在途</span></i>
+            </div>
+          </div>
+          <p class="np-flow-note">信息流 200 毫秒到终点，资金流要走一天。中间那段，就是敞口。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="np-foot">按「书」分层：notes/&lt;book&gt;/chNN/ · 以后加新书，不动已有章节地址</div>
+  </section>
+</div>
