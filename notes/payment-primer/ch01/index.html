@@ -380,12 +380,13 @@
           <div class="tank"><i id="tankFill"></i></div>
         </div>
         <div class="calc-rows">
-          <div class="calc-row"><span>年化在途敞口（资金·日）</span><b id="oDays" class="mono">0</b></div>
+          <div class="calc-row"><span>全年累计在途敞口（资金·日，金额×天数）</span><b id="oDays" class="mono">0</b></div>
+          <div class="calc-row"><span>折合「占用一天」的资金</span><b id="oEquiv" class="mono">0</b></div>
           <div class="calc-row"><span>按年化 1.5% 计的占用成本</span><b id="oCost" class="mono">0</b></div>
           <div class="calc-row"><span>结算手续费收入 / 年</span><b id="oFee" class="mono">0</b></div>
           <div class="calc-row"><span>单点挪用情形下的最大暴露</span><b id="oMax" class="mono">0</b></div>
         </div>
-        <p class="calc-note"><b>制度约束</b>：自 2019 年 1 月起，支付机构客户备付金 <b>100% 集中交存央行</b>，机构不得以任何形式挪用。池子越大，越必须靠制度而不是靠自觉。</p>
+        <p class="calc-note"><b>怎么算的</b>：资金·日 = 日交易额 × 结算周期 × 365。它不是一笔现金，而是「金额 × 天数」的累加：以初始值（1,000 万元/日、T+1）为例：1,000 × 1 × 365 = 365,000 万元·日，折合 36.5 亿元占用一天；把周期改成 T+7，同一个池子就会变成 7 倍。真正某一刻压在池子里的钱，只有「备付金池」那一个数。<br><br><b>制度约束</b>：自 2019 年 1 月起，支付机构客户备付金 <b>100% 集中交存央行</b>，机构不得以任何形式挪用。池子越大，越必须靠制度而不是靠自觉。</p>
       </div>
     </div>
 

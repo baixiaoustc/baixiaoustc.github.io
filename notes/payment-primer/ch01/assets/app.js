@@ -260,7 +260,7 @@
   /* ── 5. 备付金精算 ─────────────────────────────────── */
   let vol = 1000, days = 1, fee = 0.6;
   const oPool = $('#oPool'), tankFill = $('#tankFill');
-  const oDays = $('#oDays'), oCost = $('#oCost'), oFee = $('#oFee'), oMax = $('#oMax');
+  const oDays = $('#oDays'), oCost = $('#oCost'), oFee = $('#oFee'), oMax = $('#oMax'), oEquiv = $('#oEquiv');
 
   function renderCalc() {
     const pool = vol * days;                    // 万元
@@ -269,6 +269,7 @@
     const feeIncome = vol * 365 * fee / 100;    // 万元/年
     oPool.textContent = nf(pool, pool < 100 ? 1 : 0);
     oDays.textContent = nf(poolDays) + ' 万元·日';
+    oEquiv.textContent = nf(poolDays / 10000, poolDays / 10000 < 10 ? 1 : 0) + ' 亿元';
     oCost.textContent = nf(cost, cost < 10 ? 1 : 0) + ' 万元/年';
     oFee.textContent = nf(feeIncome, feeIncome < 10 ? 1 : 0) + ' 万元/年';
     oMax.textContent = nf(pool) + ' 万元';
