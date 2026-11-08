@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="两格对比图：从欧洲看，太阳升起的东边是中国，所以叫东方；从美国看，中国隔着太平洋在它的西边——地方没动，方向反了">
+  <rect x="0" y="0" width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="44" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="22" fill="#2A2A2A">东方不是标签，是「站在哪里看」</text>
+
+  <rect x="28" y="68" width="272" height="238" rx="14" fill="#FFF5EC" stroke="#E8C79A" stroke-width="1.5"/>
+  <text x="164" y="97" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="16" fill="#8A5A0B">① 欧洲人站在中间</text>
+  <text x="164" y="119" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11" fill="#A8845A">太阳升起的那边，就叫「东」</text>
+
+  <line x1="48" y1="182" x2="280" y2="182" stroke="#D8C4A8" stroke-width="1.5"/>
+  <line x1="122" y1="158" x2="238" y2="158" stroke="#C8A45C" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <path d="M238 158 L230 153 L230 163 Z" fill="#C8A45C"/>
+  <text x="180" y="148" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11" fill="#A8845A">往东看</text>
+
+  <text x="52" y="174" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#A8845A">西</text>
+  <text x="270" y="174" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#A8845A">东</text>
+
+  <circle cx="112" cy="182" r="7" fill="#8A5A0B"/>
+  <text x="112" y="206" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#8A5A0B">欧洲</text>
+
+  <circle cx="252" cy="182" r="7" fill="#C8A45C"/>
+  <text x="252" y="206" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#8A5A0B">中国</text>
+
+  <text x="164" y="244" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#6A6A6A">中国在欧洲的东边</text>
+  <text x="164" y="266" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#6A6A6A">于是被叫作「东方」</text>
+  <text x="164" y="290" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11" fill="#A8845A">Orient 原意：太阳升起的地方</text>
+
+  <rect x="340" y="68" width="272" height="238" rx="14" fill="#EFF4FA" stroke="#AFC4DA" stroke-width="1.5"/>
+  <text x="476" y="97" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="16" fill="#2F5B7D">② 换成美国人站中间</text>
+  <text x="476" y="119" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11" fill="#6D8FA8">同一块地方，方向反过来了</text>
+
+  <line x1="360" y1="182" x2="592" y2="182" stroke="#C3D3E0" stroke-width="1.5"/>
+  <line x1="424" y1="158" x2="540" y2="158" stroke="#7FA3BE" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <path d="M424 158 L432 153 L432 163 Z" fill="#7FA3BE"/>
+  <text x="482" y="148" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11" fill="#6D8FA8">往西看</text>
+
+  <text x="364" y="174" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#6D8FA8">西</text>
+  <text x="582" y="174" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#6D8FA8">东</text>
+
+  <circle cx="400" cy="182" r="7" fill="#C8A45C"/>
+  <text x="400" y="206" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#2F5B7D">中国</text>
+
+  <circle cx="548" cy="182" r="7" fill="#2F5B7D"/>
+  <text x="548" y="206" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#2F5B7D">美国</text>
+
+  <text x="476" y="244" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#6A6A6A">隔着太平洋，中国在美国西边</text>
+  <text x="476" y="266" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="12" fill="#6A6A6A">同一个中国，变成「西方」</text>
+  <text x="476" y="290" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="11" fill="#6D8FA8">方位没变，看的人换了</text>
+
+  <text x="320" y="336" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="15" fill="#2A2A2A">同一个中国，一步没动——变的是「谁在哪儿看」</text>
+  <text x="320" y="362" text-anchor="middle" font-family="'PingFang SC','Hiragino Sans GB',sans-serif" font-size="13" fill="#6A6A6A">所以东方、西方是相对的方位；后来才又叠上「筷子、汉字、茶」这层文化意思</text>
+</svg>

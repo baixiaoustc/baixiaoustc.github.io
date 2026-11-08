@@ -442,5 +442,30 @@
       "越软、越薄、越重，就越需要多一根——不是为了多，是为了不转、不散": "Softer, thinner, heavier needs one more — not for show, but so it will not spin or fall apart",
       "一根扛不住，翻面就垂": "one sags when turned"
     }
+  },
+  "why-east.svg": {
+    "aria": "Two panels: from Europe, China lies east where the sun rises, so it is called the East; from the US, across the Pacific, the same China is west — the place did not move, the direction flipped",
+    "text": {
+      "东方不是标签，是「站在哪里看」": "East is not a label: it depends where you stand",
+      "① 欧洲人站在中间": "① Europeans in the middle",
+      "太阳升起的那边，就叫「东」": "the side where the sun rises is 'East'",
+      "往东看": "look east",
+      "西": "West",
+      "东": "East",
+      "欧洲": "Europe",
+      "中国": "China",
+      "中国在欧洲的东边": "China lies east of Europe",
+      "于是被叫作「东方」": "so it got called 'the East'",
+      "Orient 原意：太阳升起的地方": "Orient means: where the sun rises",
+      "② 换成美国人站中间": "② Now an American in the middle",
+      "同一块地方，方向反过来了": "same place, flipped direction",
+      "往西看": "look west",
+      "美国": "the US",
+      "隔着太平洋，中国在美国西边": "across the Pacific, China is west of the US",
+      "同一个中国，变成「西方」": "the same China becomes 'the West'",
+      "方位没变，看的人换了": "the place did not move; the viewer did",
+      "同一个中国，一步没动——变的是「谁在哪儿看」": "Same China, not a step moved — only the viewer changed",
+      "所以东方、西方是相对的方位；后来才又叠上「筷子、汉字、茶」这层文化意思": "East and West are relative directions; the cultural layer came later"
+    }
   }
 }

@@ -92,6 +92,39 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "why-east",
+      "date": "2026-11-08",
+      "kid": "yumi",
+      "age": 9,
+      "question": "为什么我们是东方？",
+      "subject": "society",
+      "secondary": "nature",
+      "depth": 2,
+      "figure": "assets/figures/why-east.svg",
+      "figureAlt": "两格对比图：从欧洲看，太阳升起的东边是中国，所以叫东方；从美国看，中国隔着太平洋在它的西边——地方没动，方向反了",
+      "oneLine": "「东方」不是地球自带的标签，是站在欧洲往东看划出来的：太阳升起的那边叫东。换个地方站，比如从美国看，中国就在西边了。",
+      "points": [
+        "最早是欧洲人这么叫的：太阳升起的方向叫「东」，太阳落下的方向叫「西」。所以「东方」＝欧洲东边的那些地方——中国、日本、印度都在里头。",
+        "我们也接着用这个词：中国在亚洲的东部、太平洋的西岸，太阳从东边升起来，天亮得早。后来「东方」还多了一层意思：筷子、汉字、茶这样的文化圈。",
+        "关键是它「相对」：同一个中国，从美国隔着太平洋看，就变成它的西边。地方一步没动，变的是看的人站在哪儿——所以先问「从哪儿看」，再谈东南西北。"
+      ],
+      "followUp": "那为什么地图上中国总画在右边？",
+      "source": "2026-11-08 玉米",
+      "time": "16:09:47",
+      "en": {
+        "question": "Why are we 'the East'?",
+        "oneLine": "'The East' is not a label the Earth carries — it was drawn by looking east from Europe: the side where the sun rises. Stand somewhere else, say in the US, and China is to the west.",
+        "points": [
+          "Europeans coined it first: the direction of sunrise was called East, sunset West. So 'the East' meant the lands east of Europe — China, Japan and India included.",
+          "We picked the term up too: China sits in the east of Asia, on the west shore of the Pacific, and the sun reaches us early. Later 'the East' also came to mean a cultural circle — chopsticks, characters, tea.",
+          "The key is that it is relative: the same China, seen from the US across the Pacific, becomes its west. Nothing moved — only who is looking, and from where. So ask 'from where?' before saying east or west."
+        ],
+        "followUp": "Then why is China always drawn on the right of the map?",
+        "figureAlt": "Two panels: seen from Europe, China lies to the east where the sun rises, so it is called the East; seen from the US across the Pacific, the same China is to the west — the place did not move, the direction flipped"
+      },
+      "figureEn": "assets/figures/en/why-east.svg"
+    },
+    {
       "id": "skewer-sticks",
       "date": "2026-11-07",
       "kid": "yumi",
