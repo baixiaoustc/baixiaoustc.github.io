@@ -92,6 +92,39 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "what-is-revolution",
+      "date": "2026-11-10",
+      "kid": "yumi",
+      "age": 9,
+      "question": "什么是革命？",
+      "subject": "society",
+      "secondary": "tech",
+      "depth": 2,
+      "figure": "assets/figures/what-is-revolution.svg",
+      "figureEn": "assets/figures/en/what-is-revolution.svg",
+      "figureAlt": "三行示意图：政治革命换掉的是「谁说了算」，从国王一个人定变成大家投票定；工业革命换掉的是「怎么做」，从手工一天一双鞋变成机器一天几百双；科学革命换掉的是「怎么想」，从书上说的算变成自己做实验算；底部一句：改革是在同一本书里改条款，革命是把整本书换掉",
+      "oneLine": "革命不是换一个人，是换一整套规矩：很多人觉得老办法不对 → 提出新办法 → 老规矩不肯让路 → 用很大的力量把整本规矩换掉。有的换「谁说了算」，有的换「怎么做东西」，有的换「怎么想」。",
+      "points": [
+        "先分清「换人」和「换规矩」。一个皇帝下台、另一个上台，如果规矩还是那套（谁听话谁吃亏、谁有地谁说了算），那只是换人，历史上叫改朝换代。革命要动的是规矩本身：谁来决定、地和钱归谁、女孩能不能上学、干活的人能不能休息。所以革命过后，普通人的日常做法会真的变——不只是台上的人换了名字。",
+        "为什么它常常不和平？因为规矩后面站着利益：老规矩让一部分人拿得多、一部分人拿得少；要改，拿得多的人不肯松手，想改的人只能攒很大的力量去推——投票、游行、罢工、打仗都是这股力量的几种形式。代价太大，所以人类社会更常用的是「改革」：还在同一本规矩里，一页一页改条款；革命是把整本换掉。区别不在「改得多少」，而在「改条款」还是「换书」。",
+        "而且「革命」不只发生在打仗上。工业革命没有人喊口号，是蒸汽机、电和流水线把「怎么做东西」换掉了：手工一天做一双鞋，机器一天做几百双；于是农民进城、工厂出现、钟表开始管人的一天。科学革命换的是「怎么想」——从前是书上写的、老人说的算，后来变成做实验、量数据的人算。所以听到一个「XX 革命」，就问一句：它换掉的到底是「谁说了算」，还是「怎么做」，还是「怎么想」？"
+      ],
+      "followUp": "那为什么有的规矩，不用打仗也能换掉？",
+      "source": "2026-11-10 玉米",
+      "en": {
+        "question": "What is a revolution?",
+        "oneLine": "A revolution does not swap one person — it swaps a whole set of rules: many people think the old way is wrong, someone proposes a new way, the old rules refuse to give way, and it takes a huge force to replace the entire rulebook. Some change who decides, some change how things are made, and some change how we think.",
+        "points": [
+          "First tell 'changing the person' from 'changing the rules'. If one emperor falls and another takes the throne while the rules stay the same — those who obey lose out, those who own land decide — then only the person changed; historians call that a change of dynasty. A revolution goes after the rules themselves: who decides, who owns land and money, whether girls may go to school, whether workers may rest. That is why, after a revolution, ordinary daily life really changes — it is not just a new name on the throne.",
+          "Why is it so often not peaceful? Because interests stand behind the rules: the old rules let some people take more and others less. To change them, the ones taking more will not let go, so the ones wanting change must gather a huge force to push — voting, marches, strikes and war are a few forms that force takes. The cost is enormous, which is why societies more often use reform: amending clauses page by page inside the same rulebook, whereas a revolution replaces the whole book. The difference is not 'big change versus small change', but 'amend clauses' versus 'replace the book'.",
+          "And revolutions do not happen only in wartime. The Industrial Revolution had no slogans: steam engines, electricity and the assembly line changed how things are made — one pair of shoes a day by hand became hundreds a day by machine, so farmers moved to cities, factories appeared, and clocks began to rule the day. The Scientific Revolution changed how we think: what counted used to be what the book said and what the elders said; now what counts is what experiments and measurements show. So whenever you hear 'the X revolution', ask one question: does it change who decides, how things are made, or how we think?"
+        ],
+        "followUp": "Then why can some rules be replaced without going to war?",
+        "figureAlt": "Three rows: a political revolution changes who decides — from a king deciding alone to everyone voting; an industrial revolution changes how things are made — from one pair of shoes a day by hand to hundreds a day by machine; a scientific revolution changes how we decide what is true — from what the book says to what your own experiment shows. Bottom line: reform edits clauses in the same book; revolution replaces the whole book"
+      },
+      "time": "07:54:17"
+    },
+    {
       "id": "why-east",
       "date": "2026-11-08",
       "kid": "yumi",

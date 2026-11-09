@@ -467,5 +467,27 @@
       "同一个中国，一步没动——变的是「谁在哪儿看」": "Same China, not a step moved — only the viewer changed",
       "所以东方、西方是相对的方位；后来才又叠上「筷子、汉字、茶」这层文化意思": "East and West are relative directions; the cultural layer came later"
     }
+  },
+  "what-is-revolution.svg": {
+    "aria": "Three rows: a political revolution changes who decides — from a king deciding alone to everyone voting; an industrial revolution changes how things are made — from one pair of shoes a day by hand to hundreds a day by machine; a scientific revolution changes how we decide what is true — from what the book says to what your own experiment shows. Bottom line: reform edits clauses in the same book; revolution replaces the whole book",
+    "text": {
+      "革命换的不是一个人，是一整套做法": "A revolution swaps a whole way of doing things, not one person",
+      "政治革命": "Political revolution",
+      "换「谁说了算」": "changes who decides",
+      "国王一个人定": "a king decides alone",
+      "大家投票定": "everyone votes",
+      "同一块地方，规矩整本换了": "same place, the whole rulebook replaced",
+      "工业革命": "Industrial revolution",
+      "换「怎么做东西」": "changes how things are made",
+      "手工一天一双鞋": "one pair of shoes a day by hand",
+      "机器一天几百双": "hundreds a day by machine",
+      "没人喊口号，是一台台机器改的": "no slogans — machines did the changing",
+      "科学革命": "Scientific revolution",
+      "换「怎么想」": "changes how we think",
+      "书上说的算": "what the book says counts",
+      "自己实验算": "what your experiment shows counts",
+      "判断对错的方法变了": "the way we judge what is true changed",
+      "改革＝在同一本书里改条款　｜　革命＝把整本书换掉": "Reform = amend clauses in the same book  |  Revolution = replace the whole book"
+    }
   }
 }
