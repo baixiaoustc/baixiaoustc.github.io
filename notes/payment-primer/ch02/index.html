@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>支付的业务模式：同一笔钱，五个坐标｜一本书读懂支付 · 第 2 章</title>
+<meta name="description" content="《一本书读懂支付》第 2 章可视化笔记：场景、工具、角色、资金来源、地理范围五个分类轴，八种资金来源，五要素与三要素卡组织，第三方与聚合支付。">
+<meta name="theme-color" content="#0E2233">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E2233'/%3E%3Cpath d='M16 6 L26 16 L16 26 L6 16 Z' fill='none' stroke='%23C8A45C' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23C8A45C'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="scrollbar"><i id="progress"></i></div>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <div class="brand"><span class="mark">◆</span><span class="brand-t">STUDY NOTES</span><span class="brand-s">CH.02 / 业务模式</span></div>
+  <nav class="topnav">
+    <a href="#s01">01 坐标</a><a href="#s02">02 场景</a><a href="#s03">03 工具</a><a href="#s04">04 角色</a><a href="#s05">05 来源</a><a href="#s06">06 卡组织</a><a href="#s07">07 服务商</a><a href="#s08">08 地理</a>
+  </nav>
+</div></header>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero"><div class="wrap hero-in">
+  <div class="hero-meta mono"><span>BOOK</span><span>一本书读懂支付</span><span>陈斌 · 第 2 章</span><span>2026-11-09</span></div>
+  <h1 class="hero-title">同一笔钱，<br>五个坐标</h1>
+  <p class="hero-sub">支付的业务模式不是一个清单，而是一张坐标图。场景、工具、角色、资金来源、地理范围——换个轴看，同一笔支付就换一种解释。这一章要做的，是把五个轴摆在一起，让「这笔钱到底算什么支付」有答案。</p>
+
+  <div class="hero-stats">
+    <div class="stat"><b>5<small>轴</small></b><span>分类维度</span></div>
+    <div class="stat"><b>8<small>种</small></b><span>资金来源</span></div>
+    <div class="stat"><b>4<small>类</small></b><span>角色关系</span></div>
+    <div class="stat"><b>50<small>%</small></b><span>B2B 金额占比</span></div>
+  </div>
+
+  <div class="stamp"><div class="stamp-in mono">BUSINESS<br>MODEL<br>ATLAS<br>CH.02</div></div>
+</div></section>
+
+<!-- ═══════════ 01 五个坐标 ═══════════ -->
+<section id="s01" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 01</span>
+    <h2>先问「按什么分」</h2>
+    <p class="sec-lead">同一个「微信扫码买咖啡」，按场景是线下，按工具是手机，按角色是 C2B，按来源是互联网账户，按地理是境内。分类没有唯一正确答案，只有「你正在回答哪个问题」。</p>
+  </div>
+
+  <div class="axis-bar" id="axisBar">
+    <button class="axis-btn is-on" data-axis="scene"><span class="k">A</span>场景</button>
+    <button class="axis-btn" data-axis="tool"><span class="k">B</span>工具</button>
+    <button class="axis-btn" data-axis="role"><span class="k">C</span>角色</button>
+    <button class="axis-btn" data-axis="source"><span class="k">D</span>资金来源</button>
+    <button class="axis-btn" data-axis="geo"><span class="k">E</span>地理范围</button>
+  </div>
+
+  <div class="axis-read">
+    <h3 id="axisTitle">按场景：钱在哪儿交接</h3>
+    <p id="axisLead">先看付款人与收款人有没有面对面。</p>
+    <span class="axis-count mono" id="axisCount">2 / 2</span>
+  </div>
+  <div class="axis-grid" id="axisCards" data-audit-group></div>
+
+  <div class="aside">关键洞察：<b>分类轴之间不是互斥的</b>。一笔支付可以同时是「线下 + 手机 + C2B + 互联网账户 + 境内」。先把轴选对，再谈模式。</div>
+</div></section>
+
+<!-- ═══════════ 02 场景 ═══════════ -->
+<section id="s02" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 02</span>
+    <h2>线下与线上：翻的不是「有没有网」，是「谁担保」</h2>
+    <p class="sec-lead">线下支付的核心是面对面：身份容易认证、环节短、回款快。线上支付把这些全部反过来，于是必须引入第三方来补信任。</p>
+  </div>
+
+  <div class="scene-grid" data-audit-group>
+    <button class="scene-card is-on" id="sceneOff" data-audit-group>
+      <span class="sc-k mono">SCENE / 01</span>
+      <h3>线下支付</h3>
+      <p class="sc-sub">面对面 · 物理接触</p>
+      <ul>
+        <li><b>身份</b><span>见面即认证，冒名成本高</span></li>
+        <li><b>环节</b><span>付款、收款，两步完成</span></li>
+        <li><b>回款</b><span>现金当场到账</span></li>
+        <li><b>费用</b><span>可能为零，现金不收费</span></li>
+      </ul>
+    </button>
+    <button class="scene-card" id="sceneOn">
+      <span class="sc-k mono">SCENE / 02</span>
+      <h3>线上支付</h3>
+      <p class="sc-sub">无接触 · 第三方担保</p>
+      <ul>
+        <li><b>身份</b><span>见不到人，验证是最大挑战</span></li>
+        <li><b>环节</b><span>请求、指令、扣款、回传</span></li>
+        <li><b>回款</b><span>交易后 N 天才结算</span></li>
+        <li><b>费用</b><span>第三方处理费，必然发生</span></li>
+      </ul>
+    </button>
+  </div>
+
+  <div class="scene-metrics">
+    <div class="sm-row"><span class="sm-k">身份可认证度</span><span class="sm-bar"><i id="smId" style="width:90%"></i></span><span class="sm-v"><b id="smIdV">90</b> / 100</span></div>
+    <div class="sm-row"><span class="sm-k">参与环节</span><span class="sm-bar"><i id="smStep" style="width:40%"></i></span><span class="sm-v"><b id="smStepV">2</b> 步</span></div>
+    <div class="sm-row"><span class="sm-k">回款时差</span><span class="sm-bar"><i id="smDays" style="width:10%"></i></span><span class="sm-v"><b id="smDaysV">0</b> 天</span></div>
+  </div>
+  <p class="scene-note" id="sceneNote">线下支付未必离线：POS 联网、二维码在线，只要人面对面，仍算线下。<b>「线」指通信网络，不指有没有人。</b></p>
+
+  <div class="aside">关键洞察：线上支付不是把线下搬到网上，而是把「信任」外包给第三方。第三方先收钱、再通知发货，赚的是担保与结算的时间差。</div>
+</div></section>
+
+<!-- ═══════════ 03 工具时间轴 ═══════════ -->
+<section id="s03" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 03</span>
+    <h2>工具换了六代，换的都是「授权信息怎么传」</h2>
+    <p class="sec-lead">信息流和资金流伴生：授权、指令、结果，总得靠一种工具传过去。从邮局到手机，变的是载体、速度与成本，不变的是「先授权、后扣款」。</p>
+  </div>
+
+  <div class="tl-scroll"><div class="tl">
+    <div class="tl-line"></div>
+    <div class="tl-stops" id="tlStops">
+      <button class="tl-stop" data-t="letter"><span class="tl-year mono">19 世纪</span><span class="tl-dot"></span><span class="tl-name">信函支付</span><span class="tl-carrier">邮政 / 信汇</span></button>
+      <button class="tl-stop" data-t="telegraph"><span class="tl-year mono">150 年前</span><span class="tl-dot"></span><span class="tl-name">电报支付</span><span class="tl-carrier">电报 / 电汇</span></button>
+      <button class="tl-stop" data-t="ivr"><span class="tl-year mono">1990s</span><span class="tl-dot"></span><span class="tl-name">IVR 支付</span><span class="tl-carrier">固定电话按键</span></button>
+      <button class="tl-stop is-dead" data-t="tv"><span class="tl-year mono">2000s</span><span class="tl-dot"></span><span class="tl-name">电视支付</span><span class="tl-carrier">有线电视 / 遥控器</span></button>
+      <button class="tl-stop" data-t="browser"><span class="tl-year mono">1995–</span><span class="tl-dot"></span><span class="tl-name">浏览器支付</span><span class="tl-carrier">电脑 / Cookie</span></button>
+      <button class="tl-stop is-on" data-t="phone"><span class="tl-year mono">2008–</span><span class="tl-dot"></span><span class="tl-name">手机支付</span><span class="tl-carrier">App / QR / NFC</span></button>
+    </div>
+
+    <div class="tl-read">
+      <div>
+        <div class="tr-year mono" id="tlYear">2008 – 现在</div>
+        <div class="tr-name" id="tlName">手机支付</div>
+        <p class="tr-desc" id="tlDesc">智能手机解决了空中传递的加密问题，电子钱包把现金、卡、会员卡都装进手机。扫码与 NFC 只是入口，背后仍是账户与指令。</p>
+      </div>
+      <div class="tl-metrics">
+        <div class="tl-metric"><div class="k">信息速度</div><b id="tlSpeed">实时</b></div>
+        <div class="tl-metric"><div class="k">单笔成本</div><b id="tlCost">低</b></div>
+        <div class="tl-metric"><div class="k">安全 / 覆盖</div><b id="tlSec">高 / 最广</b></div>
+      </div>
+    </div>
+  </div></div>
+
+  <div class="aside">电视支付是被冷落的分支：封闭网络、遥控器输入困难、智能手机替代。它提醒我们，<b>工具不是越新越好，是越适合「输入与验证」越好</b>。</div>
+</div></section>
+
+<!-- ═══════════ 04 角色四象限 ═══════════ -->
+<section id="s04" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 04</span>
+    <h2>谁付给谁：四个格子，两条箭头方向相反</h2>
+    <p class="sec-lead">B 是商户，C 是消费者。按资金流向分成四种关系；金额占比与使用频率恰好错位：最常见的不是最大的，最大的也不是最频繁的。</p>
+  </div>
+
+  <div class="quad-grid" id="quadGrid" data-audit-group>
+    <button class="quad-cell" data-q="c2c">
+      <span class="q-k mono">QUAD / C2C</span>
+      <div class="q-role">消费者 → 消费者</div>
+      <div class="q-flow"><span class="who">C</span><span class="arr">→</span><span class="who">C</span></div>
+      <div class="q-share"><span class="bar"><i style="width:10%"></i></span><b>10%</b></div>
+      <div class="q-tag">小额 · 低频 · 线下居多</div>
+    </button>
+    <button class="quad-cell is-on" data-q="c2b">
+      <span class="q-k mono">QUAD / C2B</span>
+      <div class="q-role">消费者 → 商户</div>
+      <div class="q-flow"><span class="who">C</span><span class="arr">→</span><span class="who">B</span></div>
+      <div class="q-share"><span class="bar"><i style="width:20%"></i></span><b>20%</b></div>
+      <div class="q-tag">最常用 · 笔数最多</div>
+    </button>
+    <button class="quad-cell" data-q="b2b">
+      <span class="q-k mono">QUAD / B2B</span>
+      <div class="q-role">商户 → 商户</div>
+      <div class="q-flow"><span class="who">B</span><span class="arr">→</span><span class="who">B</span></div>
+      <div class="q-share"><span class="bar"><i style="width:50%"></i></span><b>50%</b></div>
+      <div class="q-tag">金额最大 · 频率最低</div>
+    </button>
+    <button class="quad-cell" data-q="b2c">
+      <span class="q-k mono">QUAD / B2C</span>
+      <div class="q-role">商户 → 消费者</div>
+      <div class="q-flow"><span class="who">B</span><span class="arr">→</span><span class="who">C</span></div>
+      <div class="q-share"><span class="bar"><i style="width:20%"></i></span><b>20%</b></div>
+      <div class="q-tag">工资 · 补贴 · 助学金</div>
+    </button>
+  </div>
+
+  <div class="quad-read">
+    <div>
+      <div class="qr-k mono" id="qReadK">SELECTED / C2B</div>
+      <div class="qr-t" id="qReadT">消费者付给商户</div>
+    </div>
+    <div>
+      <p class="qr-d" id="qReadD">最常见的支付：买咖啡、点外卖、逛超市。单笔小、笔数多，是钱包与收单机构的主战场。中国支付金额占比约 <b>20%</b>。</p>
+      <div class="qr-n"><span>金额占比<b id="qShare">20%</b></span><span>频率<b id="qFreq">最高</b></span><span>单笔<b id="qTicket">小</b></span></div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>B2C 与 C2B 方向完全相反</b>。B2C 是商户给消费者发钱（工资、补贴），最容易被误当成「商户收款」。方向一错，产品与风控都会做反。</div>
+</div></section>
+
+<!-- ═══════════ 05 资金来源 ═══════════ -->
+<section id="s05" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 05</span>
+    <h2>八种「钱从哪来」：决定风险归谁</h2>
+    <p class="sec-lead">按资金来源分类，最接近支付本质。同样是付 100 元，现金、支票、信用卡、BNPL 的风险归属、扣款时点、适用人群完全不同。</p>
+  </div>
+
+  <div class="src-grid" id="srcGrid" data-audit-group>
+    <button class="src-card" data-s="cash"><span class="s-n mono">SRC 01</span><h4>现金</h4><span class="s-tag">即时 · 不依赖网络</span><div class="s-line">谁持有谁付，离线也能完成</div></button>
+    <button class="src-card" data-s="cheque"><span class="s-n mono">SRC 02</span><h4>支票</h4><span class="s-tag">延迟 · 依赖银行</span><div class="s-line">出票不等于到账，可能跳票</div></button>
+    <button class="src-card" data-s="bank"><span class="s-n mono">SRC 03</span><h4>银行账户</span><span class="s-tag">即时 · 账面为限</span><div class="s-line">转账快，不能透支，收处理费</div></button>
+    <button class="src-card is-on" data-s="internet"><span class="s-n mono">SRC 04</span><h4>互联网账户</h4><span class="s-tag">即时 · 高频小额</span><div class="s-line">绑卡支付，减少金融账户暴露</div></button>
+    <button class="src-card" data-s="credit"><span class="s-n mono">SRC 05</span><h4>信用卡</h4><span class="s-tag">信用 · 先透支后还款</span><div class="s-line">五方分工，欺诈与拒付风险高</div></button>
+    <button class="src-card" data-s="debit"><span class="s-n mono">SRC 06</span><h4>借记卡</h4><span class="s-tag">即时 · 余额为限</span><div class="s-line">无余额即失败，丢失损失大</div></button>
+    <button class="src-card" data-s="prepaid"><span class="s-n mono">SRC 07</span><h4>预付费卡</span><span class="s-tag">预付 · 额度固定</span><div class="s-line">先存后用，独立于银行账户</div></button>
+    <button class="src-card" data-s="bnpl"><span class="s-n mono">SRC 08</span><h4>先买后付</h4><span class="s-tag">信用 · 分期偿还</span><div class="s-line">用坏账概率定价，年轻人偏爱</div></button>
+  </div>
+
+  <div class="src-read">
+    <div>
+      <div class="sr-l mono" id="srL">SELECTED / SRC 04</div>
+      <div class="sr-name" id="srName">互联网账户</div>
+      <div class="sr-type" id="srType">信息账户 · 即时扣款</div>
+    </div>
+    <p class="sr-d" id="srD">把邮箱、IM、手机号或电商会员账户与金融账户绑定，支付时从信息账户发起。<b>好处</b>是不直接暴露银行卡；<b>问题</b>是账户天天在网上，容易被盗，必须设限额与强授权。</p>
+  </div>
+  <div class="src-legend"><span>即时扣款</span><span>信用透支</span><span>预付余额</span><span>延迟清算</span></div>
+
+  <div class="aside">关键洞察：<b>资金来源决定「谁承担信用风险」</b>。现金与借记卡是「有多少花多少」；信用卡与 BNPL 是「先花后还」，风险从付款人转移到发卡方或 BNPL 公司。</div>
+</div></section>
+
+<!-- ═══════════ 06 卡组织拓扑 ═══════════ -->
+<section id="s06" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 06</span>
+    <h2>五要素与三要素：多一个参与方，多一层成本</h2>
+    <p class="sec-lead">信用卡号称支付行业王冠上的明珠：五方分工、规则成熟，但环节多、费用高。三要素把发卡、收单并进卡组织，环节少了，覆盖也窄了。</p>
+  </div>
+
+  <div class="psp-bar">
+    <button class="axis-btn is-on" id="topoFive"><span class="k">MODE</span>五要素</button>
+    <button class="axis-btn" id="topoThree"><span class="k">MODE</span>三要素</button>
+  </div>
+
+  <div class="topo-scroll"><div class="topo" id="topo">
+    <svg id="topoSvg"><g id="topoEdges"></g></svg>
+    <div class="topo-node" id="nHolder" style="left:26px;top:54px"><div class="tn-k mono">HOLDER</div><h4>持卡人</h4><p>申请卡、刷卡消费</p></div>
+    <div class="topo-node" id="nIssuer" style="left:26px;top:214px"><div class="tn-k mono">ISSUER</div><h4>发卡行</h4><p>授信、发卡、出账单</p></div>
+    <div class="topo-node" id="nNetwork" style="left:337px;top:134px"><div class="tn-k mono">SCHEME</div><h4>卡组织</h4><p>规则、清算、品牌网络</p></div>
+    <div class="topo-node" id="nAcquirer" style="left:648px;top:214px"><div class="tn-k mono">ACQUIRER</div><h4>收单行</h4><p>发展商户、受理刷卡</p></div>
+    <div class="topo-node" id="nMerchant" style="left:648px;top:54px"><div class="tn-k mono">MERCHANT</div><h4>商户</h4><p>签约受理、提供商品</p></div>
+  </div></div>
+
+  <div class="topo-legend"><span>实线：五要素的业务与清算关系</span><span>虚线：三要素把发卡、收单并进卡组织</span></div>
+
+  <div class="topo-read">
+    <div><div class="k">参与方</div><b id="tpParties">5</b></div>
+    <div><div class="k">清算环节</div><b id="tpSteps">4</b></div>
+    <div class="good"><div class="k">覆盖 / 成本</div><b id="tpTrade">广 / 高</b></div>
+  </div>
+
+  <div class="aside">五要素：银联、VISA、JCB、MasterCard；三要素：American Express、Discover。<b>三要素不是更先进，是另一种取舍</b>：少了发卡与收单的银行网络，覆盖弱，但成本低、决策快。</div>
+</div></section>
+
+<!-- ═══════════ 07 服务商 ═══════════ -->
+<section id="s07" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 07</span>
+    <h2>第三方整合「卡」，聚合整合「第三方」</h2>
+    <p class="sec-lead">商户不可能摆一排 POS 机。第三方支付把银行与卡品牌收成一条接入；聚合支付再把几家第三方收成一个柜台。每收一层，离商户更近，离资金更远。</p>
+  </div>
+
+  <div class="psp-bar">
+    <button class="axis-btn is-on" id="pspThird"><span class="k">MODE</span>第三方支付</button>
+    <button class="axis-btn" id="pspAgg"><span class="k">MODE</span>加上聚合</button>
+  </div>
+
+  <div class="psp">
+    <div class="psp-row">
+      <div class="psp-k mono">MERCHANT SIDE<b>商户收银台</b></div>
+      <div class="psp-devices" id="devices">
+        <span class="device">VISA POS</span><span class="device">MasterCard POS</span><span class="device">银联 POS</span><span class="device">借记卡 POS</span><span class="device">QR 扫码</span><span class="device">自有收银</span>
+      </div>
+    </div>
+    <div class="psp-row">
+      <div class="psp-k mono">SERVICE LAYER<b>支付服务层</b></div>
+      <div class="psp-lane" id="pspLane">
+        <div class="psp-box is-on" id="pspAggBox"><div class="pb-k mono">AGGREGATOR</div><b>聚合柜台</b></div>
+        <span class="psp-arrow" id="pspArrow1">→</span>
+        <div class="psp-box" id="pspA"><div class="pb-k mono">PSP A</div><b>第三方 A</b></div>
+        <div class="psp-box is-dim" id="pspB"><div class="pb-k mono">PSP B</div><b>第三方 B</b></div>
+        <div class="psp-box is-dim" id="pspC"><div class="pb-k mono">PSP C</div><b>第三方 C</b></div>
+      </div>
+    </div>
+    <div class="psp-row">
+      <div class="psp-k mono">BANK SIDE<b>银行与卡组织</b></div>
+      <div class="psp-lane">
+        <div class="psp-box"><div class="pb-k mono">ISSUER</div><b>发卡行</b></div>
+        <div class="psp-box"><div class="pb-k mono">SCHEME</div><b>卡组织</b></div>
+        <div class="psp-box"><div class="pb-k mono">ACQUIRER</div><b>收单行</b></div>
+      </div>
+    </div>
+  </div>
+
+  <p class="psp-note" id="pspNote">第三方支付：商户只接一条线，品牌与银行由它整合；它既服务消费者，也服务商户，<b>更快拿到备付金</b>，也更靠近资金。</p>
+
+  <div class="aside">关键洞察：聚合支付只服务商户，不直接服务消费者；它要等第三方的结算周期才出款，但<b>更靠近场景，掌握消费数据</b>。越靠近商户，越懂交易；越靠近银行，越懂资金。</div>
+</div></section>
+
+<!-- ═══════════ 08 地理 ═══════════ -->
+<section id="s08" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 08</span>
+    <h2>跨境与入境：多的是「关」，难的是「兼容」</h2>
+    <p class="sec-lead">跨境支付要过海关、商检、外汇、物流四道关；入境支付要解决外国钱包受理、币种兑换、海关退税、语言本地化。一个是流程长，一个是接口多。</p>
+  </div>
+
+  <div class="geo-bar">
+    <button class="axis-btn is-on" id="geoOutBtn"><span class="k">MODE</span>跨境（出境买）</button>
+    <button class="axis-btn" id="geoInBtn"><span class="k">MODE</span>入境（游客买）</button>
+  </div>
+
+  <div class="geo-grid" data-audit-group>
+    <div class="geo-map">
+      <div class="gm-k mono" id="geoK">OUTBOUND / 跨境购买</div>
+      <h3 id="geoTitle">消费者在境内，商户在境外</h3>
+      <div class="geo-route" id="geoRoute">
+        <span class="geo-stop is-on">付款人</span><span class="geo-gate">→</span>
+        <span class="geo-stop">海关</span><span class="geo-gate">→</span>
+        <span class="geo-stop">商检</span><span class="geo-gate">→</span>
+        <span class="geo-stop">外汇</span><span class="geo-gate">→</span>
+        <span class="geo-stop">国际物流</span><span class="geo-gate">→</span>
+        <span class="geo-stop is-on">境外商户</span>
+      </div>
+      <p class="geo-read" id="geoRead">环节多、汇率波动大、纠纷难解决；每一道关都可能把「支付成功」拖成「货没到」。</p>
+    </div>
+
+    <div class="geo-list">
+      <div class="gl-k mono" id="geoListK">FOUR GATES / 跨境四关</div>
+      <ul id="geoList">
+        <li><b>海关</b>报关、税号、商品归类；支付金额要与报关单一致。</li>
+        <li><b>商检</b>品类准入与检验；不合规会被扣货。</li>
+        <li><b>外汇</b>币种、额度、申报；汇率在途就是敞口。</li>
+        <li><b>物流</b>跨境时效长；签收与支付确认不同步。</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：跨境支付的风险不在「付不出」，在<b>付了之后货能不能到</b>；入境支付的风险不在「能不能付」，在<b>商户认不认这个钱包</b>。</div>
+</div></section>
+
+<!-- ═══════════ 09 小结 ═══════════ -->
+<section id="s09" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 09</span>
+    <h2>收口：一张图，三句话</h2>
+    <p class="sec-lead">这一章没有「唯一正确的支付方式」，只有「在哪个坐标下、回答哪个问题」。</p>
+  </div>
+
+  <div class="map-grid" data-audit-group>
+    <div class="map-cell"><div class="mc-k mono">A / 场景</div><b>线下 / 线上</b><p>有没有面对面；信任由谁担保</p></div>
+    <div class="map-cell"><div class="mc-k mono">B / 工具</div><b>信函 → 手机</b><p>授权信息靠什么传；速度与成本</p></div>
+    <div class="map-cell"><div class="mc-k mono">C / 角色</div><b>C2C / C2B / B2B / B2C</b><p>谁付给谁；方向与金额占比</p></div>
+    <div class="map-cell"><div class="mc-k mono">D / 来源</div><b>现金 … BNPL</b><p>钱在不在账上；信用风险归谁</p></div>
+    <div class="map-cell"><div class="mc-k mono">E / 地理</div><b>境内 / 跨境 / 入境</b><p>多几道关；多几种接口</p></div>
+  </div>
+
+  <div class="three-law">
+    <div class="law"><span class="mono">RULE 01</span><p>先问「按什么分」，再问「这是什么支付」。<b>分类轴比分类结果重要</b>。</p></div>
+    <div class="law"><span class="mono">RULE 02</span><p>最常见的不是金额最大的：<b>C2B 最频繁，B2B 金额最大</b>。</p></div>
+    <div class="law"><span class="mono">RULE 03</span><p>每多一层服务商，就多一层整合，也多一层时间差与数据差。<b>谁离商户近，谁懂场景；谁离银行近，谁懂资金</b>。</p></div>
+  </div>
+
+  <div class="quiz">
+    <button class="q-item"><span class="q-i mono">Q1</span><span class="q-t">同一个微信扫码买咖啡，用五个坐标分别怎么描述？</span><span class="q-a">线下（面对面）+ 手机（QR）+ C2B（消费者付商户）+ 互联网账户（绑卡）+ 境内。五个轴可以同时成立。</span></button>
+    <button class="q-item"><span class="q-i mono">Q2</span><span class="q-t">B2C 和 C2B 的区别是什么？为什么容易搞反？</span><span class="q-a">B2C 是商户付给消费者（工资、补贴、助学金），C2B 是消费者付给商户。资金流向完全相反，看到「B2C 收款」就要警惕。</span></button>
+    <button class="q-item"><span class="q-i mono">Q3</span><span class="q-t">五要素与三要素卡组织，各自牺牲了什么、换来了什么？</span><span class="q-a">五要素分工细、覆盖广，但环节多、成本高；三要素把发卡与收单并进卡组织，环节少、成本低，但缺少银行网络，覆盖与发卡力度弱。</span></button>
+    <button class="q-item"><span class="q-i mono">Q4</span><span class="q-t">第三方支付与聚合支付，谁离资金更近、谁离场景更近？</span><span class="q-a">第三方更靠近银行与资金，能更快拿到备付金，同时服务消费者与商户；聚合只服务商户，出款要等第三方结算，但更靠近商户场景，掌握消费数据。</span></button>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>
+    <p class="mono">CHAPTER VISUAL NOTES / 2026-11-09</p>
+    <p>原书：陈斌《一本书读懂支付》第 2 章「支付的业务模式」 · <a href="https://book.douban.com/subject/36422205/" target="_blank" rel="noopener">豆瓣条目</a></p>
+  </div>
+  <div class="foot-r mono"><a href="../ch01/">← 第 1 章</a><a href="../">章节索引</a></div>
+</div></footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
