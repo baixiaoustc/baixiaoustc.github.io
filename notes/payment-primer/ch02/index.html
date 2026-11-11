@@ -376,6 +376,115 @@
   </div>
 </div></section>
 
+<!-- ═══════════ 10 资金安全风险敞口 ═══════════ -->
+<section id="s10" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 10</span>
+    <h2>资金安全风险敞口：把「业务模式」翻译成风险清单</h2>
+    <p class="sec-lead">第 1 章按<b>时间轴</b>列环节（交易成立 → 清算 → 记账），这一章按<b>结构轴</b>列模式。同一笔钱换个模式，敞口不会消失，只会从「时间」挪到「层级」，从「自己」挪到「对手方」。</p>
+  </div>
+
+  <div class="ex-types" data-audit-group>
+    <div class="ex-type"><span class="mono">在途</span><h4>在途资金敞口</h4><p class="ex-f mono">资金量 × 滞留时长</p><p>备付金池、结算批次、跨行在途。本章多出的是「层级带来的时差」：每多一层服务商，钱就在路上多停一段。</p></div>
+    <div class="ex-type"><span class="mono">信用</span><h4>信用敞口</h4><p class="ex-f mono">授信余额 × 违约概率 × 违约损失率</p><p>本章多出的是「谁垫钱」：现金与借记卡不垫，信用卡与 BNPL 由发卡方或 BNPL 公司先垫。</p></div>
+    <div class="ex-type"><span class="mono">操作</span><h4>操作敞口</h4><p class="ex-f mono">可绕过校验的路径 × 单笔上限</p><p>二清、方向搞反、重复出款、分类轴用错导致责任边界错。人为与技术双来源。</p></div>
+    <div class="ex-type"><span class="mono">对手方</span><h4>对手方敞口</h4><p class="ex-f mono">净额头寸 × 对手方违约概率</p><p>卡组织、发卡行、收单行、第三方、聚合——清算之前，它们都是「还没给钱的人」。</p></div>
+  </div>
+
+  <div class="matrix" id="matrix">
+    <button class="mx-row" data-m="0">
+      <span class="mx-i mono">01</span>
+      <span class="mx-k">分类坐标</span>
+      <span class="mx-c mono">五个坐标同时成立</span>
+      <span class="mx-tag">操作</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：轴用错，责任就归错——把 B2C 出款记成收款、把二清当聚合、把贷记当借记。<br>
+        <strong>我们能做的</strong>：建资金模型时五个轴各自落字段，一笔支付必须同时有场景、工具、方向、来源、地理五个值；<b>只有一个标签的模型，风险一定落错人</b>。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="1">
+      <span class="mx-i mono">02</span>
+      <span class="mx-k">线下场景</span>
+      <span class="mx-c mono">POS / 扫码 · 面对面</span>
+      <span class="mx-tag">欺诈 · 操作</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：侧录与伪卡、终端被改、店员合谋套现（顾客刷卡、店里给现金）。<br>
+        <strong>我们能做的</strong>：终端与密钥、序列号绑定；交易与订单/工单关联；异常时段与整数金额分布监控。人在现场，好处是能当面对证，前提是你留了证。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="2">
+      <span class="mx-i mono">03</span>
+      <span class="mx-k">线上场景</span>
+      <span class="mx-c mono">网关 / 无卡 / 令牌</span>
+      <span class="mx-tag">欺诈 · 信用</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：无卡盗刷、持卡人拒付（chargeback）、货不对板被退款、授权报文被重放。<br>
+        <strong>我们能做的</strong>：强授权与风控评分、商户准入（KYC/KYB）、拒付率监控、发货与签收凭证留档；报文带唯一序号与有效期，重放直接拒绝。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="3">
+      <span class="mx-i mono">04</span>
+      <span class="mx-k">角色方向</span>
+      <span class="mx-c mono">C2C / C2B / B2B / B2C</span>
+      <span class="mx-tag">操作</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：方向搞反。<b>B2C 是商户付给消费者</b>（工资、补贴、退款），若被当成「收款」处理，钱会从商户口袋里真付出去，而且账还平。<br>
+        <strong>我们能做的</strong>：资金方向做成枚举字段强制校验，路由、限额、对账、发票都按方向分叉；系统里不允许出现含糊的「收款」二字。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="4">
+      <span class="mx-i mono">05</span>
+      <span class="mx-k">资金来源</span>
+      <span class="mx-c mono">现金 → 账户 → 卡 → BNPL</span>
+      <span class="mx-tag">信用 · 在途</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：信用类（信用卡、BNPL）把风险转给垫资方，却没定清谁兜底；预付卡则是「先收钱、后交付」的天然负债。<br>
+        <strong>我们能做的</strong>：每种来源都标注三件事——<b>扣款时点、谁垫钱、失败谁承担</b>；BNPL 明确出资方与坏账归属，预付余额单独记账、不并进自有资金。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="5">
+      <span class="mx-i mono">06</span>
+      <span class="mx-k">卡组织</span>
+      <span class="mx-c mono">五要素 / 三要素 · 清算网络</span>
+      <span class="mx-tag">对手方 · 在途</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：五要素参与方多，差错定位慢、责任在几家之间来回推；三要素把发卡与收单并进卡组织，<b>信用风险与结算风险一起集中在自己身上</b>。<br>
+        <strong>我们能做的</strong>：按参与方逐段对账、清算批次与汇率留痕；三要素模式下额外盯一条：自有垫资上限与集中度。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="6">
+      <span class="mx-i mono">07</span>
+      <span class="mx-k">服务商</span>
+      <span class="mx-c mono">第三方 vs 聚合 · 资金层级</span>
+      <span class="mx-tag">操作 · 在途</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：聚合先收钱、再转付商户＝事实上的<b>二清</b>（无牌收付资金）；结算时差一层层叠加；聚合方一旦跑路，商户的钱在他账上。<br>
+        <strong>我们能做的</strong>：要么只做指令聚合、不碰资金，要么持牌承接；单商户资金隔离、结算单可查、兜底周期写进合同；别用「技术集成」描述一个账户结构问题。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="7">
+      <span class="mx-i mono">08</span>
+      <span class="mx-k">跨境入境</span>
+      <span class="mx-c mono">海关 / 商检 / 外汇 / 物流</span>
+      <span class="mx-tag">在途 · 合规 · 汇率</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：支付成功而货未到（报关、商检扣货）；外汇在途与汇率波动；入境侧钱包受理失败、退汇、拒付率高。<br>
+        <strong>我们能做的</strong>：支付金额与报关单一致性校验、分币种对账、锁汇与滑点留痕、退款原路退回；入境商户的 KYC/AML 与本地钱包兼容性提前验证。
+      </span></span>
+    </button>
+  </div>
+
+  <p class="cs-note">口径提醒：本章不讨论金额与费率，只讨论<b>「时长 × 层级 × 谁垫钱」</b>；涉及资金量级的算法（池、资金·日、占用成本）沿用第 1 章 § 06 的口径，不在这里另起一套。</p>
+
+  <div class="three-law">
+    <div class="law"><span class="mono">RULE 04</span><p>风险不会消失，只会转移。换一种资金来源，就是把风险从「钱在不在账上」换成<b>「谁先垫钱、垫多久」</b>。</p></div>
+    <div class="law"><span class="mono">RULE 05</span><p>每多一层服务商，就多一段资金在途、多一个对手方。聚合让接入变简单，是用<b>资金层级</b>换来的。</p></div>
+    <div class="law"><span class="mono">RULE 06</span><p>跨境多的是「关」，风险多的是「时间」：支付成功只是开始，<b>货到、报关、结汇</b>才算收口。</p></div>
+  </div>
+
+  <div class="aside">两张表怎么拼：第 1 章的矩阵按「环节」横切，这一章按「模式」竖切。交叉的每一格，就是值班时要盯的具体风险——<b>同一个环节 × 同一种模式</b>，比如「商户结算 × 聚合支付」＝结算单与资金隔离，「资金归集 × 第三方支付」＝备付金混同。</div>
+</div></section>
+
 <footer><div class="wrap">
   <div>
     <p class="mono">CHAPTER VISUAL NOTES / 2026-11-09</p>

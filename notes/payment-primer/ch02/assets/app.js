@@ -16,7 +16,7 @@
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  const REVEAL = '.sec-head, .axis-grid, .scene-grid, .tl, .quad-grid, .src-grid, .topo-scroll, .psp, .geo-grid, .map-grid, .three-law, .quiz';
+  const REVEAL = '.sec-head, .axis-grid, .scene-grid, .tl, .quad-grid, .src-grid, .topo-scroll, .psp, .geo-grid, .map-grid, .ex-types, .matrix, .three-law, .quiz';
   $$(REVEAL).forEach((el) => el.classList.add('reveal'));
   if (!reduced && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver((es) => {
@@ -332,6 +332,14 @@
   $('#geoOutBtn').addEventListener('click', () => setGeo('out'));
   $('#geoInBtn').addEventListener('click', () => setGeo('in'));
   setGeo('out');
+
+  /* ── 10 风险矩阵折叠 ───────────────────────────────── */
+  $$('#matrix .mx-row').forEach((r) => r.addEventListener('click', () => {
+    const open = r.classList.contains('is-open');
+    $$('#matrix .mx-row').forEach((x) => x.classList.remove('is-open'));
+    if (!open) r.classList.add('is-open');
+    if (!open) r.scrollIntoView({ block: 'nearest', behavior: reduced ? 'auto' : 'smooth' });
+  }));
 
   /* ── 折叠问答 ───────────────────────────────────── */
   $$('.q-item').forEach((q) => q.addEventListener('click', () => {
