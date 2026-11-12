@@ -346,42 +346,12 @@
   <div class="aside">关键洞察：跨境支付的风险不在「付不出」，在<b>付了之后货能不能到</b>；入境支付的风险不在「能不能付」，在<b>商户认不认这个钱包</b>。</div>
 </div></section>
 
-<!-- ═══════════ 09 小结 ═══════════ -->
+<!-- ═══════════ 09 收口与资金安全风险敞口 ═══════════ -->
 <section id="s09" class="sec"><div class="wrap">
   <div class="sec-head">
     <span class="sec-no mono">§ 09</span>
-    <h2>收口：一张图，三句话</h2>
-    <p class="sec-lead">这一章没有「唯一正确的支付方式」，只有「在哪个坐标下、回答哪个问题」。</p>
-  </div>
-
-  <div class="map-grid" data-audit-group>
-    <div class="map-cell"><div class="mc-k mono">A / 场景</div><b>线下 / 线上</b><p>有没有面对面；信任由谁担保</p></div>
-    <div class="map-cell"><div class="mc-k mono">B / 工具</div><b>信函 → 手机</b><p>授权信息靠什么传；速度与成本</p></div>
-    <div class="map-cell"><div class="mc-k mono">C / 角色</div><b>C2C / C2B / B2B / B2C</b><p>谁付给谁；方向与金额占比</p></div>
-    <div class="map-cell"><div class="mc-k mono">D / 来源</div><b>现金 … BNPL</b><p>钱在不在账上；信用风险归谁</p></div>
-    <div class="map-cell"><div class="mc-k mono">E / 地理</div><b>境内 / 跨境 / 入境</b><p>多几道关；多几种接口</p></div>
-  </div>
-
-  <div class="three-law">
-    <div class="law"><span class="mono">RULE 01</span><p>先问「按什么分」，再问「这是什么支付」。<b>分类轴比分类结果重要</b>。</p></div>
-    <div class="law"><span class="mono">RULE 02</span><p>最常见的不是金额最大的：<b>C2B 最频繁，B2B 金额最大</b>。</p></div>
-    <div class="law"><span class="mono">RULE 03</span><p>每多一层服务商，就多一层整合，也多一层时间差与数据差。<b>谁离商户近，谁懂场景；谁离银行近，谁懂资金</b>。</p></div>
-  </div>
-
-  <div class="quiz">
-    <button class="q-item"><span class="q-i mono">Q1</span><span class="q-t">同一个微信扫码买咖啡，用五个坐标分别怎么描述？</span><span class="q-a">线下（面对面）+ 手机（QR）+ C2B（消费者付商户）+ 互联网账户（绑卡）+ 境内。五个轴可以同时成立。</span></button>
-    <button class="q-item"><span class="q-i mono">Q2</span><span class="q-t">B2C 和 C2B 的区别是什么？为什么容易搞反？</span><span class="q-a">B2C 是商户付给消费者（工资、补贴、助学金），C2B 是消费者付给商户。资金流向完全相反，看到「B2C 收款」就要警惕。</span></button>
-    <button class="q-item"><span class="q-i mono">Q3</span><span class="q-t">五要素与三要素卡组织，各自牺牲了什么、换来了什么？</span><span class="q-a">五要素分工细、覆盖广，但环节多、成本高；三要素把发卡与收单并进卡组织，环节少、成本低，但缺少银行网络，覆盖与发卡力度弱。</span></button>
-    <button class="q-item"><span class="q-i mono">Q4</span><span class="q-t">第三方支付与聚合支付，谁离资金更近、谁离场景更近？</span><span class="q-a">第三方更靠近银行与资金，能更快拿到备付金，同时服务消费者与商户；聚合只服务商户，出款要等第三方结算，但更靠近商户场景，掌握消费数据。</span></button>
-  </div>
-</div></section>
-
-<!-- ═══════════ 10 资金安全风险敞口 ═══════════ -->
-<section id="s10" class="sec alt"><div class="wrap">
-  <div class="sec-head">
-    <span class="sec-no mono">§ 10</span>
     <h2>资金安全风险敞口：把「业务模式」翻译成风险清单</h2>
-    <p class="sec-lead">第 1 章按<b>时间轴</b>列环节（交易成立 → 清算 → 记账），这一章按<b>结构轴</b>列模式。同一笔钱换个模式，敞口不会消失，只会从「时间」挪到「层级」，从「自己」挪到「对手方」。</p>
+    <p class="sec-lead">全章的收口放这里：先给六条铁律——前三条讲「怎么分」，后三条讲「风险怎么走」；再给一张按业务模式排的风险清单。第 1 章按<b>时间轴</b>列环节（交易成立 → 清算 → 记账），这一章按<b>结构轴</b>列模式；同一笔钱换个模式，敞口不会消失，只会从「时间」挪到「层级」，从「自己」挪到「对手方」。</p>
   </div>
 
   <div class="ex-types" data-audit-group>
@@ -477,12 +447,22 @@
   <p class="cs-note">口径提醒：本章不讨论金额与费率，只讨论<b>「时长 × 层级 × 谁垫钱」</b>；涉及资金量级的算法（池、资金·日、占用成本）沿用第 1 章 § 06 的口径，不在这里另起一套。</p>
 
   <div class="three-law">
+    <div class="law"><span class="mono">RULE 01</span><p>先问「按什么分」，再问「这是什么支付」。<b>分类轴比分类结果重要</b>。</p></div>
+    <div class="law"><span class="mono">RULE 02</span><p>最常见的不是金额最大的：<b>C2B 最频繁，B2B 金额最大</b>。</p></div>
+    <div class="law"><span class="mono">RULE 03</span><p>每多一层服务商，就多一层整合，也多一层时间差与数据差。<b>谁离商户近，谁懂场景；谁离银行近，谁懂资金</b>。</p></div>
     <div class="law"><span class="mono">RULE 04</span><p>风险不会消失，只会转移。换一种资金来源，就是把风险从「钱在不在账上」换成<b>「谁先垫钱、垫多久」</b>。</p></div>
     <div class="law"><span class="mono">RULE 05</span><p>每多一层服务商，就多一段资金在途、多一个对手方。聚合让接入变简单，是用<b>资金层级</b>换来的。</p></div>
     <div class="law"><span class="mono">RULE 06</span><p>跨境多的是「关」，风险多的是「时间」：支付成功只是开始，<b>货到、报关、结汇</b>才算收口。</p></div>
   </div>
 
   <div class="aside">两张表怎么拼：第 1 章的矩阵按「环节」横切，这一章按「模式」竖切。交叉的每一格，就是值班时要盯的具体风险——<b>同一个环节 × 同一种模式</b>，比如「商户结算 × 聚合支付」＝结算单与资金隔离，「资金归集 × 第三方支付」＝备付金混同。</div>
+
+  <div class="quiz">
+    <button class="q-item"><span class="q-i mono">Q1</span><span class="q-t">同一个微信扫码买咖啡，用五个坐标分别怎么描述？</span><span class="q-a">线下（面对面）+ 手机（QR）+ C2B（消费者付商户）+ 互联网账户（绑卡）+ 境内。五个轴可以同时成立。</span></button>
+    <button class="q-item"><span class="q-i mono">Q2</span><span class="q-t">B2C 和 C2B 的区别是什么？为什么容易搞反？</span><span class="q-a">B2C 是商户付给消费者（工资、补贴、助学金），C2B 是消费者付给商户。资金流向完全相反，看到「B2C 收款」就要警惕。</span></button>
+    <button class="q-item"><span class="q-i mono">Q3</span><span class="q-t">五要素与三要素卡组织，各自牺牲了什么、换来了什么？</span><span class="q-a">五要素分工细、覆盖广，但环节多、成本高；三要素把发卡与收单并进卡组织，环节少、成本低，但缺少银行网络，覆盖与发卡力度弱。</span></button>
+    <button class="q-item"><span class="q-i mono">Q4</span><span class="q-t">第三方支付与聚合支付，谁离资金更近、谁离场景更近？</span><span class="q-a">第三方更靠近银行与资金，能更快拿到备付金，同时服务消费者与商户；聚合只服务商户，出款要等第三方结算，但更靠近商户场景，掌握消费数据。</span></button>
+  </div>
 </div></section>
 
 <footer><div class="wrap">
