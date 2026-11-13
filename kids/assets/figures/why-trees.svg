@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="三格图解：太阳在头顶，草、灌木和树高矮不同，谁长得高谁晒到更多光；树叶用阳光、水、空气做出糖也就是自己的饭，同时放出氧气；树根抓住泥土让雨冲不走，树洞成了鸟的家。底部一句：树不是谁安排出来的，是植物抢着晒太阳一路往上长出来的">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="46" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="22" font-weight="700" fill="#2F3542">树，是长得特别高的植物</text>
+
+  <!-- ① 谁长得高，谁晒得多 -->
+  <rect x="30" y="68" width="180" height="180" rx="16" fill="#F4FBF6" stroke="#86D3A8" stroke-width="2.5"/>
+  <!-- 太阳 -->
+  <circle cx="120" cy="94" r="13" fill="#FFD166" stroke="#E8A33D" stroke-width="2"/>
+  <g stroke="#E8A33D" stroke-width="2" stroke-linecap="round" opacity="0.85">
+    <line x1="120" y1="72" x2="120" y2="66"/>
+    <line x1="98" y1="94" x2="92" y2="94"/>
+    <line x1="142" y1="94" x2="148" y2="94"/>
+    <line x1="104" y1="78" x2="100" y2="73"/>
+    <line x1="136" y1="78" x2="140" y2="73"/>
+  </g>
+  <!-- 光线：照到最高的树冠 -->
+  <path d="M133 105 L154 126" stroke="#E8A33D" stroke-width="2" stroke-dasharray="4 4"/>
+  <path d="M107 105 L74 176" stroke="#E8A33D" stroke-width="2" stroke-dasharray="4 4" opacity="0.55"/>
+  <!-- 地面 -->
+  <line x1="44" y1="212" x2="196" y2="212" stroke="#C7DCCB" stroke-width="3" stroke-linecap="round"/>
+  <!-- 草 -->
+  <g stroke="#4C9A6B" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M68 212 v-14"/>
+    <path d="M68 204 q-9 -5 -13 -13"/>
+    <path d="M68 202 q9 -6 13 -12"/>
+  </g>
+  <!-- 灌木 -->
+  <line x1="118" y1="212" x2="118" y2="190" stroke="#8A6F4E" stroke-width="3.5" stroke-linecap="round"/>
+  <circle cx="118" cy="180" r="13" fill="#A8DDB8" stroke="#4C9A6B" stroke-width="2"/>
+  <!-- 树 -->
+  <line x1="168" y1="212" x2="168" y2="144" stroke="#8A6F4E" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="154" cy="142" r="12" fill="#6FBF8B" stroke="#3E7F58" stroke-width="2"/>
+  <circle cx="182" cy="142" r="12" fill="#6FBF8B" stroke="#3E7F58" stroke-width="2"/>
+  <circle cx="168" cy="130" r="17" fill="#6FBF8B" stroke="#3E7F58" stroke-width="2"/>
+  <text x="120" y="238" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" font-weight="600" fill="#3E7F58">谁长得高，谁晒得多</text>
+
+  <!-- ② 叶子自己做饭 -->
+  <rect x="230" y="68" width="180" height="180" rx="16" fill="#F4FBF6" stroke="#86D3A8" stroke-width="2.5"/>
+  <g font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13" fill="#3E7F58">
+    <rect x="240" y="94" width="48" height="30" rx="8" fill="#E8F7EE" stroke="#86D3A8" stroke-width="2"/>
+    <text x="264" y="113" text-anchor="middle">阳光</text>
+    <rect x="296" y="94" width="48" height="30" rx="8" fill="#E8F7EE" stroke="#86D3A8" stroke-width="2"/>
+    <text x="320" y="113" text-anchor="middle">水</text>
+    <rect x="352" y="94" width="48" height="30" rx="8" fill="#E8F7EE" stroke="#86D3A8" stroke-width="2"/>
+    <text x="376" y="113" text-anchor="middle">空气</text>
+    <line x1="320" y1="132" x2="320" y2="156" stroke="#4C9A6B" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M320 164 l-6 -9 h12 z" fill="#4C9A6B"/>
+    <rect x="246" y="168" width="76" height="30" rx="8" fill="#FFFFFF" stroke="#4C9A6B" stroke-width="2"/>
+    <text x="284" y="187" text-anchor="middle" font-weight="700">糖（饭）</text>
+    <rect x="330" y="168" width="74" height="30" rx="8" fill="#FFFFFF" stroke="#8EB8E0" stroke-width="2"/>
+    <text x="367" y="187" text-anchor="middle" font-weight="700" fill="#3C6C96">氧气 ↑</text>
+  </g>
+  <text x="320" y="238" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" font-weight="600" fill="#3E7F58">树叶会自己做饭</text>
+
+  <!-- ③ 根抓土，树洞当家 -->
+  <rect x="430" y="68" width="180" height="180" rx="16" fill="#F4FBF6" stroke="#86D3A8" stroke-width="2.5"/>
+  <rect x="444" y="180" width="152" height="32" rx="6" fill="#F0E6D6"/>
+  <g stroke="#D9C6A8" stroke-width="1.6" stroke-linecap="round" opacity="0.9">
+    <line x1="452" y1="190" x2="462" y2="190"/>
+    <line x1="470" y1="198" x2="480" y2="198"/>
+    <line x1="488" y1="190" x2="498" y2="190"/>
+    <line x1="506" y1="198" x2="516" y2="198"/>
+    <line x1="524" y1="190" x2="534" y2="190"/>
+    <line x1="542" y1="198" x2="552" y2="198"/>
+    <line x1="560" y1="190" x2="570" y2="190"/>
+  </g>
+  <line x1="444" y1="180" x2="596" y2="180" stroke="#C7DCCB" stroke-width="3" stroke-linecap="round"/>
+  <!-- 雨 -->
+  <g stroke="#8EB8E0" stroke-width="2.2" stroke-linecap="round">
+    <line x1="456" y1="88" x2="450" y2="98"/>
+    <line x1="476" y1="80" x2="470" y2="90"/>
+    <line x1="496" y1="90" x2="490" y2="100"/>
+    <line x1="578" y1="86" x2="572" y2="96"/>
+  </g>
+  <!-- 树 -->
+  <line x1="520" y1="180" x2="520" y2="132" stroke="#8A6F4E" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="520" cy="120" r="18" fill="#6FBF8B" stroke="#3E7F58" stroke-width="2"/>
+  <circle cx="504" cy="130" r="12" fill="#6FBF8B" stroke="#3E7F58" stroke-width="2"/>
+  <circle cx="536" cy="130" r="12" fill="#6FBF8B" stroke="#3E7F58" stroke-width="2"/>
+  <!-- 树洞与小鸟 -->
+  <ellipse cx="520" cy="160" rx="6" ry="7.5" fill="#FFFFFF" stroke="#8A6F4E" stroke-width="2"/>
+  <ellipse cx="552" cy="152" rx="8" ry="5.5" fill="#FFD166" stroke="#C98A2E" stroke-width="2"/>
+  <circle cx="560" cy="147" r="4" fill="#FFD166" stroke="#C98A2E" stroke-width="2"/>
+  <path d="M556 148 l6 1" stroke="#C98A2E" stroke-width="2" stroke-linecap="round"/>
+  <!-- 根 -->
+  <g stroke="#B98246" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M520 180 C506 186 500 194 488 200"/>
+    <path d="M520 180 C520 188 522 198 524 208"/>
+    <path d="M520 180 C534 186 542 194 554 200"/>
+  </g>
+  <text x="520" y="238" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" font-weight="600" fill="#3E7F58">根抓住土，树洞给鸟住</text>
+
+  <!-- 底部一句 -->
+  <rect x="30" y="268" width="580" height="62" rx="14" fill="#FBF7EE" stroke="#E4D8C0" stroke-width="2"/>
+  <text x="320" y="296" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="15" font-weight="700" fill="#2F3542">树不是谁安排出来的：它们只是抢着晒太阳，一路往上长</text>
+  <text x="320" y="318" text-anchor="middle" font-family="PingFang SC,Hiragino Sans GB,sans-serif" font-size="13.5" fill="#6B7280">长得高一点就多一口饭；晒不到的那些，慢慢被林子筛掉</text>
+</svg>

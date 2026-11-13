@@ -489,5 +489,21 @@
       "判断对错的方法变了": "the way we judge what is true changed",
       "改革＝在同一本书里改条款　｜　革命＝把整本书换掉": "Reform = amend clauses in the same book  |  Revolution = replace the whole book"
     }
+  },
+  "why-trees.svg": {
+    "aria": "Three panels: the sun overhead, with grass, a shrub and a tree at different heights — whoever grows taller gets more light; leaves cook their own food from sunlight, water and air, making sugar and releasing oxygen; roots hold the soil so rain cannot wash it away, and a hole in the trunk becomes a bird's home. Bottom line: nobody arranged for trees — plants just raced for the sun and grew upward",
+    "text": {
+      "树，是长得特别高的植物": "A tree is just a very tall plant",
+      "谁长得高，谁晒得多": "Taller = more sun",
+      "阳光": "Sunlight",
+      "水": "Water",
+      "空气": "Air",
+      "糖（饭）": "Sugar",
+      "氧气 ↑": "Oxygen ↑",
+      "树叶会自己做饭": "Leaves cook food",
+      "根抓住土，树洞给鸟住": "Roots hold the soil",
+      "树不是谁安排出来的：它们只是抢着晒太阳，一路往上长": "No one arranged for trees: they raced for the sun and grew up",
+      "长得高一点就多一口饭；晒不到的那些，慢慢被林子筛掉": "A little taller means a little more food; shaded ones drop out"
+    }
   }
 }

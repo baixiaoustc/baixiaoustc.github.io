@@ -92,6 +92,39 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "why-trees",
+      "date": "2026-11-13",
+      "kid": "taozi",
+      "age": 4,
+      "question": "世界上为什么有树？",
+      "subject": "nature",
+      "secondary": "life",
+      "depth": 3,
+      "figure": "assets/figures/why-trees.svg",
+      "figureEn": "assets/figures/en/why-trees.svg",
+      "figureAlt": "三格图解：太阳在头顶，草、灌木和树高矮不同，谁长得高谁晒到更多光；树叶用阳光、水、空气做出糖（自己的饭），同时放出氧气；树根抓住泥土让雨冲不走，树洞成了鸟的家。底部一句：树不是谁安排出来的，是植物抢着晒太阳一路往上长出来的",
+      "oneLine": "树其实是「长得很高的植物」，不是单独一类怪物。所有植物都得靠叶子把阳光、水、空气做成自己的饭；太阳在头顶，谁矮谁被邻居的叶子挡住，于是植物一代代往上长，长成了树。树还顺手替世界做了几件大事：放出我们呼吸的氧气、用根抓住泥土不让雨冲走、给鸟和虫子当家和饭。",
+      "points": [
+        "「有树」的第一层原因朴素得有点意外：阳光、水、空气都不要钱。叶子里的叶绿素拿阳光当力气，把空气里的二氧化碳和水合成糖——这就是树的饭；顺手把氧气放出来。只要地球上有这三样，这套「自己做饭」的本事就能一直用下去，所以植物活得满世界都是。",
+        "第二层原因是抢：太阳在头顶，站得矮就被邻居的叶子盖住。同一片林子里，高一寸多晒一分光、多攒一分饭、多结几颗种子；一代代筛下来，能往上长的留下来。树就是这场「比高」比赛里长得最高的那一类——树干又硬又直，是为了把叶子举到别人上面去。不是谁规定的，是矮的那些慢慢被淘汰了。",
+        "树还改写了整个世界，所以它才这么多：根抓住泥土，山坡上的雨就冲不走土；树冠挡太阳、挡风，底下凉；落叶和果子养活土里的虫和菌；树洞、树杈成了鸟和松鼠的家。远古的大森林还把大量碳埋进地下，成了今天挖出来的煤——所以说煤是「很久很久以前的树」。"
+      ],
+      "followUp": "那沙漠和高山顶上为什么没有树？",
+      "source": "2026-11-13 桃子",
+      "en": {
+        "question": "Why are there trees in the world?",
+        "oneLine": "A tree is not some separate kind of creature — it is simply a plant that grows very tall. Every plant makes its own food from sunlight, water and air, and since light comes from above, the shorter one gets shaded by its neighbours; so plants kept growing upward, and some of them became trees. And trees happen to do big jobs for the world: they release the oxygen we breathe, their roots hold the soil so rain cannot wash it away, and their holes and branches are home and food for birds and insects.",
+        "points": [
+          "The first reason there are trees is surprisingly plain: sunlight, water and air are free. Chlorophyll in the leaves uses sunlight as power to turn carbon dioxide and water into sugar — that is the tree's food — and oxygen comes out along the way. As long as Earth has those three things, this 'cook your own meal' trick keeps working, which is why plants live everywhere.",
+          "The second reason is competition: the sun is overhead, so whoever stands lower is covered by a neighbour's leaves. In one patch of forest, a little taller means a little more light, a little more food, a few more seeds; generation after generation, the ones that could grow upward stayed. Trees are the tallest entrants in that 'who is taller' contest — a hard, straight trunk exists to lift leaves above everyone else. Nobody decreed it; the short ones were simply filtered out.",
+          "Trees also rewrote the whole world, which is why there are so many: roots grip the soil so rain cannot wash a hillside away; canopies block sun and wind, so it is cooler underneath; fallen leaves and fruit feed the worms and fungi in the soil; holes and forks in trunks become homes for birds and squirrels. Ancient forests also buried enormous amounts of carbon underground, which became the coal we dig up today — so coal is 'trees from very, very long ago'."
+        ],
+        "followUp": "Then why are there no trees in deserts or on high mountain tops?",
+        "figureAlt": "Three panels: the sun overhead, with grass, a shrub and a tree at different heights — whoever grows taller gets more light; leaves cook their own food from sunlight, water and air, making sugar and releasing oxygen; roots hold the soil so rain cannot wash it away, and a hole in the trunk becomes a bird's home. Bottom line: nobody arranged for trees — plants just raced for the sun and grew upward"
+      },
+      "time": "20:44:42"
+    },
+    {
       "id": "what-is-revolution",
       "date": "2026-11-10",
       "kid": "yumi",
