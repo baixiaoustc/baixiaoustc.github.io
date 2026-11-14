@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>载体与读取器：支付工具的成对法则｜一本书读懂支付 · 第 3 章</title>
+<meta name="description" content="《一本书读懂支付》第 3 章可视化笔记：银行卡四代载体、BIN 与卢恩算法、POS 一体机、中国收单的直联与间联、EAN-13 与 QR 码、CPM/MPM 扫码模式、物联网支付与电子钱包。">
+<meta name="theme-color" content="#0E2233">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E2233'/%3E%3Cpath d='M16 6 L26 16 L16 26 L6 16 Z' fill='none' stroke='%23C8A45C' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23C8A45C'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="scrollbar"><i id="progress"></i></div>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <div class="brand"><span class="mark">◆</span><span class="brand-t">STUDY NOTES</span><span class="brand-s">CH.03 / 支付工具</span></div>
+  <nav class="topnav">
+    <a href="#s01">01 配对</a><a href="#s02">02 四代卡</a><a href="#s03">03 卡号</a><a href="#s04">04 取舍</a><a href="#s05">05 POS</a><a href="#s06">06 收单</a><a href="#s07">07 码</a><a href="#s08">08 谁扫谁</a><a href="#s09">09 收口</a>
+  </nav>
+</div></header>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero"><div class="wrap hero-in">
+  <div class="hero-meta mono"><span>BOOK</span><span>一本书读懂支付</span><span>陈斌 · 第 3 章</span><span>2026-11-14</span></div>
+  <h1 class="hero-title">钱坐进工具，<br>才走得动</h1>
+  <p class="hero-sub">支付工具从来不是一件，而是一对：左边是付款人手里的「载体」，右边是收款人手里的「读取器」。卡与 POS、二维码与摄像头、传感器与供应商系统——中间隔着的，是信息的存储、读取与验证。这一章把工具箱摊开，看每一种载体能装多少、被谁读、会在哪一层出错。</p>
+
+  <div class="hero-stats">
+    <div class="stat"><b>4<small>种</small></b><span>银行卡载体</span></div>
+    <div class="stat"><b>6<small>位</small></b><span>卡 BIN</span></div>
+    <div class="stat"><b>177<small>×177</small></b><span>QR 最大矩阵</span></div>
+    <div class="stat"><b>10<small>cm</small></b><span>NFC 感应距离</span></div>
+  </div>
+
+  <div class="stamp"><div class="stamp-in mono">PAYMENT<br>TOOLKIT<br>CARRIER<br>CH.03</div></div>
+</div></section>
+
+<!-- ═══════════ 01 工具配对 ═══════════ -->
+<section id="s01" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 01</span>
+    <h2>每一笔支付，都是「载体 → 读取器」</h2>
+    <p class="sec-lead">付款与收单是同一个过程的两个视角：付款人把资金转移出去，收款人把资金收进来。两端的工具必须配对，中间靠一种信息载体把「谁授权、付多少、付给谁」传过去。</p>
+  </div>
+
+  <div class="pair" data-audit-group>
+    <div class="pair-col">
+      <div class="pk mono">PAYER SIDE / 付款工具</div>
+      <div class="pair-list" id="pairList">
+        <button class="pair-btn is-on" data-p="bank"><span class="pn">P01</span><b>实体银行卡</b></button>
+        <button class="pair-btn" data-p="wallet"><span class="pn">P02</span><b>手机电子钱包</b></button>
+        <button class="pair-btn" data-p="qr"><span class="pn">P03</span><b>二维码</b></button>
+        <button class="pair-btn" data-p="iot"><span class="pn">P04</span><b>物联网传感器</b></button>
+      </div>
+    </div>
+    <div class="pair-mid">
+      <div class="pair-carrier mono" id="pairCarrier">磁条 / 芯片 / NFC</div>
+      <div class="pair-arrow">→</div>
+    </div>
+    <div class="pair-col">
+      <div class="pk mono">ACQUIRER SIDE / 收单工具</div>
+      <div class="pair-out">
+        <div class="po-k mono">READER</div>
+        <h3 id="pairName">POS 一体机</h3>
+        <p id="pairDesc">一台机器集成刷卡槽、插卡口、NFC 贴卡区与扫码摄像头，把三种载体读成同一笔支付请求。</p>
+      </div>
+      <div class="pair-metrics">
+        <div class="pm-row"><span class="k">读取距离</span><b id="pmDist">接触 ~ 10 cm</b></div>
+        <div class="pm-row"><span class="k">谁在场</span><b id="pmWho">持卡人 + 店员</b></div>
+        <div class="pm-row"><span class="k">典型失败点</span><b id="pmFail">磁条被侧录</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pair-table">
+    <div class="pt-row head"><span>付款工具</span><span>信息载体</span><span>收单工具</span><span>验证靠什么</span></div>
+    <div class="pt-row"><b>实体银行卡</b><span>磁条 / 芯片 / NFC</span><span>POS 一体机</span><span>CVV、PIN、芯片密文、终端密钥</span></div>
+    <div class="pt-row"><b>手机电子钱包</b><span>付款码 / NFC / 人脸</span><span>扫码枪 / 闸机 / 摄像头</span><span>账户登录态、令牌、生物特征</span></div>
+    <div class="pt-row"><b>二维码</b><span>黑白矩阵</span><span>手机摄像头</span><span>码所属的收款账户与签名</span></div>
+    <div class="pt-row"><b>物联网传感器</b><span>电信号</span><span>供应商订单系统</span><span>设备身份、阈值规则、幂等订单号</span></div>
+  </div>
+
+  <div class="aside">关键洞察：<b>看支付工具，不要只看付款端</b>。载体能装什么，读取器决定怎么读；同一张卡在磁条槽和芯片口，风险完全不一样。</div>
+</div></section>
+
+<!-- ═══════════ 02 四代卡 ═══════════ -->
+<section id="s02" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 02</span>
+    <h2>银行卡四代：信息从「磁」到「电」，再到一串数字</h2>
+    <p class="sec-lead">70 多年里，塑料卡累计发行超过 100 亿张，载体却换了四次：磁条、IC 芯片、复合卡、虚拟卡。变的不是「卡」这个形状，而是信息存在哪里、怎么被读、能不能被复制。</p>
+  </div>
+
+  <div class="evo" id="evo" data-audit-group>
+    <button class="evo-card" data-e="stripe">
+      <span class="ev-n mono">GEN 01</span>
+      <h3>磁条卡</h3>
+      <span class="ev-era">1960s –</span>
+      <p>三条磁道，支付只用第 2 磁道；刷一下，磁头读出磁化方向。便宜、普及，也最容易被复制。</p>
+      <span class="ev-cap">210 字符 / 3 磁道</span>
+    </button>
+    <button class="evo-card" data-e="ic">
+      <span class="ev-n mono">GEN 02</span>
+      <h3>IC 卡</h3>
+      <span class="ev-era">1980s –</span>
+      <p>芯片里是 EEPROM + 嵌入式操作系统，相当于一台微型计算机；能算密钥，也能存大量数据。</p>
+      <span class="ev-cap">百万字节 / 10 年+</span>
+    </button>
+    <button class="evo-card is-on" data-e="composite">
+      <span class="ev-n mono">GEN 03</span>
+      <h3>复合卡</h3>
+      <span class="ev-era">2000s –</span>
+      <p>凸字、磁条、芯片、NFC 全都有。兼容所有老终端，也把成本推到了最高；今天的标准配备。</p>
+      <span class="ev-cap">4 种接口 / 成本最高</span>
+    </button>
+    <button class="evo-card" data-e="virtual">
+      <span class="ev-n mono">GEN 04</span>
+      <h3>虚拟卡</h3>
+      <span class="ev-era">2010s –</span>
+      <p>物理上不存在，只有卡号、有效期、验证码三串信息，绑进电子钱包或在线上直接使用。</p>
+      <span class="ev-cap">0 张塑料 / 一串数字</span>
+    </button>
+  </div>
+
+  <div class="evo-read">
+    <div>
+      <div class="er-k mono" id="evK">SELECTED / GEN 03</div>
+      <h4 id="evName">复合卡</h4>
+      <div class="er-type" id="evType">磁条 + 芯片 + NFC</div>
+    </div>
+    <div>
+      <p class="er-d" id="evDesc">同时拥有凸字、磁条、IC 芯片和 NFC 模块。它解决的是<b>兼容</b>：老终端刷磁条，新终端插芯片或贴卡。代价是制卡成本最高，卡也最厚。</p>
+      <div class="evo-metrics">
+        <div class="evo-metric"><div class="k">信息存在</div><b id="evStore">磁 + 电</b></div>
+        <div class="evo-metric"><div class="k">怎么读</div><b id="evRead">刷 / 插 / 贴</b></div>
+        <div class="evo-metric"><div class="k">容量</div><b id="evCap">百万字节</b></div>
+        <div class="evo-metric"><div class="k">主要代价</div><b id="evCost">成本最高</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>磁条是「读出来」，芯片是「算出来」</b>。磁条把卡号原样交出去，复制即可伪卡；芯片每次生成不同的密文，终端还要验。卡号一样，安全性不在一个层级。</div>
+</div></section>
+
+<!-- ═══════════ 03 卡号解剖 ═══════════ -->
+<section id="s03" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 03</span>
+    <h2>卡号不是随机数：6 位说身份，1 位算出来</h2>
+    <p class="sec-lead">16 位卡号分成三段：前 6 位是发卡行识别码（BIN），中间是发卡行自定义位，最后 1 位是卢恩校验位。校验位不是加密，它只防手误，不防攻击。</p>
+  </div>
+
+  <div class="card-lab" data-audit-group>
+    <div class="card-art">
+      <div class="ca-top"><span class="ca-bank">UNIONPAY · 62</span><span class="ca-brand">SAMPLE / NOT REAL</span></div>
+      <div class="ca-chip"></div>
+      <div class="ca-num" id="caNum"><span class="seg-bin">6225 88</span><span class="seg-mid">01 2345 678</span><span class="seg-chk">3</span></div>
+      <div class="ca-foot"><span>VALID THRU 12/30</span><span>CARDHOLDER NAME</span></div>
+    </div>
+
+    <div class="card-form">
+      <label class="cf-k mono" for="cardInput">CARD NUMBER / 输入 13–19 位数字</label>
+      <input class="card-input" id="cardInput" inputmode="numeric" autocomplete="off" spellcheck="false" value="6225880123456783">
+      <div class="cf-actions">
+        <button class="btn ghost" id="btnFix">修正校验位</button>
+        <button class="btn ghost" id="btnDemo">换一个示例</button>
+      </div>
+      <div class="seg-legend">
+        <span class="lb-bin">BIN 前 6 位</span><span class="lb-mid">发卡行自定义</span><span class="lb-chk">卢恩校验位</span>
+      </div>
+      <div class="luhn">
+        <div class="lh-digits" id="lhDigits"></div>
+        <ol class="lh-steps" id="lhSteps"></ol>
+        <span class="lh-state ok" id="lhState">LUHN PASS</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="industry" id="industry">
+    <div class="ind"><div class="mono">1·2</div><span>航空 / 里程</span></div>
+    <div class="ind"><div class="mono">3</div><span>旅游 / 娱乐</span></div>
+    <div class="ind"><div class="mono">4·5</div><span>银行 / 金融</span></div>
+    <div class="ind"><div class="mono">6</div><span>商业 / 银行<br>62 = 银联</span></div>
+    <div class="ind"><div class="mono">7</div><span>石油 / 油卡</span></div>
+    <div class="ind"><div class="mono">8</div><span>通信 / 电话卡</span></div>
+    <div class="ind"><div class="mono">9</div><span>各国自分配</span></div>
+    <div class="ind"><div class="mono">BIN</div><span>前 6 位定发卡行</span></div>
+  </div>
+
+  <div class="aside">关键洞察：<b>卢恩算法只回答「这串数字有没有敲错」</b>，不回答「这张卡是不是真的」。风控要靠 BIN 库、CVV、芯片密文、设备指纹与行为模型；把模 10 当安全校验，是把门锁装在了纸门上。</div>
+</div></section>
+
+<!-- ═══════════ 04 八维取舍 ═══════════ -->
+<section id="s04" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 04</span>
+    <h2>四种卡不是替代关系，是四种取舍</h2>
+    <p class="sec-lead">成本、寿命、易用、存储、传输、线上、线下、欺诈——八个维度一起看，没有一种卡全赢。磁条赢在便宜与兼容，芯片赢在安全，复合卡赢在都能用，虚拟卡赢在发行与线上。</p>
+  </div>
+
+  <div class="score-table" data-audit-group>
+    <div class="score-row head"><span>维度 / 方向</span><span>磁条卡</span><span>IC 卡</span><span>复合卡</span><span>虚拟卡</span></div>
+
+    <div class="score-row">
+      <div class="score-k">制作成本<small>越低越好</small></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="score-v">中</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+    </div>
+
+    <div class="score-row">
+      <div class="score-k">使用寿命<small>越长越好</small></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="score-v">良</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+    </div>
+
+    <div class="score-row">
+      <div class="score-k">线下易用<small>越快越好</small></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="score-v">良</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="score-v">中</span></div>
+    </div>
+
+    <div class="score-row">
+      <div class="score-k">存储加密<small>越强越好</small></div>
+      <div class="score-cell"><span class="dots"><i class="on low"></i><i></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="score-v">良</span></div>
+    </div>
+
+    <div class="score-row">
+      <div class="score-k">传输加密<small>越强越好</small></div>
+      <div class="score-cell"><span class="dots"><i class="on low"></i><i></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+    </div>
+
+    <div class="score-row">
+      <div class="score-k">线上支付<small>越能越好</small></div>
+      <div class="score-cell"><span class="dots"><i class="on low"></i><i></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
+      <div class="score-cell"><span class="dots"><i class="on low"></i><i></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="score-v">中</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+    </div>
+
+    <div class="score-row">
+      <div class="score-k">线下支付<small>越广越好</small></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="score-v">中</span></div>
+    </div>
+
+    <div class="score-row">
+      <div class="score-k">欺诈风险<small>越低越好</small></div>
+      <div class="score-cell"><span class="dots"><i class="on low"></i><i></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="score-v">中</span></div>
+    </div>
+  </div>
+
+  <p class="score-note">说明：本书第 3.1.3 节请行业专家按 8 个维度打分（每项 10 分）。原表为图片，这里按书中结论做<b>定性对照</b>（优 / 良 / 中 / 弱），不复制具体分值。方向已在每个维度标注：成本与欺诈风险越低越好，其余越高越好。</p>
+
+  <div class="aside">关键洞察：<b>复合卡不是「更先进」，是「都兼容」</b>。它把四种接口叠在一张卡上，换来的是所有终端都能受理，付出的是成本与厚度。虚拟卡反过来：放弃物理接口，换取发行效率与线上覆盖。</div>
+</div></section>
+
+<!-- ═══════════ 05 POS ═══════════ -->
+<section id="s05" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 05</span>
+    <h2>POS 一体机：一台机器读四种载体</h2>
+    <p class="sec-lead">从固定专线刷卡机，到 Wi-Fi / 4G 智能 POS，再到集刷卡、插卡、贴卡、扫码于一身的一体机。外面是八个部件，里面是三样东西：电池、NFC 天线、电路。</p>
+  </div>
+
+  <div class="pos-grid" data-audit-group>
+    <div class="pos-device" id="posDevice">
+      <div class="pos-screen"><b>¥ 128.00</b><small>WAITING FOR CARD</small></div>
+      <div class="pos-keypad" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="pos-printer" aria-hidden="true"></div>
+      <div class="pos-swipe" aria-hidden="true"></div>
+      <div class="pos-brand mono" aria-hidden="true">SMART POS</div>
+      <div class="pos-slot" aria-hidden="true"></div>
+      <button class="pos-hot h-screen is-on" data-h="screen">屏幕</button>
+      <button class="pos-hot h-swipe" data-h="swipe">刷卡槽</button>
+      <button class="pos-hot h-tap" data-h="tap">贴卡区</button>
+      <button class="pos-hot h-camera" data-h="camera">摄像头</button>
+      <button class="pos-hot h-key" data-h="keypad">键盘</button>
+      <button class="pos-hot h-print" data-h="printer">打印机</button>
+    </div>
+
+    <div>
+      <div class="pos-read">
+        <div class="pr-k mono" id="posK">PART / 01 · SCREEN</div>
+        <h3 id="posName">屏幕</h3>
+        <p id="posDesc">显示金额、交易状态与提示。智能一体机通常有两块屏：一块给顾客确认金额，一块给店员操作。</p>
+        <div class="pos-meta">
+          <div><span class="k">读什么载体</span><b id="posCarrier">无（人看）</b></div>
+          <div><span class="k">对应交易</span><b id="posTxn">确认 / 输密</b></div>
+          <div><span class="k">维护点</span><b id="posRisk">防窥屏 / 遮挡</b></div>
+          <div><span class="k">外部部件</span><b>8 个</b></div>
+        </div>
+        <div class="pos-list">
+          <span>刷卡槽</span><span>贴卡区</span><span>摄像头</span><span>键盘</span><span>屏幕</span><span>SIM 卡槽</span><span>充电口</span><span>打印机</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>一台 POS 的部件，就是一张「可被攻击面清单」</b>。刷卡槽对应侧录，键盘对应密码窥探与改装，摄像头对应扫码替换，SIM/网络对应信号劫持。收单安全不是抽象的，它落在每一个能接触的零件上。</div>
+</div></section>
+
+<!-- ═══════════ 06 收单模式 ═══════════ -->
+<section id="s06" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 06</span>
+    <h2>中国收单：直联与间联，看谁绕过了谁</h2>
+    <p class="sec-lead">2002 年银联成立后，收单先是银联一家主导；随后银行直接做同行与跨行转接，2010 年前后第三方也加入。路径不同，参与方、覆盖率与资金到账都不同。</p>
+  </div>
+
+  <div class="route-bar" id="routeBar">
+    <button class="axis-btn is-on" data-r="unionpay"><span class="k">MODE</span>银联主导</button>
+    <button class="axis-btn" data-r="same"><span class="k">MODE</span>同银行</button>
+    <button class="axis-btn" data-r="cross"><span class="k">MODE</span>跨银行转接</button>
+    <button class="axis-btn" data-r="third"><span class="k">MODE</span>第三方收单</button>
+  </div>
+
+  <div class="route-wrap">
+    <div class="route-flow" id="routeFlow"></div>
+    <div class="route-read">
+      <p id="routeDesc">商户 POS 先联到银联商务，再由银联主机判断发卡行并转接。所有跨行交易都走银联，银联在收单市场上起绝对主导作用。</p>
+      <div class="route-metrics">
+        <div class="rm"><span class="k">参与方</span><b id="rmParties">4</b></div>
+        <div class="rm"><span class="k">经过银联</span><b id="rmUnion">是</b></div>
+        <div class="rm"><span class="k">商户覆盖</span><b id="rmCover">最广</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="route-note"><b>直联</b>：商户 POS 直接联银联主机，数据先上传银联，由银联判断后发卡行再原路返回。<b>间联</b>：POS 直接联接收单行，跨行时经收单行转发发卡行，非跨行时可以不经过银联。两条线的差别不在「谁清算」，而在<b>报文第一站落到谁家</b>。</div>
+
+  <div class="aside">关键洞察：<b>绕过银联不等于绕过清算</b>。同银行与跨银行转接减少的是「转接环节」，不是「记账责任」。参与方越少，到账越快，但差错定位与对手方风险也越集中。</div>
+</div></section>
+
+<!-- ═══════════ 07 码 ═══════════ -->
+<section id="s07" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 07</span>
+    <h2>码的容量：一维装 13 位，二维装 7000 字符</h2>
+    <p class="sec-lead">条形码用 95 个黑白模块表达 13 位数字；QR 码用正方形矩阵，从 21×21 一路长到 177×177。容量差三个数量级，决定了它们能承载的交易信息差多少。</p>
+  </div>
+
+  <div class="code-grid" data-audit-group>
+    <div class="code-lab">
+      <div class="cl-k mono">LAB 01 / EAN-13</div>
+      <h3>13 位，靠宽度表达</h3>
+      <label class="cf-k mono" for="eanInput">输入 12 位数字，自动补校验位</label>
+      <input class="code-input" id="eanInput" inputmode="numeric" autocomplete="off" spellcheck="false" value="690123456789">
+      <div class="bar-wrap">
+        <div class="bar-code" id="barCode"></div>
+        <div class="bar-digits"><span id="eanLeft">690</span><span id="eanRight">1234567892</span></div>
+      </div>
+      <div class="bar-meta">
+        <span>校验位 <b id="eanCheck">2</b></span>
+        <span>总长度 <b>95 模块</b></span>
+        <span>每位 <b>7 模块</b></span>
+        <span id="eanState">校验通过</span>
+      </div>
+      <p class="score-note" style="margin-top:10px">条 = 1，空 = 0。左侧 6 位用 A/B 编码（由首位数字决定），右侧 6 位用 C 编码。扫码枪读的是宽度比例，不是数字本身。</p>
+    </div>
+
+    <div class="code-lab">
+      <div class="cl-k mono">LAB 02 / QR VERSION</div>
+      <h3>版本每加 1，边长加 4</h3>
+      <div class="qr-controls">
+        <input type="range" id="qrV" min="1" max="40" value="10">
+        <span class="qr-v" id="qrVLabel">V10 · 57×57</span>
+      </div>
+      <div class="qr-art" id="qrArt" style="--n:57" aria-label="QR 码结构示意，不可扫码">
+        <div class="qr-data">
+          <div class="qr-finder f1"></div><div class="qr-finder f2"></div><div class="qr-finder f3"></div>
+          <div class="qr-align" id="qrAlign"></div>
+        </div>
+      </div>
+      <div class="qr-meta">
+        <div><div class="k">矩阵边长</div><b id="qrSide">57 × 57</b></div>
+        <div><div class="k">版本范围</div><b>1 – 40</b></div>
+        <div><div class="k">最大数字容量</div><b>7,089 位</b></div>
+        <div><div class="k">定位图形</div><b>3 个回字形</b></div>
+      </div>
+      <div class="qr-formula" id="qrFormula">边长 = (V − 1) × 4 + 21 = (10 − 1) × 4 + 21 = 57</div>
+      <p class="score-note" style="margin-top:8px">图示为结构示意：三个定位图形 + 校正图形 + 数据区，不可扫码。V40 时边长 (40−1)×4+21 = 177。</p>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>一维码只能当「索引」，二维码才能当「凭证」</b>。13 位数字够标识一个商品，装不下订单、金额、签名与时效；二维码能把这些一起放进去，才撑得起「扫一下就付款」。</div>
+</div></section>
+
+<!-- ═══════════ 08 谁扫谁 ═══════════ -->
+<section id="s08" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 08</span>
+    <h2>谁扫谁：CPM 与 MPM，差的是成本与风险</h2>
+    <p class="sec-lead">CPM 是消费者出示付款码、商户扫；MPM 是商户出示收款码、消费者扫。前者要改造收银台，后者贴张纸就能收款，但那张纸也可能被换掉。</p>
+  </div>
+
+  <div class="scan-bar">
+    <button class="axis-btn is-on" id="scanCpm"><span class="k">MODE</span>CPM · 商户主扫</button>
+    <button class="axis-btn" id="scanMpm"><span class="k">MODE</span>MPM · 消费者主扫</button>
+  </div>
+
+  <div class="scan-grid" data-audit-group>
+    <div class="scan-board">
+      <div class="sb-k mono" id="scanK">CPM / CONSUMER PRESENTED MODE</div>
+      <h3 id="scanTitle">消费者出示，商户来扫</h3>
+      <div class="scan-flow" id="scanFlow"></div>
+      <div class="scan-metrics">
+        <div><div class="k">设备成本</div><b id="smCost">扫码枪 / 收银改造</b></div>
+        <div><div class="k">收银改造</div><b id="smMod">必须</b></div>
+        <div><div class="k">适合场景</div><b id="smScene">超市 / 便利店</b></div>
+        <div><div class="k">主要风险</div><b id="smRisk">排队与设备故障</b></div>
+      </div>
+    </div>
+
+    <div class="scan-board">
+      <div class="sb-k mono">RISK / 收款码归谁</div>
+      <h3 id="tamperTitle">收款方：本店商户</h3>
+      <div class="tamper">
+        <div class="tamper-top"><span class="tk">静态码贴在柜台上</span><button class="btn ghost" id="btnTamper">模拟被替换</button></div>
+        <div class="tamper-state">
+          <div class="tamper-acct" id="acctMerchant"><div class="k">MERCHANT ACCOUNT</div><b>邻里超市 · 尾号 8821</b></div>
+          <span class="tamper-arrow">→</span>
+          <div class="tamper-acct" id="acctAttacker"><div class="k">RECEIVING ACCOUNT</div><b id="acctName">邻里超市 · 尾号 8821</b></div>
+        </div>
+        <p class="tamper-note" id="tamperNote">正常状态：顾客扫的是商户自己的收款码，钱进入商户账户，语音播报与订单金额一致。</p>
+      </div>
+      <p class="score-note" style="margin-top:10px">MPM 的成本优势来自「零设备」，风险也来自「零设备」：一张可被替换的贴纸，就是一个可被替换的收款账户。</p>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>CPM 把成本放在商户，MPM 把风险放在码上</b>。日本以 CPM 为主，中国 CPM 与 MPM 平分；选择哪一种，不是技术优劣，是「谁承担改造、谁承担替换」。</div>
+</div></section>
+
+<!-- ═══════════ 09 无人支付 + 收口 ═══════════ -->
+<section id="s09" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 09</span>
+    <h2>没有人的支付：传感器、钱包，与风险清单</h2>
+    <p class="sec-lead">物联网把「人按按钮」换成「传感器触发」，电子钱包把「卡在钱包里」换成「卡在手机里」。工具越自动、越集中，风险越往账户层走。最后把全章收成一张按工具层级排的风险清单。</p>
+  </div>
+
+  <div class="iot" data-audit-group>
+    <div class="iot-panel">
+      <div class="iot-k mono">SIM 01 / SENSOR TRIGGER</div>
+      <h3>洗衣粉快没了，谁去下单？</h3>
+      <p class="score-note" style="margin:0">压力传感器每次称重，剩余量降到预警线就通过 Wi-Fi 向供应商下单，并通知主人。</p>
+      <div class="iot-scale">
+        <div class="k"><span>剩余洗衣粉</span><span>预警线 20%</span></div>
+        <div class="iot-w"><b id="iotVal">65</b><span>%</span></div>
+        <div class="iot-track"><i id="iotBar" style="width:65%"></i><span class="thr"></span></div>
+      </div>
+      <div class="iot-ctl">
+        <input type="range" id="iotRange" min="0" max="100" value="65">
+      </div>
+      <div class="iot-btns">
+        <button class="btn" id="btnIotRun">模拟一次补货</button>
+        <button class="btn ghost" id="btnIotReset">重置</button>
+      </div>
+    </div>
+
+    <div class="iot-panel">
+      <div class="iot-k mono">EVENT LOG / 自动补货</div>
+      <h3>一条没有人的支付链</h3>
+      <div class="iot-log" id="iotLog"><div class="iot-ev is-warn"><span class="t">IDLE</span><span>等待传感器触发。把滑杆降到 20% 以下，或点「模拟一次补货」。</span></div></div>
+      <p class="score-note" style="margin-top:10px">关键不在「自动」，在<b>规则</b>：阈值谁定、订单号是否幂等、额度上限多少、误触发后能不能撤。阈值 20% 为本页示例，真实场景由业务设定。</p>
+    </div>
+  </div>
+
+  <div class="wallet">
+    <div class="wallet-head" id="walletHead">
+      <button class="axis-btn" data-w="1"><span class="k">LEVEL 01</span>卡包</button>
+      <button class="axis-btn is-on" data-w="2"><span class="k">LEVEL 02</span>支付入口</button>
+      <button class="axis-btn" data-w="3"><span class="k">LEVEL 03</span>决策中心</button>
+    </div>
+    <div class="wallet-body">
+      <div>
+        <div class="wallet-level mono" id="walletK">LEVEL 02 / PAYMENT ENTRY</div>
+        <div class="wallet-name" id="walletName">支付入口</div>
+        <div class="wallet-cap" id="walletCap">扫码 / NFC / 刷脸</div>
+      </div>
+      <p class="wallet-d" id="walletDesc">电子钱包本身不具备支付功能，真正付钱的是它承载的绑卡、账户与授权应用。它把各种收单方式收进一个入口：扫码、NFC、刷脸、指纹。今天大多数钱包停在这一层。</p>
+    </div>
+  </div>
+
+  <div class="ex-types" data-audit-group style="margin-top:26px">
+    <div class="ex-type"><span class="mono">载体</span><h4>载体可复制</h4><p class="ex-f mono">复制成本 × 可复制次数</p><p>磁条原样读出即可复制；芯片每次算新密文，复制成本陡增。载体决定伪卡的上限。</p></div>
+    <div class="ex-type"><span class="mono">读取器</span><h4>读取器被控</h4><p class="ex-f mono">被控终端数 × 单笔限额</p><p>POS 被改装、密钥被导出、固件被替换。读得越方便，终端越值钱，也越容易成为攻击目标。</p></div>
+    <div class="ex-type"><span class="mono">网络</span><h4>载体被替换</h4><p class="ex-f mono">暴露时长 × 笔数</p><p>静态收款码、钓鱼码、短信里的链接。载体是公开的，替换它不需要攻破系统。</p></div>
+    <div class="ex-type"><span class="mono">账户</span><h4>触发器失真</h4><p class="ex-f mono">误触发概率 × 金额 × 频次</p><p>IoT 阈值漂移、重复上报、钱包账户被盗。没有人的支付，必须靠幂等与上限兜底。</p></div>
+  </div>
+
+  <div class="matrix" id="matrix">
+    <button class="mx-row" data-m="0">
+      <span class="mx-i mono">01</span>
+      <span class="mx-k">磁条卡</span>
+      <span class="mx-c mono">载体可原样复制</span>
+      <span class="mx-tag">伪卡 · 侧录</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：磁条数据被侧录器或改装 POS 复制，再写到空白卡上；CVV 也可能随卡号一起泄露。<br>
+        <strong>我们能做的</strong>：推动芯片化与降级拦截，POS 防拆与密钥绑定，异常卡号/终端组合监控，拒付率按商户维度盯。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="1">
+      <span class="mx-i mono">02</span>
+      <span class="mx-k">IC 卡</span>
+      <span class="mx-c mono">算密文，但会被降级</span>
+      <span class="mx-tag">降级 · 中继</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：终端或收单方被诱导「降级」到磁条交易，芯片安全形同虚设；NFC 也可能被中继放大距离。<br>
+        <strong>我们能做的</strong>：强制 EMV、拒绝降级、PIN 与在线授权结合；NFC 交易加距离与设备指纹校验，大额强制二次验证。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="2">
+      <span class="mx-i mono">03</span>
+      <span class="mx-k">复合卡</span>
+      <span class="mx-c mono">四种接口，四种配置</span>
+      <span class="mx-tag">配置 · 路由</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：同一张卡有磁条、芯片、NFC，路由或 AID 配错会走错通道；老终端只认磁条，安全策略被最弱的一环决定。<br>
+        <strong>我们能做的</strong>：按 BIN + AID + 终端能力做路由表，定期核对；新终端上线先跑降级与拒付测试，别让「兼容」变成「绕过」。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="3">
+      <span class="mx-i mono">04</span>
+      <span class="mx-k">虚拟卡</span>
+      <span class="mx-c mono">只有三串信息</span>
+      <span class="mx-tag">泄露 · 绑卡</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：卡号、有效期、CVV 一旦泄露即可在线上盗刷；绑卡环节被撞库、被诱导授权，损失直达账户。<br>
+        <strong>我们能做的</strong>：令牌化替代明文卡号、单设备绑定、设备指纹与限额、异常首绑冷却；虚拟卡按用途/商户设一次性额度。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="4">
+      <span class="mx-i mono">05</span>
+      <span class="mx-k">卡号规则</span>
+      <span class="mx-c mono">BIN 6 位 + 卢恩 1 位</span>
+      <span class="mx-tag">误判 · 误信</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：只看前 6 位判卡类型，遇到非标准卡就判错；把卢恩通过当成「卡有效」，放过伪造卡号。<br>
+        <strong>我们能做的</strong>：维护可更新的卡 BIN 库，非标卡按 6–10 位判断；卢恩只用于输入校验，真实校验必须走发卡行授权。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="5">
+      <span class="mx-i mono">06</span>
+      <span class="mx-k">POS 终端</span>
+      <span class="mx-c mono">外部 8 部件 / 内部 3 件</span>
+      <span class="mx-tag">改装 · 二清</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：终端被拆装、密钥被导出、固件被替换；无牌机构借「机具代理」做二清，商户的钱先到别人账上。<br>
+        <strong>我们能做的</strong>：终端序列号与密钥一一绑定、开机自检与防拆告警；收单资质与结算账户核验，结算单可查、资金隔离。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="6">
+      <span class="mx-i mono">07</span>
+      <span class="mx-k">二维码</span>
+      <span class="mx-c mono">静态贴纸 / 动态屏</span>
+      <span class="mx-tag">替换 · 钓鱼</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：商户贴在外面的静态码被换成收款人的码，钱进了别人账户；钓鱼码把人引到假页面，骗授权、骗转账。<br>
+        <strong>我们能做的</strong>：优先动态码、收款方实名与语音播报、码与门店/终端绑定；静态码加防拆封装与巡检，异常收款方变更强提醒。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="7">
+      <span class="mx-i mono">08</span>
+      <span class="mx-k">IoT 传感器</span>
+      <span class="mx-c mono">阈值 / 自动下单</span>
+      <span class="mx-tag">误触发 · 重复</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：传感器漂移、上报重复、固件 bug 导致重复下单；阈值设得太低，家里没人时自动补货，钱先出去了。<br>
+        <strong>我们能做的</strong>：设备身份与签名、幂等订单号、单笔与周期额度、异常订单人工复核；阈值变更留痕，误触发可撤单。
+      </span></span>
+    </button>
+  </div>
+
+  <div class="three-law">
+    <div class="law"><span class="mono">RULE 01</span><p><b>载体决定可复制性</b>。信息原样交出去（磁条），就能被原样复制；每次能算新密文（芯片），复制成本才上来。</p></div>
+    <div class="law"><span class="mono">RULE 02</span><p><b>读取器决定攻击面</b>。POS、扫码枪、摄像头、供应商系统，谁读数据，谁就是下一个要被攻破的边界。</p></div>
+    <div class="law"><span class="mono">RULE 03</span><p><b>距离决定验证强度</b>。NFC 要求 10 cm 内，静态码却公开贴在墙上；读取越容易，越要额外验「码属于谁」。</p></div>
+    <div class="law"><span class="mono">RULE 04</span><p><b>越便宜的载体，越要验归属</b>。一张贴纸成本近零，替换它也近零；低成本收单必须配实名、动态码与播报。</p></div>
+    <div class="law"><span class="mono">RULE 05</span><p><b>无人的支付必须有幂等与上限</b>。传感器只负责触发，订单号、额度、复核三道闸必须在系统里。</p></div>
+    <div class="law"><span class="mono">RULE 06</span><p><b>工具越方便，风险越往账户层集中</b>。卡、码、传感器都只是入口；真正被偷的，是入口背后的账户与授权。</p></div>
+  </div>
+
+  <div class="aside">两张表怎么拼：第 1 章按「时间」列环节，第 2 章按「模式」列结构，这一章按<b>「载体 → 读取器 → 网络 → 账户」</b>列层级。同一个风险换个工具，不会消失，只会换一层发生：磁条被复制是载体层，POS 被改装是读取器层，静态码被替换是网络层，钱包被盗是账户层。</div>
+
+  <div class="quiz">
+    <button class="q-item"><span class="q-i mono">Q1</span><span class="q-t">为什么说磁条卡与 IC 卡不是一个安全层级？</span><span class="q-a">磁条把卡号等数据原样读出来，复制后即可伪卡；IC 卡芯片每次生成不同密文，终端还要验证，复制难度高得多。前者是「读出来」，后者是「算出来」。</span></button>
+    <button class="q-item"><span class="q-i mono">Q2</span><span class="q-t">卡号前 6 位与最后 1 位分别是什么？卢恩算法能防攻击吗？</span><span class="q-a">前 6 位是 BIN（发卡行识别码），最后 1 位是卢恩校验位。卢恩只发现输入错误，不防伪造与攻击；真实校验必须走发卡行授权。</span></button>
+    <button class="q-item"><span class="q-i mono">Q3</span><span class="q-t">CPM 与 MPM 各自由谁承担成本与风险？</span><span class="q-a">CPM 商户主扫：商户承担扫码枪/收银改造与设备维护，风险偏操作与排队；MPM 消费者主扫：商户设备成本近零，但静态码被替换的风险落在商户与消费者身上。</span></button>
+    <button class="q-item"><span class="q-i mono">Q4</span><span class="q-t">QR 码最大能到多大？为什么一维码当不了支付凭证？</span><span class="q-a">V40 是 177×177，数字模式最多 7,089 位。一维码只有 13 位数字，装不下订单、金额、签名与时效；二维码容量够，才能承载一笔完整支付。</span></button>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>
+    <p class="mono">CHAPTER VISUAL NOTES / 2026-11-14</p>
+    <p>原书：陈斌《一本书读懂支付》第 3 章「支付的基础工具」 · <a href="https://book.douban.com/subject/36422205/" target="_blank" rel="noopener">豆瓣条目</a></p>
+  </div>
+  <div class="foot-r mono"><a href="../ch02/">← 第 2 章</a><a href="../">章节索引</a></div>
+</div></footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
