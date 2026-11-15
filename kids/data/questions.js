@@ -92,6 +92,38 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "what-is-cafa",
+      "date": "2026-11-15",
+      "kid": "yumi",
+      "age": 9,
+      "question": "央美是什么？",
+      "subject": "society",
+      "depth": 1,
+      "figure": "assets/figures/what-is-cafa.svg",
+      "figureEn": "assets/figures/en/what-is-cafa.svg",
+      "figureAlt": "三格图解：名字拆成「中央 + 美术 + 学院」，就是一所美术大学，在北京、1918 年创办；里面学造型、设计、建筑和美术史；要从小练画，再过艺考、央美校考和高考。底部一句：央美是学校，不是一幅画，也不是博物馆，不过它自己有一座美术馆",
+      "oneLine": "「央美」是中央美术学院的简称——北京的一所教人画画、做设计的美术大学，不是一幅画的名字，也不是博物馆。它是一个要读四年、拿本科文凭的学校，1918 年就有前身，被叫作「八大美院」里的头一个。",
+      "points": [
+        "先把名字拆开看：中央（国家层面办的）+ 美术（画画、雕塑、设计这些用手做出来的东西）+ 学院（高等学校）。所以央美＝专门教美术的大学，不是周末培训班，也不是画廊。全称「中央美术学院」，校址在北京望京花家地；前身是 1918 年的国立北京美术学校，是中国最早的美术学校之一，常被排在「八大美院」的第一个。",
+        "里面学的不只是画画。造型类有油画、国画、版画、雕塑；设计类有视觉传达、产品、服装、数码媒体；还有建筑、实验艺术、美术史与策展。毕业的人去做画家、设计师、建筑师、动画和游戏美术、老师、策展人——画画只是其中一条路，不是全部。",
+        "怎么进去？不是交钱报名就能上。先要过美术考试（艺考，考素描、色彩、速写或创作），再要过央美自己的校考（有的专业要现场连画好几天），最后高考文化课也得过线。所以「考上央美」＝从小学画、练很多年、两场考试都过，缺一环都进不去；它的录取非常难，很多美术生把它当第一目标。"
+      ],
+      "followUp": "那为什么画画还要考语文数学？",
+      "source": "2026-11-15 玉米",
+      "en": {
+        "question": "What is 'CAFA'?",
+        "oneLine": "'CAFA' is short for the Central Academy of Fine Arts — an art university in Beijing that teaches people to paint, sculpt and design. It is not the name of a painting and not a museum; it is a school you attend for four years to earn a degree. Founded in 1918, it is often listed first among China's 'eight great art academies'.",
+        "points": [
+          "Break the name apart: Central (run at the national level) + Fine Arts (painting, sculpture, design — things made by hand) + Academy (a place of higher education). So CAFA is a university that teaches art, not a weekend class and not a gallery. Its full name is 中央美术学院, it sits in Wangjing, Beijing, and its forerunner was the National Beijing School of Fine Arts founded in 1918 — one of China's earliest art schools.",
+          "You do not only paint there. Fine-art studios cover oil painting, Chinese painting, printmaking and sculpture; design covers visual communication, product, fashion and digital media; there is also architecture, experimental art, and art history with curating. Graduates become painters, designers, architects, animation and game artists, teachers or curators — painting is one path among many.",
+          "How do you get in? You cannot simply pay and enrol. First the art exam (drawing, colour, sketching or composition), then CAFA's own school exam — some majors require several days of drawing on site — and finally your gaokao academic scores must pass the line. So 'getting into CAFA' means years of drawing since childhood plus passing both exams; miss one link and you are out, and admission is extremely competitive."
+        ],
+        "followUp": "Then why does drawing also require Chinese and maths exams?",
+        "figureAlt": "Three panels: the name breaks into Central + Fine Arts + Academy, meaning an art university in Beijing founded in 1918; inside you study fine art, design, architecture and art history; to get in you draw for years, then pass the art exam, CAFA's own exam and the gaokao. Bottom line: CAFA is a school, not a painting and not a museum, though it has its own art museum"
+      },
+      "time": "11:32:05"
+    },
+    {
       "id": "why-trees",
       "date": "2026-11-13",
       "kid": "taozi",

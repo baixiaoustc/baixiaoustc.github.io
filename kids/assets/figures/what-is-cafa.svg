@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="三格图解：央美是中央美术学院的简称，是一所教人画画和设计的美术大学；里面学造型、设计、建筑和美术史；要从小练画，过艺考、校考和高考才能进。底部一句：央美是学校，不是一幅画，也不是博物馆，不过它自己有一座美术馆">
+  <rect x="0" y="0" width="640" height="400" rx="24" fill="#FFFDF7"/>
+  <text x="320" y="44" text-anchor="middle" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="22" fill="#2C2A26">央美，是一所教人画画的美术大学</text>
+
+  <!-- ① 名字拆开 -->
+  <rect x="32" y="70" width="176" height="250" rx="12" fill="#F4EFE3" stroke="#D8CDB8"/>
+  <text x="46" y="96" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#8A6B2F">① 名字拆开</text>
+  <text x="120" y="128" text-anchor="middle" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#2C2A26">中央 + 美术 + 学院</text>
+  <text x="120" y="152" text-anchor="middle" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#2C2A26">= 一所美术大学</text>
+  <path d="M64 226 L120 196 L176 226" fill="none" stroke="#8A6B2F" stroke-width="2"/>
+  <rect x="64" y="226" width="112" height="52" fill="#FFFDF7" stroke="#8A6B2F" stroke-width="2"/>
+  <rect x="108" y="244" width="24" height="34" fill="#E4D9C4" stroke="#8A6B2F" stroke-width="1.5"/>
+  <text x="120" y="242" text-anchor="middle" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="16" fill="#8A6B2F">央美</text>
+  <text x="120" y="300" text-anchor="middle" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#5C564B">在北京 · 1918 年创办</text>
+
+  <!-- ② 里面学什么 -->
+  <rect x="232" y="70" width="176" height="250" rx="12" fill="#F4EFE3" stroke="#D8CDB8"/>
+  <text x="246" y="96" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#8A6B2F">② 里面学什么</text>
+  <ellipse cx="384" cy="118" rx="18" ry="12" fill="#FFFDF7" stroke="#8A6B2F" stroke-width="1.5"/>
+  <circle cx="376" cy="114" r="2.5" fill="#C4574A"/><circle cx="384" cy="112" r="2.5" fill="#6FA98B"/>
+  <circle cx="392" cy="115" r="2.5" fill="#C8A45C"/><circle cx="380" cy="122" r="2.5" fill="#5B7FA6"/>
+  <text x="246" y="150" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#2C2A26">造型：油画 · 国画</text>
+  <text x="246" y="176" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#2C2A26">雕塑 · 版画</text>
+  <text x="246" y="206" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#2C2A26">设计：视觉 · 产品</text>
+  <text x="246" y="232" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#2C2A26">服装 · 数码媒体</text>
+  <text x="246" y="262" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#2C2A26">建筑 · 实验艺术</text>
+  <text x="246" y="292" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#5C564B">去做画家 · 设计师</text>
+
+  <!-- ③ 怎么进去 -->
+  <rect x="432" y="70" width="176" height="250" rx="12" fill="#F4EFE3" stroke="#D8CDB8"/>
+  <text x="446" y="96" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#8A6B2F">③ 怎么进去</text>
+  <rect x="452" y="112" width="136" height="30" rx="6" fill="#FFFDF7" stroke="#C8A45C"/>
+  <text x="520" y="132" text-anchor="middle" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#2C2A26">从小练画</text>
+  <rect x="452" y="156" width="136" height="30" rx="6" fill="#FFFDF7" stroke="#C8A45C"/>
+  <text x="520" y="176" text-anchor="middle" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#2C2A26">艺考：素描 · 色彩</text>
+  <rect x="452" y="200" width="136" height="30" rx="6" fill="#FFFDF7" stroke="#C8A45C"/>
+  <text x="520" y="220" text-anchor="middle" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#2C2A26">央美校考</text>
+  <rect x="452" y="244" width="136" height="30" rx="6" fill="#FFFDF7" stroke="#C8A45C"/>
+  <text x="520" y="264" text-anchor="middle" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#2C2A26">高考过线</text>
+  <line x1="520" y1="142" x2="520" y2="156" stroke="#8A6B2F" stroke-width="2"/>
+  <line x1="520" y1="186" x2="520" y2="200" stroke="#8A6B2F" stroke-width="2"/>
+  <line x1="520" y1="230" x2="520" y2="244" stroke="#8A6B2F" stroke-width="2"/>
+  <text x="520" y="300" text-anchor="middle" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="15" fill="#5C564B">缺一环都进不去</text>
+
+  <text x="320" y="356" text-anchor="middle" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="16" fill="#2C2A26">央美是学校，不是一幅画，也不是博物馆</text>
+  <text x="320" y="380" text-anchor="middle" font-family="PingFang SC, Noto Sans CJK SC, sans-serif" font-size="14" fill="#8A6B2F">不过它自己有一座美术馆，里面常办展览</text>
+</svg>

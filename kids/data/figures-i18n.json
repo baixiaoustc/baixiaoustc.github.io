@@ -505,5 +505,31 @@
       "树不是谁安排出来的：它们只是抢着晒太阳，一路往上长": "No one arranged for trees: they raced for the sun and grew up",
       "长得高一点就多一口饭；晒不到的那些，慢慢被林子筛掉": "A little taller means a little more food; shaded ones drop out"
     }
+  },
+  "what-is-cafa.svg": {
+    "aria": "Three panels: the name breaks into Central + Fine Arts + Academy, meaning an art university in Beijing, founded in 1918; inside you study fine art, design, architecture and art history; to get in you draw for years, then pass the art exam, CAFA's own exam, and the gaokao. Bottom line: CAFA is a school — not a painting, not a museum, though it has its own art museum.",
+    "text": {
+      "央美，是一所教人画画的美术大学": "CAFA is an art university that teaches people to draw",
+      "① 名字拆开": "① Break the name apart",
+      "中央 + 美术 + 学院": "Central + Fine Arts + Academy",
+      "= 一所美术大学": "= an art university",
+      "央美": "CAFA",
+      "在北京 · 1918 年创办": "In Beijing, founded 1918",
+      "② 里面学什么": "② What you study",
+      "造型：油画 · 国画": "Fine art: oil, ink",
+      "雕塑 · 版画": "Sculpture, printmaking",
+      "设计：视觉 · 产品": "Design: visual, product",
+      "服装 · 数码媒体": "Fashion, digital media",
+      "建筑 · 实验艺术": "Architecture, experimental art",
+      "去做画家 · 设计师": "Become a painter or designer",
+      "③ 怎么进去": "③ How to get in",
+      "从小练画": "Draw for years",
+      "艺考：素描 · 色彩": "Art exam: drawing, colour",
+      "央美校考": "CAFA's own exam",
+      "高考过线": "Gaokao pass mark",
+      "缺一环都进不去": "Miss one and you are out",
+      "央美是学校，不是一幅画，也不是博物馆": "CAFA is a school — not a painting, not a museum",
+      "不过它自己有一座美术馆，里面常办展览": "Though it does have its own art museum"
+    }
   }
 }
