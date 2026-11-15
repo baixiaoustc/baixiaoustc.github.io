@@ -3,485 +3,788 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<meta name="theme-color" content="#FDF6E3">
-<title>快递员汤姆 · 小游戏</title>
+<meta name="theme-color" content="#F4EFE3">
+<title>快递员汤姆 · 简化版</title>
 <style>
   :root{
-    --paper:#FDF6E3; --ink:#22333B; --muted:#6B7A80;
-    --road:#E4DAC4; --road-line:#C3B79C; --block:#EDE4CF;
-    --orange:#E8853A; --gold:#D9A441; --green:#5B9A78; --red:#C4574A;
+    --paper:#F4EFE3; --paper-2:#FBF7EC; --ink:#1E1E1B; --soft:#6F6B60;
+    --line:#C9C0AC; --lit:#F3DFA2; --red:#A6473C;
+    --mono:"SFMono-Regular",ui-monospace,"Courier New",monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
   }
   *{box-sizing:border-box}
   html,body{margin:0;padding:0}
   body{
-    background:
-      radial-gradient(900px 500px at 50% -10%, #FFFDF7, rgba(255,253,247,0) 70%),
-      var(--paper);
-    color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
-    min-height:100vh;
-    display:flex;flex-direction:column;align-items:center;
-    padding:20px 14px 28px;
+    background:var(--paper);
+    color:var(--ink); font-family:var(--sans);
+    min-height:100vh; display:flex; flex-direction:column; align-items:center;
+    padding:18px 14px 26px;
   }
-  .page{width:100%;max-width:780px}
-  header.top{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:10px}
-  .title-wrap h1{margin:0;font-size:clamp(22px,4.6vw,34px);letter-spacing:.02em}
-  .title-wrap h1 span{color:var(--orange)}
-  .title-wrap p{margin:6px 0 0;font-size:clamp(12px,2.4vw,14px);color:var(--muted);line-height:1.6}
-  .back-link{font-size:12px;color:var(--muted);text-decoration:none;border-bottom:1px dashed var(--road-line);padding:10px 2px;white-space:nowrap;display:inline-block}
+  .page{width:100%;max-width:800px}
+  header.top{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:8px}
+  h1{margin:0;font-size:clamp(21px,4.4vw,32px);letter-spacing:.02em}
+  h1 small{font-size:.48em;font-weight:400;color:var(--soft);letter-spacing:.08em;margin-left:8px}
+  header p{margin:7px 0 0;font-size:clamp(12px,2.3vw,13.5px);color:var(--soft);line-height:1.65}
+  .back-link{font-size:12px;color:var(--soft);text-decoration:none;border-bottom:1px dashed var(--line);padding:10px 2px;white-space:nowrap}
   .back-link:hover{color:var(--ink)}
 
-  .hud{display:flex;gap:8px;margin:12px 0 10px;flex-wrap:wrap}
-  .pill{flex:1 1 90px;background:#FFFDF7;border:1px solid #E2D7BE;border-radius:12px;padding:8px 12px;min-width:88px}
-  .pill .k{display:block;font-size:9px;letter-spacing:.14em;color:#9A8F76;text-transform:uppercase}
-  .pill .v{display:block;font-size:clamp(17px,3.4vw,22px);font-weight:700;font-variant-numeric:tabular-nums;line-height:1.25}
-  .pill.time .v{color:var(--red)}
-  .pill.best .v{color:var(--green)}
-  .pill.orders .v{color:var(--orange)}
+  .hud{display:flex;gap:7px;margin:10px 0 8px;flex-wrap:wrap}
+  .pill{flex:1 1 80px;background:var(--paper-2);border:1px solid var(--line);border-radius:3px;padding:7px 10px}
+  .pill .k{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;color:#8A8373;text-transform:uppercase}
+  .pill .v{display:block;font-family:var(--mono);font-size:clamp(15px,3vw,20px);font-weight:700;line-height:1.3;font-variant-numeric:tabular-nums}
+  .pill.hearts .v{color:var(--red);letter-spacing:.08em}
+  .pill.time.low .v{color:var(--red)}
 
-  .stage{position:relative;width:100%;border-radius:18px;overflow:hidden;
-    border:1px solid #D8CCB1;background:var(--paper);
-    box-shadow:0 14px 30px -18px rgba(34,51,59,.45), 0 2px 0 #EFE6D1 inset}
-  canvas{display:block;width:100%;height:auto;aspect-ratio:728/520;touch-action:none}
+  .stage{position:relative;width:100%;border:1px solid #B9AF99;background:var(--paper);
+    box-shadow:0 12px 26px -20px rgba(30,30,27,.55);overflow:hidden}
+  canvas{display:block;width:100%;height:auto;aspect-ratio:760/540;touch-action:none;background:var(--paper)}
+  .stage::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:radial-gradient(120% 90% at 50% 45%, rgba(0,0,0,0) 55%, rgba(30,30,27,.10) 100%)}
+
+  .prompt{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);
+    background:rgba(30,30,27,.86);color:#FBF7EC;font-size:clamp(11px,2.2vw,12.5px);line-height:1.5;
+    padding:6px 12px;border-radius:2px;white-space:nowrap;max-width:94%;overflow:hidden;text-overflow:ellipsis;
+    transition:opacity .15s ease;pointer-events:none}
+  .prompt.hide{opacity:0}
+  .toast{position:absolute;left:50%;top:12px;transform:translate(-50%,-6px);opacity:0;
+    background:var(--ink);color:var(--paper);font-size:12px;padding:6px 12px;border-radius:2px;
+    pointer-events:none;transition:.18s ease;white-space:nowrap}
+  .toast.show{opacity:1;transform:translate(-50%,0)}
+  .toast.bad{background:var(--red)}
+
+  .secret-card{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-.8deg) scale(.96);
+    width:min(86%,430px);background:var(--paper-2);border:1px solid var(--ink);
+    box-shadow:4px 4px 0 rgba(30,30,27,.18);padding:16px 18px;
+    opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;z-index:3}
+  .secret-card.show{opacity:1;transform:translate(-50%,-50%) rotate(-.8deg) scale(1)}
+  .secret-card .sk{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--soft)}
+  .secret-card h3{margin:6px 0 8px;font-size:clamp(16px,3.4vw,20px);line-height:1.35}
+  .secret-card p{margin:0;font-size:clamp(12px,2.4vw,14px);line-height:1.75}
+  .secret-card .tail{margin-top:10px;font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;color:#8A8373}
 
   .overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;padding:22px;background:rgba(253,246,227,.92);backdrop-filter:blur(2px)}
+    text-align:center;padding:20px;background:rgba(244,239,227,.93);z-index:4;overflow:auto}
   .overlay.hidden{display:none}
-  .overlay .big{font-size:clamp(24px,5vw,34px);font-weight:800;margin:0 0 6px}
-  .overlay .sub{font-size:clamp(12px,2.4vw,14px);color:var(--muted);line-height:1.7;max-width:420px;margin:0 0 14px}
+  .overlay .kicker{font-family:var(--mono);font-size:9px;letter-spacing:.22em;color:#8A8373;margin-bottom:6px}
+  .overlay .big{font-size:clamp(22px,4.8vw,32px);font-weight:800;margin:0 0 6px;line-height:1.25}
+  .overlay .sub{font-size:clamp(12px,2.3vw,13.5px);color:var(--soft);line-height:1.72;max-width:460px;margin:0 0 12px}
   .overlay .sub b{color:var(--ink)}
-  .btn{cursor:pointer;border:0;border-radius:999px;padding:12px 26px;font-size:clamp(15px,3vw,17px);font-weight:700;
-    background:var(--orange);color:#fff;box-shadow:0 4px 0 #B86422;transition:transform .08s ease,box-shadow .08s ease}
-  .btn:active{transform:translateY(3px);box-shadow:0 1px 0 #B86422}
-  .btn.ghost{background:#FFFDF7;color:var(--ink);border:1px solid #D8CCB1;box-shadow:0 3px 0 #E2D7BE}
-  .over-score{font-size:clamp(26px,5vw,36px);font-weight:800;color:var(--orange);margin:2px 0 4px}
-  .over-best{font-size:12px;color:var(--muted);margin:0 0 14px}
+  .overlay .stats{font-family:var(--mono);font-size:11px;color:var(--soft);letter-spacing:.04em;margin:0 0 12px}
+  .secret-list{width:min(92%,480px);text-align:left;border-top:1px dashed var(--line);margin:0 0 12px;padding-top:8px}
+  .secret-list div{font-size:11.5px;line-height:1.6;color:var(--soft);margin:3px 0}
+  .secret-list b{color:var(--ink);font-weight:600}
+  .btn{cursor:pointer;border:1px solid var(--ink);border-radius:2px;padding:11px 24px;
+    font-size:clamp(14px,2.8vw,16px);font-weight:700;background:var(--ink);color:var(--paper);box-shadow:3px 3px 0 rgba(30,30,27,.18)}
+  .btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 rgba(30,30,27,.18)}
+  .btn.ghost{background:var(--paper-2);color:var(--ink)}
 
-  .pad-wrap{display:none;margin:12px auto 0;width:168px;position:relative;height:168px}
-  .pad{position:absolute;width:54px;height:54px;border-radius:14px;border:1px solid #D8CCB1;background:#FFFDF7;
-    color:var(--ink);font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center;
-    box-shadow:0 3px 0 #E4D9C2;user-select:none;-webkit-user-select:none;touch-action:none}
-  .pad:active,.pad.on{background:#F4E7CF;box-shadow:0 1px 0 #E4D9C2;transform:translateY(2px)}
-  .pad.up{left:57px;top:0}.pad.down{left:57px;bottom:0}.pad.left{left:0;top:57px}.pad.right{right:0;top:57px}
-  .pad-mid{position:absolute;left:57px;top:57px;width:54px;height:54px;border-radius:50%;
-    border:1px dashed #D8CCB1;background:rgba(255,253,247,.6);display:flex;align-items:center;justify-content:center;font-size:18px;color:#A99B7C}
+  .controls{display:none;margin:10px auto 0;align-items:center;justify-content:center;gap:16px}
+  .pad-wrap{position:relative;width:156px;height:156px}
+  .pad{position:absolute;width:50px;height:50px;border-radius:4px;border:1px solid #B9AF99;background:var(--paper-2);
+    color:var(--ink);font-size:19px;display:flex;align-items:center;justify-content:center;
+    user-select:none;-webkit-user-select:none;touch-action:none}
+  .pad:active,.pad.on{background:#E9DFC9;transform:translateY(1px)}
+  .pad.up{left:53px;top:0}.pad.down{left:53px;bottom:0}.pad.left{left:0;top:53px}.pad.right{right:0;top:53px}
+  .pad-mid{position:absolute;left:53px;top:53px;width:50px;height:50px;border-radius:50%;border:1px dashed var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:16px;color:#8A8373}
+  .act{width:70px;height:70px;border-radius:50%;border:1px solid var(--ink);background:var(--paper-2);
+    font-family:var(--mono);font-size:12px;font-weight:700;line-height:1.25;color:var(--ink);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+    user-select:none;-webkit-user-select:none;touch-action:none;box-shadow:2px 2px 0 rgba(30,30,27,.15)}
+  .act b{font-size:17px}
+  .act:active{background:#E9DFC9;transform:translateY(1px)}
+  .act span{font-size:9px;letter-spacing:.1em;color:var(--soft)}
 
-  .foot{margin-top:14px;font-size:11px;color:#9A8F76;line-height:1.7}
-  .toast{position:absolute;left:50%;top:14px;transform:translateX(-50%) translateY(-8px);opacity:0;
-    background:#22333B;color:#FFFDF7;font-size:12px;padding:6px 12px;border-radius:999px;pointer-events:none;
-    transition:opacity .2s ease,transform .2s ease;white-space:nowrap}
-  .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .foot{margin-top:12px;font-size:10.5px;color:#8A8373;line-height:1.75;text-align:center}
+  .foot a{color:var(--soft);text-decoration:none;border-bottom:1px dashed var(--line)}
 
-  @media (pointer:coarse), (max-width:700px){
-    .pad-wrap{display:block}
-  }
+  @media (pointer:coarse), (max-width:720px){ .controls{display:flex} }
   @media (max-width:520px){
-    body{padding:14px 10px 22px}
-    .hud{gap:6px}
-    .pill{padding:6px 9px;border-radius:10px}
-    .overlay{padding:16px}
-    .overlay .sub{font-size:12px}
+    body{padding:12px 9px 20px}
+    .hud{gap:5px}.pill{padding:6px 7px}
+    .overlay{padding:14px}
+    .secret-card{padding:13px 15px}
+    .controls{gap:10px}
   }
 </style>
 </head>
 <body>
 <div class="page">
   <header class="top">
-    <div class="title-wrap">
-      <h1>🛵 快递员<span>汤姆</span></h1>
-      <p>先取包裹，再送到闪光的房子。60 秒内能送几单？</p>
+    <div>
+      <h1>✉️ 快递员汤姆<small>简化版 / Tom the Postgirl</small></h1>
+      <p>送三件包裹，顺便看看窗户里藏着什么。灯亮着的时候，别偷看。</p>
     </div>
     <a class="back-link" href="../">← 回到博客</a>
   </header>
 
   <div class="hud" aria-live="polite">
-    <div class="pill"><span class="k">得分</span><span class="v" id="scoreV">0</span></div>
-    <div class="pill orders"><span class="k">已送达</span><span class="v" id="ordersV">0</span></div>
-    <div class="pill time"><span class="k">剩余时间</span><span class="v" id="timeV">60</span></div>
-    <div class="pill best"><span class="k">最高分</span><span class="v" id="bestV">0</span></div>
+    <div class="pill"><span class="k">送达</span><span class="v" id="deliverV">0 / 3</span></div>
+    <div class="pill"><span class="k">秘密</span><span class="v" id="secretV">0 / 6</span></div>
+    <div class="pill time" id="timePill"><span class="k">剩余时间</span><span class="v" id="timeV">100</span></div>
+    <div class="pill hearts"><span class="k">别被发现</span><span class="v" id="heartV">♥♥♥</span></div>
   </div>
 
   <div class="stage" id="stage">
-    <canvas id="game" width="728" height="520" aria-label="快递员汤姆的游戏画面"></canvas>
+    <canvas id="game" width="760" height="540" aria-label="黑白手绘村庄游戏画面"></canvas>
+    <div class="prompt hide" id="prompt"></div>
+    <div class="toast" id="toast"></div>
+
+    <div class="secret-card" id="secretCard">
+      <div class="sk" id="secretK">SECRET</div>
+      <h3 id="secretT"></h3>
+      <p id="secretD"></p>
+      <div class="tail">这一页，收进汤姆的邮包里。</div>
+    </div>
 
     <div class="overlay" id="intro">
-      <p class="big">汤姆今天值班 🛵</p>
-      <p class="sub">用 <b>方向键 / WASD</b> 移动，手机用下方方向盘。<br>先碰到<b>包裹</b>再送往<b>闪光的房子</b>，每送达一单加 3 秒。</p>
-      <button class="btn" id="startBtn" type="button">开始派送</button>
+      <div class="kicker">A TINY FAN-MADE TRIBUTE</div>
+      <p class="big">今晚的邮差，是汤姆</p>
+      <p class="sub">用 <b>方向键 / WASD</b> 走动，手机用左下方向盘。<br>把 <b>3 件包裹</b>送到对应的房子；路上可以<b>凑近窗户偷看</b>：灯灭时按 E / 点「查看」，1 秒后能看到住户的秘密。<br>灯亮着还去偷看，会被发现，掉一颗心。</p>
+      <p class="sub" style="margin-top:-6px">包裹送完就收工。可是……你真的忍得住不看吗？</p>
+      <button class="btn" id="startBtn" type="button">开始送信</button>
     </div>
 
     <div class="overlay hidden" id="over">
-      <p class="big">派送结束</p>
-      <p class="over-score" id="finalScore">0 分</p>
-      <p class="over-best" id="finalBest">本局送达 0 单</p>
-      <button class="btn" id="againBtn" type="button">再来一单</button>
+      <div class="kicker" id="overK">ROUTE COMPLETE</div>
+      <p class="big" id="overT">模范邮差</p>
+      <p class="sub" id="overD"></p>
+      <p class="stats" id="overStats"></p>
+      <div class="secret-list" id="secretList"></div>
+      <button class="btn" id="againBtn" type="button">再走一趟</button>
     </div>
-
-    <div class="toast" id="toast">+1 单</div>
   </div>
 
-  <div class="pad-wrap" id="padWrap" aria-label="移动方向盘">
-    <button class="pad up" data-dir="up" type="button" aria-label="上">▲</button>
-    <button class="pad down" data-dir="down" type="button" aria-label="下">▼</button>
-    <button class="pad left" data-dir="left" type="button" aria-label="左">◀</button>
-    <button class="pad right" data-dir="right" type="button" aria-label="右">▶</button>
-    <div class="pad-mid">🛵</div>
+  <div class="controls" id="controls">
+    <div class="pad-wrap" aria-label="移动">
+      <button class="pad up" data-dir="up" type="button" aria-label="上">▲</button>
+      <button class="pad down" data-dir="down" type="button" aria-label="下">▼</button>
+      <button class="pad left" data-dir="left" type="button" aria-label="左">◀</button>
+      <button class="pad right" data-dir="right" type="button" aria-label="右">▶</button>
+      <div class="pad-mid">✉️</div>
+    </div>
+    <button class="act" id="actBtn" type="button" aria-label="查看或送达"><b>E</b><span>查看 / 送达</span></button>
   </div>
 
-  <p class="foot">小提示：房子会发光，跟着光走就不容易迷路。连续送达会越来越快。</p>
+  <p class="foot">灵感来自 Oopsie Daisies 与 ARTE 的《快递员汤姆》（Tom the Postgirl）：手绘黑白村庄、送包裹、偷看住户的秘密。<br>这是非官方、去成人内容的简化网页版；原版是一款潜行窥探叙事冒险游戏。</p>
 </div>
 
 <script>
 (() => {
   'use strict';
   const canvas = document.getElementById('game');
-  const ctx = canvas.getContext('2d');
-  const W = 728, H = 520;
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  canvas.width = W * dpr; canvas.height = H * dpr;
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const ctx = canvas.getContext('2d', { alpha: false, powerPreference: 'low-power' });
+  const W = 760, H = 540;
+  const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+  canvas.width = Math.round(W * DPR); canvas.height = Math.round(H * DPR);
+  ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
 
   const $ = (id) => document.getElementById(id);
-  const scoreV = $('scoreV'), ordersV = $('ordersV'), timeV = $('timeV'), bestV = $('bestV');
-  const intro = $('intro'), over = $('over'), finalScore = $('finalScore'), finalBest = $('finalBest');
-  const toast = $('toast');
+  const deliverV = $('deliverV'), secretV = $('secretV'), timeV = $('timeV'), heartV = $('heartV'), timePill = $('timePill');
+  const intro = $('intro'), over = $('over');
+  const promptEl = $('prompt'), toastEl = $('toast');
+  const secretCard = $('secretCard'), secretK = $('secretK'), secretT = $('secretT'), secretD = $('secretD');
+  const overK = $('overK'), overT = $('overT'), overD = $('overD'), overStats = $('overStats'), secretList = $('secretList');
 
   const HOUSES = [
-    { x: 96,  y: 104, color: '#C4574A', name: '红房子' },
-    { x: 364, y: 82,  color: '#5B7FA6', name: '蓝房子' },
-    { x: 636, y: 118, color: '#5B9A78', name: '绿房子' },
-    { x: 112, y: 424, color: '#8E6B9E', name: '紫房子' },
-    { x: 364, y: 446, color: '#4F9A9A', name: '青房子' },
-    { x: 624, y: 418, color: '#D97B8C', name: '粉房子' },
+    { id: 1, x: 112, y: 122, name: '镇长家',   secret: '镇长每天夜里给自己的假发过生日，还给它留一块蛋糕。' },
+    { id: 2, x: 306, y: 102, name: '孤儿院',   secret: '狗舍里的「孩子们」会排队，等邮差把信从门缝塞进去。' },
+    { id: 3, x: 520, y: 112, name: '神父家',   secret: '两位神父把圣水换成了汽水，说这样祷告会打嗝。' },
+    { id: 4, x: 128, y: 414, name: '嬉皮士家', secret: '电锯只切南瓜。可他们给每个南瓜都画了脸，还起了名字。' },
+    { id: 5, x: 356, y: 436, name: '松鼠窝',   secret: '松鼠囤的不是坚果，是村民丢的钥匙。它一把也没用过。' },
+    { id: 6, x: 620, y: 406, name: '鸽子棚',   secret: '鸽子在墓地里开会，议题是「谁偷了谁的面包屑」。' },
   ];
-  const SPOTS = [
-    {x:250,y:236},{x:480,y:250},{x:196,y:326},{x:548,y:330},{x:360,y:300},
-    {x:300,y:174},{x:452,y:392},{x:602,y:262},{x:150,y:252},{x:408,y:232},
-  ];
+  const START = { x: 382, y: 282 };
+  const TOTAL_TIME = 100;
+  const PARCEL_COUNT = 3;
 
   const state = {
     screen: 'intro',
-    score: 0, orders: 0, time: 60,
-    player: {x: 364, y: 268, r: 16, dirX: 0, dirY: -1},
-    package: null, house: null, carried: false,
-    speed: 172, deliveries: 0,
-    t: 0, particles: [], flash: 0
+    time: TOTAL_TIME, hearts: 3,
+    deliveries: 0, secrets: 0,
+    player: { x: START.x, y: START.y, r: 13, dirX: 0, dirY: -1, moving: false },
+    parcels: [], targets: [],
+    peek: null, flash: 0, caughtLock: 0,
+    t: 0, message: '', messageT: 0, frames: 0,
   };
-  let best = 0;
-  try { best = Number(localStorage.getItem('tom-best') || 0) || 0; } catch (e) { best = 0; }
-  bestV.textContent = best;
+
+  let bestSecrets = 0;
+  try { bestSecrets = Number(localStorage.getItem('tom-post-secrets') || 0) || 0; } catch (e) {}
 
   const keys = { up:false, down:false, left:false, right:false };
 
-  function reset() {
-    state.score = 0; state.orders = 0; state.time = 60; state.carried = false;
-    state.speed = 172; state.deliveries = 0; state.particles = []; state.flash = 0;
-    state.player.x = 364; state.player.y = 268; state.player.dirX = 0; state.player.dirY = -1;
-    state.screen = 'playing';
-    spawnOrder();
-    intro.classList.add('hidden');
-    over.classList.add('hidden');
+  function mulberry32(a){
+    return function(){
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      let t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+
+  /* ── 静态村庄缓存：只在尺寸变化时画一次 ─────────────── */
+  const bg = document.createElement('canvas');
+  const bctx = bg.getContext('2d');
+  function buildBackground(){
+    bg.width = Math.round(W * DPR); bg.height = Math.round(H * DPR);
+    bctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    const rnd = mulberry32(20261115);
+    bctx.fillStyle = '#F4EFE3'; bctx.fillRect(0, 0, W, H);
+
+    // 纸张颗粒
+    bctx.fillStyle = 'rgba(30,30,27,.035)';
+    for (let i = 0; i < 520; i++) bctx.fillRect(rnd()*W, rnd()*H, 1, 1);
+
+    // 月亮
+    bctx.strokeStyle = 'rgba(30,30,27,.35)'; bctx.lineWidth = 1;
+    bctx.beginPath(); bctx.arc(690, 58, 22, 0, Math.PI*2); bctx.stroke();
+    bctx.fillStyle = 'rgba(30,30,27,.08)';
+    bctx.beginPath(); bctx.arc(690, 58, 22, 0, Math.PI*2); bctx.fill();
+
+    // 小路：先铺纸色，再描两侧墨线
+    const paths = [
+      [[382,282],[382,160],[112,160],[112,186]],
+      [[382,282],[306,282],[306,146]],
+      [[382,282],[520,282],[520,158]],
+      [[382,282],[382,360],[128,360],[128,374]],
+      [[382,360],[356,360],[356,398]],
+      [[382,360],[620,360],[620,370]],
+      [[112,160],[112,470],[128,470]],
+      [[520,158],[520,470],[620,470]],
+    ];
+    bctx.lineCap = 'round';
+    for (const p of paths){
+      bctx.strokeStyle = '#EAE1CE'; bctx.lineWidth = 30;
+      drawPolyline(bctx, p);
+      bctx.strokeStyle = 'rgba(30,30,27,.18)'; bctx.lineWidth = 1;
+      drawPolyline(bctx, p, 15);
+      drawPolyline(bctx, p, -15);
+    }
+
+    // 邮局
+    drawPostOffice(bctx, 660, 268);
+
+    // 房子
+    for (const h of HOUSES) drawHouse(bctx, h);
+
+    // 树、栅栏、墓碑
+    drawTree(bctx, 214, 110, 34);
+    drawTree(bctx, 462, 138, 30);
+    drawTree(bctx, 216, 398, 28);
+    drawTree(bctx, 520, 400, 34);
+    drawFence(bctx, 52, 236, 120, 'h');
+    drawFence(bctx, 560, 220, 96, 'h');
+    drawFence(bctx, 470, 470, 110, 'h');
+    drawGrave(bctx, 626, 172);
+    drawGrave(bctx, 648, 190);
+    drawGrave(bctx, 610, 198);
+
+    // 角落说明
+    bctx.fillStyle = 'rgba(30,30,27,.28)';
+    bctx.font = '9px ' + getComputedStyle(document.body).fontFamily;
+    bctx.textAlign = 'left';
+    bctx.fillText('THE VILLAGE / 23:40', 18, 20);
+    bctx.textAlign = 'right';
+    bctx.fillText('MAP BY TOM (SHE TRIED)', W - 18, H - 14);
+  }
+
+  function drawPolyline(c, pts, offset = 0){
+    c.beginPath();
+    for (let i = 0; i < pts.length; i++){
+      const [x, y] = pts[i];
+      if (i === 0) c.moveTo(x + offset*0.2, y);
+      else c.lineTo(x + offset*0.2, y);
+    }
+    c.stroke();
+  }
+
+  function drawPostOffice(c, x, y){
+    c.save(); c.translate(x, y);
+    c.strokeStyle = '#1E1E1B'; c.lineWidth = 1.6;
+    c.fillStyle = '#FBF7EC';
+    c.fillRect(-34, -24, 68, 48);
+    c.strokeRect(-34, -24, 68, 48);
+    // 屋顶
+    c.beginPath(); c.moveTo(-42, -24); c.lineTo(0, -46); c.lineTo(42, -24); c.closePath();
+    c.fillStyle = '#1E1E1B'; c.fill(); c.stroke();
+    // 窗
+    c.fillStyle = '#1E1E1B'; c.fillRect(-24, -12, 16, 14);
+    c.strokeStyle = '#FBF7EC'; c.lineWidth = 1;
+    c.beginPath(); c.moveTo(-16, -12); c.lineTo(-16, 2); c.stroke();
+    // 门
+    c.fillStyle = '#1E1E1B'; c.fillRect(8, -6, 14, 30);
+    // 邮筒
+    c.fillStyle = '#1E1E1B'; c.fillRect(-30, 26, 10, 18);
+    c.fillStyle = '#FBF7EC'; c.fillRect(-28, 29, 6, 2);
+    // 招牌
+    c.fillStyle = '#FBF7EC'; c.fillRect(-28, -34, 56, 14);
+    c.strokeStyle = '#1E1E1B'; c.strokeRect(-28, -34, 56, 14);
+    c.fillStyle = '#1E1E1B'; c.font = 'bold 9px ' + getComputedStyle(document.body).fontFamily;
+    c.textAlign = 'center'; c.fillText('POST', 0, -24);
+    c.restore();
+  }
+
+  function drawHouse(c, h){
+    const w = 84, hh = 56, x = h.x, y = h.y;
+    c.save();
+    // 阴影排线
+    c.strokeStyle = 'rgba(30,30,27,.22)'; c.lineWidth = 1;
+    for (let i = 0; i < 7; i++){
+      c.beginPath(); c.moveTo(x - w/2 + i*7, y + hh + 6); c.lineTo(x - w/2 + 18 + i*7, y + hh + 16); c.stroke();
+    }
+    // 房身
+    c.fillStyle = '#FBF7EC'; c.fillRect(x - w/2, y - hh/2, w, hh + 10);
+    c.strokeStyle = '#1E1E1B'; c.lineWidth = 1.8; c.strokeRect(x - w/2, y - hh/2, w, hh + 10);
+    // 屋顶（歪一点）
+    c.beginPath();
+    c.moveTo(x - w/2 - 8, y - hh/2 + 4);
+    c.lineTo(x - 2, y - hh/2 - 24);
+    c.lineTo(x + w/2 + 8, y - hh/2 + 2);
+    c.lineTo(x + w/2 - 8, y - hh/2 + 8);
+    c.closePath();
+    c.fillStyle = '#1E1E1B'; c.fill(); c.strokeStyle = '#1E1E1B'; c.stroke();
+    // 屋顶排线
+    c.strokeStyle = 'rgba(251,247,236,.25)'; c.lineWidth = 1;
+    for (let i = 0; i < 5; i++){
+      c.beginPath();
+      c.moveTo(x - 30 + i*13, y - hh/2 - 12 + (i%2)*2);
+      c.lineTo(x - 22 + i*11, y - hh/2 + 2);
+      c.stroke();
+    }
+    // 烟囱
+    c.fillStyle = '#FBF7EC'; c.strokeStyle = '#1E1E1B'; c.lineWidth = 1.4;
+    c.fillRect(x + 18, y - hh/2 - 30, 11, 18); c.strokeRect(x + 18, y - hh/2 - 30, 11, 18);
+    // 窗
+    c.fillStyle = '#1E1E1B'; c.fillRect(x + 10, y - 12, 20, 18);
+    c.strokeStyle = '#FBF7EC'; c.lineWidth = 1;
+    c.beginPath(); c.moveTo(x + 20, y - 12); c.lineTo(x + 20, y + 6); c.stroke();
+    c.beginPath(); c.moveTo(x + 10, y - 3); c.lineTo(x + 30, y - 3); c.stroke();
+    // 门
+    c.fillStyle = '#1E1E1B'; c.fillRect(x - 30, y + 2, 17, 20);
+    c.fillStyle = '#FBF7EC'; c.font = 'bold 8px ' + getComputedStyle(document.body).fontFamily;
+    c.textAlign = 'center'; c.fillText(String(h.id).padStart(2, '0'), x - 21.5, y + 16);
+    // 名牌
+    c.fillStyle = '#1E1E1B'; c.font = '9px ' + getComputedStyle(document.body).fontFamily;
+    c.fillText(h.name, x, y + 36);
+    c.restore();
+  }
+
+  function drawTree(c, x, y, r){
+    c.save();
+    c.strokeStyle = '#1E1E1B'; c.lineWidth = 1.3;
+    c.beginPath(); c.moveTo(x, y + r); c.lineTo(x + 2, y + 8); c.stroke();
+    c.beginPath();
+    for (let i = 0; i < 16; i++){
+      const a = (i / 16) * Math.PI * 2;
+      const rr = r * (0.7 + ((i * 7) % 5) / 10);
+      const px = x + Math.cos(a) * rr, py = y - 4 + Math.sin(a) * rr * .8;
+      if (i === 0) c.moveTo(px, py); else c.lineTo(px, py);
+    }
+    c.closePath(); c.stroke();
+    c.fillStyle = 'rgba(30,30,27,.08)'; c.fill();
+    c.restore();
+  }
+
+  function drawFence(c, x, y, w, dir){
+    c.save(); c.strokeStyle = '#1E1E1B'; c.lineWidth = 1.1;
+    if (dir === 'h'){
+      c.beginPath(); c.moveTo(x, y); c.lineTo(x + w, y); c.stroke();
+      c.beginPath(); c.moveTo(x, y + 16); c.lineTo(x + w, y + 16); c.stroke();
+      for (let i = 0; i <= w; i += 20){ c.beginPath(); c.moveTo(x + i, y - 4); c.lineTo(x + i, y + 20); c.stroke(); }
+    }
+    c.restore();
+  }
+
+  function drawGrave(c, x, y){
+    c.save(); c.strokeStyle = '#1E1E1B'; c.lineWidth = 1.1;
+    c.beginPath(); c.moveTo(x - 8, y + 18); c.lineTo(x - 8, y); c.arc(x, y, 8, Math.PI, 0);
+    c.lineTo(x + 8, y + 18); c.closePath(); c.stroke();
+    c.beginPath(); c.moveTo(x, y + 3); c.lineTo(x, y + 13); c.stroke();
+    c.beginPath(); c.moveTo(x - 4, y + 7); c.lineTo(x + 4, y + 7); c.stroke();
+    c.restore();
+  }
+
+  /* ── 动态绘制 ─────────────────────────────────────── */
+  function drawWindows(){
+    for (const h of HOUSES){
+      if (!h.lit) continue;
+      const x = h.x + 10, y = h.y - 12;
+      ctx.fillStyle = '#F3DFA2'; ctx.fillRect(x, y, 20, 18);
+      ctx.strokeStyle = '#1E1E1B'; ctx.lineWidth = 1;
+      ctx.strokeRect(x, y, 20, 18);
+      ctx.beginPath(); ctx.moveTo(x + 10, y); ctx.lineTo(x + 10, y + 18); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x, y + 9); ctx.lineTo(x + 20, y + 9); ctx.stroke();
+      // 光
+      ctx.fillStyle = 'rgba(243,223,162,.16)';
+      ctx.beginPath(); ctx.arc(x + 10, y + 9, 22 + Math.sin(state.t * 4) * 2, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+
+  function drawTarget(){
+    if (state.screen !== 'playing' || !state.targets.length) return;
+    const t = state.targets[state.deliveries];
+    if (!t) return;
+    const h = HOUSES.find(v => v.id === t);
+    if (!h) return;
+    const bob = Math.sin(state.t * 3) * 3;
+    // 门前的粉笔圈
+    ctx.strokeStyle = 'rgba(30,30,27,.55)'; ctx.lineWidth = 2; ctx.setLineDash([6, 5]);
+    ctx.beginPath(); ctx.arc(h.x - 21.5, h.y + 12, 25, 0, Math.PI * 2); ctx.stroke();
+    ctx.setLineDash([]);
+    // 屋顶上的信封
+    const ex = h.x - 2, ey = h.y - 58 + bob;
+    ctx.fillStyle = '#FBF7EC'; ctx.strokeStyle = '#1E1E1B'; ctx.lineWidth = 1.4;
+    ctx.fillRect(ex - 11, ey - 7, 22, 14); ctx.strokeRect(ex - 11, ey - 7, 22, 14);
+    ctx.beginPath(); ctx.moveTo(ex - 11, ey - 7); ctx.lineTo(ex, ey + 1); ctx.lineTo(ex + 11, ey - 7); ctx.stroke();
+    // 地址
+    ctx.fillStyle = 'rgba(30,30,27,.65)'; ctx.font = '9px ' + getComputedStyle(document.body).fontFamily;
+    ctx.textAlign = 'center';
+    ctx.fillText(String(t).padStart(2, '0'), ex, ey - 13);
+  }
+
+  function drawTom(){
+    const p = state.player;
+    const sway = p.moving ? Math.sin(state.t * 12) * 1.5 : 0;
+    ctx.save(); ctx.translate(p.x, p.y + sway * .2);
+    const flip = p.dirX < 0 ? -1 : 1;
+    ctx.scale(flip, 1);
+    // 影子
+    ctx.fillStyle = 'rgba(30,30,27,.16)';
+    ctx.beginPath(); ctx.ellipse(0, 15, 13, 5, 0, 0, Math.PI * 2); ctx.fill();
+    // 腿
+    ctx.strokeStyle = '#1E1E1B'; ctx.lineWidth = 2.2;
+    ctx.beginPath(); ctx.moveTo(-4, 5); ctx.lineTo(-5 + sway*2, 14); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(4, 5); ctx.lineTo(5 - sway*2, 14); ctx.stroke();
+    ctx.fillStyle = '#1E1E1B';
+    ctx.beginPath(); ctx.ellipse(-5, 15, 4, 2.4, 0, 0, Math.PI*2); ctx.fill();
+    ctx.beginPath(); ctx.ellipse(5, 15, 4, 2.4, 0, 0, Math.PI*2); ctx.fill();
+    // 大衣
+    ctx.fillStyle = '#1E1E1B';
+    ctx.beginPath();
+    ctx.moveTo(-10, -6); ctx.lineTo(8, -6); ctx.lineTo(11, 7); ctx.lineTo(-11, 7); ctx.closePath();
+    ctx.fill();
+    // 邮包
+    ctx.fillStyle = '#6F6B60';
+    ctx.fillRect(-18, -6, 11, 15);
+    ctx.strokeStyle = '#1E1E1B'; ctx.lineWidth = 1; ctx.strokeRect(-18, -6, 11, 15);
+    ctx.fillStyle = '#FBF7EC'; ctx.fillRect(-16, -4, 7, 5);
+    // 手臂
+    ctx.strokeStyle = '#1E1E1B'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(7, -4); ctx.lineTo(12, 4 + sway); ctx.stroke();
+    // 头
+    ctx.fillStyle = '#F3E6CF';
+    ctx.beginPath(); ctx.arc(2, -14, 8, 0, Math.PI * 2); ctx.fill();
+    ctx.strokeStyle = '#1E1E1B'; ctx.lineWidth = 1.2; ctx.stroke();
+    // 头发
+    ctx.fillStyle = '#1E1E1B';
+    ctx.beginPath(); ctx.arc(2, -15, 8.4, Math.PI * 1.05, Math.PI * 1.95); ctx.fill();
+    // 邮差帽
+    ctx.fillStyle = '#1E1E1B';
+    ctx.beginPath(); ctx.ellipse(2, -21, 10, 3, -.08, 0, Math.PI * 2); ctx.fill();
+    ctx.fillRect(-6, -26, 16, 6);
+    ctx.fillStyle = '#FBF7EC'; ctx.fillRect(-1, -25, 7, 3);
+    // 眼睛
+    ctx.fillStyle = '#1E1E1B';
+    ctx.beginPath(); ctx.arc(6, -14, 1.2, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+  }
+
+  function drawPeek(){
+    if (!state.peek) return;
+    const h = HOUSES.find(v => v.id === state.peek.id);
+    if (!h) return;
+    const x = h.x + 20, y = h.y - 3;
+    ctx.strokeStyle = 'rgba(30,30,27,.8)'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(x, y, 16, -Math.PI/2, -Math.PI/2 + Math.PI*2*state.peek.p, false); ctx.stroke();
+    ctx.fillStyle = 'rgba(30,30,27,.08)'; ctx.beginPath(); ctx.arc(x, y, 16, 0, Math.PI*2); ctx.fill();
+    ctx.strokeStyle = 'rgba(30,30,27,.45)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.arc(x, y, 21, 0, Math.PI*2); ctx.stroke();
+  }
+
+  function draw(){
+    ctx.drawImage(bg, 0, 0, W, H);
+    drawWindows();
+    drawTarget();
+    drawPeek();
+    drawTom();
+    if (state.flash > 0){
+      ctx.fillStyle = 'rgba(30,30,27,' + Math.min(.4, state.flash * .4) + ')';
+      ctx.fillRect(0, 0, W, H);
+    }
+  }
+
+  /* ── 交互逻辑 ─────────────────────────────────────── */
+  function dist(ax, ay, bx, by){ return Math.hypot(ax - bx, ay - by); }
+
+  function nearest(){
+    const p = state.player;
+    let best = null;
+    for (const h of HOUSES){
+      const door = { x: h.x - 21.5, y: h.y + 12 };
+      const win  = { x: h.x + 20,  y: h.y - 3 };
+      const dd = dist(p.x, p.y, door.x, door.y);
+      const dw = dist(p.x, p.y, win.x, win.y);
+      if (dd < 34 && (!best || dd < best.d)) best = { type: 'door', house: h, d: dd };
+      if (dw < 34 && (!best || dw < best.d)) best = { type: 'window', house: h, d: dw };
+    }
+    return best;
+  }
+
+  function setMessage(text, bad){
+    state.message = text;
+    state.messageT = 2.6;
+    toastEl.textContent = text;
+    toastEl.classList.toggle('bad', !!bad);
+    toastEl.classList.add('show');
+    clearTimeout(setMessage._t);
+    setMessage._t = setTimeout(() => toastEl.classList.remove('show'), 2200);
+  }
+
+  function updatePrompt(){
+    if (state.screen !== 'playing'){ promptEl.classList.add('hide'); return; }
+    const n = nearest();
+    const tid = state.targets[state.deliveries];
+    const th = HOUSES.find(v => v.id === tid);
+    let text = th ? '下一单 ' + String(tid).padStart(2,'0') + ' 号 · ' + th.name + '。送到闪光的门；灯灭时按 E 偷看' : '把包裹送到闪光的门；灯灭时按 E 偷看';
+    if (state.peek) text = '别动，正在偷看……';
+    else if (n && n.type === 'door'){
+      const t = state.targets[state.deliveries];
+      text = n.house.id === t
+        ? '按 E / 点「查看」：送达 ' + String(t).padStart(2,'0') + ' 号'
+        : String(n.house.id).padStart(2,'0') + ' 号 · 不是这一单的收件人';
+    } else if (n && n.type === 'window'){
+      const h = n.house;
+      if (h.seen) text = '这扇窗的秘密已经知道了';
+      else if (h.lit) text = '灯亮着——偷看会被发现';
+      else text = '按 E / 点「查看」：偷看这扇窗';
+    }
+    if (text !== promptEl.textContent) promptEl.textContent = text;
+    promptEl.classList.toggle('hide', !text);
+  }
+
+  function startPeek(h){
+    state.peek = { id: h.id, p: 0 };
+  }
+
+  function caught(why){
+    state.peek = null;
+    state.hearts -= 1;
+    state.flash = 1;
+    state.caughtLock = .8;
+    setMessage(why || '被发现了！丢一颗心', true);
+    updateHud();
+    if (state.hearts <= 0) end(false);
+  }
+
+  function revealSecret(h){
+    state.peek = null;
+    h.seen = true;
+    state.secrets += 1;
+    if (state.secrets > bestSecrets){
+      bestSecrets = state.secrets;
+      try { localStorage.setItem('tom-post-secrets', String(bestSecrets)); } catch (e) {}
+    }
+    h.lit = true; h.nextToggle = state.t + 4.5;
+    secretK.textContent = 'SECRET ' + String(h.id).padStart(2,'0') + ' / 06 · ' + h.name;
+    secretT.textContent = '你看见了。';
+    secretD.textContent = h.secret;
+    secretCard.classList.add('show');
+    clearTimeout(revealSecret._t);
+    revealSecret._t = setTimeout(() => secretCard.classList.remove('show'), 2600);
     updateHud();
   }
 
-  function spawnOrder() {
-    const p = SPOTS[Math.floor(Math.random() * SPOTS.length)];
-    state.package = { x: p.x, y: p.y, r: 13 };
-    const far = HOUSES.filter(h => Math.hypot(h.x - p.x, h.y - p.y) > 170);
-    const pool = far.length ? far : HOUSES;
-    state.house = pool[Math.floor(Math.random() * pool.length)];
-    state.carried = false;
+  function deliver(h){
+    const t = state.targets[state.deliveries];
+    if (h.id !== t){ setMessage('送错了。这一单是 ' + String(t).padStart(2,'0') + ' 号。', true); return; }
+    state.deliveries += 1;
+    setMessage('送达 ' + String(h.id).padStart(2,'0') + ' 号。还剩 ' + (PARCEL_COUNT - state.deliveries) + ' 单。');
+    updateHud();
+    if (state.deliveries >= PARCEL_COUNT) end(true);
   }
 
-  function start() {
-    reset();
-  }
-
-  function gameOver() {
-    state.screen = 'over';
-    if (state.score > best) {
-      best = state.score;
-      try { localStorage.setItem('tom-best', String(best)); } catch (e) {}
+  function action(){
+    if (state.screen !== 'playing' || state.peek) return;
+    const n = nearest();
+    if (!n){ setMessage('走近一点：门或窗户。'); return; }
+    if (n.type === 'door') deliver(n.house);
+    else {
+      const h = n.house;
+      if (h.seen){ setMessage('这扇窗已经没有新秘密了。'); return; }
+      if (h.lit){ caught('灯亮着，住户看见你了。'); return; }
+      startPeek(h);
     }
-    bestV.textContent = best;
-    finalScore.textContent = state.score + ' 分';
-    finalBest.textContent = '本局送达 ' + state.orders + ' 单 · 最高分 ' + best;
+  }
+
+  /* ── 循环 ─────────────────────────────────────────── */
+  function update(dt){
+    state.t += dt;
+    state.flash = Math.max(0, state.flash - dt * 2.2);
+    state.caughtLock = Math.max(0, state.caughtLock - dt);
+    if (state.screen !== 'playing') return;
+
+    state.time -= dt;
+    if (state.time <= 0){ state.time = 0; end(false, 'time'); return; }
+
+    // 窗户灯
+    for (const h of HOUSES){
+      if (state.t >= h.nextToggle){
+        h.lit = !h.lit;
+        h.nextToggle = state.t + 2.4 + Math.random() * 3.4;
+        if (state.peek && state.peek.id === h.id && h.lit){ caught('灯突然亮了。'); break; }
+      }
+    }
+
+    // 偷看进度
+    if (state.peek){
+      const h = HOUSES.find(v => v.id === state.peek.id);
+      if (!h || h.lit) caught('偷看时灯亮了。');
+      else {
+        state.peek.p += dt / 1.15;
+        if (state.peek.p >= 1) revealSecret(h);
+      }
+    } else if (!state.caughtLock){
+      // 移动
+      let dx = (keys.right?1:0) - (keys.left?1:0);
+      let dy = (keys.down?1:0) - (keys.up?1:0);
+      if (dx && dy){ dx *= Math.SQRT1_2; dy *= Math.SQRT1_2; }
+      state.player.moving = !!(dx || dy);
+      if (dx || dy){ state.player.dirX = dx; state.player.dirY = dy; }
+      const speed = 118;
+      state.player.x = Math.max(22, Math.min(W - 22, state.player.x + dx * speed * dt));
+      state.player.y = Math.max(22, Math.min(H - 22, state.player.y + dy * speed * dt));
+    } else {
+      state.player.moving = false;
+    }
+
+    if (state.messageT > 0) state.messageT -= dt;
+    updateHud();
+  }
+
+  function updateHud(){
+    deliverV.textContent = state.deliveries + ' / ' + PARCEL_COUNT;
+    secretV.textContent = state.secrets + ' / ' + HOUSES.length;
+    timeV.textContent = Math.ceil(Math.max(0, state.time));
+    timePill.classList.toggle('low', state.time < 20);
+    heartV.textContent = '♥'.repeat(Math.max(0, state.hearts)) + '♡'.repeat(Math.max(0, 3 - state.hearts));
+  }
+
+  let rafId = 0, last = 0, acc = 0;
+  function loop(ts){
+    rafId = requestAnimationFrame(loop);
+    if (state.screen !== 'playing'){ cancelAnimationFrame(rafId); rafId = 0; return; }
+    if (!last) last = ts;
+    const dt = Math.min(.1, Math.max(0, (ts - last) / 1000));
+    last = ts;
+    acc += dt;
+    if (acc < .028) return;   // 约 35fps，足够顺滑，也省电
+    const step = acc; acc = 0;
+    update(step);
+    state.frames += 1;
+    draw();
+    updatePrompt();
+  }
+
+  function startLoop(){
+    cancelAnimationFrame(rafId); rafId = 0;
+    last = 0; acc = 0;
+    rafId = requestAnimationFrame(loop);
+  }
+
+  function renderOnce(){ draw(); updatePrompt(); }
+
+  /* ── 开局 / 结束 ──────────────────────────────────── */
+  function reset(){
+    state.screen = 'playing';
+    state.time = TOTAL_TIME; state.hearts = 3; state.deliveries = 0; state.secrets = 0;
+    state.peek = null; state.flash = 0; state.caughtLock = 0; state.messageT = 0;
+    state.player.x = START.x; state.player.y = START.y; state.player.dirX = 0; state.player.dirY = -1;
+    state.player.moving = false;
+    // 每次随机 3 个收件人
+    const ids = HOUSES.map(h => h.id);
+    state.targets = [];
+    while (state.targets.length < PARCEL_COUNT){
+      const i = Math.floor(Math.random() * ids.length);
+      state.targets.push(ids.splice(i, 1)[0]);
+    }
+    state.t = 0;
+    for (const h of HOUSES){
+      h.seen = false;
+      h.lit = Math.random() < .45;
+      h.nextToggle = 2 + Math.random() * 4;
+    }
+    secretCard.classList.remove('show');
+    intro.classList.add('hidden');
+    over.classList.add('hidden');
+    promptEl.classList.remove('hide');
+    updateHud();
+    startLoop();
+  }
+
+  function end(win, reason){
+    if (state.screen !== 'playing') return;
+    state.screen = 'over';
+    cancelAnimationFrame(rafId); rafId = 0;
+    renderOnce();
+
+    const found = HOUSES.filter(h => h.seen);
+    let title, desc, kicker;
+    if (!win && reason === 'time'){
+      kicker = 'TIME IS UP'; title = '天亮了，邮包还在';
+      desc = '时间到了。你送了 ' + state.deliveries + ' 单，看了 ' + state.secrets + ' 扇窗。';
+    } else if (!win){
+      kicker = 'CAUGHT'; title = '被请出了村子';
+      desc = '汤姆盯着窗户看太久。村民们记住了她的脸，今晚的邮路到此为止。';
+    } else if (state.secrets === 0){
+      kicker = 'ROUTE COMPLETE'; title = '模范邮差';
+      desc = '三件包裹都送到了。你一眼也没多看，村民很喜欢这样的邮差。';
+    } else if (state.secrets <= 2){
+      kicker = 'ROUTE COMPLETE'; title = '眼睛很老实';
+      desc = '包裹送到了，只是路过时看了几眼。你开始记住这个村子的味道。';
+    } else if (state.secrets <= 4){
+      kicker = 'ROUTE COMPLETE'; title = '多管闲事的邮差';
+      desc = '你送完了信，也顺手收走了几户人家的秘密。现在，路过的人会先看你一眼。';
+    } else if (state.secrets === 5){
+      kicker = 'ROUTE COMPLETE'; title = '村子里的眼睛';
+      desc = '只剩一扇窗没看。你忍住了，或者它一直亮着。汤姆自己知道答案。';
+    } else {
+      kicker = 'ALL WINDOWS'; title = '汤姆看见了所有人';
+      desc = '六户人家的秘密都在你的邮包里。现在的问题是——谁在看你？';
+    }
+
+    overK.textContent = kicker; overT.textContent = title; overD.textContent = desc;
+    overStats.textContent = '包裹 ' + state.deliveries + '/3 · 秘密 ' + state.secrets + '/6 · 剩余 ' + Math.ceil(state.time) + ' 秒 · 最高秘密 ' + bestSecrets;
+    secretList.innerHTML = '';
+    if (found.length){
+      for (const h of found){
+        const d = document.createElement('div');
+        d.innerHTML = '<b>' + String(h.id).padStart(2,'0') + ' ' + h.name + '</b> — ' + h.secret;
+        secretList.appendChild(d);
+      }
+    } else {
+      secretList.innerHTML = '<div>今晚什么也没看见。</div>';
+    }
     over.classList.remove('hidden');
   }
 
-  function updateHud() {
-    scoreV.textContent = state.score;
-    ordersV.textContent = state.orders;
-    timeV.textContent = Math.ceil(Math.max(0, state.time));
-    bestV.textContent = best;
-  }
-
-  function showToast(text) {
-    toast.textContent = text;
-    toast.classList.add('show');
-    clearTimeout(showToast._t);
-    showToast._t = setTimeout(() => toast.classList.remove('show'), 900);
-  }
-
-  function pushParticles(x, y, color) {
-    for (let i = 0; i < 14; i++) {
-      const a = Math.random() * Math.PI * 2, s = 40 + Math.random() * 130;
-      state.particles.push({ x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, life: .6, color });
-    }
-  }
-
-  function update(dt) {
-    state.t += dt;
-    if (state.screen !== 'playing') return;
-
-    const p = state.player;
-    let dx = (keys.right ? 1 : 0) - (keys.left ? 1 : 0);
-    let dy = (keys.down ? 1 : 0) - (keys.up ? 1 : 0);
-    if (dx && dy) { const k = Math.SQRT1_2; dx *= k; dy *= k; }
-    if (dx || dy) { p.dirX = dx; p.dirY = dy; }
-
-    const sp = state.speed * (state.carried ? 0.92 : 1);
-    p.x = Math.max(26, Math.min(W - 26, p.x + dx * sp * dt));
-    p.y = Math.max(26, Math.min(H - 26, p.y + dy * sp * dt));
-
-    state.flash = Math.max(0, state.flash - dt * 3);
-
-    // 取包裹
-    if (!state.carried && state.package && Math.hypot(p.x - state.package.x, p.y - state.package.y) < p.r + state.package.r + 6) {
-      state.carried = true;
-      pushParticles(state.package.x, state.package.y, '#D9A441');
-      state.package = null;
-      showToast('包裹到手，出发 🏠');
-    }
-
-    // 送达
-    if (state.carried && state.house && Math.hypot(p.x - state.house.x, p.y - state.house.y) < 40) {
-      state.score += 100;
-      state.orders += 1;
-      state.deliveries += 1;
-      state.time = Math.min(99, state.time + 3);
-      state.flash = 1;
-      pushParticles(state.house.x, state.house.y, state.house.color);
-      showToast('+1 单 · +3 秒');
-      if (state.deliveries % 3 === 0) state.speed = Math.min(270, state.speed + 14);
-      spawnOrder();
-      updateHud();
-    }
-
-    state.time -= dt;
-    if (state.time <= 0) { state.time = 0; updateHud(); gameOver(); }
-    else updateHud();
-
-    // 粒子
-    for (const q of state.particles) { q.x += q.vx * dt; q.y += q.vy * dt; q.vx *= .92; q.vy *= .92; q.life -= dt; }
-    state.particles = state.particles.filter(q => q.life > 0);
-  }
-
-  function roundRect(x, y, w, h, r) {
-    ctx.beginPath();
-    ctx.moveTo(x + r, y);
-    ctx.arcTo(x + w, y, x + w, y + h, r);
-    ctx.arcTo(x + w, y + h, x, y + h, r);
-    ctx.arcTo(x, y + h, x, y, r);
-    ctx.arcTo(x, y, x + w, y, r);
-    ctx.closePath();
-  }
-
-  function drawMap() {
-    ctx.fillStyle = '#FDF6E3'; ctx.fillRect(0, 0, W, H);
-
-    // 街区
-    ctx.fillStyle = '#EDE4CF';
-    roundRect(28, 28, 180, 150, 16); ctx.fill();
-    roundRect(260, 22, 208, 120, 16); ctx.fill();
-    roundRect(520, 30, 180, 170, 16); ctx.fill();
-    roundRect(30, 340, 190, 150, 16); ctx.fill();
-    roundRect(260, 382, 208, 116, 16); ctx.fill();
-    roundRect(520, 330, 180, 160, 16); ctx.fill();
-
-    // 路面
-    ctx.fillStyle = '#E4DAC4';
-    ctx.fillRect(0, 190, W, 34); ctx.fillRect(0, 296, W, 34);
-    ctx.fillRect(220, 0, 34, H); ctx.fillRect(474, 0, 34, H);
-
-    // 道路中缝
-    ctx.strokeStyle = '#C3B79C'; ctx.lineWidth = 2; ctx.setLineDash([14, 12]);
-    for (const y of [207, 313]) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
-    for (const x of [237, 491]) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
-    ctx.setLineDash([]);
-
-    // 小窗户
-    ctx.fillStyle = 'rgba(34,51,59,.10)';
-    for (const [bx, by, bw, bh] of [[50,52,44,10],[50,78,44,10],[298,48,54,10],[298,74,54,10],[548,62,44,10],[548,88,44,10],[52,372,44,10],[300,410,52,10],[546,360,44,10]]) {
-      ctx.fillRect(bx, by, bw, bh);
-    }
-
-    // 草地点缀
-    ctx.fillStyle = 'rgba(91,154,120,.18)';
-    for (const [gx, gy] of [[226,160],[500,174],[226,406],[500,468],[660,260]]) {
-      ctx.beginPath(); ctx.arc(gx, gy, 9, 0, Math.PI * 2); ctx.fill();
-    }
-  }
-
-  function drawHouse(h, active) {
-    const t = state.t;
-    if (active) {
-      const pulse = 1 + Math.sin(t * 5) * .08;
-      ctx.strokeStyle = 'rgba(217,164,65,.75)';
-      ctx.lineWidth = 3;
-      ctx.beginPath(); ctx.arc(h.x, h.y + 4, 34 * pulse, 0, Math.PI * 2); ctx.stroke();
-      ctx.fillStyle = 'rgba(217,164,65,.10)';
-      ctx.beginPath(); ctx.arc(h.x, h.y + 4, 34 * pulse, 0, Math.PI * 2); ctx.fill();
-    }
-    // 房身
-    ctx.fillStyle = h.color;
-    roundRect(h.x - 22, h.y - 8, 44, 34, 6); ctx.fill();
-    // 屋顶
-    ctx.fillStyle = '#22333B';
-    ctx.beginPath(); ctx.moveTo(h.x - 28, h.y - 8); ctx.lineTo(h.x, h.y - 30); ctx.lineTo(h.x + 28, h.y - 8); ctx.closePath(); ctx.fill();
-    // 门
-    ctx.fillStyle = '#FFFDF7';
-    roundRect(h.x - 7, h.y + 6, 14, 20, 3); ctx.fill();
-    // 窗
-    ctx.fillStyle = 'rgba(255,253,247,.85)';
-    ctx.fillRect(h.x + 8, h.y + 1, 8, 8);
-    // 邮箱
-    ctx.fillStyle = '#22333B';
-    ctx.fillRect(h.x - 32, h.y + 12, 6, 12);
-    ctx.fillStyle = h.color;
-    ctx.fillRect(h.x - 36, h.y + 8, 14, 7);
-  }
-
-  function drawPackage(p) {
-    const bob = Math.sin(state.t * 4) * 2;
-    ctx.save();
-    ctx.translate(p.x, p.y + bob);
-    ctx.fillStyle = 'rgba(34,51,59,.14)';
-    ctx.beginPath(); ctx.ellipse(0, 15, 14, 6, 0, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#C99A5B';
-    roundRect(-14, -12, 28, 24, 4); ctx.fill();
-    ctx.fillStyle = '#E8C98F';
-    ctx.fillRect(-14, -4, 28, 6);
-    ctx.fillStyle = '#8A6B2F';
-    ctx.fillRect(-3, -12, 6, 24);
-    ctx.restore();
-  }
-
-  function drawPlayer(p) {
-    ctx.save();
-    ctx.translate(p.x, p.y);
-    // 影子
-    ctx.fillStyle = 'rgba(34,51,59,.16)';
-    ctx.beginPath(); ctx.ellipse(0, 14, 16, 6, 0, 0, Math.PI * 2); ctx.fill();
-    // 车轮
-    ctx.fillStyle = '#22333B';
-    ctx.beginPath(); ctx.arc(-10, 9, 6, 0, Math.PI * 2); ctx.fill();
-    ctx.beginPath(); ctx.arc(10, 9, 6, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#8A6B2F';
-    ctx.beginPath(); ctx.arc(-10, 9, 2, 0, Math.PI * 2); ctx.fill();
-    ctx.beginPath(); ctx.arc(10, 9, 2, 0, Math.PI * 2); ctx.fill();
-    // 车身
-    ctx.fillStyle = '#E8853A';
-    roundRect(-13, -6, 26, 14, 6); ctx.fill();
-    // 快递箱
-    ctx.fillStyle = '#C99A5B';
-    roundRect(-11, -20, 18, 15, 3); ctx.fill();
-    ctx.fillStyle = '#8A6B2F';
-    ctx.fillRect(-11, -15, 18, 3);
-    // 头
-    ctx.fillStyle = '#F2C79E';
-    ctx.beginPath(); ctx.arc(2, -17, 8, 0, Math.PI * 2); ctx.fill();
-    // 头盔
-    ctx.fillStyle = '#FFFDF7';
-    ctx.beginPath(); ctx.arc(2, -18, 9, Math.PI, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#E8853A';
-    ctx.beginPath(); ctx.arc(2, -18, 9, Math.PI * 1.05, Math.PI * 1.55); ctx.fill();
-    // 朝向小箭头
-    const len = Math.hypot(p.dirX, p.dirY) || 1;
-    const ux = p.dirX / len, uy = p.dirY / len;
-    ctx.fillStyle = 'rgba(34,51,59,.55)';
-    ctx.beginPath();
-    ctx.moveTo(ux * 22, uy * 22);
-    ctx.lineTo(-uy * 5 + ux * 15, ux * 5 + uy * 15);
-    ctx.lineTo(uy * 5 + ux * 15, -ux * 5 + uy * 15);
-    ctx.closePath(); ctx.fill();
-    ctx.restore();
-  }
-
-  function drawArrow() {
-    if (state.screen !== 'playing') return;
-    const target = state.carried ? state.house : state.package;
-    if (!target) return;
-    const p = state.player;
-    const dx = target.x - p.x, dy = target.y - p.y;
-    const dist = Math.hypot(dx, dy);
-    if (dist < 60) return;
-    const a = Math.atan2(dy, dx);
-    const r = 34;
-    ctx.save();
-    ctx.translate(p.x + Math.cos(a) * r, p.y + Math.sin(a) * r);
-    ctx.rotate(a);
-    ctx.fillStyle = 'rgba(34,51,59,.55)';
-    ctx.beginPath(); ctx.moveTo(10, 0); ctx.lineTo(-4, -4); ctx.lineTo(-4, 4); ctx.closePath(); ctx.fill();
-    ctx.restore();
-    // 距离
-    ctx.fillStyle = 'rgba(34,51,59,.55)';
-    ctx.font = '10px -apple-system, "PingFang SC", sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText(Math.round(dist / 10) + ' m', p.x, p.y + 34);
-  }
-
-  function draw() {
-    drawMap();
-    for (const h of HOUSES) drawHouse(h, state.house === h && state.screen === 'playing');
-    if (state.package) drawPackage(state.package);
-    drawArrow();
-    drawPlayer(state.player);
-
-    if (state.flash > 0) {
-      ctx.fillStyle = 'rgba(255,253,247,' + (state.flash * .22) + ')';
-      ctx.fillRect(0, 0, W, H);
-    }
-
-    for (const q of state.particles) {
-      ctx.globalAlpha = Math.max(0, q.life / .6);
-      ctx.fillStyle = q.color;
-      ctx.beginPath(); ctx.arc(q.x, q.y, 3.2, 0, Math.PI * 2); ctx.fill();
-    }
-    ctx.globalAlpha = 1;
-
-    if (state.screen === 'intro') {
-      ctx.fillStyle = 'rgba(253,246,227,.55)'; ctx.fillRect(0, 0, W, H);
-    }
-  }
-
-  let last = performance.now();
-  function frame(now) {
-    const dt = Math.min(.05, Math.max(0, (now - last) / 1000));
-    last = now;
-    update(dt);
-    draw();
-    requestAnimationFrame(frame);
-  }
-  requestAnimationFrame(frame);
-
-  // 键盘
-  const map = {
+  /* ── 输入 ─────────────────────────────────────────── */
+  const keyMap = {
     ArrowUp:'up', KeyW:'up', ArrowDown:'down', KeyS:'down',
     ArrowLeft:'left', KeyA:'left', ArrowRight:'right', KeyD:'right'
   };
   addEventListener('keydown', (e) => {
-    if (map[e.code]) { keys[map[e.code]] = true; e.preventDefault(); }
-    if ((e.code === 'Space' || e.code === 'Enter') && state.screen !== 'playing') {
-      e.preventDefault(); start();
+    if (keyMap[e.code]){ keys[keyMap[e.code]] = true; e.preventDefault(); }
+    if (e.code === 'KeyE' || e.code === 'Space' || e.code === 'Enter'){
+      e.preventDefault();
+      if (state.screen === 'playing') action();
+      else if (state.screen === 'intro' || state.screen === 'over') startBtnClick();
     }
   });
   addEventListener('keyup', (e) => {
-    if (map[e.code]) { keys[map[e.code]] = false; e.preventDefault(); }
+    if (keyMap[e.code]){ keys[keyMap[e.code]] = false; e.preventDefault(); }
   });
 
-  // 手机方向盘
-  for (const b of document.querySelectorAll('.pad')) {
+  for (const b of document.querySelectorAll('.pad')){
     const dir = b.dataset.dir;
     const on = (e) => { e.preventDefault(); keys[dir] = true; b.classList.add('on'); };
     const off = (e) => { e.preventDefault(); keys[dir] = false; b.classList.remove('on'); };
@@ -490,28 +793,36 @@
     b.addEventListener('pointercancel', off);
     b.addEventListener('pointerleave', off);
   }
+  const actBtn = $('actBtn');
+  actBtn.addEventListener('pointerdown', (e) => { e.preventDefault(); action(); });
 
-  // 按钮
-  $('startBtn').addEventListener('click', start);
-  $('againBtn').addEventListener('click', start);
+  function startBtnClick(){ reset(); }
+  $('startBtn').addEventListener('click', startBtnClick);
+  $('againBtn').addEventListener('click', startBtnClick);
 
-  // 失焦时松开按键，避免汤姆自己跑
-  addEventListener('blur', () => { for (const k in keys) keys[k] = false; document.querySelectorAll('.pad.on').forEach(b => b.classList.remove('on')); });
+  addEventListener('blur', () => {
+    for (const k in keys) keys[k] = false;
+    document.querySelectorAll('.pad.on').forEach(b => b.classList.remove('on'));
+  });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden){ cancelAnimationFrame(rafId); rafId = 0; }
+    else if (state.screen === 'playing' && !rafId) startLoop();
+  });
 
+  buildBackground();
+  renderOnce();
   updateHud();
 
-  // 测试与排查用只读接口
+  // 测试用接口
   window.TOM = {
-    state,
-    start,
-    reset,
-    get snapshot() {
+    state, start: reset, houses: HOUSES,
+    get snapshot(){
       return {
-        screen: state.screen, score: state.score, orders: state.orders, time: +state.time.toFixed(2),
+        screen: state.screen, time: +state.time.toFixed(2), hearts: state.hearts,
+        deliveries: state.deliveries, secrets: state.secrets, targets: state.targets.slice(),
         player: { x: +state.player.x.toFixed(1), y: +state.player.y.toFixed(1) },
-        package: state.package ? { x: state.package.x, y: state.package.y } : null,
-        house: state.house ? { x: state.house.x, y: state.house.y } : null,
-        carried: state.carried
+        houses: HOUSES.map(h => ({ id: h.id, lit: h.lit, seen: h.seen, x: h.x, y: h.y })),
+        peek: state.peek, nearest: nearest(), frames: state.frames
       };
     }
   };
