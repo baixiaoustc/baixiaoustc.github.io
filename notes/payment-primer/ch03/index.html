@@ -199,71 +199,81 @@
     <p class="sec-lead">成本、寿命、易用、存储、传输、线上、线下、欺诈——八个维度一起看，没有一种卡全赢。磁条赢在便宜与兼容，芯片赢在安全，复合卡赢在都能用，虚拟卡赢在发行与线上。</p>
   </div>
 
+  <div class="score-legend">
+    <span class="sl-tag mono">本表四列 · 四种银行卡载体</span>
+    <ul>
+      <li><b>磁条卡</b><span>磁道存卡号，终端「读出来」，便宜但可复制</span></li>
+      <li><b>IC 卡</b><span>芯片存密钥，每次「算出来」新密文，安全但成本高</span></li>
+      <li><b>复合卡</b><span>凸字 + 磁条 + 芯片 + NFC 叠在一张卡上，求兼容</span></li>
+      <li><b>虚拟卡</b><span>没有实体卡，只有卡号 / 有效期 / CVV，走线上</span></li>
+    </ul>
+  </div>
+
   <div class="score-table" data-audit-group>
-    <div class="score-row head"><span>维度 / 方向</span><span>磁条卡</span><span>IC 卡</span><span>复合卡</span><span>虚拟卡</span></div>
+    <div class="score-row head"><span class="hd-k">维度 / 方向</span><span>磁条卡<small>MAGNETIC</small></span><span>IC 卡<small>CHIP</small></span><span>复合卡<small>COMBO</small></span><span>虚拟卡<small>VIRTUAL</small></span></div>
 
     <div class="score-row">
       <div class="score-k">制作成本<small>越低越好</small></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="score-v">中</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="磁条卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="IC 卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="score-v">中</span></div>
+      <div class="score-cell" data-card="复合卡"><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
+      <div class="score-cell" data-card="虚拟卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
     </div>
 
     <div class="score-row">
       <div class="score-k">使用寿命<small>越长越好</small></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="score-v">良</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="磁条卡"><span class="dots"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
+      <div class="score-cell" data-card="IC 卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="复合卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="score-v">良</span></div>
+      <div class="score-cell" data-card="虚拟卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
     </div>
 
     <div class="score-row">
       <div class="score-k">线下易用<small>越快越好</small></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="score-v">良</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="score-v">中</span></div>
+      <div class="score-cell" data-card="磁条卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="IC 卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="score-v">良</span></div>
+      <div class="score-cell" data-card="复合卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="虚拟卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="score-v">中</span></div>
     </div>
 
     <div class="score-row">
       <div class="score-k">存储加密<small>越强越好</small></div>
-      <div class="score-cell"><span class="dots"><i class="on low"></i><i></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="score-v">良</span></div>
+      <div class="score-cell" data-card="磁条卡"><span class="dots"><i class="on low"></i><i></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
+      <div class="score-cell" data-card="IC 卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="复合卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="虚拟卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="score-v">良</span></div>
     </div>
 
     <div class="score-row">
       <div class="score-k">传输加密<small>越强越好</small></div>
-      <div class="score-cell"><span class="dots"><i class="on low"></i><i></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="磁条卡"><span class="dots"><i class="on low"></i><i></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
+      <div class="score-cell" data-card="IC 卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="复合卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="虚拟卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
     </div>
 
     <div class="score-row">
       <div class="score-k">线上支付<small>越能越好</small></div>
-      <div class="score-cell"><span class="dots"><i class="on low"></i><i></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
-      <div class="score-cell"><span class="dots"><i class="on low"></i><i></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="score-v">中</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="磁条卡"><span class="dots"><i class="on low"></i><i></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
+      <div class="score-cell" data-card="IC 卡"><span class="dots"><i class="on low"></i><i></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
+      <div class="score-cell" data-card="复合卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="score-v">中</span></div>
+      <div class="score-cell" data-card="虚拟卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
     </div>
 
     <div class="score-row">
       <div class="score-k">线下支付<small>越广越好</small></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="score-v">中</span></div>
+      <div class="score-cell" data-card="磁条卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="IC 卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="复合卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="虚拟卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="score-v">中</span></div>
     </div>
 
     <div class="score-row">
       <div class="score-k">欺诈风险<small>越低越好</small></div>
-      <div class="score-cell"><span class="dots"><i class="on low"></i><i></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
-      <div class="score-cell"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="score-v">中</span></div>
+      <div class="score-cell" data-card="磁条卡"><span class="dots"><i class="on low"></i><i></i><i></i><i></i><i></i></span><span class="score-v">弱</span></div>
+      <div class="score-cell" data-card="IC 卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="复合卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="score-v">优</span></div>
+      <div class="score-cell" data-card="虚拟卡"><span class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="score-v">中</span></div>
     </div>
   </div>
 

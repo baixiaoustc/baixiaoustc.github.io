@@ -917,13 +917,22 @@ footer .foot-r a { border-bottom:0; font-size:10px; letter-spacing:.08em; }
 @media (max-width:560px){ .ca-num { font-size:14px; letter-spacing:.02em; gap:1px; } .industry { grid-template-columns:repeat(2,1fr); } }
 
 /* ── 04 八维取舍 ──────────────────────────────────────── */
+.score-legend { border:1px solid var(--line); border-bottom:0; padding:13px 14px 14px; background:rgba(200,164,92,.03); }
+.score-legend .sl-tag { display:block; font-size:9.5px; letter-spacing:.14em; color:var(--gold); margin-bottom:9px; }
+.score-legend ul { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(4,1fr); gap:8px 18px; }
+.score-legend li { font-size:11.5px; line-height:1.6; color:var(--dim); }
+.score-legend li b { display:block; color:var(--text); font-size:12.5px; font-weight:600; margin-bottom:1px; }
+.score-legend li span { color:var(--dimmer); font-size:10.5px; }
 .score-table { border:1px solid var(--line); }
 .score-row { display:grid; grid-template-columns:172px repeat(4,1fr); gap:10px; padding:11px 14px; border-bottom:1px solid var(--line-soft); align-items:center; }
 .score-row:last-child { border-bottom:0; }
-.score-row.head { background:rgba(200,164,92,.055); font-family:var(--mono); font-size:9px; letter-spacing:.14em; color:var(--dimmer); }
+.score-row.head { background:rgba(200,164,92,.055); font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:var(--text); font-weight:600; }
+.score-row.head span small { display:block; font-size:7.5px; letter-spacing:.18em; color:var(--gold-dim); font-weight:400; margin-top:1px; }
+.score-row.head .hd-k { color:var(--dimmer); font-size:9.5px; font-weight:400; letter-spacing:.12em; }
 .score-k { font-size:12.5px; font-weight:600; }
 .score-k small { display:block; font-weight:400; font-size:9.5px; color:var(--dimmer); margin-top:2px; letter-spacing:.02em; }
 .score-cell { display:flex; align-items:center; gap:7px; }
+.score-cell::before { content: attr(data-card); display:none; font-family:var(--mono); font-size:10px; letter-spacing:.06em; color:var(--dim); }
 .dots { display:flex; gap:2px; }
 .dots i { width:9px; height:4px; background:var(--line-soft); display:block; }
 .dots i.on { background:var(--gold); }
@@ -931,9 +940,14 @@ footer .foot-r a { border-bottom:0; font-size:10px; letter-spacing:.08em; }
 .score-v { font-family:var(--mono); font-size:9.5px; color:var(--dim); }
 .score-note { margin-top:12px; font-size:11px; color:var(--dimmer); line-height:1.75; }
 @media (max-width:900px){
-  .score-row { grid-template-columns:1fr; gap:8px; }
-  .score-cell { display:grid; grid-template-columns:100px 1fr auto; }
+  .score-legend ul { grid-template-columns:1fr 1fr; }
+  .score-row { grid-template-columns:1fr; gap:9px; padding:13px 14px; }
+  .score-cell { display:grid; grid-template-columns:78px 1fr auto; gap:8px; }
+  .score-cell::before { display:block; }
   .score-row.head { display:none; }
+}
+@media (max-width:560px){
+  .score-legend ul { grid-template-columns:1fr; }
 }
 
 /* ── 05 POS 机身 ──────────────────────────────────────── */
