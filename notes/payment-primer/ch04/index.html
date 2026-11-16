@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>身体就是钥匙：生物特征支付｜一本书读懂支付 · 第 4 章</title>
+<meta name="description" content="《一本书读懂支付》第 4 章可视化笔记：生物特征的定义与分类、刷脸支付六道工序、双因子与多因子认证、指纹的三种纹型与四种读取技术、虹膜/声纹/掌纹/静脉、六种支付横向比较、FAR/FRR 与 EER/ROC。">
+<meta name="theme-color" content="#0E2233">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E2233'/%3E%3Cpath d='M16 6 L26 16 L16 26 L6 16 Z' fill='none' stroke='%23C8A45C' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23C8A45C'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="scrollbar"><i id="progress"></i></div>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <div class="brand"><span class="mark">◆</span><span class="brand-t">STUDY NOTES</span><span class="brand-s">CH.04 / 生物特征支付</span></div>
+  <nav class="topnav">
+    <a href="#s01">01 认证</a><a href="#s02">02 六钥匙</a><a href="#s03">03 刷脸</a><a href="#s04">04 双因子</a><a href="#s05">05 指纹</a><a href="#s06">06 位置</a><a href="#s07">07 排名</a><a href="#s08">08 精度</a><a href="#s09">09 选型</a>
+  </nav>
+</div></header>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero"><div class="wrap hero-in">
+  <div class="hero-meta mono"><span>BOOK</span><span>一本书读懂支付</span><span>陈斌 · 第 4 章</span><span>2026-11-16</span></div>
+  <h1 class="hero-title">身体就是钥匙，<br>但这把钥匙不能换</h1>
+  <p class="hero-sub">支付要验明「你是你」。用户名、密码、短信、银行卡，都是身外之物，要靠绑定关系间接认证；生物特征直接把「你本身」变成凭据。方便到什么程度，风险就到什么程度：脸每天露在街上，指纹每天留在杯子上，而泄露之后，密码可以改，脸不能。</p>
+
+  <div class="hero-law">
+    <div class="law-cell"><span class="law-k mono">你带的</span><span class="law-v">银行卡 / 手机</span><span class="law-n">可丢、可借、可复制</span></div>
+    <div class="law-sep"></div>
+    <div class="law-cell"><span class="law-k mono">你知道的</span><span class="law-v">密码 / 短信码</span><span class="law-n">可忘、可猜、可转发</span></div>
+    <div class="law-sep"></div>
+    <div class="law-cell"><span class="law-k mono">你本身的</span><span class="law-v gold">脸 / 指纹 / 虹膜</span><span class="law-n">不用带，但不可重置</span></div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat"><b>6<small>种</small></b><span>可用于支付的生物特征</span></div>
+    <div class="stat"><b>6<small>步</small></b><span>一次人脸识别</span></div>
+    <div class="stat"><b class="num-long">1/1,500,000</b><span>虹膜认假率</span></div>
+    <div class="stat"><b>0.00008<small>%</small></b><span>静脉识别错误率</span></div>
+  </div>
+
+  <div class="stamp"><div class="stamp-in mono">BIOMETRIC<br>GATE<br>1:1 MATCH<br>CH.04</div></div>
+</div></section>
+
+<!-- ═══════════ 01 认证 ═══════════ -->
+<section id="s01" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 01</span>
+    <h2>认证的尽头，是「你本人」</h2>
+    <p class="sec-lead">用户名、密码、短信、银行卡都能证明「某个人授权了这笔支付」，但它们证明的是你和那件东西的绑定关系。生物特征跳过绑定，直接拿你身上的生理或行为特点去比对。问题是：支付要的是「确认你是谁」，不是「从人海里把你找出来」。</p>
+  </div>
+
+  <div class="cred-wrap">
+    <div class="cred-line">
+      <span class="cred-part"><b>身外之物</b><em>卡、手机、用户名：丢了就换，借了就用</em></span>
+      <span class="op mono">+</span>
+      <span class="cred-part"><b>记忆与通道</b><em>密码、短信、邮件：知道就能用，转发就泄露</em></span>
+      <span class="op mono">+</span>
+      <span class="cred-part hi"><b>生物特征</b><em>脸、指纹、虹膜、声纹、掌纹、静脉：你走到哪带到哪</em></span>
+      <span class="op mono">=</span>
+      <span class="cred-res"><b>身份认证</b></span>
+    </div>
+
+    <div class="chips" id="authChips">
+      <button class="chip is-on" data-a="user"><span class="chip-t mono">ID</span><span class="chip-n">用户名</span><span class="chip-s">间接认证</span></button>
+      <button class="chip" data-a="pwd"><span class="chip-t mono">PWD</span><span class="chip-n">密码</span><span class="chip-s">知道即可用</span></button>
+      <button class="chip" data-a="sms"><span class="chip-t mono">SMS</span><span class="chip-n">短信验证码</span><span class="chip-s">通道即凭证</span></button>
+      <button class="chip" data-a="card"><span class="chip-t mono">CARD</span><span class="chip-n">实体银行卡</span><span class="chip-s">可复制</span></button>
+      <button class="chip" data-a="face"><span class="chip-t mono">FACE</span><span class="chip-n">人脸</span><span class="chip-s">你本人</span></button>
+      <button class="chip" data-a="finger"><span class="chip-t mono">FP</span><span class="chip-n">指纹</span><span class="chip-s">你本人</span></button>
+    </div>
+
+    <div class="auth-grid" id="authGrid">
+      <div class="auth-cell"><span class="k mono">凭证形态</span><b id="aForm">一串账号</b></div>
+      <div class="auth-cell"><span class="k mono">泄露后能否重置</span><b id="aReset">能，改个名字</b></div>
+      <div class="auth-cell"><span class="k mono">能否被复制</span><b id="aCopy">能，记住就行</b></div>
+      <div class="auth-cell"><span class="k mono">验证代价</span><b id="aCost">最低，几乎零成本</b></div>
+    </div>
+
+    <div class="auth-read">
+      <span class="mono">判定</span>
+      <p id="authRead"><b>用户名只回答「你说你是谁」</b>，不回答「你真的是谁」。它必须再绑一个密码、一张卡或一段短信，才能变成一次可验证的授权。</p>
+    </div>
+  </div>
+
+  <div class="match">
+    <div class="match-head">
+      <div>
+        <span class="match-k mono">MATCH MODE / 比对模式</span>
+        <h3>支付做的是 1:1 确认，不是 1:N 找人</h3>
+        <p>银行柜台核对身份证，是拿「你」和「你声称的那个人」比一次；从十万人里找一张脸，是另一件事。后者计算时间长、误配概率高，通常用于布控与检索，不用于单笔支付授权。</p>
+      </div>
+      <div class="match-toggle">
+        <button class="btn" id="btn1to1" aria-pressed="true">1:1 确认</button>
+        <button class="btn ghost" id="btn1toN" aria-pressed="false">1:N 检索</button>
+      </div>
+    </div>
+    <div class="match-bars">
+      <div class="mb-row"><span class="k mono">比对次数</span><div class="mb-track"><i id="mbBar"></i></div><b id="mbCount">1 次</b></div>
+      <div class="mb-row"><span class="k mono">结果含义</span><div class="mb-text" id="mbMeaning">这个人是不是他声称的人</div></div>
+      <div class="mb-row"><span class="k mono">典型场景</span><div class="mb-text" id="mbScene">支付授权 / 门禁 / 手机解锁</div></div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>生物特征不是「更安全的密码」，而是「另一类凭证」</b>。它省掉了携带与记忆，却把「泄露后不可重置」写进了系统前提；所以真正的设计问题不是「识别得准不准」，而是「识别错了、被冒用了，怎么兜底」。</div>
+</div></section>
+
+<!-- ═══════════ 02 六把钥匙 ═══════════ -->
+<section id="s02" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 02</span>
+    <h2>六把身体钥匙：读什么，怎么读</h2>
+    <p class="sec-lead">书里挑出六种有实践基础的生物特征：人脸、指纹、掌纹、静脉、声纹、虹膜。它们的差别不在「谁更高级」，而在采集什么信号、要不要接触、需不需要专用设备、能不能验活体。</p>
+  </div>
+
+  <div class="key-grid" id="keyGrid" data-audit-group>
+    <button class="key-card is-on" data-k="face"><span class="kc-n mono">B01 / FACE</span><b>人脸</b><span class="kc-s">摄像头 · 非接触 · 最自然</span></button>
+    <button class="key-card" data-k="finger"><span class="kc-n mono">B02 / FINGERPRINT</span><b>指纹</b><span class="kc-s">按压 · 接触 · 最普及</span></button>
+    <button class="key-card" data-k="palm"><span class="kc-n mono">B03 / PALM</span><b>掌纹</b><span class="kc-s">掌面 · 可非接触 · 信息多</span></button>
+    <button class="key-card" data-k="vein"><span class="kc-n mono">B04 / VEIN</span><b>静脉</b><span class="kc-s">近红外 · 接触 · 内藏</span></button>
+    <button class="key-card" data-k="voice"><span class="kc-n mono">B05 / VOICE</span><b>声纹</b><span class="kc-s">麦克风 · 非接触 · 行为特征</span></button>
+    <button class="key-card" data-k="iris"><span class="kc-n mono">B06 / IRIS</span><b>虹膜</b><span class="kc-s">近红外 · 非接触 · 精度最高</span></button>
+  </div>
+
+  <div class="key-read">
+    <div class="kr-left">
+      <div class="kr-k mono" id="keyK">SELECTED / B01</div>
+      <h3 id="keyName">人脸</h3>
+      <p class="kr-type" id="keyType">生理特征 · 面部轮廓</p>
+      <div class="kr-num"><b id="keyNum">5</b><span id="keyNumL">个轮廓部位：眉、眼、鼻、口、颊</span></div>
+    </div>
+    <div class="kr-right">
+      <p class="kr-d" id="keyDesc">摄像头采集面部图像，计算机先定位人脸，再提取轮廓与特征点，最后和预留模板比对。支付场景只做一对一确认，不做一对多检索。</p>
+      <div class="kr-metrics">
+        <div><span class="k mono">采集</span><b id="keyRead">摄像头 / 视频</b></div>
+        <div><span class="k mono">接触</span><b id="keyTouch">非接触</b></div>
+        <div><span class="k mono">设备</span><b id="keyDev">手机 / 收单平板</b></div>
+        <div><span class="k mono">主要限制</span><b id="keyLimit">公开可采、不可重置</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>六种特征的「读取成本」差得很远</b>。人脸和声纹用现成摄像头、麦克风就能采；虹膜、静脉、掌纹要专用设备。支付是高频低额场景，设备成本会直接决定它能不能铺开。</div>
+</div></section>
+
+<!-- ═══════════ 03 刷脸六步 ═══════════ -->
+<section id="s03" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 03</span>
+    <h2>一次刷脸，要过六道工序</h2>
+    <p class="sec-lead">「把脸对准摄像头」只是一个动作，背后是采集、检测、预处理、特征提取、匹配、识别六步。任何一步出问题，结果都不是「支付失败」这么简单：可能是该过的人没过，也可能是别人过了。</p>
+  </div>
+
+  <div class="flow-lab" data-audit-group>
+    <div class="flow-steps" id="flowSteps">
+      <button class="fs-step is-on" data-f="0"><span class="fs-i mono">01</span><b>采集</b><span class="fs-s">摄像头把光学信息变成数字图像</span></button>
+      <button class="fs-step" data-f="1"><span class="fs-i mono">02</span><b>检测</b><span class="fs-s">在画面里框出人脸的位置和大小</span></button>
+      <button class="fs-step" data-f="2"><span class="fs-i mono">03</span><b>预处理</b><span class="fs-s">补光、灰度、归一化、几何校正</span></button>
+      <button class="fs-step" data-f="3"><span class="fs-i mono">04</span><b>特征提取</b><span class="fs-s">把脸变成一组可比对的特征数据</span></button>
+      <button class="fs-step" data-f="4"><span class="fs-i mono">05</span><b>匹配</b><span class="fs-s">与预留模板算相似度，过阈值才算匹配</span></button>
+      <button class="fs-step" data-f="5"><span class="fs-i mono">06</span><b>识别</b><span class="fs-s">输出「是不是同一个人」</span></button>
+    </div>
+
+    <div class="flow-panel">
+      <div class="fp-head">
+        <div>
+          <span class="fp-k mono" id="flowK">STEP 01 / CAPTURE</span>
+          <h3 id="flowName">采集：先把脸变成像素</h3>
+        </div>
+        <div class="fp-btns">
+          <button class="btn" id="btnFlowPlay">自动走一遍</button>
+          <button class="btn ghost" id="btnFlowNext">下一步</button>
+          <button class="btn ghost" id="btnFlowReset">重置</button>
+        </div>
+      </div>
+      <p class="fp-d" id="flowDesc">摄像头（CCD 或 CMOS 传感器）把光学信息转成数字图像。CCD 分辨率高但能耗约为 CMOS 的 100 倍，今天手机与收单设备基本都用 CMOS。</p>
+      <div class="fp-fail"><span class="mono">这一步失败会怎样</span><b id="flowFail">光线太暗、角度太偏，后面再准也没有可用的输入</b></div>
+    </div>
+  </div>
+
+  <div class="pay-mode">
+    <div class="pm-head">
+      <span class="pm-k mono">AUTH MODE / 刷脸到底顶了什么</span>
+      <h3>刷脸 = 输入用户名；小额可以免密，大额还得加密码</h3>
+    </div>
+    <div class="pm-toggle">
+      <button class="btn" id="btnSmall" aria-pressed="true">小额 · 免密</button>
+      <button class="btn ghost" id="btnLarge" aria-pressed="false">大额 · 刷脸 + 密码</button>
+    </div>
+    <div class="pm-steps" id="pmSteps">
+      <div class="pm-step is-on"><span class="mono">01</span><b>刷脸</b><em>相当于输入用户名</em></div>
+      <div class="pm-step is-off"><span class="mono">02</span><b>密码 / PIN</b><em>大额时才需要</em></div>
+      <div class="pm-step"><span class="mono">03</span><b>扣款</b><em>账户扣减并通知</em></div>
+    </div>
+    <p class="pm-note" id="pmNote">小额免密不是「刷脸就绝对安全」，而是<b>金额小、风控赔得起</b>：用限额把单次风险封顶，再用行为模型盯异常。</p>
+  </div>
+
+  <div class="aside">关键洞察：<b>六步里只有第五步在「比对」，前四步都在「把脸变成可比的东西」</b>。绝大多数现场失败不是算法不认识你，而是光、角度、遮挡、分辨率让输入根本不合格。</div>
+</div></section>
+
+<!-- ═══════════ 04 双因子 ═══════════ -->
+<section id="s04" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 04</span>
+    <h2>钥匙不能换：所以要多配一把锁</h2>
+    <p class="sec-lead">密码泄露了可以改，卡丢了可以挂失；人脸泄露了，不能靠改密码解决，理论上只能做换脸手术。生物特征支付因此天然需要第二个因子：不是不信任识别技术，而是给「不可重置」这件事兜底。</p>
+  </div>
+
+  <div class="reset">
+    <div class="reset-card bad">
+      <span class="rc-k mono">PASSWORD / 密码</span>
+      <h3>泄露 → 改一条记录</h3>
+      <div class="rc-metrics">
+        <div><span class="k">恢复动作</span><b>改密码</b></div>
+        <div><span class="k">恢复时间</span><b>1 分钟</b></div>
+        <div><span class="k">恢复成本</span><b>≈ 0</b></div>
+      </div>
+      <p>凭证与人是分离的：换掉凭证，人不受影响。</p>
+    </div>
+    <div class="reset-card bad">
+      <span class="rc-k mono">FACE / 人脸</span>
+      <h3>泄露 → 换一张脸</h3>
+      <div class="rc-metrics">
+        <div><span class="k">恢复动作</span><b>外科手术</b></div>
+        <div><span class="k">恢复时间</span><b>以月计</b></div>
+        <div><span class="k">恢复成本</span><b>不可接受</b></div>
+      </div>
+      <p>凭证与人是同一个：换掉凭证，等于换掉人。</p>
+    </div>
+    <div class="reset-card ok">
+      <span class="rc-k mono">2FA / 双因子</span>
+      <h3>再加一个可重置的因子</h3>
+      <div class="rc-metrics">
+        <div><span class="k">典型组合</span><b>人脸 + 密码</b></div>
+        <div><span class="k">额外时间</span><b>几秒</b></div>
+        <div><span class="k">攻击门槛</span><b>同时拿下两条</b></div>
+      </div>
+      <p>生物特征负责「你本人」，密码/短信/eID 负责「可撤销的授权」。</p>
+    </div>
+  </div>
+
+  <div class="twofa">
+    <div class="twofa-head">
+      <div>
+        <span class="twofa-k mono">2FA BUILDER / 组合两个因子</span>
+        <h3>双因子的关键，是两个因子「不同类」</h3>
+        <p>人脸 + 指纹都还是「你身上的一部分」；人脸 + 密码才是「你本人 + 你知道的东西」。多因子（MFA）逻辑相同，只是叠得更多、更安全，也更麻烦。</p>
+      </div>
+      <div class="twofa-out">
+        <span class="k mono">攻击者需要同时具备</span>
+        <b id="faNeed">一张活人脸 + 正确密码</b>
+        <span class="k mono" style="margin-top:10px">用户额外耗时</span>
+        <b id="faTime">约 8 秒</b>
+        <span class="k mono" style="margin-top:10px">安全等级</span>
+        <b id="faLevel" class="gold">L2 / 中高</b>
+      </div>
+    </div>
+
+    <div class="fa-choose">
+      <div class="fa-col">
+        <span class="fa-l mono">FACTOR 01 / 第一个因子</span>
+        <div class="fa-btns" id="faOne">
+          <button class="btn is-on" data-v="face">人脸</button>
+          <button class="btn ghost" data-v="finger">指纹</button>
+          <button class="btn ghost" data-v="palm">掌纹</button>
+        </div>
+      </div>
+      <div class="fa-plus">+</div>
+      <div class="fa-col">
+        <span class="fa-l mono">FACTOR 02 / 第二个因子</span>
+        <div class="fa-btns" id="faTwo">
+          <button class="btn is-on" data-v="pwd">密码</button>
+          <button class="btn ghost" data-v="sms">短信</button>
+          <button class="btn ghost" data-v="eid">eID</button>
+          <button class="btn ghost" data-v="finger2">指纹</button>
+        </div>
+      </div>
+      <div class="fa-result">
+        <span class="fa-r-k mono">判定</span>
+        <p id="faNote">人脸 + 密码：一条生物因子 + 一条可撤销因子。攻击者要同时拿到活人脸和密码，门槛明显高于单刷脸。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>双因子不是「多一道验证」，而是「多一条独立的攻击路径」</b>。如果两个因子能被同一次攻击一起拿下——比如手机丢了、密码也在手机里——那只是把两道门装在了同一个门框上。eID 的价值就在这里：它把核验放到公安部门的人口库，支付机构手里不存那份底账。</div>
+</div></section>
+
+<!-- ═══════════ 05 指纹 ═══════════ -->
+<section id="s05" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 05</span>
+    <h2>指纹：三种纹型，四种读法</h2>
+    <p class="sec-lead">指纹是最早普及的生物识别，也是手机里最常见的一种。它由「嵴」和「峪」构成：凸起的脊线、凹下的谷线。识别不是拍照存图，而是把纹路变成特征点；采集技术不同，速度、体积、成本、清洁要求就不同。</p>
+  </div>
+
+  <div class="fp-lab" data-audit-group>
+    <div class="fp-art-wrap">
+      <div class="fp-art">
+        <svg id="fpSvg" viewBox="0 0 220 220" role="img" aria-label="三种指纹纹型示意图">
+          <g class="fp-g" data-t="whorl">
+            <ellipse cx="110" cy="112" rx="62" ry="72" />
+            <ellipse cx="110" cy="112" rx="49" ry="57" />
+            <ellipse cx="110" cy="112" rx="36" ry="42" />
+            <ellipse cx="110" cy="112" rx="23" ry="27" />
+            <ellipse cx="110" cy="112" rx="11" ry="13" />
+            <path d="M110 40 C74 40 48 70 48 112 C48 154 74 184 110 184" />
+            <path d="M110 40 C146 40 172 70 172 112 C172 154 146 184 110 184" />
+          </g>
+          <g class="fp-g" data-t="arch" style="display:none">
+            <path d="M30 150 C40 92 70 62 110 62 C150 62 180 92 190 150" />
+            <path d="M40 158 C50 106 76 80 110 80 C144 80 170 106 180 158" />
+            <path d="M52 166 C60 120 82 98 110 98 C138 98 160 120 168 166" />
+            <path d="M66 174 C72 136 88 116 110 116 C132 116 148 136 154 174" />
+            <path d="M80 182 C84 152 95 134 110 134 C125 134 136 152 140 182" />
+          </g>
+          <g class="fp-g" data-t="loop" style="display:none">
+            <path d="M56 186 C40 150 38 104 60 76 C82 48 118 40 146 58 C176 78 186 120 174 152 C164 178 140 190 112 190" />
+            <path d="M68 184 C54 154 54 114 72 90 C90 66 122 58 144 74 C168 92 174 126 164 152 C156 172 136 182 112 182" />
+            <path d="M80 182 C68 158 68 124 84 104 C100 84 126 78 144 92 C162 106 166 132 158 152 C150 168 134 176 112 176" />
+            <path d="M92 180 C82 160 84 134 96 118 C108 102 128 98 142 108 C156 118 158 138 152 154 C146 168 132 172 112 172" />
+            <path d="M110 168 C104 154 108 138 118 130 C130 122 142 128 144 140 C146 150 138 158 128 160" />
+          </g>
+        </svg>
+        <span class="fp-legend mono" id="fpLegend">WHORL / 斗型</span>
+      </div>
+      <div class="fp-types" id="fpTypes">
+        <button class="fp-type is-on" data-t="whorl"><b>斗型</b><span>中心闭合，像旋涡</span></button>
+        <button class="fp-type" data-t="arch"><b>弓型</b><span>脊线横跨，像拱桥</span></button>
+        <button class="fp-type" data-t="loop"><b>箕型</b><span>开口回折，像簸箕</span></button>
+      </div>
+      <div class="fp-ridge">
+        <span><i class="ridge"></i>嵴 / 凸起的脊线</span>
+        <span><i class="valley"></i>峪 / 凹下的谷线</span>
+      </div>
+    </div>
+
+    <div class="fp-tech-wrap">
+      <span class="fp-t-k mono">READER / 四种采集技术</span>
+      <div class="fp-tech" id="fpTech">
+        <button class="fp-t is-on" data-tech="optical"><span class="mono">T01</span><b>光学</b><span>棱镜 + 光源 + CCD</span></button>
+        <button class="fp-t" data-tech="thermal"><span class="mono">T02</span><b>温差式</b><span>温度差 → 电信号</span></button>
+        <button class="fp-t" data-tech="cap"><span class="mono">T03</span><b>电容式</b><span>嵴峪电容值不同</span></button>
+        <button class="fp-t" data-tech="ultra"><span class="mono">T04</span><b>超声波</b><span>声波阻抗差异</span></button>
+      </div>
+      <div class="fp-tech-read">
+        <h3 id="techName">光学识别</h3>
+        <p id="techDesc">手指放在棱镜上，内置光源把脊线与谷线投到 CCD，形成多灰度图像。历史最久、用得最广，但模块体积大，容易被指纹膜骗过。</p>
+        <div class="fp-metrics">
+          <div><span class="k mono">成像条件</span><b id="techHow">光学对比</b></div>
+          <div><span class="k mono">读取速度</span><b id="techSpeed">一般</b></div>
+          <div><span class="k mono">体积 / 成本</span><b id="techSize">大 / 低</b></div>
+          <div><span class="k mono">清洁要求</span><b id="techClean">中等</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fp-two">
+    <div class="fp-mode"><span class="mono">MSF / MERCHANT SCAN</span><h4>在商户设备上按</h4><p>消费者事先在支付平台注册指纹。到店后，在商户的指纹设备上按压认证。和扫码的 MPM 模式类似：读取器在收款方手里。</p><b>设备成本落在商户</b></div>
+    <div class="fp-mode"><span class="mono">CSF / CONSUMER SCAN</span><h4>在自己手机上按</h4><p>消费者在手机 App 里注册并按压指纹。和扫码的 CPM 模式类似：读取器在付款人手里。</p><b>设备成本落在消费者</b></div>
+  </div>
+
+  <div class="aside">关键洞察：<b>指纹支付的瓶颈不在算法，在「接触」</b>。接触带来卫生顾虑、设备磨损、老人指纹磨平、杯子和门把手上留痕；所以它在手机解锁里赢了，却没能在线下收单里铺开。技术排名低，不等于技术差。</div>
+</div></section>
+
+<!-- ═══════════ 06 位置 ═══════════ -->
+<section id="s06" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 06</span>
+    <h2>越看得见，越好采；越内藏，越难偷</h2>
+    <p class="sec-lead">把六种特征放在一张图上：横轴是「要不要接触设备」，纵轴是「特征外显还是内藏」。左上角是方便与风险的交汇处——人脸、声纹；右下角是安全与成本的交汇处——静脉、指纹。没有一种特征同时拿到四个角。</p>
+  </div>
+
+  <div class="quad-wrap" data-audit-group>
+    <div class="quad">
+      <div class="q-axis q-y"><span>外显</span><i></i><span>内藏</span></div>
+      <div class="q-axis q-x"><span>非接触</span><i></i><span>接触</span></div>
+      <div class="q-grid">
+        <span class="q-line q-h"></span><span class="q-line q-v"></span>
+        <button class="q-point is-on" data-q="face" style="left:22%;top:24%"><b>人脸</b><em>非接触 / 外显</em></button>
+        <button class="q-point" data-q="palm" style="left:56%;top:20%"><b>掌纹</b><em>可非接触 / 外显</em></button>
+        <button class="q-point" data-q="finger" style="left:80%;top:16%"><b>指纹</b><em>接触 / 外显</em></button>
+        <button class="q-point" data-q="voice" style="left:14%;top:66%"><b>声纹</b><em>非接触 / 行为</em></button>
+        <button class="q-point" data-q="iris" style="left:40%;top:58%"><b>虹膜</b><em>非接触 / 内藏</em></button>
+        <button class="q-point" data-q="vein" style="left:88%;top:72%"><b>静脉</b><em>接触 / 内藏</em></button>
+      </div>
+      <span class="q-tag q-tl mono">方便采集 · 易被采集</span>
+      <span class="q-tag q-br mono">难采集 · 难被偷</span>
+    </div>
+
+    <div class="quad-read">
+      <div class="qr-head">
+        <span class="qr-k mono" id="qK">POINT / FACE</span>
+        <h3 id="qName">人脸</h3>
+        <span class="qr-type" id="qType">非接触 · 外显 · 生理特征</span>
+      </div>
+      <p id="qDesc">摄像头隔着几十厘米就能采，用户不需要学任何动作；但同一套设备，别人也能在街上、在社交平台上采到你的脸。方便与暴露是同一条性质的两面。</p>
+      <div class="qr-metrics">
+        <div><span class="k mono">采集难度</span><b id="qEasy">最低</b></div>
+        <div><span class="k mono">活体检测</span><b id="qLive">关键 / 难</b></div>
+        <div><span class="k mono">设备成本</span><b id="qCost">已有摄像头</b></div>
+        <div><span class="k mono">典型风险</span><b id="qRisk">照片 / 视频 / 面具</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>「非接触」不等于「安全」，「内藏」也不等于「方便」</b>。人脸赢在自然，输在不可重置；静脉赢在活体与内藏，输在必须把手指伸进设备。支付选型就是在这些性质之间做交换，而不是找一把全能钥匙。</div>
+</div></section>
+
+<!-- ═══════════ 07 排名 ═══════════ -->
+<section id="s07" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 07</span>
+    <h2>换一个维度，冠军就换人</h2>
+    <p class="sec-lead">书里的横向比较给了一个明确结论：刷脸最好，掌纹第二，指纹总分最低。但这个「最好」是按自然、方便、卫生、安全、接受度综合出来的；把维度一换，静脉、声纹、虹膜都可能冒头。</p>
+  </div>
+
+  <div class="rank-bar" id="rankTabs">
+    <button class="btn is-on" data-d="all">书中综合</button>
+    <button class="btn ghost" data-d="easy">便利</button>
+    <button class="btn ghost" data-d="clean">卫生</button>
+    <button class="btn ghost" data-d="safe">安全</button>
+    <button class="btn ghost" data-d="cost">成本</button>
+    <button class="btn ghost" data-d="accept">接受度</button>
+  </div>
+
+  <div class="rank" id="rankList" data-audit-group>
+    <div class="rank-row" data-k="face"><span class="rk-no mono">01</span><b>刷脸</b><div class="rk-bar"><i style="width:100%"></i></div><span class="rk-v mono">5.0</span><em>最自然，不用接触</em></div>
+    <div class="rank-row" data-k="palm"><span class="rk-no mono">02</span><b>掌纹</b><div class="rk-bar"><i style="width:86%"></i></div><span class="rk-v mono">4.3</span><em>信息多，可非接触</em></div>
+    <div class="rank-row" data-k="iris"><span class="rk-no mono">03</span><b>虹膜</b><div class="rk-bar"><i style="width:76%"></i></div><span class="rk-v mono">3.8</span><em>精度最高，设备贵</em></div>
+    <div class="rank-row" data-k="vein"><span class="rk-no mono">04</span><b>静脉</b><div class="rk-bar"><i style="width:70%"></i></div><span class="rk-v mono">3.5</span><em>活体、内藏，需接触</em></div>
+    <div class="rank-row" data-k="voice"><span class="rk-no mono">05</span><b>声纹</b><div class="rk-bar"><i style="width:56%"></i></div><span class="rk-v mono">2.8</span><em>设备简单，噪声敏感</em></div>
+    <div class="rank-row" data-k="finger"><span class="rk-no mono">06</span><b>指纹</b><div class="rk-bar"><i style="width:36%"></i></div><span class="rk-v mono">1.8</span><em>要接触，留痕风险</em></div>
+  </div>
+
+  <div class="rank-note" id="rankNote">书中综合序：<b>刷脸第 1、掌纹第 2、指纹第 6</b>；中间三种书中未给明确位次，本表按定性描述填入相对分数。分数为阅读整理，不是书中原表数值。</div>
+  <div class="aside">关键洞察：<b>「综合最好」是一个场景假设，不是绝对结论</b>。便利店小额要的是快和不接触，刷脸赢；金库门禁要的是活体与不可复制，静脉赢；手机解锁要的是成本与习惯，指纹赢。排名只在给定权重下成立。</div>
+</div></section>
+
+<!-- ═══════════ 08 精度 ═══════════ -->
+<section id="s08" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 08</span>
+    <h2>精度不是一个数，是一对跷跷板</h2>
+    <p class="sec-lead">「准确率 99%」这句话在生物识别里几乎没用。真正要问的是：把坏人放进来的概率是多少（FAR），把好人挡在外面的概率是多少（FRR）。这两个数由同一个阈值控制，一个降，另一个就升。</p>
+  </div>
+
+  <div class="far-stats">
+    <div class="fst"><span class="k mono">样本库</span><b>300<small>枚</small></b><em>100 人 × 右手食指 3 次</em></div>
+    <div class="fst"><span class="k mono">两两比对</span><b>89,700<small>次</small></b><em>300 × 299</em></div>
+    <div class="fst"><span class="k mono">同指真匹配</span><b>600<small>次</small></b><em>100 人 × 6 组合</em></div>
+    <div class="fst"><span class="k mono">书中阈值</span><b>90<small>%</small></b><em>相似度门槛</em></div>
+  </div>
+
+  <div class="roc-lab" data-audit-group>
+    <div class="roc-chart-wrap">
+      <div class="roc-head">
+        <span class="roc-k mono">FAR / FRR · 阈值滑杆</span>
+        <div class="roc-badge" id="rocBadge">平衡区</div>
+      </div>
+      <svg id="rocSvg" viewBox="0 0 560 300" role="img" aria-label="FAR 与 FRR 随阈值变化的示意曲线">
+        <g class="roc-grid">
+          <line x1="48" y1="250" x2="530" y2="250"></line>
+          <line x1="48" y1="200" x2="530" y2="200"></line>
+          <line x1="48" y1="150" x2="530" y2="150"></line>
+          <line x1="48" y1="100" x2="530" y2="100"></line>
+          <line x1="48" y1="50" x2="530" y2="50"></line>
+        </g>
+        <g class="roc-axis mono">
+          <text x="18" y="255">0</text><text x="10" y="205">5</text><text x="6" y="155">10</text><text x="6" y="105">15</text><text x="6" y="55">20</text>
+          <text x="250" y="285">阈值（相似度 %）</text>
+          <text x="10" y="26" transform="rotate(90 10 26)">错误率 %</text>
+        </g>
+        <polyline id="farLine" class="roc-far" points=""></polyline>
+        <polyline id="frrLine" class="roc-frr" points=""></polyline>
+        <line id="rocCursor" class="roc-cursor" x1="0" y1="34" x2="0" y2="250"></line>
+        <circle id="eerDot" class="roc-eer" cx="0" cy="0" r="4"></circle>
+        <text id="eerLabel" class="roc-eer-label mono" x="0" y="0">EER</text>
+        <text id="farLabel" class="roc-label mono" x="0" y="0">FAR</text>
+        <text id="frrLabel" class="roc-label mono" x="0" y="0">FRR</text>
+      </svg>
+      <div class="roc-legend">
+        <span><i class="dot far"></i>FAR / 误识率：把该拒的放进来</span>
+        <span><i class="dot frr"></i>FRR / 拒识率：把该过的挡在外</span>
+        <span><i class="dot eer"></i>EER：两条线的交点</span>
+      </div>
+    </div>
+
+    <div class="roc-side">
+      <div class="roc-slider">
+        <label class="mono" for="thr">THRESHOLD / 相似度阈值 <b id="thrVal">90.0%</b></label>
+        <input type="range" id="thr" min="50" max="99.9" step="0.1" value="90">
+        <div class="thr-scale mono"><span>宽松 50</span><span>书中 90</span><span>严格 99.9</span></div>
+      </div>
+      <div class="roc-out">
+        <div class="ro-row"><span class="k mono">FAR</span><b id="outFar">0.11%</b><span class="ro-n" id="outFarN">100 / 89,100</span></div>
+        <div class="ro-row"><span class="k mono">FRR</span><b id="outFrr">5.00%</b><span class="ro-n" id="outFrrN">30 / 600</span></div>
+        <div class="ro-row"><span class="k mono">判定倾向</span><b id="outTone">平衡</b><span class="ro-n" id="outToneN">接近 EER</span></div>
+      </div>
+      <p class="roc-note">曲线为示意模型：按书中示例校准（阈值 90% 时 FAR≈0.11%、FRR≈5%），不是书中原始实验曲线。<b>EER≈0.39%</b> 是本模型的交点，不是书的结论。</p>
+    </div>
+  </div>
+
+  <div class="conf">
+    <div class="conf-head">
+      <div>
+        <span class="conf-k mono">CONFUSION / 四种结果</span>
+        <h3>真阳、真阴、假阳、假阴</h3>
+        <p>把「有病 / 没病」换成「本人 / 冒用者」，四个格子就是风控的全部结局。TPR = TP / (TP + FN)，FPR = FP / (FP + TN)。</p>
+      </div>
+      <button class="btn ghost" id="btnThr90">回到书中 90%</button>
+    </div>
+    <div class="conf-grid">
+      <div class="conf-cell tp"><span class="mono">TP</span><b>真阳</b><p>本人，且判定为本人</p><em>该放行的放行了</em></div>
+      <div class="conf-cell fp"><span class="mono">FP</span><b>假阳</b><p>冒用者，却判定为本人</p><em>该拦的放进来了 → 资金损失</em></div>
+      <div class="conf-cell fn"><span class="mono">FN</span><b>假阴</b><p>本人，却判定为冒用者</p><em>该放的挡在外 → 体验损失</em></div>
+      <div class="conf-cell tn"><span class="mono">TN</span><b>真阴</b><p>冒用者，且判定为冒用者</p><em>该拦的拦住了</em></div>
+    </div>
+    <div class="conf-formula mono">FAR = NFA / NIRA &nbsp;·&nbsp; FRR = NFR / NGRA &nbsp;·&nbsp; TPR = TP / (TP + FN) &nbsp;·&nbsp; FPR = FP / (FP + TN)</div>
+  </div>
+
+  <div class="aside">关键洞察：<b>调阈值不是「提高精度」，而是「选择把损失放在哪一边」</b>。调严，钱更安全，但更多真人被挡在门外；调松，通过率更高，但更多冒用者被放进来。EER 只是两条曲线交点，它告诉你算法在哪个点最平衡，不告诉你该用哪个点——那要由单笔金额、赔付能力、用户体验共同决定。</div>
+</div></section>
+
+<!-- ═══════════ 09 选型 ═══════════ -->
+<section id="s09" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 09</span>
+    <h2>选一把钥匙，先看四个约束</h2>
+    <p class="sec-lead">没有「最好的生物特征」，只有「在这个场景里最合适的组合」。先问四件事：金额多大、要不要接触、有没有专用设备、能不能接受被拒。答案不同，钥匙就不同。</p>
+  </div>
+
+  <div class="pick" data-audit-group>
+    <div class="pick-tabs" id="pickTabs">
+      <button class="pick-tab is-on" data-p="store"><span class="mono">S01</span><b>便利店小额</b><em>几十元，追求快</em></button>
+      <button class="pick-tab" data-p="market"><span class="mono">S02</span><b>商超大额</b><em>上千元，怕盗刷</em></button>
+      <button class="pick-tab" data-p="online"><span class="mono">S03</span><b>手机线上</b><em>只有一台手机</em></button>
+      <button class="pick-tab" data-p="vault"><span class="mono">S04</span><b>高安全门禁</b><em>金库 / 数据中心</em></button>
+    </div>
+    <div class="pick-read">
+      <div class="pr-head">
+        <span class="pr-k mono" id="pickK">SCENARIO 01 / CONVENIENCE STORE</span>
+        <h3 id="pickName">便利店小额：刷脸 + 限额</h3>
+        <div class="pr-tags" id="pickTags"><span>非接触</span><span>免密</span><span>活体检测</span></div>
+      </div>
+      <p id="pickWhy">几十元的交易，最重要的是别排队。刷脸不需要掏手机、不需要接触设备，摄像头现成；用单笔限额把损失封顶，再用频次与行为模型盯异常。掌纹可以做备选，但需要商户铺设备。</p>
+      <div class="pr-grid">
+        <div><span class="k mono">首选</span><b id="pickBest">刷脸</b></div>
+        <div><span class="k mono">第二因子</span><b id="pickSecond">金额超限时密码 / 短信</b></div>
+        <div><span class="k mono">必须补的控制</span><b id="pickCtrl">活体检测 + 单笔限额</b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz" id="quiz">
+    <div class="q-item is-open"><div class="q-i mono">Q01</div><div class="q-t">为什么书里说刷脸支付可以做，但支付场景大多只做一对一确认？</div><div class="q-a">一对一确认回答的是「你是不是你声称的那个人」，计算量小、阈值可控；一对多检索要从海量库里找人，计算时间长、误配概率高，适合布控与检索，不适合单笔授权。支付要的是确定性，不是「最像」。</div></div>
+    <div class="q-item"><div class="q-i mono">Q02</div><div class="q-t">刷脸已经识别出本人了，为什么大额还要输密码？</div><div class="q-a">因为人脸是公开可采、不可重置的凭证。大额交易不能只靠一条不可撤销的因子；密码或 eID 是第二条独立路径，负责「授权可撤销」这件事。小额免密则是用限额把单次损失封顶，不是把风险归零。</div></div>
+    <div class="q-item"><div class="q-i mono">Q03</div><div class="q-t">FAR 和 FRR 能不能一起降？</div><div class="q-a">在同一个算法上，它们由同一个阈值控制：阈值调严，FAR 降、FRR 升；调松，反过来。要同时降，只能换更好的算法（把整条曲线下移），这也是 EER 用来比较算法整体性能的原因。</div></div>
+    <div class="q-item"><div class="q-i mono">Q04</div><div class="q-t">指纹识别技术很成熟，为什么在书里的六种支付中总分最低？</div><div class="q-a">因为支付不只看识别率。指纹要接触设备，带来卫生顾虑与设备磨损；手指每天接触大量物品，留痕与信息泄露风险高；老年人指纹磨平，识别率下降。它在手机解锁场景赢，是因为设备本来就在手里；线下收单要额外铺设备，动力不足。</div></div>
+  </div>
+
+  <div class="three-law">
+    <div class="law"><span class="mono">RULE 01</span><p><b>先问凭证能不能重置。</b>不能重置的因子，不能单独承担大额授权；必须配一个可撤销的第二因子。</p></div>
+    <div class="law"><span class="mono">RULE 02</span><p><b>先问采集是不是接触。</b>接触决定卫生、磨损、老人可用性，也决定设备成本落在谁头上。</p></div>
+    <div class="law"><span class="mono">RULE 03</span><p><b>先问阈值把损失放在哪边。</b>调严保护资金、牺牲通过率；调松反过来。阈值是业务决策，不是技术参数。</p></div>
+  </div>
+</div></section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="foot"><div class="wrap">
+  <div class="foot-grid">
+    <div class="foot-main">
+      <span class="mono">CHAPTER 04 / BIOMETRIC PAYMENT</span>
+      <h3>钥匙在身上的代价</h3>
+      <p>这一章把「认证」从身外之物拉回到人本身：六种生物特征、刷脸六步、双因子与多因子、指纹三型四读、FAR/FRR 的跷跷板。技术解决「像不像」，业务要回答「错了怎么办」。</p>
+      <a class="db-link" href="https://book.douban.com/subject/36422205/" target="_blank" rel="noopener"><span class="mono">DOUBAN</span><b>一本书读懂支付</b><i>↗</i></a>
+    </div>
+    <div class="foot-side">
+      <span class="mono">READ NEXT</span>
+      <p>上一章：支付的基础工具——卡、POS、二维码、CPM/MPM。</p>
+      <a class="inline-link" href="../ch03/">← 第 3 章 支付的基础工具</a>
+      <p style="margin-top:10px"><a class="inline-link" href="../">↑ 章节索引</a></p>
+      <p style="margin-top:16px">本章站点为学习笔记，图表与评分为阅读整理，不替代原书。</p>
+    </div>
+  </div>
+  <div class="foot-bottom mono"><span>PAYMENT PRIMER · STUDY NOTES</span><span>CH.04 / 2026-11-16</span></div>
+</div></footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
