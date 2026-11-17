@@ -205,13 +205,14 @@ body > * { position: relative; z-index: 1; }
 
 /* ── 03 债权 ───────────────────────────────────────────── */
 .cred-wrap { border: 1px solid var(--line); background: var(--ink-1); padding: 26px; }
-.cred-line { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
-.cred-part { flex: 1 1 200px; border-left: 1px solid var(--line); padding-left: 12px; }
+/* 三块凭证等高：stretch + 内部 flex 纵向排布，左侧竖线拉齐到同一高度 */
+.cred-line { display: flex; flex-wrap: wrap; align-items: stretch; gap: 14px; }
+.cred-part { flex: 1 1 200px; display: flex; flex-direction: column; border-left: 1px solid var(--line); padding-left: 12px; }
 .cred-part b { display: block; font-size: 14px; }
 .cred-part em { display: block; font-style: normal; font-size: 11px; color: var(--dimmer); margin-top: 4px; line-height: 1.6; }
 .cred-part.hi b { color: var(--gold); }
-.op { color: var(--gold-dim); font-size: 16px; }
-.cred-res { flex: 0 0 auto; border: 1px solid var(--gold-dim); padding: 8px 14px; }
+.op { color: var(--gold-dim); font-size: 16px; align-self: center; }
+.cred-res { flex: 0 0 auto; align-self: center; border: 1px solid var(--gold-dim); padding: 8px 14px; }
 .cred-res b { font-size: 14px; color: var(--gold); }
 
 .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
