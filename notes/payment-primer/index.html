@@ -31,8 +31,13 @@
   .meta{display:flex;flex-wrap:wrap;gap:16px;font-size:10px;letter-spacing:.16em;color:var(--dimmer);text-transform:uppercase}
   .meta span+span::before{content:"/";margin-right:16px;color:var(--gold-dim)}
   h1{font-size:clamp(30px,5.4vw,44px);line-height:1.2;margin:24px 0 12px;font-weight:600}
-  .sub{color:var(--dim);font-size:15px;margin:0 0 40px}
+  .sub{color:var(--dim);font-size:15px;margin:0 0 22px}
   .sub b{color:var(--gold);font-weight:600}
+  .lead{list-style:none;margin:0 0 44px;padding:2px 0 2px 18px;border-left:2px solid rgba(200,164,92,.32)}
+  .lead li{display:grid;grid-template-columns:34px 88px 1fr;gap:10px;align-items:baseline;padding:7px 0}
+  .lead .n{font-size:9.5px;letter-spacing:.16em;color:rgba(200,164,92,.74)}
+  .lead .q{font-size:13px;font-weight:600;color:var(--gold);letter-spacing:.02em}
+  .lead .a{font-size:12.5px;color:var(--dim);line-height:1.75}
   .list{border:1px solid var(--line);background:linear-gradient(180deg,var(--ink-1),rgba(10,25,37,.5))}
   .row{display:grid;grid-template-columns:64px 1fr 128px 30px;gap:14px;align-items:center;
        padding:20px 22px;border-bottom:1px solid var(--line-soft);text-decoration:none;color:inherit;transition:.2s}
@@ -57,6 +62,9 @@
     .wrap{padding:52px 18px 40px}
     .row{grid-template-columns:44px 1fr 24px;gap:10px;padding:16px}
     .row .tag{display:none}
+    .lead{padding-left:14px;margin-bottom:36px;border-left-width:1px}
+    .lead li{grid-template-columns:28px 1fr;row-gap:2px;padding:8px 0}
+    .lead .a{grid-column:2;font-size:12px}
   }
 </style>
 </head>
@@ -65,7 +73,26 @@
   <a class="crumb" href="../">← 学习笔记</a>
   <div class="meta mono"><span>STUDY NOTES</span><span>一本书读懂支付</span><span>陈斌</span></div>
   <h1>一本书读懂支付</h1>
-  <p class="sub">逐章拆。第 1 章把<b>交易 / 支付 / 结算 / 清算</b>摆正，再把资金链路和风险敞口摊开；第 2 章换成五个坐标，看同一笔钱怎么被分类；第 3 章摊开工具箱，看载体与读取器怎么配对；第 4 章回到人本身，看六种生物特征怎么变成一把不能换的钥匙。</p>
+  <p class="sub">一笔支付，是把<b>交易的承诺</b>换成一笔确定到账的钱。四章按四层往下拆，每层只回答一个问题。</p>
+
+  <ol class="lead">
+    <li>
+      <b class="n mono">L1</b><span class="q">先正名</span>
+      <span class="a">交易 / 支付 / 结算 / 清算到底谁管什么，钱在链路上卡在哪 —— 资金链路与时差，四类风险敞口与八环节矩阵</span>
+    </li>
+    <li>
+      <b class="n mono">L2</b><span class="q">再分轴</span>
+      <span class="a">同一笔钱换一个坐标就换一种解释 —— 五个轴、八种资金来源、卡组织五要素与三要素、第三方与聚合</span>
+    </li>
+    <li>
+      <b class="n mono">L3</b><span class="q">看载体</span>
+      <span class="a">载体与读取器怎么配对 —— 银行卡四代、BIN 与卢恩、POS 与收单、EAN 与 QR、CPM 与 MPM</span>
+    </li>
+    <li>
+      <b class="n mono">L4</b><span class="q">回到人</span>
+      <span class="a">为什么生物特征是一把换不了的钥匙 —— 六种特征、刷脸六步、双因子，阈值把 FAR 与 FRR 放在跷跷板两端</span>
+    </li>
+  </ol>
 
   <div class="list">
     <a class="row" href="ch01/">
