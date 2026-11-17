@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "钱坐进工具，才走得动：支付工具的成对法则"
-date: 2026-11-17 22:50:00 +0800
+date: 2026-11-17 22:00:00 +0800
 categories: payment notes
 tags: 支付 支付工具 银行卡 卡BIN 卢恩算法 POS 收单 二维码 CPM MPM 物联网
 ---
