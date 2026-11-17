@@ -18,7 +18,7 @@
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  const REVEAL = '.sec-head, .cred-wrap, .match, .key-grid, .key-read, .flow-lab, .pay-mode, .reset, .twofa, .fp-lab, .fp-two, .quad-wrap, .rank-bar, .rank, .far-stats, .roc-lab, .conf, .pick, .quiz, .three-law';
+  const REVEAL = '.sec-head, .cred-wrap, .match, .key-grid, .key-read, .flow-lab, .pay-mode, .reset, .twofa, .fp-lab, .fp-two, .quad-wrap, .rank-bar, .rank, .far-stats, .roc-lab, .conf, .pick, .quiz, .three-law, .matrix';
   $$(REVEAL).forEach((el) => el.classList.add('reveal'));
   if (!reduced && 'IntersectionObserver' in window) {
     const io = new IntersectionObserver((es) => {
@@ -520,6 +520,10 @@
     if (b) setPick(b.dataset.p);
   });
   setPick('store');
+
+  /* ── 风险矩阵 ─────────────────────────────────────────── */
+  $$('#matrix .mx-row').forEach((r) => r.addEventListener('click', () => r.classList.toggle('is-open')));
+  if ($('#matrix .mx-row')) $('#matrix .mx-row').classList.add('is-open');
 
   /* ── 问答 ─────────────────────────────────────────────── */
   $$('.q-item').forEach((q) => q.addEventListener('click', () => {

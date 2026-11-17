@@ -16,7 +16,7 @@
 <header class="topbar"><div class="wrap topbar-in">
   <div class="brand"><span class="mark">◆</span><span class="brand-t">STUDY NOTES</span><span class="brand-s">CH.04 / 生物特征支付</span></div>
   <nav class="topnav">
-    <a href="#s01">01 认证</a><a href="#s02">02 六钥匙</a><a href="#s03">03 刷脸</a><a href="#s04">04 双因子</a><a href="#s05">05 指纹</a><a href="#s06">06 位置</a><a href="#s07">07 排名</a><a href="#s08">08 精度</a><a href="#s09">09 选型</a>
+    <a href="#s01">01 认证</a><a href="#s02">02 六钥匙</a><a href="#s03">03 刷脸</a><a href="#s04">04 双因子</a><a href="#s05">05 指纹</a><a href="#s06">06 位置</a><a href="#s07">07 排名</a><a href="#s08">08 精度</a><a href="#s09">09 选型</a><a href="#s10">10 收口</a>
   </nav>
 </div></header>
 
@@ -553,6 +553,107 @@
       </div>
     </div>
   </div>
+</div></section>
+
+<!-- ═══════════ 10 收口：风险 ═══════════ -->
+<section id="s10" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 10</span>
+    <h2>收口：六把钥匙，四层可能被偷的地方</h2>
+    <p class="sec-lead">第 1 章按时间列环节，第 2 章按模式列结构，第 3 章按载体列层级，这一章按「采集 → 模板 → 比对 → 授权」列生物特征的风险。同一种风险换一把钥匙不会消失，只会换一层发生。</p>
+  </div>
+
+  <div class="ex-types">
+    <div class="ex-type"><span class="mono">采集层</span><h4>样本被采走</h4><p class="ex-f mono">可获取样本数 × 合成质量</p><p>脸在街上、指纹在杯子上、声纹在短视频里。采集这一层最便宜，所以冒用成本也最低。</p></div>
+    <div class="ex-type"><span class="mono">模板层</span><h4>模板不可重置</h4><p class="ex-f mono">模板条数 × 跨场景复用度</p><p>库里存的是特征不是照片，但它不能改。泄露一次，十年都要用同一条模板。</p></div>
+    <div class="ex-type"><span class="mono">比对层</span><h4>阈值就是损失选择</h4><p class="ex-f mono">阈值 × FAR / FRR</p><p>调严挡冒用也挡真人，调松通过率高也放进来。阈值不是技术参数，是业务决策。</p></div>
+    <div class="ex-type"><span class="mono">授权层</span><h4>单因子扛不住大额</h4><p class="ex-f mono">单笔限额 × 是否双因子</p><p>只用一条不可撤销的因子授权大额，等于把损失上限交给了算法。</p></div>
+  </div>
+
+  <div class="matrix" id="matrix">
+    <button class="mx-row" data-m="0">
+      <span class="mx-i mono">01</span>
+      <span class="mx-k">人脸</span>
+      <span class="mx-c mono">公开可采 · 照片与视频足够</span>
+      <span class="mx-tag">冒用 · 换脸</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：一张高清自拍加一段视频就能做活体攻击；深度伪造让「像不像」这条判据失效。<br>
+        <strong>我们能做的</strong>：3D 结构光或近红外活体、随机动作挑战、单笔限额封顶；大额强制第二条因子，别让脸单独签字。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="1">
+      <span class="mx-i mono">02</span>
+      <span class="mx-k">指纹</span>
+      <span class="mx-c mono">留痕多 · 指纹膜可复制</span>
+      <span class="mx-tag">复制 · 残留</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：杯壁、门把手、手机屏上的残留可被提取，做成指纹膜刷过光学或电容传感器；老人指纹磨损还会把 FRR 拉高。<br>
+        <strong>我们能做的</strong>：活体检测（电容/超声波优先）、把设备与账户绑定、异常重试次数封顶；线下收单不轻易上指纹，除非设备由我们控制。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="2">
+      <span class="mx-i mono">03</span>
+      <span class="mx-k">声纹</span>
+      <span class="mx-c mono">可录制 · 可合成</span>
+      <span class="mx-tag">重放 · 克隆</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：一段录音就能重放，几秒语音就能克隆；信道、噪声与设备差异又会让误拒变高。<br>
+        <strong>我们能做的</strong>：文本相关挑战（随机读一段话）、声纹 + 口令双要素、信道指纹与设备指纹；声纹只做辅助，不做唯一因子。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="3">
+      <span class="mx-i mono">04</span>
+      <span class="mx-k">虹膜 / 掌静脉</span>
+      <span class="mx-c mono">内藏难偷 · 采集受设备限制</span>
+      <span class="mx-tag">设备 · 可用性</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：虹膜认假率可以做到 1/1,500,000，但采集要近红外、要人配合，强光、隐形眼镜、干眼都会让读取失败；掌静脉同样要专用设备。<br>
+        <strong>我们能做的</strong>：只放在能控制设备的场景（门禁、金库、数据中心），配引导与重试策略；把 FAR 的收益让一部分给 FRR，换可用性。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="4">
+      <span class="mx-i mono">05</span>
+      <span class="mx-k">模板库</span>
+      <span class="mx-c mono">不可逆存储 · 泄露不可重置</span>
+      <span class="mx-tag">泄露 · 复用</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：模板一旦泄露，用户改不了；同一条模板被搬到别的场景复用，撞库成本极低。<br>
+        <strong>我们能做的</strong>：模板不可逆、加盐、按场景隔离；用可撤销的令牌而不是裸模板；跨机构比对必须有授权与审计。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="5">
+      <span class="mx-i mono">06</span>
+      <span class="mx-k">活体检测</span>
+      <span class="mx-c mono">攻防升级 · 没有一劳永逸</span>
+      <span class="mx-tag">绕过 · 演进</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：今天的活体方案会被明天的攻击手段绕过；只上一次活体、之后全靠比对，等于给攻击者留了时间窗。<br>
+        <strong>我们能做的</strong>：多模态融合（人脸 + 设备 + 行为）、版本化活体模型并持续回归、按风险等级动态加验；把攻击样本回流进模型。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="6">
+      <span class="mx-i mono">07</span>
+      <span class="mx-k">授权链路</span>
+      <span class="mx-c mono">单因子 + 大额 = 上限失守</span>
+      <span class="mx-tag">越权 · 大额</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：识别通过就直接付款，中间没有金额分层与二次确认；设备被控、会话被劫持时，脸「是对的」也不能证明这笔交易是本人意愿。<br>
+        <strong>我们能做的</strong>：金额分层，免密只在小额；大额走密码 / eID 第二条路径；交易要素上屏确认，订单号与金额同屏可见。
+      </span></span>
+    </button>
+    <button class="mx-row" data-m="7">
+      <span class="mx-i mono">08</span>
+      <span class="mx-k">合规与隐私</span>
+      <span class="mx-c mono">敏感个人信息 · 单独同意</span>
+      <span class="mx-tag">合规 · 留存</span>
+      <span class="mx-x" aria-hidden="true">+</span>
+      <span class="mx-body"><span class="mx-in"><strong>典型风险</strong>：人脸属于敏感个人信息，采集要单独同意、要告知目的；留存原图、跨场景共享、超期保存都会变成合规敞口。<br>
+        <strong>我们能做的</strong>：最小必要采集、能不存原图就不存；留存期限与用途写进协议，访问全留痕；跨境传输单独评估。
+      </span></span>
+    </button>
+  </div>
+
+  <div class="aside">关键洞察：<b>生物特征的风险不在「认不准」，而在「认准了也证明不了本人意愿」</b>。FAR/FRR 解决的是「像不像」，双因子与金额分层解决的才是「谁授权、授权到多少」。四层里越靠下（授权、合规），出事越贵，也越不能靠算法兜底。</div>
 
   <div class="quiz" id="quiz">
     <div class="q-item is-open"><div class="q-i mono">Q01</div><div class="q-t">为什么书里说刷脸支付可以做，但支付场景大多只做一对一确认？</div><div class="q-a">一对一确认回答的是「你是不是你声称的那个人」，计算量小、阈值可控；一对多检索要从海量库里找人，计算时间长、误配概率高，适合布控与检索，不适合单笔授权。支付要的是确定性，不是「最像」。</div></div>
@@ -565,10 +666,11 @@
     <div class="law"><span class="mono">RULE 01</span><p><b>先问凭证能不能重置。</b>不能重置的因子，不能单独承担大额授权；必须配一个可撤销的第二因子。</p></div>
     <div class="law"><span class="mono">RULE 02</span><p><b>先问采集是不是接触。</b>接触决定卫生、磨损、老人可用性，也决定设备成本落在谁头上。</p></div>
     <div class="law"><span class="mono">RULE 03</span><p><b>先问阈值把损失放在哪边。</b>调严保护资金、牺牲通过率；调松反过来。阈值是业务决策，不是技术参数。</p></div>
+    <div class="law"><span class="mono">RULE 04</span><p><b>模板不可逆，比加密更靠得住。</b>密钥泄露可以换，模板泄露换不了；存特征、不存原图，按场景隔离，用令牌代替裸模板。</p></div>
+    <div class="law"><span class="mono">RULE 05</span><p><b>活体检测是持续攻防，不是一次验收。</b>方案要版本化、要回归、要吃进攻击样本；只做一次活体就等于给攻击者留时间窗。</p></div>
+    <div class="law"><span class="mono">RULE 06</span><p><b>大额永远不靠单因子。</b>不可撤销的因子只承担「你是你」，金额与意愿必须由可撤销的第二条路径来锁。</p></div>
   </div>
 </div></section>
-
-<!-- ═══════════ FOOTER ═══════════ -->
 <footer class="foot"><div class="wrap">
   <div class="foot-grid">
     <div class="foot-main">
