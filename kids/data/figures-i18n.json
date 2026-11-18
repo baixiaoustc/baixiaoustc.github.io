@@ -531,5 +531,34 @@
       "央美是学校，不是一幅画，也不是博物馆": "CAFA is a school — not a painting, not a museum",
       "不过它自己有一座美术馆，里面常办展览": "Though it does have its own art museum"
     }
+  },
+  "what-is-jazz-dance.svg": {
+    "aria": "Three panels: jazz dance grew out of jazz music — in 1920s America jazz was improvised and syncopated, and people danced to it; it is not a fixed set of steps but slamming on the heavy beats, moving the body in parts, adding your own flourishes; later it split into social swing, Broadway stage jazz and street jazz funk, which is what most classes teach today. Bottom line: jazz dance is not a tune, it is how you move to the tune.",
+    "text": {
+      "爵士舞：跟着爵士乐跳出来的舞": "Jazz dance: born from jazz music",
+      "① 先有曲子，才有舞": "① Music, then dance",
+      "1920 年代 · 美国": "1920s · America",
+      "爵士乐": "Jazz music",
+      "即兴 · 切分节奏": "free, off-beat rhythm",
+      "大家跟着它跳": "people danced to it",
+      "就叫爵士舞": "and it was jazz dance",
+      "爵士乐 ≠ 爵士舞": "music is not the dance",
+      "② 不是一套固定动作": "② Not fixed steps",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "重拍上「砸」下去发力": "Hit the heavy beat",
+      "身体能分节动": "Body moves in parts",
+      "还能自己加花": "Add your own flair",
+      "同一首歌，两人两样": "Same song, two looks",
+      "③ 后来分成三支": "③ Split in three",
+      "社交 · 摇摆舞": "Social: swing",
+      "舞台 · 百老汇": "Stage: Broadway",
+      "街头 · 爵士放克": "Street: jazz funk",
+      "现在舞蹈班多是这支": "Most classes: this",
+      "爵士舞不是一首曲子，是「跟着曲子怎么动」": "Jazz dance is not a tune — it is how you move to it",
+      "没有固定组合——同一首歌，两个人能跳出两个样子": "No fixed routine: same song, two dancers, two different dances"
+    }
   }
 }

@@ -92,6 +92,39 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "what-is-jazz-dance",
+      "date": "2026-11-18",
+      "kid": "yumi",
+      "age": 9,
+      "question": "什么是爵士舞？",
+      "subject": "story",
+      "secondary": "society",
+      "depth": 1,
+      "time": "19:27:12",
+      "figure": "assets/figures/what-is-jazz-dance.svg",
+      "figureEn": "assets/figures/en/what-is-jazz-dance.svg",
+      "figureAlt": "三格图解：爵士舞是跟着爵士乐跳出来的舞——1920 年代美国先有即兴、切分节奏的爵士乐，人们跟着它跳就有了爵士舞；它不是一套固定动作，而是在重拍上发力、身体能分节动、还能自己加花；后来分成社交摇摆舞、舞台百老汇、街头爵士放克三支，现在舞蹈班教的多是街头这支。底部一句：爵士舞不是一首曲子，是「跟着曲子怎么动」",
+      "oneLine": "爵士舞是「跟着爵士乐跳出来的舞」，不是一套固定动作。它 1920 年代在美国从爵士乐里长出来，特点是踩着切分节奏在重拍上发力、身体能分节动、还能自己加花；后来分成社交摇摆、舞台百老汇、街头爵士放克三支。",
+      "points": [
+        "先有曲子，后有舞。20 世纪初的美国，爵士乐（黑人音乐家带来的即兴演奏、切分节奏）先在酒吧和舞厅流行起来，人们跟着这种曲子跳，跳法就被叫作 jazz dance。所以爵士乐和爵士舞是「一家人」，但不是同一件事——一个是曲子，一个是跟着曲子怎么动的办法。",
+        "它不是一套固定动作，而是一种「跳法」。芭蕾有考级固定的组合，爵士舞没有：它踩着音乐的重拍「砸」下去发力（这叫 down beat），身体能分节动（头动、肩动、胯动，各管各的，叫 isolation），会做 wave，结尾常常摆一个定格 pose，而且允许舞者自己加花、即兴。所以同一首歌，两个人能跳出两个样子。",
+        "它后来分成三支：①社交/摇摆舞（Charleston、Lindy Hop，双人牵手转圈，1920–40 年代舞厅里跳的）；②舞台/剧场爵士（百老汇音乐剧和好莱坞电影里的，动作干脆、手腕肩膀都是戏，Bob Fosse 那种）；③街头/爵士放克（street jazz、jazz funk，1980 年代起和街舞混在一起）。现在中国舞蹈班教的「爵士舞」，多数是第三支。"
+      ],
+      "followUp": "那为什么跳爵士舞要「用力砸下去」，跳芭蕾却要轻轻地？",
+      "source": "2026-11-18 玉米",
+      "en": {
+        "question": "What is jazz dance?",
+        "oneLine": "Jazz dance is dancing that grew out of jazz music — not a fixed set of steps. Born in America in the 1920s, it lands on the heavy beats, lets the body move in separate parts, and leaves room to improvise; later it split into social swing, Broadway stage jazz and street jazz funk.",
+        "points": [
+          "First the music, then the dance. In early-20th-century America, jazz music — improvised, with syncopated rhythm, brought by Black musicians — became popular in bars and dance halls. People danced to it, and that way of dancing was called jazz dance. Jazz music and jazz dance belong to the same family, but they are not the same thing: one is the tune, the other is how you move to it.",
+          "It is not a fixed set of steps, but a way of moving. Ballet has fixed graded combinations; jazz dance does not. It hits the accent on the heavy beat (the down beat), can move the body in separate parts (head, shoulders, hips each doing their own thing — called isolation), uses waves, often ends on a held pose, and lets the dancer add their own flourishes. That is why two people can dance the same song and look different.",
+          "It later split into three branches: (1) social/swing — Charleston and Lindy Hop, partners holding hands and spinning, in 1920s–40s dance halls; (2) stage/theatrical jazz — Broadway musicals and Hollywood films, crisp and expressive from fingertips to shoulders, the Bob Fosse style; (3) street jazz / jazz funk — from the 1980s, mixed with hip-hop. Most jazz dance classes in China today teach the third branch."
+        ],
+        "followUp": "So why does jazz dance slam down hard, while ballet floats?",
+        "figureAlt": "Three panels: jazz dance grew out of jazz music — in 1920s America jazz was improvised and off-beat, and people danced to it; it is not a fixed set of steps but slamming on the heavy beats, moving the body in parts and adding your own flair; later it split into social swing, Broadway stage jazz and street jazz funk, which is what most classes teach today. Bottom line: jazz dance is not a tune, it is how you move to the tune."
+      }
+    },
+    {
       "id": "what-is-cafa",
       "date": "2026-11-15",
       "kid": "yumi",
