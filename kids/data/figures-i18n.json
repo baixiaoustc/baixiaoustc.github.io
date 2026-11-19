@@ -560,5 +560,15 @@
       "爵士舞不是一首曲子，是「跟着曲子怎么动」": "Jazz dance is not a tune — it is how you move to it",
       "没有固定组合——同一首歌，两个人能跳出两个样子": "No fixed routine: same song, two dancers, two different dances"
     }
+  },
+  "corn-hang-dry.svg": {
+    "aria": "In northeast China winter, corn cobs hang on a raised wooden rack so the dry cold wind passes between them and carries the moisture away",
+    "text": {
+      "挂在外面，是让玉米「晾干」": "Hang it up, and the corn dries",
+      "风吹过每一根": "Wind on every cob",
+      "−20℃ · 干冷风大": "−20℃ · dry wind",
+      "水分被带走": "Moisture blown off",
+      "离地挂高，老鼠上不来": "Off the ground, no mice"
+    }
   }
 }

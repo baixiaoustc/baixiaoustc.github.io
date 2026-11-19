@@ -92,6 +92,38 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "corn-hang-outside-dry",
+      "date": "2026-11-19",
+      "kid": "yumi",
+      "age": 9,
+      "question": "为什么东北的冬天要把玉米挂在房子外面？",
+      "subject": "daily",
+      "secondary": "nature",
+      "depth": 2,
+      "figure": "assets/figures/corn-hang-dry.svg",
+      "figureEn": "assets/figures/en/corn-hang-dry.svg",
+      "figureAlt": "三格图解：一根根玉米棒子挂在院子里的木架（苞米楼子）上，干冷的风从玉米之间穿过，水汽被带走；温度标签 −20℃、干冷风大；玉米离地挂高，老鼠爬上不来。底部一句：挂出去不是装饰，是让通风把水分带走",
+      "oneLine": "挂出去不是装饰，是给玉米「晾干」。刚掰下来的玉米含水两到三成，堆在一起不通风就会发热发霉；东北冬天又冷又干、风大，把玉米棒子挂在架上，每根都能吹到风，水汽慢慢被带走，虫卵也被冻死，还离地防了老鼠。开春干透了才脱粒卖粮。",
+      "points": [
+        "刚掰下来的玉米是「湿」的：穗子里含水大约 20%–30%，堆成一垛里面不透气，自己会发热、长霉（霉玉米里的黄曲霉毒素有毒，牲口吃了会病）。要把水分降到 14% 以下才敢长期存放，所以第一件事是脱水。挂在架子上，一根一根分开，风能从每根玉米中间穿过去，比堆在院子里干得快得多。",
+        "东北的冬天本身就是一台免费的烘干机：气温零下、空气干、风又大。白天太阳一晒、夜里一冻，玉米里的水被反复「冻—化」，往外跑得更快；同时低温把藏在穗心里的玉米螟幼虫和虫卵冻死，比打药还省事。这就是为什么偏偏要在冬天挂出去，而不是收进屋里捂着。",
+        "挂起来还有两个好处：一是离地。苞米楼子（玉米栈子）是架高的，老鼠爬不上、猪和鸡也够不着，玉米棒子悬空不沾地就不受潮；二是省地方，竖着挂一层层码在架子上，院子里能挂很多，开春干透了再取下来脱粒。金黄的玉米挂满屋檐确实好看、像丰收的年画，但那只是顺带——主要目的还是把水弄干、把粮存住。"
+      ],
+      "followUp": "那为什么不干脆让玉米在地里多站几天，等它自己干？",
+      "source": "2026-11-19 玉米",
+      "en": {
+        "question": "Why do people in northeast China hang corn outside in winter?",
+        "oneLine": "It is not decoration — it is drying. Freshly picked corn is 20–30% water, and piled up without airflow it heats and molds. Northeast winters are cold, dry and windy, so cobs are hung on racks where wind passes every one of them: moisture is carried away, pest eggs freeze, and being off the ground keeps mice out. Only when it is dry in spring is it shelled and sold.",
+        "points": [
+          "Fresh corn is wet: the cob holds about 20–30% water, and a heap of them traps moisture and heat, so mold grows (moldy corn carries aflatoxin, which is poisonous to livestock). Grain must drop below 14% moisture to keep, so the first job is drying. Hung on a rack with each cob separate, wind passes between them and they dry far faster than a pile on the ground.",
+          "A northeast winter is a free dryer: below zero, dry air, strong wind. Sun by day and frost by night make the water freeze and thaw again and again, so it leaves the cob faster; at the same time the cold kills the corn-borer larvae and eggs hidden in the cobs, which saves spraying. That is why it is hung out in winter rather than shut indoors.",
+          "Two more reasons: height and space. The rack (called a corn tower or corn crib) is raised on posts, so mice cannot climb it and pigs and chickens cannot reach; hanging above the ground also keeps the cobs from getting damp. And hanging in layers saves yard space — in spring, when it is fully dry, the cobs are taken down and shelled. Rows of golden corn along the eaves do look like a harvest painting, but that is a bonus: the real purpose is to dry the grain and keep it safe."
+        ],
+        "followUp": "Then why not just leave the corn standing in the field a few more days to dry by itself?",
+        "figureAlt": "Three panels: cobs hang on a wooden rack in the yard with dry cold wind passing between them and moisture blown away; labels −20℃ and dry wind; the rack is raised so mice cannot climb up. Bottom line: hanging it out is not decoration, it lets the wind carry the water away"
+      }
+    },
+    {
       "id": "what-is-jazz-dance",
       "date": "2026-11-18",
       "kid": "yumi",
