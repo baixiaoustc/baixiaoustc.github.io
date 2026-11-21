@@ -92,6 +92,39 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "bird-flock-shapes",
+      "date": "2026-11-21",
+      "kid": "taozi",
+      "age": 4,
+      "question": "为什么很多鸟在一起可以组成很多形状？不同的形状",
+      "subject": "nature",
+      "secondary": "math",
+      "depth": 2,
+      "figure": "assets/figures/bird-flock-shapes.svg",
+      "figureEn": "assets/figures/en/bird-flock-shapes.svg",
+      "figureAlt": "左边一只鸟周围画两个虚线圈：太近要往外让、太远要往里靠；右边同一群鸟一会儿聚成圆圆的云、一会儿拉成长长的飘带。底部：没有谁喊口令，每只鸟跟着旁边几只，整群就像一块会动的布",
+      "oneLine": "没有哪只鸟在喊口令：每只鸟只盯着身边几只——太近就让开、太远就靠近、往哪拐就跟着拐。几千只都这么做，整群就变成一块会变形的布（一会儿像云、一会儿像飘带）；这样还能躲老鹰，让它眼睛看花、不知道抓哪只。",
+      "points": [
+        "规矩只有三条，而且每只鸟只看身边的几只：离得太近，就往外让一点；离得太远，就往里靠一点；大家往哪边拐，就跟着往哪边拐。没有队长，也没有谁画好队形让大家照着飞。",
+        "为什么能这么顺：一只鸟从看到邻居到拐弯，只要不到半秒；变化一波一波往外传，整群就像水一样转弯、拉长、收拢。这种一大团飞来飞去的鸟群，中文常说「鸟浪」，英文叫 murmuration（椋鸟群飞）；水里的鱼群也一样（school），羊群、人群往前走其实也差不多。",
+        "为什么要这样飞：主要是躲老鹰。几千双眼睛一起看着，鹰一冲进来，鸟群会「哗」地让出一个洞，鹰反而不知道该抓哪一只；排成队飞还能省力气，借前面那只鸟翅膀留下的气流，落单的鸟最容易被抓住。"
+      ],
+      "followUp": "那它们飞得那么挤，会不会撞到一起？",
+      "source": "2026-11-21 桃子",
+      "en": {
+        "question": "Why can many birds together make so many shapes — and different shapes?",
+        "oneLine": "No bird is giving orders: each bird only watches a few neighbours — move away if too close, move in if too far, and turn the same way they turn. When thousands do this, the whole flock becomes a piece of cloth that keeps changing shape (a cloud, then a ribbon). It also helps against hawks: a hawk gets confused and cannot tell which bird to grab.",
+        "points": [
+          "There are only three rules, and each bird only looks at a few neighbours: too close, move out a little; too far, move in a little; when the others turn, turn with them. There is no leader and no diagram of the formation to follow.",
+          "Why it looks so smooth: a bird takes less than half a second to see a neighbour and turn; the change ripples outward, so the flock bends, stretches and closes up like water. A huge swirling flock like this is often called a murmuration (starlings do it); schools of fish behave the same way, and so do sheep and crowds of people walking.",
+          "Why fly like this: mostly to escape hawks. Thousands of eyes are watching at once, and when a hawk dives in, the flock opens a hole in a flash, so the hawk cannot tell which bird to catch. Flying in a group also saves energy — each bird rides the air left by the wings ahead of it; a bird on its own is the easiest target."
+        ],
+        "followUp": "But they fly so close together — do they ever crash into each other?",
+        "figureAlt": "Left: one bird with two dashed rings around it — too close means move out, too far means move in. Right: the same flock, now gathered into a round cloud, now stretched into a long ribbon. Bottom line: no one gives orders; each bird follows a few neighbours, and the flock moves like a piece of cloth."
+      },
+      "time": "17:05:03"
+    },
+    {
       "id": "why-parking-fee",
       "date": "2026-11-21",
       "kid": "yumi",

@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="A bird flock has no leader: each bird watches only its neighbours, moving away when too close and closer when too far, so the whole flock can turn into a cloud, a ribbon, or other shapes. Bottom line: no orders — each bird follows a few neighbours, and the flock moves like a piece of cloth">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+
+  <text x="320" y="46" text-anchor="middle" font-size="22" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#2B2B2B">No orders, no leader — each bird watches its neighbours</text>
+
+  <line x1="318" y1="76" x2="318" y2="340" stroke="#E8E2D4" stroke-width="2"/>
+
+  <!-- 左边：一只鸟的三条规矩 -->
+  <text x="44" y="110" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">Each bird watches its neighbours</text>
+
+  <text x="44" y="216" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#B35C4A">Too close → move away</text>
+  <text x="44" y="250" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">Too far → move closer</text>
+  <text x="44" y="284" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">A turn → turn as well</text>
+
+  <circle cx="215" cy="246" r="60" fill="none" stroke="#C9C2B4" stroke-width="2" stroke-dasharray="8 6"/>
+  <circle cx="215" cy="246" r="26" fill="none" stroke="#E0A08F" stroke-width="2" stroke-dasharray="6 5"/>
+
+  <!-- 往外让开（四个斜向箭头） -->
+  <g stroke="#B35C4A" stroke-width="2.5">
+    <line x1="232" y1="264" x2="244" y2="276"/>
+    <line x1="198" y1="264" x2="186" y2="276"/>
+    <line x1="232" y1="228" x2="244" y2="216"/>
+    <line x1="198" y1="228" x2="186" y2="216"/>
+  </g>
+  <g fill="#B35C4A">
+    <polygon points="244,276 233,274 241,265"/>
+    <polygon points="186,276 197,274 189,265"/>
+    <polygon points="244,216 233,218 241,227"/>
+    <polygon points="186,216 197,218 189,227"/>
+  </g>
+
+  <!-- 往里靠拢（四个正向箭头） -->
+  <g stroke="#3A5A6B" stroke-width="2.5">
+    <line x1="275" y1="246" x2="252" y2="246"/>
+    <line x1="155" y1="246" x2="178" y2="246"/>
+    <line x1="215" y1="186" x2="215" y2="209"/>
+    <line x1="215" y1="306" x2="215" y2="283"/>
+  </g>
+  <g fill="#3A5A6B">
+    <polygon points="252,246 260,240 260,252"/>
+    <polygon points="178,246 170,240 170,252"/>
+    <polygon points="215,209 209,201 221,201"/>
+    <polygon points="215,283 209,291 221,291"/>
+  </g>
+
+  <!-- 中间那只鸟 -->
+  <path d="M201 240 L215 253 L229 240" fill="none" stroke="#2B2B2B" stroke-width="3.2"/>
+
+  <!-- 右边：整群的样子 -->
+  <text x="470" y="86" text-anchor="middle" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">What a flock looks like</text>
+
+  <!-- 像一团云 -->
+  <g stroke="#7BA8C0" stroke-width="2.2" fill="none">
+    <path d="M424 124 L430 119 L436 124"/>
+    <path d="M454 124 L460 119 L466 124"/>
+    <path d="M484 124 L490 119 L496 124"/>
+    <path d="M514 124 L520 119 L526 124"/>
+
+    <path d="M399 146 L405 141 L411 146"/>
+    <path d="M426 146 L432 141 L438 146"/>
+    <path d="M453 146 L459 141 L465 146"/>
+    <path d="M480 146 L486 141 L492 146"/>
+    <path d="M507 146 L513 141 L519 146"/>
+    <path d="M534 146 L540 141 L546 146"/>
+
+    <path d="M414 168 L420 163 L426 168"/>
+    <path d="M441 168 L447 163 L453 168"/>
+    <path d="M468 168 L474 163 L480 168"/>
+    <path d="M495 168 L501 163 L507 168"/>
+    <path d="M522 168 L528 163 L534 168"/>
+
+    <path d="M444 190 L450 185 L456 190"/>
+    <path d="M471 190 L477 185 L483 190"/>
+    <path d="M498 190 L504 185 L510 190"/>
+  </g>
+
+  <text x="470" y="236" text-anchor="middle" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#8A8577">Round now, a long ribbon next</text>
+
+  <!-- 像一条飘带 -->
+  <g stroke="#9CBCCD" stroke-width="2.2" fill="none">
+    <path d="M354 275 L360 270 L366 275"/>
+    <path d="M376 269 L382 264 L388 269"/>
+    <path d="M398 265 L404 260 L410 265"/>
+    <path d="M420 269 L426 264 L432 269"/>
+    <path d="M442 275 L448 270 L454 275"/>
+    <path d="M464 283 L470 278 L476 283"/>
+    <path d="M486 291 L492 286 L498 291"/>
+    <path d="M508 295 L514 290 L520 295"/>
+    <path d="M530 291 L536 286 L542 291"/>
+    <path d="M552 283 L558 278 L564 283"/>
+    <path d="M574 275 L580 270 L586 275"/>
+
+    <path d="M354 299 L360 294 L366 299"/>
+    <path d="M376 293 L382 288 L388 293"/>
+    <path d="M398 289 L404 284 L410 289"/>
+    <path d="M420 293 L426 288 L432 293"/>
+    <path d="M442 299 L448 294 L454 299"/>
+    <path d="M464 307 L470 302 L476 307"/>
+    <path d="M486 315 L492 310 L498 315"/>
+    <path d="M508 319 L514 314 L520 319"/>
+    <path d="M530 315 L536 310 L542 315"/>
+    <path d="M552 307 L558 302 L564 307"/>
+    <path d="M574 299 L580 294 L586 299"/>
+  </g>
+
+  <text x="320" y="382" text-anchor="middle" font-size="13" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">No orders at all — each bird follows a few neighbours, and the flock moves like a piece of cloth</text>
+</svg>

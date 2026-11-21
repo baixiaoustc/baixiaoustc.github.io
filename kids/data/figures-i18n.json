@@ -594,5 +594,18 @@
    "谁用它，谁付它的成本；钱也用来修新的车位": "Whoever uses it pays its cost — and the money builds more spaces",
    "免费的地方不是零成本：商场免 3 小时，是想让你进去买东西": "Free parking is never zero-cost: a mall gives 3 free hours to get you inside to shop"
   }
+ },
+ "bird-flock-shapes.svg": {
+  "aria": "A bird flock has no leader: each bird watches only its neighbours, moving away when too close and closer when too far, so the whole flock can turn into a cloud, a ribbon, or other shapes. Bottom line: no orders — each bird follows a few neighbours, and the flock moves like a piece of cloth",
+  "text": {
+   "没有谁喊口令：每只鸟只看身边的几只": "No orders, no leader — each bird watches its neighbours",
+   "每只鸟只看邻居": "Each bird watches its neighbours",
+   "太近 → 让开": "Too close → move away",
+   "太远 → 跟上": "Too far → move closer",
+   "拐弯 → 一起拐": "A turn → turn as well",
+   "一群鸟的样子": "What a flock looks like",
+   "一会儿圆，一会儿长": "Round now, a long ribbon next",
+   "没有谁喊口令：每只鸟跟着旁边几只，整群就像一块会动的布": "No orders at all — each bird follows a few neighbours, and the flock moves like a piece of cloth"
+  }
  }
 }
