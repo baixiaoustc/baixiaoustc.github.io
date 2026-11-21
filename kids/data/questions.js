@@ -92,6 +92,39 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "why-parking-fee",
+      "date": "2026-11-21",
+      "kid": "yumi",
+      "age": 9,
+      "question": "为什么停车场要收费？",
+      "subject": "society",
+      "secondary": "math",
+      "depth": 3,
+      "figure": "assets/figures/why-parking-fee.svg",
+      "figureEn": "assets/figures/en/why-parking-fee.svg",
+      "figureAlt": "同一个车位一天的两段对比：不收费时一辆车从早停到晚，别的车只能绕圈找位；收费后三辆车各停一段，车位转起来；下面列出钱花在哪——抬杆监控、照明保洁、维修保险、地价税。底部：免费的地方不是零成本，商场免 3 小时是想让你进去买东西",
+      "oneLine": "收费不是为「停一下」这个动作，是为「占住一块稀缺的地」那么久。土地、抬杆摄像头、照明保洁、维修保险、税，每天都在花钱；更要紧的是：不收费的话一辆车能停一整天，只停十分钟的人反而没位，价格让车位一辆接一辆地转起来。免费的地方不是没成本，是商场或政府替你付了。",
+      "points": [
+        "先看成本：能停车的地不是天生的。城市里的地要花钱买或租，坡道、消防、照明、抬杆、摄像头、划线、保洁、保安、保险、税，每天都在花钱。不收钱就没有人维护，最后不是破掉，就是被围起来、改成别的用途。",
+        "再看稀缺：车位少，想停的人多。免费等于「谁先来谁占、不心疼」——一辆车停一整天，真正只停十分钟的人反而没位，只能绕圈，路也更堵。收费按「你占多久」来付，像一个筛子：想停一整天的人自己算算值不值，车位就一辆接一辆地转起来，这叫「周转」。",
+        "价格还是个信号：市中心、医院贵，郊区、夜里便宜——贵说明那块地更紧张，也把人往不挤的时段引；收来的钱除了维护，还能修新的车位（地下车库、立体车库、充电桩）。顺带说两个容易误会的：商场「消费满额免 3 小时」不是慷慨，是把停车费换成了拉你进店的营销费；小区地面车位收的钱，按民法典第 282 条原则上归全体业主，扣掉合理成本后用在小区的公共维修上。"
+      ],
+      "followUp": "那为什么商场停车不收费，路边停车却要收费？",
+      "source": "2026-11-21 玉米",
+      "en": {
+        "question": "Why does a parking lot charge a fee?",
+        "oneLine": "The fee is not for the act of parking — it is for holding a scarce piece of land for that long. The land, the barrier and cameras, the lighting, cleaning, repairs, insurance and taxes all cost money every day. And if parking were free, one car could sit there all day while the person who needs ten minutes finds nothing — a price keeps the spaces turning over. Where parking is free, somebody else is paying.",
+        "points": [
+          "Start with the cost. A place to park is not a natural thing: city land must be bought or rented, and ramps, fire safety, lighting, barriers, cameras, painted lines, cleaning, guards, insurance and taxes all cost money every day. With no income nobody maintains it, and it ends up broken, fenced off, or turned into something else.",
+          "Then look at scarcity. There are few spaces and many people who want them. Free means whoever comes first takes it and feels no cost — one car stays all day, while the person who needs ten minutes finds nothing and circles the block, making the road busier too. A fee charges you by how long you occupy the space: it works like a sieve, so someone planning to stay all day weighs whether it is worth it, and the space passes from one car to the next. That is what turnover means.",
+          "A price is also a signal. Downtown and hospitals cost more, suburbs and nights cost less — a high price says that piece of land is scarcer, and it pushes people toward less crowded times; the money not only maintains the lot but builds new spaces (underground garages, stacked garages, charging piles). Two things people often misread: a mall's 'spend enough, park free for 3 hours' is not generosity but a marketing cost to get you inside to shop; and money collected for shared ground-level spaces in a housing estate belongs, in principle, to all the owners under Article 282 of China's Civil Code — after reasonable costs, it goes to common repairs."
+        ],
+        "followUp": "Then why is parking free at a mall but paid on the street?",
+        "figureAlt": "One parking space across a day, two versions: when it is free, a single car stays from morning to evening while other cars circle looking for a space; when it is paid, three cars each stay for a stretch and the space turns over; below, where the money goes — barrier and cameras, lighting and cleaning, repairs and insurance, land and taxes. Bottom line: free parking is never zero-cost; a mall gives 3 free hours to get you inside to shop."
+      },
+      "time": "15:49:53"
+    },
+    {
       "id": "corn-hang-outside-dry",
       "date": "2026-11-19",
       "kid": "yumi",

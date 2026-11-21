@@ -1,574 +1,598 @@
 {
-  "_README": "图解英文翻译。键是 assets/figures 下的文件名，text 里是「原文 → 英文」逐条替换；aria 是整张图的无障碍描述。跑 node tools/build-figures-en.mjs 生成 assets/figures/en/*.svg。",
-  "calculator.svg": {
-    "aria": "How a calculator works: a key connects a wire, the chip runs a program, the screen shows digits with seven little bars",
-    "text": {
-      "按下 3 + 5 = 以后，机器里发生了什么": "What happens inside after you press 3 + 5 =",
-      "程序": "Program",
-      "① 按键": "① Keys",
-      "按下一格，": "Press a key,",
-      "就接通一根线": "one wire connects",
-      "② 芯片": "② Chip",
-      "照早就写好的": "runs a program",
-      "程序，把两数相加": "written in advance",
-      "③ 屏幕": "③ Screen",
-      "七根小横条，": "Seven little bars,",
-      "亮哪几根显示哪个数": "whichever light up",
-      "它不会思考，只是把「怎么算」提前写死在芯片里": "It does not think — someone wrote how to calculate into the chip long ago"
-    }
-  },
-  "candy-tooth.svg": {
-    "aria": "Bacteria eat sugar and spit acid; the acid soaks holes in the tooth's armour; deep enough, it reaches the nerve",
-    "text": {
-      "烂牙的不是糖，是糖喂出来的「酸」": "What rots teeth is not sugar — it is the acid that sugar feeds",
-      "牙釉质": "Enamel",
-      "（牙齿的盔甲）": "(the tooth's armour)",
-      "牙神经（在里头）": "Nerve (inside)",
-      "小洞": "Hole",
-      "酸": "Acid",
-      "细菌吃完糖吐出来的": "spat out by bacteria",
-      "① 嘴里的细菌爱吃糖": "① Mouth bacteria love sugar",
-      "糖越黏、吃的时间越长，细菌越开心": "The stickier and longer, the happier they are",
-      "② 细菌吐酸，把盔甲泡软": "② They spit acid, softening the armour",
-      "一次一点点，泡久了就脱了一层": "A little each time — wear it down",
-      "③ 洞越来越深，碰到神经就疼": "③ Deeper, until it hits the nerve",
-      "刷牙 + 含氟 + 少喝甜饮料，盔甲能补回来": "Brush + fluoride rebuilds the armour",
-      "一次吃完一块糖，比一整天慢慢吃要好——关键不是「吃了多少」，是「酸泡了多久」。": "One sweet at once beats one all day: what counts is how long the acid soaks."
-    }
-  },
-  "canteen.svg": {
-    "aria": "Wrapping dumplings one by one is too slow; one big pot is quick",
-    "text": {
-      "食堂要一次喂饱几百人，比的是「快」和「稳」": "A canteen feeds hundreds: it needs speed and safety",
-      "水饺 / 圆子：一个一个包": "Dumplings / rice balls: one by one",
-      "一上午，好几个人": "Half a morning, many hands",
-      "大锅菜：一次做很多": "Big-pot dishes: lots at once",
-      "一锅够几百人": "One pot feeds hundreds",
-      "熟得透、够热、同样的钱更划算": "Cooked through, still hot, more for the same money"
-    }
-  },
-  "cloud-float.svg": {
-    "aria": "Three panels: a cloud is countless tiny droplets a gentle updraught can hold; a person is one big lump the wind cannot lift; to fly you need wings that push air, or a balloon lighter than air",
-    "text": {
-      "小水珠会飘，人只会往下掉": "Tiny droplets float; people just fall",
-      "上升的风": "Rising air",
-      "几十公斤": "Dozens of kilos",
-      "风托不住": "The wind cannot hold it",
-      "往下推空气": "Push down",
-      "比空气轻": {
-        "en": "Lighter than air",
-        "x": 558
-      },
-      "① 云是无数小水珠": "① Clouds are tiny droplets",
-      "每颗只有头发丝的几分之一": "Each a fraction of a hair",
-      "掉得比灰尘还慢": "Falling slower than dust",
-      "② 人是一整块": "② A person is one lump",
-      "再大的风也托不住": "No wind can hold that",
-      "只会一直往下掉": "Down you go, always",
-      "③ 想飞得换个办法": "③ Flying takes a trick",
-      "翅膀把空气往下推": "Wings push air down",
-      "或者像热气球，比空气轻": "Or a balloon, lighter than air",
-      "关键不是「轻」，是「摊得开」：同样重量，越小、迎风面越大，风越托得住": "Not lightness but spreading out: small pieces catch the wind"
-    }
-  },
-  "copy-paste.svg": {
-    "aria": "Three steps to put a picture into WPS: find it, Ctrl+C to copy, Ctrl+V to paste",
-    "text": {
-      "把图片放进 WPS：三步就好": "Put a picture into WPS in three steps",
-      "① 找到图片，点一下选中": "① Find it, click to select",
-      "复制": "Copy",
-      "② 按 Ctrl+C": "② Press Ctrl+C",
-      "③ 按 Ctrl+V 粘贴": "③ Press Ctrl+V to paste",
-      "网页上的图片：在图上点右键 →「复制图片」": "On a web page: right-click the picture → Copy Image",
-      "手机上：长按 →「复制」，到 WPS 里长按 →「粘贴」": "On a phone: long-press → Copy; long-press in WPS → Paste",
-      "Ctrl+X 是「剪切」：把它搬走，原来的位置就空了": "Ctrl+X is cut: it moves the thing, leaving an empty spot"
-    }
-  },
-  "crab.svg": {
-    "aria": "Female crabs have a round apron, males a pointed one",
-    "text": {
-      "把螃蟹翻过来，看肚子上那块「脐」": "Flip the crab over and look at the flap on its belly",
-      "圆": "Round",
-      "母蟹 · 圆脐": "Female · round apron",
-      "要抱一肚子卵宝宝，所以又圆又宽": "Full of eggs, so it is wide and round",
-      "公蟹 · 尖脐": "Male · pointed apron",
-      "脐是窄窄的小三角": "A narrow little triangle"
-    }
-  },
-  "fishoil.svg": {
-    "aria": "A little orange-red capsule of DHA, the building block for brain and eyes",
-    "text": {
-      "橘红色的小胶囊里，装的是大脑和眼睛的材料": "Orange-red capsule: material for brain and eyes",
-      "鱼油 DHA 胶囊": "Fish-oil DHA capsule",
-      "软软的、亮亮的，不是糖": "Soft and shiny — not candy",
-      "大脑": "Brain",
-      "眼睛": "Eyes",
-      "DHA 就像盖房子用的砖：大脑和眼睛长好要用一点点，但好好吃饭比吃胶囊更重要。": "DHA is a building brick: brain and eyes need a little, but eating well matters more."
-    }
-  },
-  "insurance.svg": {
-    "aria": "Many people pay into one pool; the few who need help draw from it",
-    "text": {
-      "很多人各交一点点 → 攒成一个大池子": "Many people each pay a little → one big pool",
-      "一万人各交 100 元": "10,000 people pay 100 yuan each",
-      "100 万元": "1 million yuan",
-      "大家的钱放在一起": "Everyone's money, together",
-      "出事的人来领钱": "The few who claim draw from it",
-      "一年真出事的只有几十人，剩下的是成本、准备着明年赔的钱，再剩下才是赚的。": "A few dozen claim a year; after costs, the rest is profit."
-    }
-  },
-  "laputa-robot.svg": {
-    "aria": "The garden robot runs on Laputa's glowing stone; when the city fell it stopped",
-    "text": {
-      "它不是流血死的，是「没劲了」": "It did not bleed to death — it ran out of power",
-      "看花园的机器人": "The garden robot",
-      "很温柔，护着鸟窝和花": "Gentle, guarding nest and flowers",
-      "城里的「心脏」": "The city's heart",
-      "靠它才有劲": "Its power source",
-      "① 古代人做的干活机器人": "① Robots built to work",
-      "② 劲儿来自城里的石头": "② Power from the city's stone",
-      "③ 城塌了 → 它就不动了": "③ City fell → it stopped"
-    }
-  },
-  "mirror-flip.svg": {
-    "aria": "Three panels: light bounces off a mirror like a ball off a wall; light from both hands goes straight there and back, so the left hand stays left; laid flat, the mirror keeps left and right but flips up and down",
-    "text": {
-      "镜子翻的是「前后」，不是左右": "A mirror flips front-and-back, not left-and-right",
-      "撞上去": "Hits the glass",
-      "原路弹回": "Bounces straight back",
-      "镜子": "Mirror",
-      "左手": "Left",
-      "右手": "Right",
-      "光直着去、直着回，没有交叉": "Light goes straight there and back — no crossing",
-      "左右不变": "Left stays left",
-      "上下反了": "Up and down flip",
-      "① 光原路弹回": "① Light bounces back",
-      "镜子不是门，是墙": "A wall, not a door",
-      "光撞上去，直着弹回来": "Light hits, straight back",
-      "② 左还是左，右还是右": "② Left is left, right is right",
-      "被换掉的只有「前和后」": "Only front-and-back swaps",
-      "你的右手还在你右边": "Right hand stays right",
-      "③ 平放镜子：上下反了": "③ Flat: up and down flip",
-      "说明它只翻正对着的方向": "Only the facing side flips",
-      "是大脑把它当成了「转过身」": "Brain: someone turned round",
-      "镜子把正对你的那一面原样送回来；觉得「反了」，是大脑替你脑补了一次转身": "Mirror returns the facing side; reversed is your brain adding a turn."
-    }
-  },
-  "money-why.svg": {
-    "aria": "Three panels: barter was awkward; then everyone agreed on a ticket anyone accepts; you take the goods, leave a ticket, and the shopkeeper trades it for what he needs",
-    "text": {
-      "钱，是大家都认的一张「票」": "Money is a ticket everyone accepts",
-      "米": "Rice",
-      "换": "for",
-      "钱": "Money",
-      "菜": "Veggies",
-      "玩具": "Toys",
-      "再去换米": "Buys rice again",
-      "① 最早是「换东西」": "① At first, swapping",
-      "一只鸡换一袋米": "One chicken for a bag of rice",
-      "要换的人不一定在": "The right person may be away",
-      "② 于是大家约定一张票": "② So they agreed a ticket",
-      "谁拿着都能用": "Anyone can use it",
-      "这张票就是「钱」": "That ticket is money",
-      "③ 拿东西，留一张票": "③ Goods out, ticket in",
-      "钱不是给老板的「礼」": "It is not a gift to the shop",
-      "是换走东西的凭证": "A receipt for what you took",
-      "钱本身不能吃也不能玩，它只是一张大家都肯认的「换东西的票」": "Money is not food or a toy: it is the ticket everyone trusts."
-    }
-  },
-  "moon-follow.svg": {
-    "aria": "Three panels: walk a few steps and nearby trees slide behind you; the moon is so far that its direction hardly changes, so it seems to follow",
-    "text": {
-      "为什么你走，月亮也跟着走？": "Why does the moon follow you?",
-      "① 往前走几步": "① Walk a few steps",
-      "近处的树": "Nearby tree",
-      "几步就到身后": "Behind you in a few steps",
-      "② 树退到身后了": "② The tree is behind you",
-      "近处的东西": "Nearby things",
-      "一退就很明显": "Slide back, obviously",
-      "③ 月亮没怎么变": "③ The moon barely moves",
-      "它离得太远": "It is far too far",
-      "你的几步等于没动": "Your steps amount to nothing",
-      "不是月亮在跟着你，是一路上的东西退得太快": "The moon is not following; everything else is sliding back too fast"
-    }
-  },
-  "mosquito.svg": {
-    "aria": "A mosquito spits saliva; your body's guards release histamine; the skin swells and itches",
-    "text": {
-      "不是蚊子咬得痒，是你的小卫士在打架": "The bite does not itch — your little guards are fighting",
-      "表皮": "Epidermis",
-      "真皮（血管在这儿）": "Dermis (vessels here)",
-      "血管": "Blood vessel",
-      "组胺": "Histamine",
-      "血管变宽 → 鼓包": "Vessels widen → bump",
-      "① 蚊子先吐一点口水": "① First, a little saliva",
-      "防止血凝固、堵住吸管": "So blood will not clot its straw",
-      "② 身体的卫士赶来": "② Your guards arrive",
-      "把口水当成敌人来处理": "Treating saliva as an enemy",
-      "③ 放出组胺 → 觉得痒": "③ Histamine → itch",
-      "越抓放得越多，越抓越痒": {
-        "en": "Scratch more, itch more",
-        "x": 505
-      }
-    }
-  },
-  "pangu-axe.svg": {
-    "aria": "A timeline in three layers: Pangu in the third-century story has no axe; the Ming book gives him an axe and a chisel; today's cartoons copy that",
-    "text": {
-      "那把斧子，是明朝人给他配上的": "The axe was given to him by a Ming storyteller",
-      "天": "Sky",
-      "地": "Earth",
-      "三国·吴《三五历纪》：没有斧子": "3rd century (Wu), Records: no axe",
-      "只写「天地混沌如鸡子，盘古生其中」": "Only: heaven and earth like an egg, Pangu inside",
-      "天地是他一天长一丈撑开的——靠身体，不靠工具": "He held them apart, ten feet a day — his body, not tools",
-      "明代《开辟衍绎》：左手执凿，右手持斧": "Ming retelling: chisel left, axe right",
-      "这部书第一次给他配上两件工具，「或斧劈，或以凿开」": "First to give him tools — cutting with axe or chisel",
-      "因为说书人要一个看得见的动作：劈开": "A storyteller needs a visible motion: splitting",
-      "动画里": "In cartoons",
-      "今天的动画、绘本：照着画": "Today's cartoons copy it",
-      "斧子成了盘古的「标配」，凿子反而常被忘掉": "The axe became his standard prop; the chisel was forgotten",
-      "所以「斧子哪来的」——答案在明代说书人手里": "So where did the axe come from? From a Ming storyteller's hands",
-      "神话会解释世界怎么来的，却很少解释自己的道具哪来的。": "Myths explain where the world came from, rarely where their props did."
-    }
-  },
-  "plugin.svg": {
-    "aria": "A USB stick carries stuff; a plugin is a socket that adds a skill",
-    "text": {
-      "U 盘装的是「东西」，插件装的是「本领」": "A USB stick carries things; a plugin carries skills",
-      "U 盘：往里装东西": "USB stick: put things in",
-      "照片、作业、电影": "Photos, homework, films",
-      "拔掉以后，东西还在盘里": "Unplug it and the things stay",
-      "插件：给软件加一样本领": "Plugin: gives a program a skill",
-      "已经有的软件": "A program you already have",
-      "插件": "Plugin",
-      "插上→": "Plug in →",
-      "比如浏览器装了挡广告插件，就多会挡广告": "Add an ad blocker and the browser blocks ads"
-    }
-  },
-  "sleep.svg": {
-    "aria": "Three panels: adenosine builds up while you are awake; while asleep, fluid washes it away; the day's memories are copied into the long-term book",
-    "text": {
-      "困，是大脑攒了一天的「垃圾」": "Sleepiness is a day's rubbish piled up",
-      "冲走": "Washed away",
-      "临时": "Scratch",
-      "长期": "Long-term",
-      "① 醒着就在攒": "① Piling up while awake",
-      "「腺苷」越攒越多": "More and more adenosine",
-      "攒够了就困": "Enough, and you are sleepy",
-      "② 睡着开始冲": "② Washing starts asleep",
-      "脑脊液像水流": "Fluid flows like water",
-      "把废物带走": "Carrying waste away",
-      "③ 顺便存个档": "③ And saving a file",
-      "白天学的，从临时本": "Today's learning, from scratch",
-      "抄进长期本": "copied into the long-term book",
-      "所以睡觉不是浪费时间，是大脑在打扫 + 存档": "Sleep is not wasted time: it is cleaning plus saving"
-    }
-  },
-  "toys.svg": {
-    "aria": "Old toys were a hoop, a shuttlecock and a beanbag; now it is a tablet",
-    "text": {
-      "爸爸妈妈小时候的玩具：动手做 + 出门跑": "Toys when Mum and Dad were little: make it, run outside",
-      "厂院子里、院子里": "In the yard, in the lane",
-      "现在": "Now",
-      "滚铁环": "Iron hoop",
-      "踢毽子": "Shuttlecock",
-      "丢沙包": "Beanbag toss",
-      "便宜、能自己做、要出门找伙伴": "Cheap, home-made, needs friends outside",
-      "一个人、一块屏幕、随时能玩": "One kid, one screen, any time"
-    }
-  },
-  "why-scold.svg": {
-    "aria": "Three panels: spilling the water is the mistake; grown-ups worry you will get hurt; the telling-off is about the thing, and liking you has not changed",
-    "text": {
-      "大人批评的，是那件事，不是你": "Grown-ups scold the thing, not you",
-      "不行！": "No!",
-      "① 打翻了水": "① The water spilled",
-      "做错的是这件事": "This is what went wrong",
-      "它就在那儿": "It is right there",
-      "② 大人着急了": "② Grown-up gets worried",
-      "怕你被开水烫到": "Afraid you will get burned",
-      "声音就变大了": "The voice gets loud",
-      "③ 喜欢你不变": "③ Liking you: unchanged",
-      "批评的是一件小事": "It is about a small thing",
-      "不是你这个人": "Not about who you are",
-      "下次可以问一句：为什么不可以？": "Next time ask: why can't I?"
-    }
-  },
-  "photo-pink.svg": {
-    "aria": "Three panels: old photos are built from cyan, magenta and yellow dyes; cyan fears sunlight and heat most and is slowly broken apart; once cyan is gone there is too little blue, red looks strong, and the photo turns pink",
-    "text": {
-      "老照片为什么会变成粉色": "Why old photos turn pink",
-      "青": "cyan",
-      "品红": "magenta",
-      "黄": "yellow",
-      "三层叠好，颜色才正常": "all three, right colour",
-      "紫外光 + 热": "UV + heat",
-      "青色先被晒散": "cyan goes first",
-      "只剩品红 + 黄": "magenta + yellow",
-      "蓝没了，红显得多": "no blue, red wins",
-      "① 三种染料叠起来": "① three dyes",
-      "青 + 品红 + 黄": "cyan + magenta + yellow",
-      "叠在一起才显出正常颜色": "stacked = true colour",
-      "② 青色最怕太阳": "② cyan fears sun",
-      "紫外光把它的分子打散": "UV breaks its molecules",
-      "晒一次，少一点": "a little less each day",
-      "③ 青没了，就泛粉": "③ pink is left",
-      "蓝变少，红显得多": "less blue, red wins",
-      "剩下的两色混成粉色": "two lefts make pink",
-      "不是「变旧」，是青色先退场 —— 老照片要避光、干燥、别贴窗玻璃": "Not aging: the cyan leaves first — keep old photos dark and dry"
-    }
-  },
-  "lightning.svg": {
-    "aria": "Three panels: tiny ice crystals and droplets bumping in a cloud prise charge apart, positive rising to the cloud top and negative staying at the bottom; when the charge piles up, the air between acts like a wall and gets punched through; the current races to the ground and the burned channel is the flash, while the suddenly heated air exploding outward is the thunder",
-    "text": {
-      "闪电是怎么来的": "How lightning happens",
-      "+ 上云顶": "+ rises to top",
-      "− 下云底": "− sinks to base",
-      "撞一下，电就分家": "one bump splits charge",
-      "电荷分开了，中间全是空气": "charges split, air between",
-      "亮是闪电，响是雷": "flash, then bang",
-      "① 云里在撞": "① bumping inside",
-      "小冰晶撞小水珠": "ice hits droplets",
-      "正负电荷被撞开": "charges split apart",
-      "② 越攒越多": "② piling up",
-      "空气这堵墙撑不住": "the air wall gives way",
-      "被一下打穿": "punched through",
-      "③ 一路通到地面": "③ down to ground",
-      "通道烧得极亮": "channel burns bright",
-      "热空气炸开就是雷": "hot air pops: thunder",
-      "水不是变成电，是碰撞把电分开 —— 云里的水是电池的原料": "Collisions split the charge — water is the battery, not the current"
-    }
-  },
-  "traffic-lines.svg": {
-    "aria": "A top-down view of a two-way road: a dashed white line separates lanes going the same way and may be crossed, a solid white line may not; a double solid yellow line down the middle separates opposite directions and neither side may cross it; only a dashed yellow line allows overtaking, and a solid yellow line by the kerb means no parking",
-    "text": {
-      "白线管同向，黄线管对向": "White = same way, Yellow = opposite",
-      "白虚线": "White dashed",
-      "同向分开，可变道": "same way · switch okay",
-      "白实线": "White solid",
-      "同向，但跨不过去": "same way · no crossing",
-      "双黄实线：对向车道，两边都不许跨": "Double solid yellow: opposite traffic, nobody may cross",
-      "黄虚线才准借道超车 ｜ 路边黄实线＝不能停车": "only dashed yellow may be crossed to overtake ｜ solid yellow at the kerb = no parking"
-    }
-  },
-  "securities-firm.svg": {
-    "aria": "A flow diagram: an investor opens an account and places orders with a securities firm, which sends the order to the exchange to be matched and reports the fill back; a listed company issues shares for cash through the exchange; the firm earns commissions and service fees, not a share of the investor gains or losses",
-    "text": {
-      "证券公司是中间那道柜台": "A broker is the counter in between",
-      "投资者": "Investor",
-      "想买股票的你": "you, buying shares",
-      "证券公司": "Securities firm",
-      "① 帮你开户、下单": "1 open account, order",
-      "② 保管钱和股票": "2 hold cash & shares",
-      "③ 帮公司上市发债": "3 help firms list",
-      "它不替你猜涨跌": "it does not guess prices",
-      "只保证把事办成": "it just gets things done",
-      "交易所": "Exchange",
-      "把买和卖对上": "matches buys & sells",
-      "上市公司": "Listed company",
-      "发股票换钱": "issues shares for cash",
-      "委托": "order",
-      "送单": "send",
-      "回报": "fill",
-      "它赚的是服务费，不是你的运气": "It earns fees, not your luck",
-      "佣金 ｜ 代销基金 ｜ 融资融券利息 ｜ 上市发债服务费": "commission | fund sales | margin interest | listing & bond fees"
-    }
-  },
-  "human-origin.svg": {
-    "aria": "People did not appear all at once: long ago the Earth had only fish and dinosaurs; then came ancestors that looked like apes; one generation at a time, they slowly became the people of today",
-    "text": {
-      "人是慢慢变来的，不是一下子冒出来的": "People came about slowly, not all at once",
-      "还没有人": "No people yet",
-      "学会用石头": "Learned to use stones",
-      "会说话、会做东西": "Talks, makes things",
-      "① 很久以前": "① Long, long ago",
-      "地球上有植物、": "Plants on Earth,",
-      "有鱼、有恐龙": "fish, dinosaurs",
-      "② 我们的祖先": "② Our ancestors",
-      "长得像猴子，": "Looked like apes,",
-      "慢慢学会站着走": "learned to stand up",
-      "③ 现在的人": "③ People today",
-      "会说话、用火、": "Talk, use fire,",
-      "写字、造房子": "write, build houses",
-      "中间隔了几百万年：一代一代，只变那么一点点": "Millions of years in between — one tiny change per generation"
-    }
-  },
-  "recycler.svg": {
-    "aria": "A flow diagram: cardboard boxes, empty bottles and old appliances that a household or neighbourhood wants to throw away are bought by weight at a very low price by the scrap collector, who then sorts them into paper, plastic and metal, bales them into one big pack and sells them by the tonne to paper mills, plastics plants, aluminium smelters and steel works; he earns the gap between the buying price and the selling price by collecting many households' small piles into one big truckload",
-    "text": {
-      "他赚的是「把散的攒成一堆」的钱": "He earns the gap of gathering the scattered into one pile",
-      "家里 · 小区": "Home · neighbourhood",
-      "旧纸箱": "Old cardboard",
-      "空瓶子": "Empty bottles",
-      "旧家电": "Old appliances",
-      "在你手里：想扔": "to you: just rubbish",
-      "按斤收": "buys by weight",
-      "收废品的人": "The scrap collector",
-      "① 按斤、很低的价收": "1 buys cheap, by weight",
-      "② 分开：纸 / 塑料 / 金属": "2 sorts paper / plastic / metal",
-      "③ 压成一大包": "3 bales into one pack",
-      "混在一起没人要": "mixed, nobody wants it",
-      "分开了才有工厂要": "sorted, factories want it",
-      "按吨卖": "sells by the tonne",
-      "造纸厂": "Paper mill",
-      "废纸打成浆，做新纸箱": "pulp to new boxes",
-      "塑料厂": "Plastics plant",
-      "熔成小颗粒，做桶和衣架": "pellets for buckets, hangers",
-      "铝厂 · 钢厂": "Aluminium & steel",
-      "回炉变成铝锭、钢筋": "remelt into ingots, rebar",
-      "差价 = 卖掉的钱 − 收进的钱": "Profit = sold for − paid for",
-      "不是秤上占便宜，是把几十家的「一点点」攒成了一大车": "Not a trick on the scale: many households' small piles into one big load"
-    }
-  },
-  "skewer-sticks.svg": {
-    "aria": "Three panels comparing skewers: firm cubed lamb needs just one stick; soft thin chives and enoki mushrooms need two sticks to clamp them so they do not curl and spin; a whole corn cob or whole chicken wing is big and heavy and needs two or three sticks to share the weight so it can be turned",
-    "text": {
-      "签子几根，看它会不会打转": "How many sticks? Depends on whether it spins",
-      "羊肉串": "Lamb skewer",
-      "切得方正、紧实": "cubed and firm",
-      "一根": "one stick",
-      "有块头，穿上就抓得住": "chunky: it grips the stick",
-      "翻面也不打转": "turn it, it stays put",
-      "韭菜 · 金针菇": "Chives · enoki",
-      "软、薄、长，会卷起来": "soft, thin, curls up",
-      "两根": "two sticks",
-      "一根它会绕着转、往下滑": "on one it spins and slides",
-      "两根夹住，方向就锁死了": "two clamp it, no twisting",
-      "整根玉米 · 鸡翅": "Whole corn · chicken wing",
-      "又大、又重、形状歪": "big, heavy, awkward shape",
-      "两三根": "two or three",
-      "多几根，重量分成好几份": "more sticks share the weight",
-      "一根签只是一根轴，东西能绕着它转；两根签就是两个支点": "One stick is one axis: the food can spin around it. Two sticks are two pivots.",
-      "越软、越薄、越重，就越需要多一根——不是为了多，是为了不转、不散": "Softer, thinner, heavier needs one more — not for show, but so it will not spin or fall apart",
-      "一根扛不住，翻面就垂": "one sags when turned"
-    }
-  },
-  "why-east.svg": {
-    "aria": "Two panels: from Europe, China lies east where the sun rises, so it is called the East; from the US, across the Pacific, the same China is west — the place did not move, the direction flipped",
-    "text": {
-      "东方不是标签，是「站在哪里看」": "East is not a label: it depends where you stand",
-      "① 欧洲人站在中间": "① Europeans in the middle",
-      "太阳升起的那边，就叫「东」": "the side where the sun rises is 'East'",
-      "往东看": "look east",
-      "西": "West",
-      "东": "East",
-      "欧洲": "Europe",
-      "中国": "China",
-      "中国在欧洲的东边": "China lies east of Europe",
-      "于是被叫作「东方」": "so it got called 'the East'",
-      "Orient 原意：太阳升起的地方": "Orient means: where the sun rises",
-      "② 换成美国人站中间": "② Now an American in the middle",
-      "同一块地方，方向反过来了": "same place, flipped direction",
-      "往西看": "look west",
-      "美国": "the US",
-      "隔着太平洋，中国在美国西边": "across the Pacific, China is west of the US",
-      "同一个中国，变成「西方」": "the same China becomes 'the West'",
-      "方位没变，看的人换了": "the place did not move; the viewer did",
-      "同一个中国，一步没动——变的是「谁在哪儿看」": "Same China, not a step moved — only the viewer changed",
-      "所以东方、西方是相对的方位；后来才又叠上「筷子、汉字、茶」这层文化意思": "East and West are relative directions; the cultural layer came later"
-    }
-  },
-  "what-is-revolution.svg": {
-    "aria": "Three rows: a political revolution changes who decides — from a king deciding alone to everyone voting; an industrial revolution changes how things are made — from one pair of shoes a day by hand to hundreds a day by machine; a scientific revolution changes how we decide what is true — from what the book says to what your own experiment shows. Bottom line: reform edits clauses in the same book; revolution replaces the whole book",
-    "text": {
-      "革命换的不是一个人，是一整套做法": "A revolution swaps a whole way of doing things, not one person",
-      "政治革命": "Political revolution",
-      "换「谁说了算」": "changes who decides",
-      "国王一个人定": "a king decides alone",
-      "大家投票定": "everyone votes",
-      "同一块地方，规矩整本换了": "same place, the whole rulebook replaced",
-      "工业革命": "Industrial revolution",
-      "换「怎么做东西」": "changes how things are made",
-      "手工一天一双鞋": "one pair of shoes a day by hand",
-      "机器一天几百双": "hundreds a day by machine",
-      "没人喊口号，是一台台机器改的": "no slogans — machines did the changing",
-      "科学革命": "Scientific revolution",
-      "换「怎么想」": "changes how we think",
-      "书上说的算": "what the book says counts",
-      "自己实验算": "what your experiment shows counts",
-      "判断对错的方法变了": "the way we judge what is true changed",
-      "改革＝在同一本书里改条款　｜　革命＝把整本书换掉": "Reform = amend clauses in the same book  |  Revolution = replace the whole book"
-    }
-  },
-  "why-trees.svg": {
-    "aria": "Three panels: the sun overhead, with grass, a shrub and a tree at different heights — whoever grows taller gets more light; leaves cook their own food from sunlight, water and air, making sugar and releasing oxygen; roots hold the soil so rain cannot wash it away, and a hole in the trunk becomes a bird's home. Bottom line: nobody arranged for trees — plants just raced for the sun and grew upward",
-    "text": {
-      "树，是长得特别高的植物": "A tree is just a very tall plant",
-      "谁长得高，谁晒得多": "Taller = more sun",
-      "阳光": "Sunlight",
-      "水": "Water",
-      "空气": "Air",
-      "糖（饭）": "Sugar",
-      "氧气 ↑": "Oxygen ↑",
-      "树叶会自己做饭": "Leaves cook food",
-      "根抓住土，树洞给鸟住": "Roots hold the soil",
-      "树不是谁安排出来的：它们只是抢着晒太阳，一路往上长": "No one arranged for trees: they raced for the sun and grew up",
-      "长得高一点就多一口饭；晒不到的那些，慢慢被林子筛掉": "A little taller means a little more food; shaded ones drop out"
-    }
-  },
-  "what-is-cafa.svg": {
-    "aria": "Three panels: the name breaks into Central + Fine Arts + Academy, meaning an art university in Beijing, founded in 1918; inside you study fine art, design, architecture and art history; to get in you draw for years, then pass the art exam, CAFA's own exam, and the gaokao. Bottom line: CAFA is a school — not a painting, not a museum, though it has its own art museum.",
-    "text": {
-      "央美，是一所教人画画的美术大学": "CAFA is an art university that teaches people to draw",
-      "① 名字拆开": "① Break the name apart",
-      "中央 + 美术 + 学院": "Central + Fine Arts + Academy",
-      "= 一所美术大学": "= an art university",
-      "央美": "CAFA",
-      "在北京 · 1918 年创办": "In Beijing, founded 1918",
-      "② 里面学什么": "② What you study",
-      "造型：油画 · 国画": "Fine art: oil, ink",
-      "雕塑 · 版画": "Sculpture, printmaking",
-      "设计：视觉 · 产品": "Design: visual, product",
-      "服装 · 数码媒体": "Fashion, digital media",
-      "建筑 · 实验艺术": "Architecture, experimental art",
-      "去做画家 · 设计师": "Become a painter or designer",
-      "③ 怎么进去": "③ How to get in",
-      "从小练画": "Draw for years",
-      "艺考：素描 · 色彩": "Art exam: drawing, colour",
-      "央美校考": "CAFA's own exam",
-      "高考过线": "Gaokao pass mark",
-      "缺一环都进不去": "Miss one and you are out",
-      "央美是学校，不是一幅画，也不是博物馆": "CAFA is a school — not a painting, not a museum",
-      "不过它自己有一座美术馆，里面常办展览": "Though it does have its own art museum"
-    }
-  },
-  "what-is-jazz-dance.svg": {
-    "aria": "Three panels: jazz dance grew out of jazz music — in 1920s America jazz was improvised and syncopated, and people danced to it; it is not a fixed set of steps but slamming on the heavy beats, moving the body in parts, adding your own flourishes; later it split into social swing, Broadway stage jazz and street jazz funk, which is what most classes teach today. Bottom line: jazz dance is not a tune, it is how you move to the tune.",
-    "text": {
-      "爵士舞：跟着爵士乐跳出来的舞": "Jazz dance: born from jazz music",
-      "① 先有曲子，才有舞": "① Music, then dance",
-      "1920 年代 · 美国": "1920s · America",
-      "爵士乐": "Jazz music",
-      "即兴 · 切分节奏": "free, off-beat rhythm",
-      "大家跟着它跳": "people danced to it",
-      "就叫爵士舞": "and it was jazz dance",
-      "爵士乐 ≠ 爵士舞": "music is not the dance",
-      "② 不是一套固定动作": "② Not fixed steps",
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "重拍上「砸」下去发力": "Hit the heavy beat",
-      "身体能分节动": "Body moves in parts",
-      "还能自己加花": "Add your own flair",
-      "同一首歌，两人两样": "Same song, two looks",
-      "③ 后来分成三支": "③ Split in three",
-      "社交 · 摇摆舞": "Social: swing",
-      "舞台 · 百老汇": "Stage: Broadway",
-      "街头 · 爵士放克": "Street: jazz funk",
-      "现在舞蹈班多是这支": "Most classes: this",
-      "爵士舞不是一首曲子，是「跟着曲子怎么动」": "Jazz dance is not a tune — it is how you move to it",
-      "没有固定组合——同一首歌，两个人能跳出两个样子": "No fixed routine: same song, two dancers, two different dances"
-    }
-  },
-  "corn-hang-dry.svg": {
-    "aria": "In northeast China winter, corn cobs hang on a raised wooden rack so the dry cold wind passes between them and carries the moisture away",
-    "text": {
-      "挂在外面，是让玉米「晾干」": "Hang it up, and the corn dries",
-      "风吹过每一根": "Wind on every cob",
-      "−20℃ · 干冷风大": "−20℃ · dry wind",
-      "水分被带走": "Moisture blown off",
-      "离地挂高，老鼠上不来": "Off the ground, no mice"
-    }
+ "_README": "图解英文翻译。键是 assets/figures 下的文件名，text 里是「原文 → 英文」逐条替换；aria 是整张图的无障碍描述。跑 node tools/build-figures-en.mjs 生成 assets/figures/en/*.svg。",
+ "calculator.svg": {
+  "aria": "How a calculator works: a key connects a wire, the chip runs a program, the screen shows digits with seven little bars",
+  "text": {
+   "按下 3 + 5 = 以后，机器里发生了什么": "What happens inside after you press 3 + 5 =",
+   "程序": "Program",
+   "① 按键": "① Keys",
+   "按下一格，": "Press a key,",
+   "就接通一根线": "one wire connects",
+   "② 芯片": "② Chip",
+   "照早就写好的": "runs a program",
+   "程序，把两数相加": "written in advance",
+   "③ 屏幕": "③ Screen",
+   "七根小横条，": "Seven little bars,",
+   "亮哪几根显示哪个数": "whichever light up",
+   "它不会思考，只是把「怎么算」提前写死在芯片里": "It does not think — someone wrote how to calculate into the chip long ago"
   }
+ },
+ "candy-tooth.svg": {
+  "aria": "Bacteria eat sugar and spit acid; the acid soaks holes in the tooth's armour; deep enough, it reaches the nerve",
+  "text": {
+   "烂牙的不是糖，是糖喂出来的「酸」": "What rots teeth is not sugar — it is the acid that sugar feeds",
+   "牙釉质": "Enamel",
+   "（牙齿的盔甲）": "(the tooth's armour)",
+   "牙神经（在里头）": "Nerve (inside)",
+   "小洞": "Hole",
+   "酸": "Acid",
+   "细菌吃完糖吐出来的": "spat out by bacteria",
+   "① 嘴里的细菌爱吃糖": "① Mouth bacteria love sugar",
+   "糖越黏、吃的时间越长，细菌越开心": "The stickier and longer, the happier they are",
+   "② 细菌吐酸，把盔甲泡软": "② They spit acid, softening the armour",
+   "一次一点点，泡久了就脱了一层": "A little each time — wear it down",
+   "③ 洞越来越深，碰到神经就疼": "③ Deeper, until it hits the nerve",
+   "刷牙 + 含氟 + 少喝甜饮料，盔甲能补回来": "Brush + fluoride rebuilds the armour",
+   "一次吃完一块糖，比一整天慢慢吃要好——关键不是「吃了多少」，是「酸泡了多久」。": "One sweet at once beats one all day: what counts is how long the acid soaks."
+  }
+ },
+ "canteen.svg": {
+  "aria": "Wrapping dumplings one by one is too slow; one big pot is quick",
+  "text": {
+   "食堂要一次喂饱几百人，比的是「快」和「稳」": "A canteen feeds hundreds: it needs speed and safety",
+   "水饺 / 圆子：一个一个包": "Dumplings / rice balls: one by one",
+   "一上午，好几个人": "Half a morning, many hands",
+   "大锅菜：一次做很多": "Big-pot dishes: lots at once",
+   "一锅够几百人": "One pot feeds hundreds",
+   "熟得透、够热、同样的钱更划算": "Cooked through, still hot, more for the same money"
+  }
+ },
+ "cloud-float.svg": {
+  "aria": "Three panels: a cloud is countless tiny droplets a gentle updraught can hold; a person is one big lump the wind cannot lift; to fly you need wings that push air, or a balloon lighter than air",
+  "text": {
+   "小水珠会飘，人只会往下掉": "Tiny droplets float; people just fall",
+   "上升的风": "Rising air",
+   "几十公斤": "Dozens of kilos",
+   "风托不住": "The wind cannot hold it",
+   "往下推空气": "Push down",
+   "比空气轻": {
+    "en": "Lighter than air",
+    "x": 558
+   },
+   "① 云是无数小水珠": "① Clouds are tiny droplets",
+   "每颗只有头发丝的几分之一": "Each a fraction of a hair",
+   "掉得比灰尘还慢": "Falling slower than dust",
+   "② 人是一整块": "② A person is one lump",
+   "再大的风也托不住": "No wind can hold that",
+   "只会一直往下掉": "Down you go, always",
+   "③ 想飞得换个办法": "③ Flying takes a trick",
+   "翅膀把空气往下推": "Wings push air down",
+   "或者像热气球，比空气轻": "Or a balloon, lighter than air",
+   "关键不是「轻」，是「摊得开」：同样重量，越小、迎风面越大，风越托得住": "Not lightness but spreading out: small pieces catch the wind"
+  }
+ },
+ "copy-paste.svg": {
+  "aria": "Three steps to put a picture into WPS: find it, Ctrl+C to copy, Ctrl+V to paste",
+  "text": {
+   "把图片放进 WPS：三步就好": "Put a picture into WPS in three steps",
+   "① 找到图片，点一下选中": "① Find it, click to select",
+   "复制": "Copy",
+   "② 按 Ctrl+C": "② Press Ctrl+C",
+   "③ 按 Ctrl+V 粘贴": "③ Press Ctrl+V to paste",
+   "网页上的图片：在图上点右键 →「复制图片」": "On a web page: right-click the picture → Copy Image",
+   "手机上：长按 →「复制」，到 WPS 里长按 →「粘贴」": "On a phone: long-press → Copy; long-press in WPS → Paste",
+   "Ctrl+X 是「剪切」：把它搬走，原来的位置就空了": "Ctrl+X is cut: it moves the thing, leaving an empty spot"
+  }
+ },
+ "crab.svg": {
+  "aria": "Female crabs have a round apron, males a pointed one",
+  "text": {
+   "把螃蟹翻过来，看肚子上那块「脐」": "Flip the crab over and look at the flap on its belly",
+   "圆": "Round",
+   "母蟹 · 圆脐": "Female · round apron",
+   "要抱一肚子卵宝宝，所以又圆又宽": "Full of eggs, so it is wide and round",
+   "公蟹 · 尖脐": "Male · pointed apron",
+   "脐是窄窄的小三角": "A narrow little triangle"
+  }
+ },
+ "fishoil.svg": {
+  "aria": "A little orange-red capsule of DHA, the building block for brain and eyes",
+  "text": {
+   "橘红色的小胶囊里，装的是大脑和眼睛的材料": "Orange-red capsule: material for brain and eyes",
+   "鱼油 DHA 胶囊": "Fish-oil DHA capsule",
+   "软软的、亮亮的，不是糖": "Soft and shiny — not candy",
+   "大脑": "Brain",
+   "眼睛": "Eyes",
+   "DHA 就像盖房子用的砖：大脑和眼睛长好要用一点点，但好好吃饭比吃胶囊更重要。": "DHA is a building brick: brain and eyes need a little, but eating well matters more."
+  }
+ },
+ "insurance.svg": {
+  "aria": "Many people pay into one pool; the few who need help draw from it",
+  "text": {
+   "很多人各交一点点 → 攒成一个大池子": "Many people each pay a little → one big pool",
+   "一万人各交 100 元": "10,000 people pay 100 yuan each",
+   "100 万元": "1 million yuan",
+   "大家的钱放在一起": "Everyone's money, together",
+   "出事的人来领钱": "The few who claim draw from it",
+   "一年真出事的只有几十人，剩下的是成本、准备着明年赔的钱，再剩下才是赚的。": "A few dozen claim a year; after costs, the rest is profit."
+  }
+ },
+ "laputa-robot.svg": {
+  "aria": "The garden robot runs on Laputa's glowing stone; when the city fell it stopped",
+  "text": {
+   "它不是流血死的，是「没劲了」": "It did not bleed to death — it ran out of power",
+   "看花园的机器人": "The garden robot",
+   "很温柔，护着鸟窝和花": "Gentle, guarding nest and flowers",
+   "城里的「心脏」": "The city's heart",
+   "靠它才有劲": "Its power source",
+   "① 古代人做的干活机器人": "① Robots built to work",
+   "② 劲儿来自城里的石头": "② Power from the city's stone",
+   "③ 城塌了 → 它就不动了": "③ City fell → it stopped"
+  }
+ },
+ "mirror-flip.svg": {
+  "aria": "Three panels: light bounces off a mirror like a ball off a wall; light from both hands goes straight there and back, so the left hand stays left; laid flat, the mirror keeps left and right but flips up and down",
+  "text": {
+   "镜子翻的是「前后」，不是左右": "A mirror flips front-and-back, not left-and-right",
+   "撞上去": "Hits the glass",
+   "原路弹回": "Bounces straight back",
+   "镜子": "Mirror",
+   "左手": "Left",
+   "右手": "Right",
+   "光直着去、直着回，没有交叉": "Light goes straight there and back — no crossing",
+   "左右不变": "Left stays left",
+   "上下反了": "Up and down flip",
+   "① 光原路弹回": "① Light bounces back",
+   "镜子不是门，是墙": "A wall, not a door",
+   "光撞上去，直着弹回来": "Light hits, straight back",
+   "② 左还是左，右还是右": "② Left is left, right is right",
+   "被换掉的只有「前和后」": "Only front-and-back swaps",
+   "你的右手还在你右边": "Right hand stays right",
+   "③ 平放镜子：上下反了": "③ Flat: up and down flip",
+   "说明它只翻正对着的方向": "Only the facing side flips",
+   "是大脑把它当成了「转过身」": "Brain: someone turned round",
+   "镜子把正对你的那一面原样送回来；觉得「反了」，是大脑替你脑补了一次转身": "Mirror returns the facing side; reversed is your brain adding a turn."
+  }
+ },
+ "money-why.svg": {
+  "aria": "Three panels: barter was awkward; then everyone agreed on a ticket anyone accepts; you take the goods, leave a ticket, and the shopkeeper trades it for what he needs",
+  "text": {
+   "钱，是大家都认的一张「票」": "Money is a ticket everyone accepts",
+   "米": "Rice",
+   "换": "for",
+   "钱": "Money",
+   "菜": "Veggies",
+   "玩具": "Toys",
+   "再去换米": "Buys rice again",
+   "① 最早是「换东西」": "① At first, swapping",
+   "一只鸡换一袋米": "One chicken for a bag of rice",
+   "要换的人不一定在": "The right person may be away",
+   "② 于是大家约定一张票": "② So they agreed a ticket",
+   "谁拿着都能用": "Anyone can use it",
+   "这张票就是「钱」": "That ticket is money",
+   "③ 拿东西，留一张票": "③ Goods out, ticket in",
+   "钱不是给老板的「礼」": "It is not a gift to the shop",
+   "是换走东西的凭证": "A receipt for what you took",
+   "钱本身不能吃也不能玩，它只是一张大家都肯认的「换东西的票」": "Money is not food or a toy: it is the ticket everyone trusts."
+  }
+ },
+ "moon-follow.svg": {
+  "aria": "Three panels: walk a few steps and nearby trees slide behind you; the moon is so far that its direction hardly changes, so it seems to follow",
+  "text": {
+   "为什么你走，月亮也跟着走？": "Why does the moon follow you?",
+   "① 往前走几步": "① Walk a few steps",
+   "近处的树": "Nearby tree",
+   "几步就到身后": "Behind you in a few steps",
+   "② 树退到身后了": "② The tree is behind you",
+   "近处的东西": "Nearby things",
+   "一退就很明显": "Slide back, obviously",
+   "③ 月亮没怎么变": "③ The moon barely moves",
+   "它离得太远": "It is far too far",
+   "你的几步等于没动": "Your steps amount to nothing",
+   "不是月亮在跟着你，是一路上的东西退得太快": "The moon is not following; everything else is sliding back too fast"
+  }
+ },
+ "mosquito.svg": {
+  "aria": "A mosquito spits saliva; your body's guards release histamine; the skin swells and itches",
+  "text": {
+   "不是蚊子咬得痒，是你的小卫士在打架": "The bite does not itch — your little guards are fighting",
+   "表皮": "Epidermis",
+   "真皮（血管在这儿）": "Dermis (vessels here)",
+   "血管": "Blood vessel",
+   "组胺": "Histamine",
+   "血管变宽 → 鼓包": "Vessels widen → bump",
+   "① 蚊子先吐一点口水": "① First, a little saliva",
+   "防止血凝固、堵住吸管": "So blood will not clot its straw",
+   "② 身体的卫士赶来": "② Your guards arrive",
+   "把口水当成敌人来处理": "Treating saliva as an enemy",
+   "③ 放出组胺 → 觉得痒": "③ Histamine → itch",
+   "越抓放得越多，越抓越痒": {
+    "en": "Scratch more, itch more",
+    "x": 505
+   }
+  }
+ },
+ "pangu-axe.svg": {
+  "aria": "A timeline in three layers: Pangu in the third-century story has no axe; the Ming book gives him an axe and a chisel; today's cartoons copy that",
+  "text": {
+   "那把斧子，是明朝人给他配上的": "The axe was given to him by a Ming storyteller",
+   "天": "Sky",
+   "地": "Earth",
+   "三国·吴《三五历纪》：没有斧子": "3rd century (Wu), Records: no axe",
+   "只写「天地混沌如鸡子，盘古生其中」": "Only: heaven and earth like an egg, Pangu inside",
+   "天地是他一天长一丈撑开的——靠身体，不靠工具": "He held them apart, ten feet a day — his body, not tools",
+   "明代《开辟衍绎》：左手执凿，右手持斧": "Ming retelling: chisel left, axe right",
+   "这部书第一次给他配上两件工具，「或斧劈，或以凿开」": "First to give him tools — cutting with axe or chisel",
+   "因为说书人要一个看得见的动作：劈开": "A storyteller needs a visible motion: splitting",
+   "动画里": "In cartoons",
+   "今天的动画、绘本：照着画": "Today's cartoons copy it",
+   "斧子成了盘古的「标配」，凿子反而常被忘掉": "The axe became his standard prop; the chisel was forgotten",
+   "所以「斧子哪来的」——答案在明代说书人手里": "So where did the axe come from? From a Ming storyteller's hands",
+   "神话会解释世界怎么来的，却很少解释自己的道具哪来的。": "Myths explain where the world came from, rarely where their props did."
+  }
+ },
+ "plugin.svg": {
+  "aria": "A USB stick carries stuff; a plugin is a socket that adds a skill",
+  "text": {
+   "U 盘装的是「东西」，插件装的是「本领」": "A USB stick carries things; a plugin carries skills",
+   "U 盘：往里装东西": "USB stick: put things in",
+   "照片、作业、电影": "Photos, homework, films",
+   "拔掉以后，东西还在盘里": "Unplug it and the things stay",
+   "插件：给软件加一样本领": "Plugin: gives a program a skill",
+   "已经有的软件": "A program you already have",
+   "插件": "Plugin",
+   "插上→": "Plug in →",
+   "比如浏览器装了挡广告插件，就多会挡广告": "Add an ad blocker and the browser blocks ads"
+  }
+ },
+ "sleep.svg": {
+  "aria": "Three panels: adenosine builds up while you are awake; while asleep, fluid washes it away; the day's memories are copied into the long-term book",
+  "text": {
+   "困，是大脑攒了一天的「垃圾」": "Sleepiness is a day's rubbish piled up",
+   "冲走": "Washed away",
+   "临时": "Scratch",
+   "长期": "Long-term",
+   "① 醒着就在攒": "① Piling up while awake",
+   "「腺苷」越攒越多": "More and more adenosine",
+   "攒够了就困": "Enough, and you are sleepy",
+   "② 睡着开始冲": "② Washing starts asleep",
+   "脑脊液像水流": "Fluid flows like water",
+   "把废物带走": "Carrying waste away",
+   "③ 顺便存个档": "③ And saving a file",
+   "白天学的，从临时本": "Today's learning, from scratch",
+   "抄进长期本": "copied into the long-term book",
+   "所以睡觉不是浪费时间，是大脑在打扫 + 存档": "Sleep is not wasted time: it is cleaning plus saving"
+  }
+ },
+ "toys.svg": {
+  "aria": "Old toys were a hoop, a shuttlecock and a beanbag; now it is a tablet",
+  "text": {
+   "爸爸妈妈小时候的玩具：动手做 + 出门跑": "Toys when Mum and Dad were little: make it, run outside",
+   "厂院子里、院子里": "In the yard, in the lane",
+   "现在": "Now",
+   "滚铁环": "Iron hoop",
+   "踢毽子": "Shuttlecock",
+   "丢沙包": "Beanbag toss",
+   "便宜、能自己做、要出门找伙伴": "Cheap, home-made, needs friends outside",
+   "一个人、一块屏幕、随时能玩": "One kid, one screen, any time"
+  }
+ },
+ "why-scold.svg": {
+  "aria": "Three panels: spilling the water is the mistake; grown-ups worry you will get hurt; the telling-off is about the thing, and liking you has not changed",
+  "text": {
+   "大人批评的，是那件事，不是你": "Grown-ups scold the thing, not you",
+   "不行！": "No!",
+   "① 打翻了水": "① The water spilled",
+   "做错的是这件事": "This is what went wrong",
+   "它就在那儿": "It is right there",
+   "② 大人着急了": "② Grown-up gets worried",
+   "怕你被开水烫到": "Afraid you will get burned",
+   "声音就变大了": "The voice gets loud",
+   "③ 喜欢你不变": "③ Liking you: unchanged",
+   "批评的是一件小事": "It is about a small thing",
+   "不是你这个人": "Not about who you are",
+   "下次可以问一句：为什么不可以？": "Next time ask: why can't I?"
+  }
+ },
+ "photo-pink.svg": {
+  "aria": "Three panels: old photos are built from cyan, magenta and yellow dyes; cyan fears sunlight and heat most and is slowly broken apart; once cyan is gone there is too little blue, red looks strong, and the photo turns pink",
+  "text": {
+   "老照片为什么会变成粉色": "Why old photos turn pink",
+   "青": "cyan",
+   "品红": "magenta",
+   "黄": "yellow",
+   "三层叠好，颜色才正常": "all three, right colour",
+   "紫外光 + 热": "UV + heat",
+   "青色先被晒散": "cyan goes first",
+   "只剩品红 + 黄": "magenta + yellow",
+   "蓝没了，红显得多": "no blue, red wins",
+   "① 三种染料叠起来": "① three dyes",
+   "青 + 品红 + 黄": "cyan + magenta + yellow",
+   "叠在一起才显出正常颜色": "stacked = true colour",
+   "② 青色最怕太阳": "② cyan fears sun",
+   "紫外光把它的分子打散": "UV breaks its molecules",
+   "晒一次，少一点": "a little less each day",
+   "③ 青没了，就泛粉": "③ pink is left",
+   "蓝变少，红显得多": "less blue, red wins",
+   "剩下的两色混成粉色": "two lefts make pink",
+   "不是「变旧」，是青色先退场 —— 老照片要避光、干燥、别贴窗玻璃": "Not aging: the cyan leaves first — keep old photos dark and dry"
+  }
+ },
+ "lightning.svg": {
+  "aria": "Three panels: tiny ice crystals and droplets bumping in a cloud prise charge apart, positive rising to the cloud top and negative staying at the bottom; when the charge piles up, the air between acts like a wall and gets punched through; the current races to the ground and the burned channel is the flash, while the suddenly heated air exploding outward is the thunder",
+  "text": {
+   "闪电是怎么来的": "How lightning happens",
+   "+ 上云顶": "+ rises to top",
+   "− 下云底": "− sinks to base",
+   "撞一下，电就分家": "one bump splits charge",
+   "电荷分开了，中间全是空气": "charges split, air between",
+   "亮是闪电，响是雷": "flash, then bang",
+   "① 云里在撞": "① bumping inside",
+   "小冰晶撞小水珠": "ice hits droplets",
+   "正负电荷被撞开": "charges split apart",
+   "② 越攒越多": "② piling up",
+   "空气这堵墙撑不住": "the air wall gives way",
+   "被一下打穿": "punched through",
+   "③ 一路通到地面": "③ down to ground",
+   "通道烧得极亮": "channel burns bright",
+   "热空气炸开就是雷": "hot air pops: thunder",
+   "水不是变成电，是碰撞把电分开 —— 云里的水是电池的原料": "Collisions split the charge — water is the battery, not the current"
+  }
+ },
+ "traffic-lines.svg": {
+  "aria": "A top-down view of a two-way road: a dashed white line separates lanes going the same way and may be crossed, a solid white line may not; a double solid yellow line down the middle separates opposite directions and neither side may cross it; only a dashed yellow line allows overtaking, and a solid yellow line by the kerb means no parking",
+  "text": {
+   "白线管同向，黄线管对向": "White = same way, Yellow = opposite",
+   "白虚线": "White dashed",
+   "同向分开，可变道": "same way · switch okay",
+   "白实线": "White solid",
+   "同向，但跨不过去": "same way · no crossing",
+   "双黄实线：对向车道，两边都不许跨": "Double solid yellow: opposite traffic, nobody may cross",
+   "黄虚线才准借道超车 ｜ 路边黄实线＝不能停车": "only dashed yellow may be crossed to overtake ｜ solid yellow at the kerb = no parking"
+  }
+ },
+ "securities-firm.svg": {
+  "aria": "A flow diagram: an investor opens an account and places orders with a securities firm, which sends the order to the exchange to be matched and reports the fill back; a listed company issues shares for cash through the exchange; the firm earns commissions and service fees, not a share of the investor gains or losses",
+  "text": {
+   "证券公司是中间那道柜台": "A broker is the counter in between",
+   "投资者": "Investor",
+   "想买股票的你": "you, buying shares",
+   "证券公司": "Securities firm",
+   "① 帮你开户、下单": "1 open account, order",
+   "② 保管钱和股票": "2 hold cash & shares",
+   "③ 帮公司上市发债": "3 help firms list",
+   "它不替你猜涨跌": "it does not guess prices",
+   "只保证把事办成": "it just gets things done",
+   "交易所": "Exchange",
+   "把买和卖对上": "matches buys & sells",
+   "上市公司": "Listed company",
+   "发股票换钱": "issues shares for cash",
+   "委托": "order",
+   "送单": "send",
+   "回报": "fill",
+   "它赚的是服务费，不是你的运气": "It earns fees, not your luck",
+   "佣金 ｜ 代销基金 ｜ 融资融券利息 ｜ 上市发债服务费": "commission | fund sales | margin interest | listing & bond fees"
+  }
+ },
+ "human-origin.svg": {
+  "aria": "People did not appear all at once: long ago the Earth had only fish and dinosaurs; then came ancestors that looked like apes; one generation at a time, they slowly became the people of today",
+  "text": {
+   "人是慢慢变来的，不是一下子冒出来的": "People came about slowly, not all at once",
+   "还没有人": "No people yet",
+   "学会用石头": "Learned to use stones",
+   "会说话、会做东西": "Talks, makes things",
+   "① 很久以前": "① Long, long ago",
+   "地球上有植物、": "Plants on Earth,",
+   "有鱼、有恐龙": "fish, dinosaurs",
+   "② 我们的祖先": "② Our ancestors",
+   "长得像猴子，": "Looked like apes,",
+   "慢慢学会站着走": "learned to stand up",
+   "③ 现在的人": "③ People today",
+   "会说话、用火、": "Talk, use fire,",
+   "写字、造房子": "write, build houses",
+   "中间隔了几百万年：一代一代，只变那么一点点": "Millions of years in between — one tiny change per generation"
+  }
+ },
+ "recycler.svg": {
+  "aria": "A flow diagram: cardboard boxes, empty bottles and old appliances that a household or neighbourhood wants to throw away are bought by weight at a very low price by the scrap collector, who then sorts them into paper, plastic and metal, bales them into one big pack and sells them by the tonne to paper mills, plastics plants, aluminium smelters and steel works; he earns the gap between the buying price and the selling price by collecting many households' small piles into one big truckload",
+  "text": {
+   "他赚的是「把散的攒成一堆」的钱": "He earns the gap of gathering the scattered into one pile",
+   "家里 · 小区": "Home · neighbourhood",
+   "旧纸箱": "Old cardboard",
+   "空瓶子": "Empty bottles",
+   "旧家电": "Old appliances",
+   "在你手里：想扔": "to you: just rubbish",
+   "按斤收": "buys by weight",
+   "收废品的人": "The scrap collector",
+   "① 按斤、很低的价收": "1 buys cheap, by weight",
+   "② 分开：纸 / 塑料 / 金属": "2 sorts paper / plastic / metal",
+   "③ 压成一大包": "3 bales into one pack",
+   "混在一起没人要": "mixed, nobody wants it",
+   "分开了才有工厂要": "sorted, factories want it",
+   "按吨卖": "sells by the tonne",
+   "造纸厂": "Paper mill",
+   "废纸打成浆，做新纸箱": "pulp to new boxes",
+   "塑料厂": "Plastics plant",
+   "熔成小颗粒，做桶和衣架": "pellets for buckets, hangers",
+   "铝厂 · 钢厂": "Aluminium & steel",
+   "回炉变成铝锭、钢筋": "remelt into ingots, rebar",
+   "差价 = 卖掉的钱 − 收进的钱": "Profit = sold for − paid for",
+   "不是秤上占便宜，是把几十家的「一点点」攒成了一大车": "Not a trick on the scale: many households' small piles into one big load"
+  }
+ },
+ "skewer-sticks.svg": {
+  "aria": "Three panels comparing skewers: firm cubed lamb needs just one stick; soft thin chives and enoki mushrooms need two sticks to clamp them so they do not curl and spin; a whole corn cob or whole chicken wing is big and heavy and needs two or three sticks to share the weight so it can be turned",
+  "text": {
+   "签子几根，看它会不会打转": "How many sticks? Depends on whether it spins",
+   "羊肉串": "Lamb skewer",
+   "切得方正、紧实": "cubed and firm",
+   "一根": "one stick",
+   "有块头，穿上就抓得住": "chunky: it grips the stick",
+   "翻面也不打转": "turn it, it stays put",
+   "韭菜 · 金针菇": "Chives · enoki",
+   "软、薄、长，会卷起来": "soft, thin, curls up",
+   "两根": "two sticks",
+   "一根它会绕着转、往下滑": "on one it spins and slides",
+   "两根夹住，方向就锁死了": "two clamp it, no twisting",
+   "整根玉米 · 鸡翅": "Whole corn · chicken wing",
+   "又大、又重、形状歪": "big, heavy, awkward shape",
+   "两三根": "two or three",
+   "多几根，重量分成好几份": "more sticks share the weight",
+   "一根签只是一根轴，东西能绕着它转；两根签就是两个支点": "One stick is one axis: the food can spin around it. Two sticks are two pivots.",
+   "越软、越薄、越重，就越需要多一根——不是为了多，是为了不转、不散": "Softer, thinner, heavier needs one more — not for show, but so it will not spin or fall apart",
+   "一根扛不住，翻面就垂": "one sags when turned"
+  }
+ },
+ "why-east.svg": {
+  "aria": "Two panels: from Europe, China lies east where the sun rises, so it is called the East; from the US, across the Pacific, the same China is west — the place did not move, the direction flipped",
+  "text": {
+   "东方不是标签，是「站在哪里看」": "East is not a label: it depends where you stand",
+   "① 欧洲人站在中间": "① Europeans in the middle",
+   "太阳升起的那边，就叫「东」": "the side where the sun rises is 'East'",
+   "往东看": "look east",
+   "西": "West",
+   "东": "East",
+   "欧洲": "Europe",
+   "中国": "China",
+   "中国在欧洲的东边": "China lies east of Europe",
+   "于是被叫作「东方」": "so it got called 'the East'",
+   "Orient 原意：太阳升起的地方": "Orient means: where the sun rises",
+   "② 换成美国人站中间": "② Now an American in the middle",
+   "同一块地方，方向反过来了": "same place, flipped direction",
+   "往西看": "look west",
+   "美国": "the US",
+   "隔着太平洋，中国在美国西边": "across the Pacific, China is west of the US",
+   "同一个中国，变成「西方」": "the same China becomes 'the West'",
+   "方位没变，看的人换了": "the place did not move; the viewer did",
+   "同一个中国，一步没动——变的是「谁在哪儿看」": "Same China, not a step moved — only the viewer changed",
+   "所以东方、西方是相对的方位；后来才又叠上「筷子、汉字、茶」这层文化意思": "East and West are relative directions; the cultural layer came later"
+  }
+ },
+ "what-is-revolution.svg": {
+  "aria": "Three rows: a political revolution changes who decides — from a king deciding alone to everyone voting; an industrial revolution changes how things are made — from one pair of shoes a day by hand to hundreds a day by machine; a scientific revolution changes how we decide what is true — from what the book says to what your own experiment shows. Bottom line: reform edits clauses in the same book; revolution replaces the whole book",
+  "text": {
+   "革命换的不是一个人，是一整套做法": "A revolution swaps a whole way of doing things, not one person",
+   "政治革命": "Political revolution",
+   "换「谁说了算」": "changes who decides",
+   "国王一个人定": "a king decides alone",
+   "大家投票定": "everyone votes",
+   "同一块地方，规矩整本换了": "same place, the whole rulebook replaced",
+   "工业革命": "Industrial revolution",
+   "换「怎么做东西」": "changes how things are made",
+   "手工一天一双鞋": "one pair of shoes a day by hand",
+   "机器一天几百双": "hundreds a day by machine",
+   "没人喊口号，是一台台机器改的": "no slogans — machines did the changing",
+   "科学革命": "Scientific revolution",
+   "换「怎么想」": "changes how we think",
+   "书上说的算": "what the book says counts",
+   "自己实验算": "what your experiment shows counts",
+   "判断对错的方法变了": "the way we judge what is true changed",
+   "改革＝在同一本书里改条款　｜　革命＝把整本书换掉": "Reform = amend clauses in the same book  |  Revolution = replace the whole book"
+  }
+ },
+ "why-trees.svg": {
+  "aria": "Three panels: the sun overhead, with grass, a shrub and a tree at different heights — whoever grows taller gets more light; leaves cook their own food from sunlight, water and air, making sugar and releasing oxygen; roots hold the soil so rain cannot wash it away, and a hole in the trunk becomes a bird's home. Bottom line: nobody arranged for trees — plants just raced for the sun and grew upward",
+  "text": {
+   "树，是长得特别高的植物": "A tree is just a very tall plant",
+   "谁长得高，谁晒得多": "Taller = more sun",
+   "阳光": "Sunlight",
+   "水": "Water",
+   "空气": "Air",
+   "糖（饭）": "Sugar",
+   "氧气 ↑": "Oxygen ↑",
+   "树叶会自己做饭": "Leaves cook food",
+   "根抓住土，树洞给鸟住": "Roots hold the soil",
+   "树不是谁安排出来的：它们只是抢着晒太阳，一路往上长": "No one arranged for trees: they raced for the sun and grew up",
+   "长得高一点就多一口饭；晒不到的那些，慢慢被林子筛掉": "A little taller means a little more food; shaded ones drop out"
+  }
+ },
+ "what-is-cafa.svg": {
+  "aria": "Three panels: the name breaks into Central + Fine Arts + Academy, meaning an art university in Beijing, founded in 1918; inside you study fine art, design, architecture and art history; to get in you draw for years, then pass the art exam, CAFA's own exam, and the gaokao. Bottom line: CAFA is a school — not a painting, not a museum, though it has its own art museum.",
+  "text": {
+   "央美，是一所教人画画的美术大学": "CAFA is an art university that teaches people to draw",
+   "① 名字拆开": "① Break the name apart",
+   "中央 + 美术 + 学院": "Central + Fine Arts + Academy",
+   "= 一所美术大学": "= an art university",
+   "央美": "CAFA",
+   "在北京 · 1918 年创办": "In Beijing, founded 1918",
+   "② 里面学什么": "② What you study",
+   "造型：油画 · 国画": "Fine art: oil, ink",
+   "雕塑 · 版画": "Sculpture, printmaking",
+   "设计：视觉 · 产品": "Design: visual, product",
+   "服装 · 数码媒体": "Fashion, digital media",
+   "建筑 · 实验艺术": "Architecture, experimental art",
+   "去做画家 · 设计师": "Become a painter or designer",
+   "③ 怎么进去": "③ How to get in",
+   "从小练画": "Draw for years",
+   "艺考：素描 · 色彩": "Art exam: drawing, colour",
+   "央美校考": "CAFA's own exam",
+   "高考过线": "Gaokao pass mark",
+   "缺一环都进不去": "Miss one and you are out",
+   "央美是学校，不是一幅画，也不是博物馆": "CAFA is a school — not a painting, not a museum",
+   "不过它自己有一座美术馆，里面常办展览": "Though it does have its own art museum"
+  }
+ },
+ "what-is-jazz-dance.svg": {
+  "aria": "Three panels: jazz dance grew out of jazz music — in 1920s America jazz was improvised and syncopated, and people danced to it; it is not a fixed set of steps but slamming on the heavy beats, moving the body in parts, adding your own flourishes; later it split into social swing, Broadway stage jazz and street jazz funk, which is what most classes teach today. Bottom line: jazz dance is not a tune, it is how you move to the tune.",
+  "text": {
+   "爵士舞：跟着爵士乐跳出来的舞": "Jazz dance: born from jazz music",
+   "① 先有曲子，才有舞": "① Music, then dance",
+   "1920 年代 · 美国": "1920s · America",
+   "爵士乐": "Jazz music",
+   "即兴 · 切分节奏": "free, off-beat rhythm",
+   "大家跟着它跳": "people danced to it",
+   "就叫爵士舞": "and it was jazz dance",
+   "爵士乐 ≠ 爵士舞": "music is not the dance",
+   "② 不是一套固定动作": "② Not fixed steps",
+   "1": "1",
+   "2": "2",
+   "3": "3",
+   "4": "4",
+   "重拍上「砸」下去发力": "Hit the heavy beat",
+   "身体能分节动": "Body moves in parts",
+   "还能自己加花": "Add your own flair",
+   "同一首歌，两人两样": "Same song, two looks",
+   "③ 后来分成三支": "③ Split in three",
+   "社交 · 摇摆舞": "Social: swing",
+   "舞台 · 百老汇": "Stage: Broadway",
+   "街头 · 爵士放克": "Street: jazz funk",
+   "现在舞蹈班多是这支": "Most classes: this",
+   "爵士舞不是一首曲子，是「跟着曲子怎么动」": "Jazz dance is not a tune — it is how you move to it",
+   "没有固定组合——同一首歌，两个人能跳出两个样子": "No fixed routine: same song, two dancers, two different dances"
+  }
+ },
+ "corn-hang-dry.svg": {
+  "aria": "In northeast China winter, corn cobs hang on a raised wooden rack so the dry cold wind passes between them and carries the moisture away",
+  "text": {
+   "挂在外面，是让玉米「晾干」": "Hang it up, and the corn dries",
+   "风吹过每一根": "Wind on every cob",
+   "−20℃ · 干冷风大": "−20℃ · dry wind",
+   "水分被带走": "Moisture blown off",
+   "离地挂高，老鼠上不来": "Off the ground, no mice"
+  }
+ },
+ "why-parking-fee.svg": {
+  "aria": "One parking space across a day: when free, a single car stays all day and others circle looking for a space; when paid, three cars take turns and the space turns over. The money pays for the barrier, cameras, lighting, cleaning, repairs, insurance, land and taxes — free parking somewhere means someone else paid.",
+  "text": {
+   "收费，收的是「占住一块稀缺的地」": "The fee is not for parking — it is for holding a scarce piece of land",
+   "7 点": "7am",
+   "13 点": "1pm",
+   "19 点": "7pm",
+   "不收费": "Free",
+   "一辆车，停一整天": "One car, all day long",
+   "后来的车只能绕圈找位": "Later cars just circle for a space",
+   "收费": "Paid",
+   "车 1": "Car 1",
+   "车 2": "Car 2",
+   "车 3": "Car 3",
+   "一辆接一辆，车位转起来": "One after another — the space turns over",
+   "钱花在哪": "Where it goes",
+   "抬杆·监控": "Barrier · cameras",
+   "照明·保洁": "Lighting · cleaning",
+   "维修·保险": "Repairs · insurance",
+   "地价·税": "Land · taxes",
+   "谁用它，谁付它的成本；钱也用来修新的车位": "Whoever uses it pays its cost — and the money builds more spaces",
+   "免费的地方不是零成本：商场免 3 小时，是想让你进去买东西": "Free parking is never zero-cost: a mall gives 3 free hours to get you inside to shop"
+  }
+ }
 }

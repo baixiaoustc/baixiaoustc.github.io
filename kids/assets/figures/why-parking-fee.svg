@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="同一个车位：免费时一辆车停一整天，收费后三辆车轮流停，车位转起来">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+
+  <text x="320" y="48" text-anchor="middle" font-size="22" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#2B2B2B">收费，收的是「占住一块稀缺的地」</text>
+
+  <!-- 时间刻度 -->
+  <text x="150" y="100" text-anchor="middle" font-size="13" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#8A8577">7 点</text>
+  <text x="372" y="100" text-anchor="middle" font-size="13" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#8A8577">13 点</text>
+  <text x="594" y="100" text-anchor="middle" font-size="13" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#8A8577">19 点</text>
+
+  <!-- 第一行：不收费，一辆车占满一整天 -->
+  <text x="44" y="146" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">不收费</text>
+  <g>
+    <rect x="150" y="112" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="224" y="112" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="298" y="112" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="372" y="112" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="446" y="112" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="520" y="112" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+  </g>
+  <rect x="156" y="118" width="432" height="40" rx="9" fill="#7BA8C0"/>
+  <text x="372" y="144" text-anchor="middle" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#FFFFFF">一辆车，停一整天</text>
+  <text x="150" y="188" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#8A8577">后来的车只能绕圈找位</text>
+
+  <!-- 第二行：收费，车位轮流用 -->
+  <text x="44" y="238" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">收费</text>
+  <g>
+    <rect x="150" y="206" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="224" y="206" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="298" y="206" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="372" y="206" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="446" y="206" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="520" y="206" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+  </g>
+  <rect x="156" y="212" width="140" height="40" rx="9" fill="#7BA8C0"/>
+  <rect x="304" y="212" width="140" height="40" rx="9" fill="#E9B84A"/>
+  <rect x="452" y="212" width="136" height="40" rx="9" fill="#9BC49A"/>
+  <text x="226" y="238" text-anchor="middle" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#FFFFFF">车 1</text>
+  <text x="374" y="238" text-anchor="middle" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#6B4E12">车 2</text>
+  <text x="520" y="238" text-anchor="middle" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#2F4A33">车 3</text>
+  <text x="150" y="282" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#8A8577">一辆接一辆，车位转起来</text>
+
+  <!-- 第三行：钱花在哪 -->
+  <text x="44" y="332" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">钱花在哪</text>
+  <rect x="150" y="306" width="100" height="32" rx="16" fill="#E6F0F5"/>
+  <rect x="262" y="306" width="100" height="32" rx="16" fill="#E6F0F5"/>
+  <rect x="374" y="306" width="100" height="32" rx="16" fill="#E6F0F5"/>
+  <rect x="486" y="306" width="108" height="32" rx="16" fill="#E6F0F5"/>
+  <text x="200" y="327" text-anchor="middle" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">抬杆·监控</text>
+  <text x="312" y="327" text-anchor="middle" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">照明·保洁</text>
+  <text x="424" y="327" text-anchor="middle" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">维修·保险</text>
+  <text x="540" y="327" text-anchor="middle" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">地价·税</text>
+  <text x="150" y="358" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#8A8577">谁用它，谁付它的成本；钱也用来修新的车位</text>
+
+  <text x="320" y="382" text-anchor="middle" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">免费的地方不是零成本：商场免 3 小时，是想让你进去买东西</text>
+</svg>

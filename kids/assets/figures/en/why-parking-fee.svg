@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="One parking space across a day: when free, a single car stays all day and others circle looking for a space; when paid, three cars take turns and the space turns over. The money pays for the barrier, cameras, lighting, cleaning, repairs, insurance, land and taxes — free parking somewhere means someone else paid.">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+
+  <text x="320" y="48" text-anchor="middle" font-size="19" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#2B2B2B">The fee is not for parking — it is for holding a scarce piece of land</text>
+
+  <!-- 时间刻度 -->
+  <text x="150" y="100" text-anchor="middle" font-size="13" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#8A8577">7am</text>
+  <text x="372" y="100" text-anchor="middle" font-size="13" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#8A8577">1pm</text>
+  <text x="594" y="100" text-anchor="middle" font-size="13" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#8A8577">7pm</text>
+
+  <!-- 第一行：不收费，一辆车占满一整天 -->
+  <text x="44" y="146" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">Free</text>
+  <g>
+    <rect x="150" y="112" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="224" y="112" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="298" y="112" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="372" y="112" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="446" y="112" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="520" y="112" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+  </g>
+  <rect x="156" y="118" width="432" height="40" rx="9" fill="#7BA8C0"/>
+  <text x="372" y="144" text-anchor="middle" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#FFFFFF">One car, all day long</text>
+  <text x="150" y="188" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#8A8577">Later cars just circle for a space</text>
+
+  <!-- 第二行：收费，车位轮流用 -->
+  <text x="44" y="238" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">Paid</text>
+  <g>
+    <rect x="150" y="206" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="224" y="206" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="298" y="206" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="372" y="206" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="446" y="206" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+    <rect x="520" y="206" width="74" height="52" fill="#FFFFFF" stroke="#DDD6C7" stroke-width="1.5"/>
+  </g>
+  <rect x="156" y="212" width="140" height="40" rx="9" fill="#7BA8C0"/>
+  <rect x="304" y="212" width="140" height="40" rx="9" fill="#E9B84A"/>
+  <rect x="452" y="212" width="136" height="40" rx="9" fill="#9BC49A"/>
+  <text x="226" y="238" text-anchor="middle" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#FFFFFF">Car 1</text>
+  <text x="374" y="238" text-anchor="middle" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#6B4E12">Car 2</text>
+  <text x="520" y="238" text-anchor="middle" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#2F4A33">Car 3</text>
+  <text x="150" y="282" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#8A8577">One after another — the space turns over</text>
+
+  <!-- 第三行：钱花在哪 -->
+  <text x="44" y="332" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">Where it goes</text>
+  <rect x="150" y="306" width="100" height="32" rx="16" fill="#E6F0F5"/>
+  <rect x="262" y="306" width="100" height="32" rx="16" fill="#E6F0F5"/>
+  <rect x="374" y="306" width="100" height="32" rx="16" fill="#E6F0F5"/>
+  <rect x="486" y="306" width="108" height="32" rx="16" fill="#E6F0F5"/>
+  <text x="200" y="327" text-anchor="middle" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">Barrier · cameras</text>
+  <text x="312" y="327" text-anchor="middle" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">Lighting · cleaning</text>
+  <text x="424" y="327" text-anchor="middle" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">Repairs · insurance</text>
+  <text x="540" y="327" text-anchor="middle" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">Land · taxes</text>
+  <text x="150" y="358" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#8A8577">Whoever uses it pays its cost — and the money builds more spaces</text>
+
+  <text x="320" y="382" text-anchor="middle" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">Free parking is never zero-cost: a mall gives 3 free hours to get you inside to shop</text>
+</svg>
