@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>架构即未来：支付的技术架构｜一本书读懂支付 · 第 5 章</title>
+<meta name="description" content="《一本书读懂支付》第 5 章可视化笔记：六方利益相关方与诉求、支付前中后的功能、高可用/高安全/高效率/可扩展四大要求、OSI 七层与支付五层参考架构、一笔请求穿过五层、CAS 通用日志服务、整体架构与 11 个子系统。">
+<meta name="theme-color" content="#0E2233">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E2233'/%3E%3Cpath d='M16 6 L26 16 L16 26 L6 16 Z' fill='none' stroke='%23C8A45C' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23C8A45C'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="scrollbar"><i id="progress"></i></div>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <div class="brand"><span class="mark">◆</span><span class="brand-t">STUDY NOTES</span><span class="brand-s">CH.05 / 支付的技术架构</span></div>
+  <nav class="topnav">
+    <a href="#s01">01 六方</a><a href="#s02">02 功能</a><a href="#s03">03 四指标</a><a href="#s04">04 五层</a><a href="#s05">05 请求</a><a href="#s06">06 日志</a><a href="#s07">07 总图</a><a href="#s08">08 十一</a><a href="#s09">09 收口</a>
+  </nav>
+</div></header>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero"><div class="wrap hero-in">
+  <div class="hero-meta mono"><span>BOOK</span><span>一本书读懂支付</span><span>陈斌 · 第 5 章</span><span>2026-11-22</span></div>
+  <h1 class="hero-title">架构即未来，<br>先把这五层砌起来</h1>
+  <p class="hero-sub">支付的技术架构，不是从买服务器开始，而是从数清利益相关方开始。六方的诉求决定功能集合，功能集合再被切成支付前、中、后三条流水线；最后用参考架构分成五层，让每层只解决一类问题。可用、安全、高效、可扩，是这套结构的验收线。</p>
+
+  <div class="hero-stack" data-audit-group>
+    <span class="hs"><b class="mono">L05</b><i>前端应用层</i><em>收银台 · 钱包 · POS App</em></span>
+    <span class="hs"><b class="mono">L04</b><i>接入网关层</i><em>商户网关 · 银行网关</em></span>
+    <span class="hs hi"><b class="mono">L03</b><i>核心业务层</i><em>请求 · 指令 · 计费 · 账务</em></span>
+    <span class="hs"><b class="mono">L02</b><i>通用服务层</i><em>日志 · 通知 · 鉴权 · ID</em></span>
+    <span class="hs"><b class="mono">L01</b><i>基础设施层</i><em>网络 · 计算 · 存储 · 灾备</em></span>
+  </div>
+  <div class="hero-stack-cap mono">从外立面到地基：上层调用下层，下层托住上层</div>
+
+  <div class="hero-stats">
+    <div class="stat"><b>5<small>层</small></b><span>支付参考架构</span></div>
+    <div class="stat"><b>11<small>个</small></b><span>支付子系统</span></div>
+    <div class="stat"><b>99.99<small>%</small></b><span>核心系统可用性下限</span></div>
+    <div class="stat"><b>1<small>%</small></b><span>典型支付处理费率</span></div>
+  </div>
+
+  <div class="stamp"><div class="stamp-in mono">LAYERED<br>ARCH<br>5 LAYERS<br>CH.05</div></div>
+</div></section>
+
+<!-- ═══════════ 01 六方生态 ═══════════ -->
+<section id="s01" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 01</span>
+    <h2>六方生态：先数清谁在支付里</h2>
+    <p class="sec-lead">技术架构的第一性原理，不是「用什么中间件」，而是「谁提了什么要求」。收款人要按时收到钱，付款人要按时收到货，银行要对账，卡组织要安全地转授权，支付机构要完成交割，监管要看住合规。六个主体，六套诉求，最后都要落到功能上。</p>
+  </div>
+
+  <div class="party-wrap" data-audit-group>
+    <div class="party-grid" id="partyGrid">
+      <button class="party-card" data-p="payee"><span class="pc-n mono">P01 / PAYEE</span><b>收款人</b><span class="pc-s">卖方 · 商户</span></button>
+      <button class="party-card is-on" data-p="payer"><span class="pc-n mono">P02 / PAYER</span><b>付款人</b><span class="pc-s">买方 · 消费者</span></button>
+      <button class="party-card" data-p="bank"><span class="pc-n mono">P03 / BANK</span><b>银行</b><span class="pc-s">开户 · 资金转移</span></button>
+      <button class="party-card" data-p="cardorg"><span class="pc-n mono">P04 / CARD ORG</span><b>银行卡组织</b><span class="pc-s">发卡行 ↔ 收单行</span></button>
+      <button class="party-card" data-p="psp"><span class="pc-n mono">P05 / PSP</span><b>支付机构</b><span class="pc-s">中间人 · 代收</span></button>
+      <button class="party-card" data-p="reg"><span class="pc-n mono">P06 / REGULATOR</span><b>监管机构</b><span class="pc-s">规则 · 合规</span></button>
+    </div>
+
+    <div class="party-read">
+      <div class="pr-left">
+        <span class="pr-k mono" id="partyK">SELECTED / P02</span>
+        <h3 id="partyName">付款人</h3>
+        <p id="partyRole">买方 · 消费者：为商品或服务付款</p>
+      </div>
+      <div class="pr-right">
+        <div class="pr-line"><span class="k mono">核心诉求</span><b id="partyWant">按合约在规定时间收到约定数量与质量的货物或服务</b></div>
+        <div class="pr-line"><span class="k mono">要履行的义务</span><b id="partyDuty">按时、按量完成与货物或服务对应的资金支付</b></div>
+        <div class="pr-line"><span class="k mono">对架构的约束</span><b id="partyNeed">支付要快、状态可查；钱包覆盖在线 / 扫码 / 余额；大额要能加验</b></div>
+        <div class="party-flow" id="partyFlow">
+          <span data-f="1">付款人</span><i>→</i><span data-f="2">支付机构</span><i>→</i><span data-f="3">银行 · 卡组织</span><i>→</i><span data-f="4">收款人</span><span data-f="5" class="reg">监管</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>每个诉求都要有功能承接，每个功能都要有系统落点</b>。六方里少照顾一方，架构就会在某一段长出补丁：少了对账，结算就对不平；少了监管报告，合规就过不去；少了幂等，重试就会重复扣款。</div>
+</div></section>
+
+<!-- ═══════════ 02 诉求到功能 ═══════════ -->
+<section id="s02" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 02</span>
+    <h2>从诉求到功能：支付前、中、后</h2>
+    <p class="sec-lead">同一批功能，按时间轴排成三段，每段的产物完全不同。支付前是 KYC 与接入，解决「这个人能不能做这笔生意」；支付中把请求翻译成银行能执行的指令；支付后确认结果、算备付金、把钱真正结算给商户。</p>
+  </div>
+
+  <div class="stage-lab">
+    <div class="stage-tabs" id="stageTabs">
+      <button class="stage-tab is-on" data-s="pre"><span class="mono">STAGE 01</span><b>支付前</b><em>KYC 与接入</em></button>
+      <button class="stage-tab" data-s="during"><span class="mono">STAGE 02</span><b>支付中</b><em>请求 → 指令</em></button>
+      <button class="stage-tab" data-s="post"><span class="mono">STAGE 03</span><b>支付后</b><em>对账 → 出款</em></button>
+    </div>
+
+    <div class="stage-body">
+      <div class="stage-main">
+        <span class="stage-k mono" id="stageK">STAGE 01 / BEFORE</span>
+        <h3 id="stageTitle">支付前 · 先把人验清楚</h3>
+        <p id="stageDesc">KYC 的目的不是收集资料，是保证这笔业务不会被用来洗钱或资助恐怖主义。六步走完，商户才真正具备收款资格。</p>
+        <div class="stage-who" id="stageWho"><span>支付机构</span><span>商户</span><span>银行</span></div>
+        <div class="fn-list" id="stageFns"></div>
+      </div>
+      <div class="stage-side">
+        <span class="k mono">这一段的产物</span>
+        <ul id="stageOut"></ul>
+        <div class="stage-num"><b id="stageCount">6</b><span>项功能</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>支付中与支付后不能混成一个事务</b>。支付中完成的是银行之间的资金交割，钱还在支付机构的备付金账户里；支付后才是支付机构把备付金结算给商户。两段的时间尺度、失败模式、对账对象都不同，合在一起，就会要求「银行到账」和「商户到账」同时成功——现实里做不到。</div>
+</div></section>
+
+<!-- ═══════════ 03 四个硬指标 ═══════════ -->
+<section id="s03" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 03</span>
+    <h2>四个硬指标：可用、安全、高效、可扩</h2>
+    <p class="sec-lead">支付和游戏、短信、直播、电商都不一样：它处理的是资金，所以四个指标不是「越高越好」的形容词，而是有下限的验收线。可用性按年算，效率按单笔算，扩展性看加机器能不能扛。</p>
+  </div>
+
+  <div class="ind-block">
+    <div class="ind-head"><span class="ind-tag mono">01 / AVAILABILITY</span><h3>高可用：一年允许停多久</h3><p>核心系统至少 99.99%，最好 99.999%。每多一个 9，冗余、演练、变更管控的成本都要上一个台阶。</p></div>
+    <div class="avail">
+      <div class="avail-ctl" id="availBtns">
+        <button class="av-btn" data-a="3">99.9%</button>
+        <button class="av-btn is-on" data-a="4">99.99%</button>
+        <button class="av-btn" data-a="5">99.999%</button>
+      </div>
+      <div class="avail-body">
+        <div class="avail-big"><b id="availPct">99.99%</b><span id="availDown">52.6 分钟 / 年</span></div>
+        <div class="avail-bars"><i id="availBar"></i><u class="mono" id="availScale">0 — 8.76 小时</u></div>
+      </div>
+      <p class="avail-note" id="availNote">一年 525,600 分钟，允许停 52.6 分钟。这不是「尽量不停」，是把停机预算写进了架构。</p>
+    </div>
+  </div>
+
+  <div class="ind-block">
+    <div class="ind-head"><span class="ind-tag mono">02 / EFFICIENCY</span><h3>高效率：单笔成本必须随规模往下走</h3><p>费率按交易金额的比例收，典型 1%：100 元交易最多收 1 元。成本不摊薄，规模越大越亏。</p></div>
+    <div class="eff">
+      <div class="eff-eq mono">单笔成本 = 年运维成本 / 年支付笔数</div>
+      <div class="eff-ctl">
+        <label for="effRange">日支付笔数 <b id="effVol">100 万</b></label>
+        <input type="range" id="effRange" min="0" max="4" step="1" value="2" aria-label="日支付笔数">
+        <div class="eff-scale mono"><span>1 万</span><span>10 万</span><span>100 万</span><span>1,000 万</span><span>1 亿</span></div>
+      </div>
+      <div class="eff-out">
+        <div><span class="k mono">单笔成本</span><b id="effCost">0.0986 元</b></div>
+        <div><span class="k mono">单笔收入（1% · 客单价 100 元）</span><b id="effRev">1.00 元</b></div>
+        <div><span class="k mono">成本占收入</span><b id="effRatio">9.86%</b></div>
+      </div>
+      <p class="eff-note" id="effNote">年运维成本按 3,600 万元示例；单笔成本的意义不在绝对值，而在同一条时间轴上的自我对比。</p>
+    </div>
+  </div>
+
+  <div class="ind-block">
+    <div class="ind-head"><span class="ind-tag mono">03 / SCALABILITY</span><h3>可扩展：促销洪峰为什么能打穿系统</h3><p>2015 年某电商联合手机厂商做促销，上万笔请求在不到 10 秒内涌入；每笔都要锁商户账户，数据库来不及响应，系统完全瘫痪。</p></div>
+    <div class="burst">
+      <div class="burst-ctl">
+        <label for="burstRange">瞬时并发 <b id="burstTps">1,000 TPS</b></label>
+        <input type="range" id="burstRange" min="200" max="2000" step="100" value="1000" aria-label="瞬时并发 TPS">
+        <span class="mono">持续 10 秒 · 示例单库容量 300 TPS</span>
+      </div>
+      <div class="burst-track"><i id="burstQueue"></i><span class="burst-cap mono"></span></div>
+      <div class="burst-out">
+        <div><span class="k mono">10 秒内请求</span><b id="burstTotal">10,000 笔</b></div>
+        <div><span class="k mono">排队积压</span><b id="burstBacklog">7,000 笔</b></div>
+        <div><span class="k mono">状态</span><b id="burstState" class="is-bad">请求排队 · 锁表冲突</b></div>
+      </div>
+    </div>
+    <p class="burst-note" id="burstNote">水平扩展的意思是：请求涨了，加机器就能扩，不用改应用。锁表是它的天敌——所有请求都抢同一行，加多少机器都排队。</p>
+  </div>
+
+  <div class="ind-block">
+    <div class="ind-head"><span class="ind-tag mono">04 / SECURITY</span><h3>高安全：三张证，一条底线</h3><p>支付碰的是银行卡信息（PCI）和个人身份信息（PII）。架构必须保证信息安全，这不是「加个防火墙」，是三项硬检查。</p></div>
+    <div class="check-grid">
+      <div class="check"><span class="mono">CHECK 01</span><b>PCI-DSS 认证</b><p>银行卡行业数据安全标准，支付机构最重要的一张证。</p></div>
+      <div class="check"><span class="mono">CHECK 02</span><b>等保认证</b><p>公安部等四部委《信息安全等级保护管理办法》的合规认证。</p></div>
+      <div class="check"><span class="mono">CHECK 03</span><b>脆弱性检查</b><p>定期扫描，且不存在中高等级安全漏洞；有了证也不等于一直安全。</p></div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>可用性和安全性是门槛，效率和扩展性是生意</b>。99.99% 不是口号，是一年只允许停 52.6 分钟；1% 费率意味着 100 元交易最多收 1 元，单笔成本必须随规模往下走。四个指标里，前两个决定「能不能开门」，后两个决定「能不能赚钱」。</div>
+</div></section>
+
+<!-- ═══════════ 04 参考架构 ═══════════ -->
+<section id="s04" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 04</span>
+    <h2>参考架构：从 OSI 七层到支付五层</h2>
+    <p class="sec-lead">分层不是支付发明的，是行业通用的最佳实践。1984 年的 ISO OSI 七层模型解决异构网络互联；支付照同样的思路，把复杂应用分成五层。分层让每层只解决一类问题，层与层之间只认接口。</p>
+  </div>
+
+  <div class="stack-lab">
+    <div class="stack-tabs" id="stackTabs">
+      <button class="stack-tab is-on" data-s="pay">支付的五层</button>
+      <button class="stack-tab" data-s="osi">OSI 的七层</button>
+    </div>
+    <div class="stack-two">
+      <div class="stack" id="stackList"></div>
+      <div class="stack-read">
+        <span class="sr-k mono" id="stackK">SELECTED / L05</span>
+        <h3 id="stackName">前端应用层</h3>
+        <p id="stackDesc"></p>
+        <div class="sr-grid">
+          <div><span class="k mono">这一层装什么</span><b id="stackItems"></b></div>
+          <div><span class="k mono">对谁负责</span><b id="stackWho"></b></div>
+          <div><span class="k mono">失败会怎样</span><b id="stackFail"></b></div>
+        </div>
+        <div class="sr-why"><span class="mono">WHY /</span><p id="stackWhy"></p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>分层的收益不是「图好看」，是「每层只解决一类问题，层间只认接口」</b>。OSI 把服务、接口、协议三个概念分开；支付五层同理：核心层不该关心银行报文长什么样，网关层也不该自己改账。层与层之间的服务，应该用内部服务水平协议来约束。</div>
+</div></section>
+
+<!-- ═══════════ 05 一笔请求 ═══════════ -->
+<section id="s05" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 05</span>
+    <h2>一笔请求，从外立面走到地基</h2>
+    <p class="sec-lead">把一笔支付请求放进五层，看它怎么走：前端发起，网关验签与转译，核心做风控与指令，通用服务负责通知与日志，基础设施负责落库。回程不是原路返回，而是结果与账务。</p>
+  </div>
+
+  <div class="req-lab">
+    <div class="req-head">
+      <div>
+        <span class="req-k mono" id="reqK">STEP 00 / IDLE</span>
+        <h3 id="reqName">待发：一笔 100 元的订单</h3>
+        <p id="reqDesc">点「播放」，看请求从 L05 走到 L01，再带着结果走回来。时延为示意，用来区分层次，不代表真实系统指标。</p>
+      </div>
+      <div class="req-ctl">
+        <button class="btn" id="reqPlay">播放一次请求</button>
+        <button class="btn ghost" id="reqReset">重置</button>
+      </div>
+    </div>
+    <div class="req-body">
+      <div class="req-ladder" id="reqLadder">
+        <div class="rl" data-l="5"><span class="rl-c mono">L05</span><div><b>前端应用层</b><em>收银台 / 钱包 / POS App</em></div><span class="rl-r">发起 · 展示</span></div>
+        <div class="rl" data-l="4"><span class="rl-c mono">L04</span><div><b>接入网关层</b><em>商户网关 / 银行网关</em></div><span class="rl-r">验签 · 转译</span></div>
+        <div class="rl core" data-l="3"><span class="rl-c mono">L03</span><div><b>核心业务层</b><em>请求 / 风控 / 指令 / 账务</em></div><span class="rl-r">承重</span></div>
+        <div class="rl" data-l="2"><span class="rl-c mono">L02</span><div><b>通用服务层</b><em>通知 / 日志 / 鉴权 / ID</em></div><span class="rl-r">公共设施</span></div>
+        <div class="rl" data-l="1"><span class="rl-c mono">L01</span><div><b>基础设施层</b><em>计算 / 存储 / 网络 / 数据库</em></div><span class="rl-r">地基</span></div>
+        <div class="bank-node" id="bankNode"><span class="mono">EXTERNAL</span><b>银行 / 卡组织</b><em>扣款 · 返回结果</em></div>
+        <span class="req-token" id="reqToken" aria-hidden="true"></span>
+      </div>
+      <div class="req-log" id="reqLog"><div class="rl-empty mono">等待请求 / STANDBY</div></div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>回程不是「把同样的路再走一遍」</b>。去程是请求，回程是结果与账务。真正决定用户体验的是回程——结果通知晚 1 秒，商户后台就多 1 秒的「未知状态」，客服就多 1 秒的电话。</div>
+</div></section>
+
+<!-- ═══════════ 06 CAS ═══════════ -->
+<section id="s06" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 06</span>
+    <h2>CAS：一个通用服务怎么设计</h2>
+    <p class="sec-lead">通用服务层的样板。日志不是「打一行字」，是一条从标准化、入队、消费、分级到统计的流水线。书里用通用日志服务 CAS 举例：把格式、异步、分级、统计收进一个服务，应用就不用各写一套。</p>
+  </div>
+
+  <div class="cas-services" data-audit-group>
+    <span class="cs-item"><b class="mono">CDS</b><i>通用数据服务</i><em>物理数据与逻辑数据隔离</em></span>
+    <span class="cs-item"><b class="mono">CKS</b><i>通用密钥服务</i><em>管理各种安全密钥</em></span>
+    <span class="cs-item"><b class="mono">CNS</b><i>通用通知服务</i><em>邮件、短信等通知</em></span>
+    <span class="cs-item"><b class="mono">CUS</b><i>通用 GUID 服务</i><em>全局唯一 ID</em></span>
+    <span class="cs-item hi"><b class="mono">CAS</b><i>通用日志服务</i><em>日志的标准化与治理</em></span>
+  </div>
+
+  <div class="cas-lab">
+    <div class="cas-pipe" id="casPipe">
+      <button class="cas-stage is-on" data-c="0"><span class="mono">S1</span><b>标准化</b><em>统一日志结构</em></button>
+      <button class="cas-stage" data-c="1"><span class="mono">S2</span><b>入队</b><em>生产者 → MQ</em></button>
+      <button class="cas-stage" data-c="2"><span class="mono">S3</span><b>消费</b><em>解析与计算</em></button>
+      <button class="cas-stage" data-c="3"><span class="mono">S4</span><b>分级</b><em>Info / Critical / Exception</em></button>
+      <button class="cas-stage" data-c="4"><span class="mono">S5</span><b>统计</b><em>流式近实时</em></button>
+    </div>
+    <div class="cas-main">
+      <div class="cas-read">
+        <span class="cr-k mono" id="casK">STAGE 01 / NORMALIZE</span>
+        <h3 id="casName">标准化日志结构</h3>
+        <p id="casDesc"></p>
+        <ul id="casPoints"></ul>
+      </div>
+      <div class="cas-sample">
+        <span class="mono">SAMPLE / SQL 慢查询</span>
+        <div class="cas-metrics">
+          <div><span class="k mono">本次执行</span><b>860 ms</b></div>
+          <div><span class="k mono">同语句 P90</span><b>320 ms</b></div>
+          <div><span class="k mono">判定</span><b id="casVerdict">2.7 倍 · 预警</b></div>
+        </div>
+        <div class="cas-actions"><button class="btn" id="casRun">跑一条日志</button><button class="btn ghost" id="casReset">清空</button></div>
+        <div class="cas-log" id="casLog"><div class="rl-empty mono">等待日志 / STANDBY</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>通用服务的价值是「标准化 + 一致性 + 治理」</b>。CAS 把格式、异步、分级、统计收进一个服务，应用就不用各写一套；架构师的工作不是写日志，而是定义「什么值得被记录、记录后怎么用」。</div>
+</div></section>
+
+<!-- ═══════════ 07 整体架构 ═══════════ -->
+<section id="s07" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 07</span>
+    <h2>整体架构：左接入、右运营、中间核心</h2>
+    <p class="sec-lead">参考架构是逻辑分层，整体架构是工程落地。书里的总图在五层之上加了两个部分：左边是各类接入，右边是运营管理平台；中间是订单、支付、计费、结算、对账、出款、账户、账务，底下是通用与基础设施。</p>
+  </div>
+
+  <div class="arch-lab">
+    <div class="arch">
+      <button class="arch-zone z-front" data-z="front"><span class="mono">Z01</span><b>前端接入</b><em>Web / App / POS / 电话</em></button>
+      <button class="arch-zone z-left" data-z="left"><span class="mono">Z02</span><b>接入区</b><em>商户 / PSP / 银行 / 机构 / 监管</em></button>
+      <button class="arch-zone z-core" data-z="core"><span class="mono">Z03</span><b>核心应用</b><em>订单 · 支付 · 计费 · 结算 · 对账 · 出款 · 账户 · 账务</em></button>
+      <button class="arch-zone z-right" data-z="right"><span class="mono">Z04</span><b>运营平台</b><em>签约 · 审核 · 费率 · 对账 · 结算 · 出款</em></button>
+      <button class="arch-zone z-base" data-z="base"><span class="mono">Z05</span><b>通用与基础</b><em>日志 · 鉴权 · 认证 · 通知 · ID · 证书 · 密钥 · 数据</em></button>
+    </div>
+    <div class="arch-read">
+      <span class="ar-k mono" id="archK">SELECTED / Z03</span>
+      <h3 id="archName">核心应用</h3>
+      <p id="archDesc"></p>
+      <div class="ar-grid">
+        <div><span class="k mono">装什么</span><b id="archItems"></b></div>
+        <div><span class="k mono">谁在用</span><b id="archWho"></b></div>
+        <div><span class="k mono">设计要点</span><b id="archPoint"></b></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>分层回答「谁负责什么」，区域回答「部署在哪里、谁操作」</b>。同一个核心应用，在参考架构里属于 L03；在整体架构里被左边接入、右边运营、底下通用围着。架构图不是装饰，它是变更的边界：改接入不动核心，改运营不动账务。</div>
+</div></section>
+
+<!-- ═══════════ 08 十一个子系统 ═══════════ -->
+<section id="s08" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 08</span>
+    <h2>十一个子系统：同一套系统，两种切法</h2>
+    <p class="sec-lead">把功能按服务对象归纳，是 11 个子系统；按支付流程归纳，还是这 11 个。切法不同，边界不变：按利益相关方切回答「谁用」，按支付流程切回答「什么时候用」。</p>
+  </div>
+
+  <div class="sub-lab">
+    <div class="sub-toggle" id="subToggle">
+      <button class="sub-btn is-on" data-m="party">按利益相关方</button>
+      <button class="sub-btn" data-m="stage">按支付流程</button>
+    </div>
+    <div class="sub-groups" id="subGroups"></div>
+    <div class="sub-note" id="subNote">按利益相关方：商户 2 · 消费者 1 · 监管 1 · 支付机构 7 = 11 个子系统。</div>
+  </div>
+
+  <div class="aside">关键洞察：<b>两种切法不是两套系统</b>。按利益相关方切，回答「谁用」；按流程切，回答「什么时候用」。边界不变，只是视图变了——这也是第 2 章说的「换一个轴，换一种解释」。真正的架构工作，是让同一个子系统在不同视图里只出现一次，而不是复制一份。</div>
+</div></section>
+
+<!-- ═══════════ 09 收口 ═══════════ -->
+<section id="s09" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 09</span>
+    <h2>收口：架构不是画出来的，是约束出来的</h2>
+    <p class="sec-lead">这一章从六方诉求走到五层结构，再走到 11 个子系统。最后留下六条铁律和四道自测题：它们不教你画图，只告诉你哪些边界不能破。</p>
+  </div>
+
+  <div class="three-law">
+    <div class="law"><span class="mono">RULE 01</span><p><b>先数诉求，再画架构。</b>每个利益相关方的核心诉求都要有功能承接；没有承接方的功能是空话，没有系统落点的诉求是口号。</p></div>
+    <div class="law"><span class="mono">RULE 02</span><p><b>支付前、中、后是三条独立流水线。</b>支付中负责银行间的指令交割，支付后负责把备付金结算给商户；别让支付中直接改商户余额。</p></div>
+    <div class="law"><span class="mono">RULE 03</span><p><b>可用性按年算，不按感觉算。</b>99.99% = 一年 52.6 分钟；先算业务能接受停多久，再谈冗余和演练。</p></div>
+    <div class="law"><span class="mono">RULE 04</span><p><b>单笔成本 = 运维成本 / 总笔数。</b>费率 1% 的生意，成本必须随规模摊薄；规模不上来，效率就是生死线。</p></div>
+    <div class="law"><span class="mono">RULE 05</span><p><b>扩展性看「加机器能不能扛」，不看代码优雅。</b>锁表是水平扩展的天敌；无状态、分片、异步，是把门打开的三把钥匙。</p></div>
+    <div class="law"><span class="mono">RULE 06</span><p><b>通用服务只做「大家都需要」的事。</b>日志、通知、鉴权、ID、密钥；越通用越要标准化，越标准化越能治理。</p></div>
+  </div>
+
+  <div class="quiz" id="quiz">
+    <div class="q-item is-open"><div class="q-i mono">Q01</div><div class="q-t">为什么技术架构要从利益相关方开始，而不是从服务器开始？</div><div class="q-a">因为功能是诉求的函数。收款人要按时收到钱、付款人要按时收到货、银行要对账、监管要报告；这些诉求被翻译成收单、查询、接入、风控、对账、结算、出款、报告等功能，再聚合成子系统与层次。先画服务器，最后一定补不上业务缺口。</div></div>
+    <div class="q-item"><div class="q-i mono">Q02</div><div class="q-t">支付中已经拿到银行成功，为什么还要支付后？</div><div class="q-a">支付中完成的是银行间的资金交割，钱还在支付机构的备付金账户里；支付后要确认结果、算备付金、按约定结算出款，钱才真正到商户。两段的时间尺度、失败模式、对账对象都不同，不能合成一个事务。</div></div>
+    <div class="q-item"><div class="q-i mono">Q03</div><div class="q-t">99.99% 和 99.999% 差多少？</div><div class="q-a">一年分别允许停 52.6 分钟和 5.26 分钟，差 10 倍。可用性每多一个 9，冗余、演练、变更管控的成本都要上一个台阶；先算业务能接受停多久，再决定要做到几个 9。</div></div>
+    <div class="q-item"><div class="q-i mono">Q04</div><div class="q-t">为什么 CAS 要先标准化再入队？</div><div class="q-a">标准化让所有应用输出同构日志，下游才能统一解析；入队把同步写日志变成异步，避免海量日志阻塞应用 I/O。顺序反了，要么下游拿到一堆格式各异的数据，要么应用被日志拖死。</div></div>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="wrap">
+  <div class="foot-grid">
+    <div class="foot-main">
+      <span class="mono">CHAPTER 05 / TECHNICAL ARCHITECTURE</span>
+      <h3>架构即未来</h3>
+      <p>这一章把支付从「业务功能」翻到「技术剖面」：六方诉求、支付前中后、四个硬指标、OSI 与支付五层、一笔请求的旅程、CAS 日志流水线、整体架构与 11 个子系统。架构不是画出来的，是从约束里长出来的。</p>
+      <a class="db-link" href="https://book.douban.com/subject/36422205/" target="_blank" rel="noopener"><span class="mono">DOUBAN</span><b>一本书读懂支付</b><i>↗</i></a>
+    </div>
+    <div class="foot-side">
+      <span class="mono">READ NEXT</span>
+      <p>上一章：生物特征支付——六把身体钥匙与 FAR/FRR 的跷跷板。</p>
+      <a class="inline-link" href="../ch04/">← 第 4 章 生物特征支付</a>
+      <p style="margin-top:10px"><a class="inline-link" href="../">↑ 章节索引</a></p>
+      <p style="margin-top:16px">本章站点为学习笔记，图表与示例为阅读整理，不替代原书。</p>
+    </div>
+  </div>
+  <div class="foot-bottom mono"><span>PAYMENT PRIMER · STUDY NOTES</span><span>CH.05 / 2026-11-22</span></div>
+</div></footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
