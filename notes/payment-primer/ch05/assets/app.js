@@ -310,6 +310,14 @@
     const b = e.target.closest('.sl');
     if (b) setStack(Number(b.dataset.i));
   });
+  $('.hero-stack').addEventListener('click', (e) => {
+    const a = e.target.closest('.hs');
+    if (!a || !a.dataset.i) return;
+    stackMode = 'pay';
+    $$('#stackTabs .stack-tab').forEach((x) => x.classList.toggle('is-on', x.dataset.s === 'pay'));
+    renderStack();
+    setStack(Number(a.dataset.i));
+  });
   renderStack();
 
   /* ── 05 请求旅程 ─────────────────────────────────────── */
@@ -318,11 +326,12 @@
     { k: 'STEP 01 / FRONT', name: '前端：收银台发起请求', desc: '商户 App / 钱包 / 收银台把订单号、金额、商户号打包，向支付机构发起请求。', layer: 5, log: ['T+0 ms', '<b>前端应用层</b> 收银台提交订单 ORD-20261122-001，金额 100.00 元'] },
     { k: 'STEP 02 / GATEWAY', name: '商户网关：验签、限流、幂等', desc: '先证明请求来自合法商户，再挡住超量流量，最后用幂等键防止重复提交。', layer: 4, log: ['T+15 ms', '<b>接入网关层</b> 验签通过；限流 1,200 TPS；幂等键 ord-…-001 首次出现'] },
     { k: 'STEP 03 / CORE', name: '核心：风控、指令、分账', desc: '解析请求，跑风控规则，形成银行能执行的支付指令，同时算出商户手续费与分账。', layer: 3, log: ['T+45 ms', '<b>核心业务层</b> 风控通过；生成扣款指令 PAY-8842；计费 1.00 元，分账 99.00 元'] },
-    { k: 'STEP 04 / BANK GW', name: '银行网关：参数转译', desc: '把内部指令翻译成银行报文，走专线，用硬件加密机签名。', layer: 4, log: ['T+90 ms', '<b>接入网关层</b> 指令转译为银行报文；专线发送；加密机签名完成'] },
-    { k: 'STEP 05 / BANK', name: '银行：扣款并返回结果', desc: '银行执行扣款，返回成功或失败。这一段不在支付机构内部，但决定了整笔交易的成败。', layer: 0, log: ['T+220 ms', '<b>银行</b> 扣款成功，返回 RC=00；授权码 661208'] },
-    { k: 'STEP 06 / LEDGER', name: '核心：账务记账', desc: '拿到银行结果后，核心层记账：商户待结算 +99.00，手续费 +1.00；幂等键标记完成。', layer: 3, log: ['T+260 ms', '<b>核心业务层</b> 记账完成：商户待结算 +99.00，手续费 +1.00；幂等键置为 done'] },
-    { k: 'STEP 07 / NOTIFY', name: '通用服务：通知与日志', desc: '通知服务把结果推给商户后台与用户；日志服务留下一条可追溯的链路。', layer: 2, log: ['T+300 ms', '<b>通用服务层</b> 通知已推送；日志 trace_id=…-001 落盘'] },
-    { k: 'STEP 08 / DONE', name: '前端：结果上屏', desc: '收银台显示「支付成功」，商户后台出现一笔待结算订单。回程结束。', layer: 5, log: ['T+320 ms', '<b>前端应用层</b> 显示支付成功；订单状态 → PAID'] }
+    { k: 'STEP 04 / STORAGE', name: '核心：先把指令落库', desc: '外发银行之前，先把指令与状态写进数据库。否则进程重启后，系统不知道这笔请求到底发没发出去。', layer: 1, log: ['T+70 ms', '<b>基础设施层</b> 数据库写入支付指令 PAY-8842，状态 = SENT_PENDING；这是一次同步落库'] },
+    { k: 'STEP 05 / BANK GW', name: '银行网关：参数转译', desc: '把内部指令翻译成银行报文，走专线，用硬件加密机签名。', layer: 4, log: ['T+90 ms', '<b>接入网关层</b> 指令转译为银行报文；专线发送；加密机签名完成'] },
+    { k: 'STEP 06 / BANK', name: '银行：扣款并返回结果', desc: '银行执行扣款，返回成功或失败。这一段不在支付机构内部，但决定了整笔交易的成败。', layer: 0, log: ['T+220 ms', '<b>银行</b> 扣款成功，返回 RC=00；授权码 661208'] },
+    { k: 'STEP 07 / LEDGER', name: '核心：记账并落库', desc: '拿到银行结果后，核心层记账：商户待结算 +99.00，手续费 +1.00；分录与幂等键一起写进数据库。', layer: 1, log: ['T+260 ms', '<b>基础设施层</b> 账务分录落库：商户待结算 +99.00，手续费 +1.00；幂等键置为 done'] },
+    { k: 'STEP 08 / NOTIFY', name: '通用服务：通知与日志', desc: '通知服务把结果推给商户后台与用户；日志服务留下一条可追溯的链路。', layer: 2, log: ['T+300 ms', '<b>通用服务层</b> 通知已推送；日志 trace_id=…-001 落盘'] },
+    { k: 'STEP 09 / DONE', name: '前端：结果上屏', desc: '收银台显示「支付成功」，商户后台出现一笔待结算订单。回程结束。', layer: 5, log: ['T+320 ms', '<b>前端应用层</b> 显示支付成功；订单状态 → PAID'] }
   ];
   let reqState = 0;
   let reqTimers = [];
@@ -592,7 +601,9 @@
 
     reqRender(3);
     ok('请求：第 3 站 = 核心', $('#reqName').textContent.includes('核心') && $('#reqLadder .rl[data-l="3"]').classList.contains('is-on'));
-    reqRender(5);
+    reqRender(4);
+    ok('请求：第 4 步落到 L01 基础设施', $('#reqName').textContent.includes('落库') && $('#reqLadder .rl[data-l="1"]').classList.contains('is-on'));
+    reqRender(6);
     ok('请求：银行节点高亮', $('#bankNode').classList.contains('is-on'));
     reqRender(0);
 
