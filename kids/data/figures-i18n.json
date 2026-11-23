@@ -607,5 +607,18 @@
    "一会儿圆，一会儿长": "Round now, a long ribbon next",
    "没有谁喊口令：每只鸟跟着旁边几只，整群就像一块会动的布": "No orders at all — each bird follows a few neighbours, and the flock moves like a piece of cloth"
   }
+ },
+ "hanging-gardens-babylon.svg": {
+  "aria": "Three panels: a king builds a garden for a queen who misses the mountains of home; the garden is a stack of terraces held up by arches, with river water lifted to the top and poured down; plants hang over the edges so it looks suspended in the air, but its ruins have never been found. Bottom note: the standard list is the Seven Wonders of the Ancient World — the Hanging Gardens is one of them; 'eighth wonder' is only a later phrase",
+  "text": {
+   "空中花园：一座给王后解乡愁的梯田楼": "A terraced garden built to cure a queen's homesickness",
+   "国王为想家的王后而建": "Built for a homesick queen",
+   "提水到顶层，再往下浇": "Water lifted up, then poured down",
+   "？": "?",
+   "不是悬空": "Not floating",
+   "藤蔓垂下来，像悬空": "Vines hang over the edge",
+   "标准说法是「古代世界七大奇迹」，空中花园是其中之一": "The standard list is seven wonders, not eight",
+   "「第八大奇迹」只是后来形容了不起工程的说法，不是正式名单": "An 'eighth wonder' is just a saying, not an official list"
+  }
  }
 }
