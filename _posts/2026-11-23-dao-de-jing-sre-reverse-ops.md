@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "反者道之动，弱者道之用：一套给 SRE 的逆向运维观"
-date: 2026-11-23 22:30:00 +0800
+date: 2026-11-23 22:00:00 +0800
 categories: [ai-sre, devops]
 tags: [dao-de-jing, sre, 反者道之动, 弱者道之用, 运维, 道家]
 ---
