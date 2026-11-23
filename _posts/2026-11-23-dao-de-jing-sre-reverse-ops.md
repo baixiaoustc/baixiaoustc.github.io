@@ -140,6 +140,6 @@ SRE 用 SLO 和 error budget 把这件事量化：
 
 ## 参考资源
 
-- 《道德经》第四十章、第二十八章、第七十六章、第七十八章
-- Google SRE Workbook：https://sre.google/workbook/
-- 可视化页面（《一本书读懂支付》第 5 章，五层架构与请求旅程）：https://baixiaoustc.github.io/notes/payment-primer/ch05/
+- 《道德经》第四十章、第二十八章、第七十六章、第七十八章（通行本）
+- Google SRE Workbook（重试、过载与级联故障相关章节）：https://sre.google/workbook/
+- Google SRE Book：https://sre.google/sre-book/table-of-contents/
