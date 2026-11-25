@@ -620,5 +620,17 @@
    "标准说法是「古代世界七大奇迹」，空中花园是其中之一": "The standard list is seven wonders, not eight",
    "「第八大奇迹」只是后来形容了不起工程的说法，不是正式名单": "An 'eighth wonder' is just a saying, not an official list"
   }
+ },
+ "diaper-absorb.svg": {
+  "aria": "Cross-section of a diaper: pee drips from above and passes through the top layer, absorbent beads in the middle drink it into a soft jelly, and a waterproof film at the bottom keeps it from leaking — so clothes, sheets and skin stay dry",
+  "text": {
+   "尿不湿怎么把尿「喝」进去？": "How does a diaper drink up pee?",
+   "把尿不湿剪开，里面是这样的": "Cut a diaper open — here is what is inside",
+   "① 表面层：尿一下子就穿过去，贴着皮肤这边还是干的": "① Top layer: pee passes through; the skin side stays dry",
+   "② 吸水小颗粒：把尿喝进去，变成软软的果冻": "② Absorbent beads: they drink the pee into soft jelly",
+   "③ 防水膜：像雨衣一样，挡住尿不让漏出去": "③ Waterproof film: a raincoat that stops leaks",
+   "小婴儿想尿就尿、说不了——尿不湿就是一条「会喝水的裤子」": "Babies pee when they want and cannot say — a diaper is 'pants that drink'",
+   "吸走水、锁成果冻，衣服床单干干的，小屁股也不红不疼": "Water is soaked up and locked in jelly: clothes stay dry and skin stays calm"
+  }
  }
 }
