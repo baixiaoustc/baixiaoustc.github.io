@@ -412,6 +412,13 @@
     setVenus('raise');
 
     ok('自测题：4 道', $$('#quiz .q-item').length === 4);
+
+    const cn = $('.chapter-nav');
+    ok('页脚左右导航：左第5章 / 中索引 / 右第7章待更新',
+      !!cn && cn.querySelector('.cn-prev').getAttribute('href').includes('../ch05/') &&
+      !!cn.querySelector('.cn-mid') && cn.querySelector('.cn-mid').getAttribute('href') === '../' &&
+      !!cn.querySelector('.cn-next.is-soon'));
+
     ok('无横向溢出', document.documentElement.scrollWidth <= innerWidth + 1,
       `scrollWidth=${document.documentElement.scrollWidth} innerWidth=${innerWidth}`);
 

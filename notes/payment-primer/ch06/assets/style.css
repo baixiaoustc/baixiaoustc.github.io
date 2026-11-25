@@ -514,7 +514,32 @@ input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; background: v
 .db-link i { font-style: normal; color: var(--gold); font-size: 13px; }
 .foot-side p { margin: 8px 0 16px; font-size: 12px; color: var(--dim); line-height: 1.8; }
 .inline-link { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-dim); }
-.foot-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line-soft); font-size: 9.5px; letter-spacing: .12em; color: var(--dimmer); }
+.foot-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line-soft); font-size: 9.5px; letter-spacing: .12em; color: var(--dimmer); }
+
+/* 章节左右导航：对齐第 2 / 3 章的 foot-r 形式 */
+.chapter-nav {
+  display: flex; align-items: stretch; justify-content: space-between; gap: 14px;
+  margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--line);
+  font-size: 9px; letter-spacing: .12em;
+}
+.chapter-nav a, .chapter-nav .cn-next { display: flex; flex-direction: column; gap: 3px; min-width: 0; text-decoration: none; }
+.chapter-nav .cn-prev { align-items: flex-start; }
+.chapter-nav .cn-next { align-items: flex-end; text-align: right; }
+.chapter-nav .cn-side { color: var(--dimmer); font-size: 9px; letter-spacing: .14em; }
+.chapter-nav b { font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--text); letter-spacing: .02em; line-height: 1.4; }
+.chapter-nav a:hover b { color: var(--gold); }
+.chapter-nav a:hover .cn-side { color: var(--gold-dim); }
+.chapter-nav .cn-mid { align-self: center; color: var(--gold-dim); font-size: 9.5px; letter-spacing: .16em; border-bottom: 1px solid transparent; padding-bottom: 1px; }
+.chapter-nav .cn-mid:hover { color: var(--gold); border-bottom-color: var(--gold-dim); }
+.chapter-nav .is-soon { opacity: .55; }
+.chapter-nav .is-soon b { color: var(--dimmer); font-weight: 500; }
+.chapter-nav em { font-style: normal; font-size: 8.5px; letter-spacing: .12em; color: var(--dimmer); margin-top: 2px; }
+@media (max-width: 700px) {
+  .chapter-nav { gap: 8px; margin-top: 26px; }
+  .chapter-nav b { font-size: 11px; }
+  .chapter-nav .cn-mid { font-size: 9px; }
+  .chapter-nav .cn-side { font-size: 8px; }
+}
 
 /* ── 动画 ─────────────────────────────────────────────── */
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
