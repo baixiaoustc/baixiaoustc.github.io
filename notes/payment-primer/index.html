@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1">
 <title>一本书读懂支付 · 章节｜STUDY NOTES</title>
-<meta name="description" content="《一本书读懂支付》逐章可视化笔记：第 1 章 支付的基本概念、第 2 章 支付的业务模式、第 3 章 支付的基础工具。">
+<meta name="description" content="《一本书读懂支付》逐章可视化笔记：第 1 章 支付的基本概念、第 2 章 支付的业务模式、第 3 章 支付的基础工具、第 4 章 生物特征支付、第 5 章 支付的技术架构、第 6 章 支付前的应用设计。">
 <meta name="theme-color" content="#0E2233">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E2233'/%3E%3Cpath d='M16 6 L26 16 L16 26 L6 16 Z' fill='none' stroke='%23C8A45C' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23C8A45C'/%3E%3C/svg%3E">
 <style>
@@ -73,7 +73,7 @@
   <a class="crumb" href="../">← 学习笔记</a>
   <div class="meta mono"><span>STUDY NOTES</span><span>一本书读懂支付</span><span>陈斌</span></div>
   <h1>一本书读懂支付</h1>
-  <p class="sub">一笔支付，是把<b>交易的承诺</b>换成一笔确定到账的钱。五章按五层往下拆，每层只回答一个问题。</p>
+  <p class="sub">一笔支付，是把<b>交易的承诺</b>换成一笔确定到账的钱。六章按六层往下拆，每层只回答一个问题。</p>
 
   <ol class="lead">
     <li>
@@ -95,6 +95,10 @@
     <li>
       <b class="n mono">L5</b><span class="q">看架构</span>
       <span class="a">六方诉求怎么落成功能，功能怎么切成五层 —— 支付前中后、可用高效可扩、一笔请求穿五层、CAS 与 11 个子系统</span>
+    </li>
+    <li>
+      <b class="n mono">L6</b><span class="q">守门口</span>
+      <span class="a">支付前怎么把合同翻译成系统参数 —— 六步入网、申请与审核、六条脐带、需求实质、流程解耦、BPM 与 SSO</span>
     </li>
   </ol>
 
@@ -144,10 +148,19 @@
       <span class="tag">8 个动效</span>
       <span class="go">↗</span>
     </a>
+    <a class="row" href="ch06/">
+      <span class="no mono">CH.06</span>
+      <div>
+        <div class="t">支付前的应用设计</div>
+        <div class="d">六步入网 · 申请 vs 审核 · 六条脐带 · 需求实质 · 流程解耦 · BPM · SSO · Venus</div>
+      </div>
+      <span class="tag">8 个动效</span>
+      <span class="go">↗</span>
+    </a>
   </div>
 
   <div class="note">
-    第 1 章的重点是<b>资金安全的风险敞口</b>：在途、信用、操作、对手方四类，配上八个环节的巡检清单。第 2 章的重点是<b>分类轴</b>：场景、工具、角色、资金来源、地理范围，同一个支付换一个轴就换一种解释。第 3 章的重点是<b>工具配对</b>：卡与 POS、码与摄像头、传感器与供应商系统；卡号拆解、POS 机身、EAN 编码与 QR 版本都可以自己点。第 4 章的重点是<b>不可重置</b>：刷脸、指纹、掌纹、静脉、声纹、虹膜各有取舍，阈值把 FAR 与 FRR 放在跷跷板两端。第 5 章的重点是<b>分层与边界</b>：六方诉求决定功能，功能切成支付前中后，参考架构切成五层，整体架构再分成接入、核心、运营与通用基础；99.99% 是一年 52.6 分钟，单笔成本必须随规模往下走。
+    第 1 章的重点是<b>资金安全的风险敞口</b>：在途、信用、操作、对手方四类，配上八个环节的巡检清单。第 2 章的重点是<b>分类轴</b>：场景、工具、角色、资金来源、地理范围，同一个支付换一个轴就换一种解释。第 3 章的重点是<b>工具配对</b>：卡与 POS、码与摄像头、传感器与供应商系统；卡号拆解、POS 机身、EAN 编码与 QR 版本都可以自己点。第 4 章的重点是<b>不可重置</b>：刷脸、指纹、掌纹、静脉、声纹、虹膜各有取舍，阈值把 FAR 与 FRR 放在跷跷板两端。第 5 章的重点是<b>分层与边界</b>：六方诉求决定功能，功能切成支付前中后，参考架构切成五层，整体架构再分成接入、核心、运营与通用基础；99.99% 是一年 52.6 分钟，单笔成本必须随规模往下走。第 6 章的重点是<b>入网即地基</b>：六步走完才是客户，申请是「说」、审核是「查」；支付前填的六组参数，是支付中计费/风控、支付后结算/出款的主数据；需求先问「不做会怎样」，长流程要解耦，BPM 要有边界，登录只做一次。
   </div>
 
   <footer>

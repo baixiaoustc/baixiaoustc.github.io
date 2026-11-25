@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>入网即地基：支付前的应用设计｜一本书读懂支付 · 第 6 章</title>
+<meta name="description" content="《一本书读懂支付》第 6 章可视化笔记：支付前的六个业务活动（签约、申请、审核、批准、接入、开通）、KYC 的两面、支付前参数与支付中/后的六条脐带、需求实质、复杂流程解耦、BPM 流程污染、SSO 单点登录与 Venus 系统改造案例。">
+<meta name="theme-color" content="#0E2233">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230E2233'/%3E%3Cpath d='M16 6 L26 16 L16 26 L6 16 Z' fill='none' stroke='%23C8A45C' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2.5' fill='%23C8A45C'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="scrollbar"><i id="progress"></i></div>
+
+<header class="topbar"><div class="wrap topbar-in">
+  <div class="brand"><span class="mark">◆</span><span class="brand-t">STUDY NOTES</span><span class="brand-s">CH.06 / 支付前的应用设计</span></div>
+  <nav class="topnav">
+    <a href="#s01">01 六站</a><a href="#s02">02 审核</a><a href="#s03">03 脐带</a><a href="#s04">04 需求</a><a href="#s05">05 解耦</a><a href="#s06">06 BPM</a><a href="#s07">07 SSO</a><a href="#s08">08 Venus</a><a href="#s09">09 收口</a>
+  </nav>
+</div></header>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero"><div class="wrap hero-in">
+  <div class="hero-meta mono"><span>BOOK</span><span>一本书读懂支付</span><span>陈斌 · 第 6 章</span><span>2026-11-25</span></div>
+  <h1 class="hero-title">入网不是填表，<br>是把合同翻译成系统参数</h1>
+  <p class="hero-sub">支付前是商户第一次成为客户的过程：签约、申请、审核、批准、接入、开通，六步走完，KYC 才真正落地。它的产出不是一摞资料，而是一组后面两章要反复读取的参数：费率、限额、结算周期、银行账户、联系方式、POS 机具。参数错一个，支付中的计费和风控就错一片，支付后的结算就可能打到别人的账户。</p>
+
+  <div class="hero-rail" data-audit-group>
+    <a class="hr" href="#s01" data-i="0"><b class="mono">STEP 01</b><i>签约</i><em>委托 · 费率 · 周期</em></a>
+    <a class="hr hi" href="#s01" data-i="1"><b class="mono">STEP 02</b><i>申请</i><em>法人 · 资质 · 账户</em></a>
+    <a class="hr" href="#s01" data-i="2"><b class="mono">STEP 03</b><i>审核</i><em>读材料 · 查网站 · 实地</em></a>
+    <a class="hr" href="#s01" data-i="3"><b class="mono">STEP 04</b><i>批准</i><em>通知 · 配置 · 账号</em></a>
+    <a class="hr" href="#s01" data-i="4"><b class="mono">STEP 05</b><i>接入</i><em>接口 · 网络 · 联调</em></a>
+    <a class="hr" href="#s01" data-i="5"><b class="mono">STEP 06</b><i>开通</i><em>开账户 · 设费率 · 开管道</em></a>
+  </div>
+  <div class="hero-rail-cap mono">六步走完，商户才变成客户 · 点任意一步看细节 →</div>
+
+  <div class="hero-stats">
+    <div class="stat"><b>6<small>环节</small></b><span>支付前的业务活动</span></div>
+    <div class="stat"><b>7<small>个</small></b><span>应用设计要注意的问题</span></div>
+    <div class="stat"><b>60<small>+</small></b><span>流程污染后的审批节点</span></div>
+    <div class="stat"><b>1<small>次</small></b><span>SSO 登录走遍子系统</span></div>
+  </div>
+
+  <div class="stamp"><div class="stamp-in mono">KYC<br>6 STEPS<br>BEFORE<br>PAY</div></div>
+</div></section>
+
+<!-- ═══════════ 01 六站 ═══════════ -->
+<section id="s01" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 01</span>
+    <h2>六站入网：商户怎么变成客户</h2>
+    <p class="sec-lead">以付款人提交支付请求为分界，之前的都算支付前。商户要先签约、申请、审核、批准、接入、开通，六步走完才成为客户；这六步基本构成了 KYC 的主体，也是支付机构最早接触客户的部分。</p>
+  </div>
+
+  <div class="kyc-lab" data-audit-group>
+    <div class="kyc-rail" id="kycRail">
+      <button class="kc" data-k="sign"><span class="kc-n mono">STEP 01</span><b>签约</b><span class="kc-s">委托 · 费率 · 结算周期</span></button>
+      <button class="kc is-on" data-k="apply"><span class="kc-n mono">STEP 02</span><b>申请</b><span class="kc-s">法人 · 资质 · 账户 · 要求</span></button>
+      <button class="kc" data-k="review"><span class="kc-n mono">STEP 03</span><b>审核</b><span class="kc-s">形式 + 实质审查</span></button>
+      <button class="kc" data-k="approve"><span class="kc-n mono">STEP 04</span><b>批准</b><span class="kc-s">通知 · 配置 · 后台账号</span></button>
+      <button class="kc" data-k="connect"><span class="kc-n mono">STEP 05</span><b>接入</b><span class="kc-s">接口 · 网络 · 联调</span></button>
+      <button class="kc" data-k="open"><span class="kc-n mono">STEP 06</span><b>开通</b><span class="kc-s">账户 · 费率 · 支付管道</span></button>
+    </div>
+
+    <div class="kyc-read">
+      <div class="kyc-side">
+        <span class="k mono" id="kycK">STEP 02 / APPLY</span>
+        <h3 id="kycName">申请</h3>
+        <p id="kycWho">商户（业务 + 技术）→ 支付机构</p>
+        <div class="kyc-prog"><i id="kycProg"></i></div>
+        <span class="kyc-prog-t mono" id="kycProgT">2 / 6</span>
+      </div>
+      <div class="kyc-main">
+        <div class="kyc-box"><span class="k mono">输入</span><p id="kycIn"></p></div>
+        <div class="kyc-box"><span class="k mono">产出</span><p id="kycOut"></p></div>
+        <div class="kyc-box"><span class="k mono">这一步最容易卡在哪</span><p id="kycRisk" class="hot"></p></div>
+        <div class="kyc-box"><span class="k mono">系统落点</span><p id="kycSys"></p></div>
+        <div class="kyc-box wide"><span class="k mono">下一站要看它</span><p id="kycNext"></p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>六步不是六个审批章，是六次信息交接</b>。每一站都要把上一站的产出变成下一站的输入；任何一站只留下纸质材料、没有进系统，后面的计费、风控、结算就会找不到依据。</div>
+</div></section>
+
+<!-- ═══════════ 02 申请 vs 审核 ═══════════ -->
+<section id="s02" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 02</span>
+    <h2>申请与审核：一边自报，一边核实</h2>
+    <p class="sec-lead">申请是商户自己「说」：法人信息、业务资质、银行账户、对支付的具体要求。审核是支付机构去「查」：读材料、上网查网站、甚至实地考察。只收材料不看实质，KYC 就是一张表；而审核员能读不能改，任何改动必须走合同修正。</p>
+  </div>
+
+  <div class="kyc2" data-audit-group>
+    <div class="kyc2-col left">
+      <span class="k mono">申请 / APPLICATION</span>
+      <h3>商户自己「说」</h3>
+      <ul>
+        <li><b>法人信息</b>：谁在经营、谁是责任人</li>
+        <li><b>业务资质</b>：营业执照、行业许可</li>
+        <li><b>银行账户</b>：结算款要打到哪里</li>
+        <li><b>业务要求</b>：卖什么、单价、预计流水</li>
+      </ul>
+      <p>今天可以用手机 OCR 扫码录入，快、准、少丢；没有系统，资料就会慢慢遗忘在故纸堆里。</p>
+    </div>
+    <div class="kyc2-col right">
+      <span class="k mono">审核 / REVIEW</span>
+      <h3>支付机构去「查」</h3>
+      <ul>
+        <li><b>读材料</b>：形式审查，看齐不齐、对不对</li>
+        <li><b>上网核实</b>：官网、工商、备案、电话</li>
+        <li><b>实地考察</b>：看办公、仓库、设备、人</li>
+        <li><b>交叉验证</b>：与合作机构、监管的结论对齐</li>
+      </ul>
+      <p>审核是 KYC 的实质部分。只信材料，等于把风险留给下一章的风控和再下一章的对账。</p>
+    </div>
+  </div>
+
+  <div class="verify">
+    <div class="verify-head">
+      <span class="k mono">核查深度 / 点一档，看四类问题各能查出几项</span>
+      <div class="verify-tabs" id="verifyTabs">
+        <button data-v="0" class="is-on">只看材料</button>
+        <button data-v="1">上网核实</button>
+        <button data-v="2">实地考察</button>
+      </div>
+    </div>
+    <div class="verify-meter"><i id="verifyBar"></i></div>
+    <div class="verify-out" id="verifyOut"></div>
+    <div class="verify-grid" id="verifyGrid"></div>
+  </div>
+
+  <div class="aside">底线：<b>审核只能读，不能改</b>。审核员发现信息不对，直接改并「保留历史版本」是不成立的——对商户录入的信息，审核人员只能读；任何改动都要得到商户书面或电子同意，作为合同修正留档。历史版本属于合约修订，不属于申请表。</div>
+</div></section>
+
+<!-- ═══════════ 03 六条脐带 ═══════════ -->
+<section id="s03" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 03</span>
+    <h2>六条脐带：支付前填的，后两章都要用</h2>
+    <p class="sec-lead">支付前的产出不是一摞资料，而是六组后面要反复读取的参数。填错一个字段，计费、风控、结算、打款、客服、机具认证就会在同一处出问题——这就是为什么支付前的应用设计必须有全局视角。</p>
+  </div>
+
+  <div class="umb" data-audit-group>
+    <div class="umb-col">
+      <span class="k mono">支付前写入</span>
+      <button class="umb-item is-on" data-u="fee"><b>费率结构</b><em>5 种收费方式</em></button>
+      <button class="umb-item" data-u="limit"><b>限额 · 属性 · 地域</b><em>商户能做什么</em></button>
+      <button class="umb-item" data-u="cycle"><b>结算周期</b><em>T+1 / T+N</em></button>
+      <button class="umb-item" data-u="bank"><b>银行账户</b><em>钱打到哪里</em></button>
+      <button class="umb-item" data-u="contact"><b>联系信息</b><em>怎么找到商户</em></button>
+      <button class="umb-item" data-u="pos"><b>POS 机具</b><em>设备身份与软件</em></button>
+    </div>
+    <div class="umb-mid">
+      <span class="wire">→</span>
+      <p>同一条信息，被支付中与支付后各读一次</p>
+    </div>
+    <div class="umb-col right">
+      <span class="k mono">支付中 / 后读取</span>
+      <div class="umb-target is-on" data-t="fee"><b>计费与分账</b><p>按金额 / 笔数 / 时间 / 梯级 / 活动</p></div>
+      <div class="umb-target" data-t="limit"><b>风控参数</b><p>限额、商户属性、地域范围</p></div>
+      <div class="umb-target" data-t="cycle"><b>结算与出款时间</b><p>备付金什么时候出去</p></div>
+      <div class="umb-target" data-t="bank"><b>出款去向</b><p>商户结算账户</p></div>
+      <div class="umb-target" data-t="contact"><b>客服触达</b><p>维护通知、政策变化</p></div>
+      <div class="umb-target" data-t="pos"><b>认证与更新</b><p>POS 身份、软件版本、安全通道</p></div>
+    </div>
+  </div>
+
+  <div class="umb-read">
+    <span class="k mono" id="umbK">连接 01 / RATE → BILLING</span>
+    <p id="umbText"></p>
+  </div>
+
+  <div class="aside">关键洞察：<b>业务管理信息是支付中与支付后的基础</b>。支付前应用不是「入网登记表」，而是后两章的主数据源；主数据错了，后面再好的风控和对账也只能对错账。</div>
+</div></section>
+
+<!-- ═══════════ 04 需求实质 ═══════════ -->
+<section id="s04" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 04</span>
+    <h2>需求实质：先问「不做会怎样」</h2>
+    <p class="sec-lead">支付前系统是给内部用的业务管理系统，不是功能越多越好。有些需求只是操作习惯，可以靠流程调整；有些需求根本不成立，做了就是给未来埋状态。先问不做会怎样，再问自动化省不省人。</p>
+  </div>
+
+  <div class="demand" data-audit-group>
+    <div class="case-tabs" id="caseTabs">
+      <button data-c="ocr" class="is-on">案例 A · 合同录入自动化</button>
+      <button data-c="edit">案例 B · 审核员想改数据</button>
+    </div>
+
+    <!-- A -->
+    <div class="demand-body is-on" data-case="ocr">
+      <div class="demand-grid">
+        <div class="demand-ctl">
+          <div class="ctl-k"><span>每天要录入的合同</span><b id="dcCount">10 份</b></div>
+          <input type="range" id="dcRange" min="1" max="60" value="10" step="1">
+          <div class="demand-scale"><span>1 份</span><span>20</span><span>40</span><span>60 份</span></div>
+          <div class="demand-bars">
+            <div class="dbar">
+              <div class="dl"><span>人工录入需要的人手</span><b id="dcManual">1 人</b></div>
+              <div class="dbar-track"><i class="dbar-fill" id="dcManualBar"></i></div>
+            </div>
+            <div class="dbar">
+              <div class="dl"><span>自动化之后仍要的人手</span><b id="dcAuto">1 人</b></div>
+              <div class="dbar-track"><i class="dbar-fill gold" id="dcAutoBar"></i></div>
+            </div>
+          </div>
+          <div class="demand-rows">
+            <div class="demand-row"><span>一个人的日产能</span><b>20 份</b></div>
+            <div class="demand-row"><span>自动化能省下的人力</span><b id="dcSave">0 人</b></div>
+            <div class="demand-row"><span>还要额外买的 OCR 软硬件</span><b>另算</b></div>
+          </div>
+        </div>
+        <div class="demand-out">
+          <span class="k mono">结论 / VERDICT</span>
+          <h3 id="dcVerdict">先别做</h3>
+          <p id="dcNote">10 份/天时，即使全自动，合同管理岗仍要留 1 个人；岗位裁不掉，还要采购硬件软件，成本反而增加。把资源投到更急的地方。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="demand-body" data-case="edit">
+      <div class="demand-grid">
+        <div class="edit-chain">
+          <div class="ec"><span class="mono">01</span><p>审核员查到一处信息不对，提出：<b>「我要直接改，还要保留历史版本，将来能回溯。」</b></p></div>
+          <div class="ec bad"><span class="mono">02</span><p>但按审核规定，对商户录入的信息，<b>审核人员只能读，不能改</b>。</p></div>
+          <div class="ec"><span class="mono">03</span><p>要改任何已录入的申请信息，必须得到商户<b>书面或电子同意</b>。</p></div>
+          <div class="ec good"><span class="mono">04</span><p>所以改动不属于「申请表编辑」，而属于<b>合同修正</b>：留档在纸质或电子文档里，历史版本跟合约修订走。</p></div>
+        </div>
+        <div class="edit-stamp">
+          <span class="mono">DEMAND CHECK</span>
+          <h3>伪需求</h3>
+          <p>不是所有「我要能改」都该做成功能。审核的职责是判断，不是编辑；把编辑权做进审核页，等于把审计风险做进系统。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>需求的实质，往往不是用户说的那个动作</b>。用户说要「改数据」，实质是要「纠错且可追溯」；正确解法是合同修正与审计留痕，不是给审核页加一个编辑按钮。</div>
+</div></section>
+
+<!-- ═══════════ 05 解耦 ═══════════ -->
+<section id="s05" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 05</span>
+    <h2>复杂流程解耦：别让一个状态卡住整条链</h2>
+    <p class="sec-lead">六步流程、六个角色、每一步都有状态。如果所有状态挤在一条记录里、串行推进，一个状态不对就整条链停，最后只能让 DBA 天天改库。解耦不是把系统拆碎，是让每一段能独立站住。</p>
+  </div>
+
+  <div class="dec" data-audit-group>
+    <div class="dec-tabs" id="decTabs">
+      <button data-d="coupled" class="is-on">串行紧耦合</button>
+      <button data-d="decoupled">解耦 + 异步</button>
+    </div>
+    <div class="dec-grid">
+      <div class="dec-stage">
+        <div class="dec-chain" id="decChain"></div>
+        <div class="dec-bus" id="decBus" hidden>消息队列 / 数据库表 · 只做必要关联</div>
+      </div>
+      <div class="dec-side">
+        <span class="k mono">CASE RUNNER</span>
+        <div class="dec-metric"><span>状态存在哪</span><b id="decStates">一条记录几十个状态</b></div>
+        <div class="dec-metric"><span>一个状态不对</span><b id="decBlock" class="bad">整条链停</b></div>
+        <div class="dec-metric"><span>DBA 改库 / 30 个案子</span><b id="decDba" class="bad">0 次</b></div>
+        <button class="btn" id="decRun">跑 30 个案子</button>
+      </div>
+    </div>
+    <div class="dec-log" id="decLog">切换模式，再点「跑 30 个案子」，看两种架构的差别。</div>
+  </div>
+
+  <div class="aside">关键洞察：<b>解耦的边界是「谁能独立失败」</b>。签约、审核、批准、开通各自是独立服务，服务之间用消息队列或数据库表做必要关联；一个服务出问题，不会「火烧战船」殃及池鱼。代价是要接受最终一致，而不是一个全局事务。</div>
+</div></section>
+
+<!-- ═══════════ 06 BPM ═══════════ -->
+<section id="s06" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 06</span>
+    <h2>BPM：流程为什么会自己长胖</h2>
+    <p class="sec-lead">BPM 能把孤立服务串起来、能记录与审计、能找到瓶颈；但没有边界的流程管理，会让审批节点自然生长。一个合同审批从 1 周长到 43 天，只需要多几个「想知道的部门」。</p>
+  </div>
+
+  <div class="bpm" data-audit-group>
+    <div class="bpm-top">
+      <div>
+        <div class="bpm-list" id="bpmList">
+          <label class="bpm-sw"><input type="checkbox" data-n="6" data-d="4"><span>反洗钱审查</span><em>+6 节点 / +4 天</em></label>
+          <label class="bpm-sw"><input type="checkbox" data-n="8" data-d="5"><span>财务审查</span><em>+8 节点 / +5 天</em></label>
+          <label class="bpm-sw"><input type="checkbox" data-n="5" data-d="3"><span>人力审查</span><em>+5 节点 / +3 天</em></label>
+          <label class="bpm-sw"><input type="checkbox" data-n="9" data-d="6"><span>内审审查</span><em>+9 节点 / +6 天</em></label>
+          <label class="bpm-sw"><input type="checkbox" data-n="7" data-d="4"><span>市场部审查</span><em>+7 节点 / +4 天</em></label>
+          <label class="bpm-sw"><input type="checkbox" data-n="4" data-d="3"><span>法务复核</span><em>+4 节点 / +3 天</em></label>
+          <label class="bpm-sw"><input type="checkbox" data-n="6" data-d="3"><span>区域合规</span><em>+6 节点 / +3 天</em></label>
+          <label class="bpm-sw"><input type="checkbox" data-n="5" data-d="2"><span>数据安全</span><em>+5 节点 / +2 天</em></label>
+          <label class="bpm-sw"><input type="checkbox" data-n="6" data-d="6"><span>集团财务</span><em>+6 节点 / +6 天</em></label>
+        </div>
+        <p class="bpm-note" id="bpmNote">起点：销售管理 → 业务管理 → 律师审查 → 技术支持 → 风控，5 个节点，1 周内能走完。</p>
+        <button class="btn ghost bpm-reset" id="bpmReset">重置到起点</button>
+      </div>
+      <div class="bpm-out">
+        <span class="k mono">审批节点 / NODES</span>
+        <div class="bpm-big"><b id="bpmNodes">5</b><i>个</i></div>
+        <div class="bpm-sub">合同审查周期 <b id="bpmDays">7 天</b></div>
+        <div class="bpm-chain" id="bpmChain"></div>
+        <p class="bpm-note" id="bpmVerdict">还是一条能走完的流程。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="aside">BPM 本身要做五件事：<b>设计流程、建立模型、实施落地、追踪监控、优化完善</b>。问题不在工具，在边界：每加一个「想知道的部门」，流程就多一个节点；节点一多，流程图就不再是流程，是一团乱麻。</div>
+</div></section>
+
+<!-- ═══════════ 07 SSO ═══════════ -->
+<section id="s07" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 07</span>
+    <h2>单点登录：一次登录，走遍十一个子系统</h2>
+    <p class="sec-lead">支付前、中、后一共 11 个子系统，再加邮件、电脑、财务、人力，每人要记 10–20 个用户名和密码，还有 90 天强制改密。SSO 用一次登录换一个有时效的 token，让各系统互相信任；权限仍然按角色分配。</p>
+  </div>
+
+  <div class="sso" data-audit-group>
+    <div class="sso-top">
+      <div class="sso-tabs" id="ssoTabs">
+        <button data-s="none" class="is-on">没有 SSO</button>
+        <button data-s="cas">CAS 单点登录</button>
+      </div>
+      <button class="btn sso-run" id="ssoRun">跑一遍登录</button>
+    </div>
+    <div class="sso-grid" id="ssoGrid"></div>
+    <div class="sso-metrics">
+      <div class="sso-m"><span class="mono">登录次数</span><b id="ssoLogins">0</b></div>
+      <div class="sso-m"><span class="mono">要记住的密码</span><b id="ssoPwd">0</b></div>
+      <div class="sso-m"><span class="mono">总耗时（示意）</span><b id="ssoTime">0:00</b></div>
+    </div>
+    <p class="sso-note" id="ssoNote">点「跑一遍登录」，看 12 个系统在没有 SSO 时会发生什么。</p>
+  </div>
+
+  <div class="aside">关键洞察：<b>SSO 不是「一个密码走天下」，是「一次认证、多处授权」</b>。CAS 发的是有时效的令牌；系统看令牌放行，权限仍由各系统的角色决定。把密码设成一样，风险最大——尤其是 PCI / PII 相关的系统。</div>
+</div></section>
+
+<!-- ═══════════ 08 Venus ═══════════ -->
+<section id="s08" class="sec alt"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 08</span>
+    <h2>Venus 案例：复制旧系统，为什么必然失败</h2>
+    <p class="sec-lead">Venus 的故事不是技术选型失败，是需求提炼失败：把旧系统当模板，功能一模一样地复制，却没问每一步到底要控制什么风险。解耦四刀之后，系统才从「永远追不上海星」变成稳定支撑平台。</p>
+  </div>
+
+  <div class="venus" data-audit-group>
+    <div class="venus-tabs" id="venusTabs">
+      <button data-v="raise" class="is-on">01 提出</button>
+      <button data-v="detour">02 弯路</button>
+      <button data-v="fix">03 调整</button>
+      <button data-v="result">04 效果</button>
+    </div>
+
+    <div class="venus-body is-on" data-v="raise">
+      <div class="venus-panel">
+        <div class="venus-text">
+          <h3>业务暴涨，先加人</h3>
+          <p>公司业务大量增加，销售宣称将会有大量商户入网，要求尽快设计和开发一个管理入网的系统。系统没上线之前，公司先租下办公室，聘请 <b>70 多人</b>做入网的人力资源。</p>
+          <p>入网部门用了一款基于互联网的 BPM（海星系统），本来是给 OA 用的：能处理财会报销、员工申请，但只能管有限的目标文档和数据，也缺少二次开发 API 去对接其他系统。</p>
+          <p>于是单独成立项目组：<b>1 名架构师、4–6 名研发工程师、1 名产品经理</b>，内部命名 Venus。入网团队大多是非计算机专业的业务运营，能忠实执行既定流程，但缺少深入思考和提高效率的意识；业务一多，唯一手段就是继续招人。</p>
+        </div>
+        <div class="venus-metrics">
+          <span class="mono">PROJECT SETUP</span>
+          <div class="venus-metric"><span>临时入网人力</span><b class="bad">70+ 人</b></div>
+          <div class="venus-metric"><span>项目组</span><b>1 + 4~6 + 1</b></div>
+          <div class="venus-metric"><span>旧流程工具</span><b>海星 BPM（OA）</b></div>
+          <div class="venus-metric"><span>目标</span><b>快速应对入网</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="venus-body" data-v="detour">
+      <div class="venus-panel">
+        <div class="venus-text">
+          <h3>把「像海星」当成了需求</h3>
+          <p>产品经理和架构师很敬业：走访业务运营，认真记录海星 BPM 的现有流程和各种案件状态，然后在 .NET 平台上不打折扣地复制功能。没出个把月就交付使用。</p>
+          <p>用户的反馈一直是拿 Venus 和海星对比：海星有什么，Venus 就要有什么，最好一模一样。</p>
+          <p class="venus-quote">「无论再怎么做，Venus 永远不会是海星。系统方向和逻辑错了：该做的是提炼入网流程的业务需求——有几个过程？每个控制点要控制什么风险？哪些机器做、哪些人工做、哪些人机配合？而不是倾全力模仿海星。」</p>
+          <p>上线后：成百上千个数据项在录入、审核、批准各阶段都有各自不同的状态；系统会检查状态，一个不对就不往下走。结果 DBA 每天人工修数据项状态，<b>卡在哪里就修到哪里</b>，永无休止。</p>
+        </div>
+        <div class="venus-metrics">
+          <span class="mono">DETOUR / FAILURE MODE</span>
+          <div class="venus-metric"><span>需求来源</span><b class="bad">模仿旧系统</b></div>
+          <div class="venus-metric"><span>状态管理</span><b class="bad">一条记录几十个</b></div>
+          <div class="venus-metric"><span>一个状态不对</span><b class="bad">整条不走</b></div>
+          <div class="venus-metric"><span>DBA</span><b class="bad">每天改库</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="venus-body" data-v="fix">
+      <div class="venus-panel">
+        <div class="venus-text">
+          <h3>四刀，把紧耦合拆开</h3>
+          <p>研发一年多、效果不彰，公司介入：花大量时间了解现状，发现数据状态与系统约束的矛盾，也发现真实需求无法被提炼。于是做了四件事：</p>
+          <p>① 把系统按签约、录入、审核、批准、开通五个阶段彻底解耦，每个阶段都是独立服务，其他流程怎么变，这段代码都相对独立。</p>
+          <p>② 引入消息队列，把不同服务之间的数据交换改成异步；上下游只通过消息队列或数据库表做必要关联，一个服务出问题不殃及池鱼。</p>
+          <p>③ 增强每个独立服务内部的聚合力，降低相互耦合度，让研发聚焦自己的领域，需要同时关注的目标数量大幅减少。</p>
+          <p>④ 按真实需求重新抽象各服务的内在逻辑与外在关联，大幅减少虚假功能；从满足 KYC 真实需要出发设计，引导用户适应新系统。</p>
+        </div>
+        <div class="venus-metrics">
+          <span class="mono">ARCHITECTURE FIX</span>
+          <div class="venus-metric"><span>服务数</span><b>5 个独立服务</b></div>
+          <div class="venus-metric"><span>服务间通信</span><b>消息队列（异步）</b></div>
+          <div class="venus-metric"><span>耦合方式</span><b class="good">消息 / 数据表</b></div>
+          <div class="venus-metric"><span>功能取舍</span><b>砍虚假需求</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="venus-body" data-v="result">
+      <div class="venus-panel">
+        <div class="venus-text">
+          <h3>从「火烧战船」到支撑平台</h3>
+          <p>改造后，系统与海星在使用方法和习惯上有差异，但更贴近 KYC 的真实业务需求。系统不再一荣皆荣、一损俱损；直接修改数据状态适应流程的事情大幅减少，直到最后彻底消失。</p>
+          <p>为了改善易用性，又提出<b>录入移动化、审核智能化、批准自动化</b>。系统经受住了多次重大活动验证，并开始提供给其他机构使用，成为该支付机构稳定可靠且不可或缺的关键业务支撑系统。</p>
+        </div>
+        <div class="venus-metrics">
+          <span class="mono">RESULT</span>
+          <div class="venus-metric"><span>DBA 改库</span><b class="good">→ 0</b></div>
+          <div class="venus-metric"><span>单点故障影响</span><b class="good">一条链 → 一个服务</b></div>
+          <div class="venus-metric"><span>易用性</span><b>移动化 · 智能化 · 自动化</b></div>
+          <div class="venus-metric"><span>复用</span><b class="good">提供给其他机构</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="venus-cmp">
+      <div class="vc-col before">
+        <span class="k mono">BEFORE / 同步紧耦合</span>
+        <h4>一条记录、一条链</h4>
+        <div class="vc-flow">
+          <div class="vc-node">签约</div>
+          <div class="vc-node">录入</div>
+          <div class="vc-node bad">审核 → 状态不对，整条停</div>
+          <div class="vc-node">批准</div>
+          <div class="vc-node">开通</div>
+          <div class="vc-node bad">DBA 每天改库，卡哪修哪</div>
+        </div>
+        <p class="vc-note">功能复制得越像，状态越多；状态越多，越需要一个 DBA 天天守着数据库。</p>
+      </div>
+      <div class="vc-col after">
+        <span class="k mono">AFTER / 异步解耦</span>
+        <h4>五个服务、一条消息总线</h4>
+        <div class="vc-flow">
+          <div class="vc-node good">签约服务</div>
+          <div class="vc-node good">录入服务</div>
+          <div class="vc-node good">审核服务</div>
+          <div class="vc-node good">批准服务</div>
+          <div class="vc-node good">开通服务</div>
+          <div class="vc-bus">MESSAGE QUEUE / 必要关联</div>
+        </div>
+        <p class="vc-note">每个服务能独立失败；一个停住，其他照常。系统从「一条链」变成「五个能站住的段」。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="aside">关键洞察：<b>复制旧系统，是把旧问题复制一遍</b>。真正的需求不是「海星有什么」，是「每一步要控制什么风险、哪些该机器做、哪些该人做」。架构调整的第一步，永远是需求重新抽象。</div>
+</div></section>
+
+<!-- ═══════════ 09 收口 ═══════════ -->
+<section id="s09" class="sec"><div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no mono">§ 09</span>
+    <h2>收口：把门口守住，是后两章的天花板</h2>
+    <p class="sec-lead">这一章没有架构图，只有边界。六条铁律和四道自测，把「支付前」从行政流程拉回系统设计：入网不是盖章，是把合同翻译成后面的计费、风控、结算能读懂的参数。</p>
+  </div>
+
+  <div class="three-law">
+    <div class="law"><span class="mono">RULE 01</span><p><b>支付前不是行政流程，是把合同翻译成系统参数。</b>费率、限额、结算周期、银行账户、联系方式、POS 机具，六组参数就是后两章的主数据。</p></div>
+    <div class="law"><span class="mono">RULE 02</span><p><b>申请是「说」，审核是「查」。</b>审核只能读，不能改；任何改动都要商户书面或电子同意，走合同修正留档。</p></div>
+    <div class="law"><span class="mono">RULE 03</span><p><b>需求先问「不做会怎样」，再问「自动化省不省人」。</b>10 份/天、20 份/人/天，全自动也裁不掉最后 1 个管理岗。</p></div>
+    <div class="law"><span class="mono">RULE 04</span><p><b>长流程必须解耦。</b>每个环节独立服务，服务间用消息队列或数据表做必要关联；别让一个状态不对卡住整条链。</p></div>
+    <div class="law"><span class="mono">RULE 05</span><p><b>BPM 要有边界。</b>每多一个「想知道的部门」，就多一个节点；5 个节点长到 60+，周期就从 1 周变 43 天。</p></div>
+    <div class="law"><span class="mono">RULE 06</span><p><b>登录只做一次。</b>SSO / CAS 把 N 个密码换成一个有时效的 token；权限仍按角色分配，不是「一个密码走天下」。</p></div>
+  </div>
+
+  <div class="quiz" id="quiz">
+    <div class="q-item is-open"><div class="q-i mono">Q01</div><div class="q-t">支付前六步里，哪一步是「形式审查」，哪一步才是「实质审查」？</div><div class="q-a">申请是商户提交材料，属于信息收集（形式上先把资料拿齐）；审核才是实质：读材料、上网核实、实地考察，核实信息真假，确认支付机构真正了解商户。</div></div>
+    <div class="q-item"><div class="q-i mono">Q02</div><div class="q-t">为什么说支付前填的费率、限额、结算周期是「后两章的地基」？</div><div class="q-a">费率决定支付中的计费与分账（金额、笔数、时间范围、梯级、活动五种方式逻辑完全不同）；限额、商户属性、地域决定风控参数；结算周期、银行账户决定支付后的结算与出款。支付前错一个字段，后面就错一片。</div></div>
+    <div class="q-item"><div class="q-i mono">Q03</div><div class="q-t">每天 10 份合同、每人每天能录 20 份，为什么不该马上做 OCR 自动化？</div><div class="q-a">因为即使全自动，合同管理岗仍要留 1 个人做管理，岗位裁不掉；还要采购扫描识别的硬件和软件，成本反而增加。除非合同量继续涨到需要 2 个人以上，或人工错误成本高到必须自动化，否则保持人工更划算。</div></div>
+    <div class="q-item"><div class="q-i mono">Q04</div><div class="q-t">为什么 BPM 的审批节点会从 5 个长到 60 多个？</div><div class="q-a">每个部门都想「知道一下」：反洗钱、财务、人事、内审、市场陆续加入，责任部门变化、关联关系增加，节点自然生长。流程一旦没有边界，流程图就会变成一团乱麻，合同审查周期从 1 周变成 43 天。</div></div>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="wrap">
+  <div class="foot-grid">
+    <div class="foot-main">
+      <span class="mono">CHAPTER 06 / PRE-PAYMENT DESIGN</span>
+      <h3>入网即地基</h3>
+      <p>这一章把支付从「转账那一刻」往前推到「商户进门那一刻」：六步入网、KYC 的两面、六条参数脐带、需求实质、流程解耦、BPM 的边界、SSO 的 token、Venus 的四刀改造。支付前不是行政流程，是把合同翻译成后面两章能读懂的参数。</p>
+      <a class="db-link" href="https://book.douban.com/subject/36422205/" target="_blank" rel="noopener"><span class="mono">DOUBAN</span><b>一本书读懂支付</b><i>↗</i></a>
+    </div>
+    <div class="foot-side">
+      <span class="mono">READ NEXT</span>
+      <p>上一章：支付的技术架构——六方生态、五层参考架构与 11 个子系统。</p>
+      <a class="inline-link" href="../ch05/">← 第 5 章 支付的技术架构</a>
+      <p style="margin-top:10px"><a class="inline-link" href="../">↑ 章节索引</a></p>
+      <p style="margin-top:16px">本章站点为学习笔记，图表与示例为阅读整理，不替代原书。</p>
+    </div>
+  </div>
+  <div class="foot-bottom mono"><span>PAYMENT PRIMER · STUDY NOTES</span><span>CH.06 / 2026-11-25</span></div>
+</div></footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>
