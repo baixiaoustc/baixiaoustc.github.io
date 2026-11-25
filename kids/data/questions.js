@@ -107,7 +107,7 @@ window.KQ = {
       "points": [
         "不是「不听话」，是身体还没准备好：控制尿尿，要膀胱长到足够大、神经能感觉到「满了」，还要括约肌能关住。这套本领一般要到 2–3 岁才慢慢成熟。1 岁以内的小婴儿想尿就尿，自己察觉不到，也不会提前告诉大人——所以尿不湿的任务是「接住」，不是教他忍。",
         "尿不湿的核心是三样东西：① 贴着皮肤的表面层，用无纺布做成，尿一沾就迅速穿过去，所以皮肤这一面摸着还是干的；② 中间的吸水芯层，里面有高吸水性树脂（SAP）小颗粒，能吸掉自身重量几十倍的水，尿一进去就变成凝胶状的软果冻，不容易挤回来；③ 最外面的防水膜，像一层透气的雨衣，把水挡在里面。",
-        "为什么要这么麻烦？因为尿留在皮肤上久了，尿里的尿素会被细菌分解出氨，刺激皮肤发红、起疹子（红屁股／尿布疹）。尿不湿及时把尿吸走、保持干爽，再勤换，就能护住小屁股。等孩子能感觉到「我要尿」、能自己走到马桶（大约 2–3 岁），白天就可以换成小内裤了。"
+        "为什么要这么麻烦？因为尿和便便留在皮肤上久了，尿里的尿素会被细菌分解出氨，便便里的酶也会刺激皮肤，一起把皮肤弄得发红、起疹子（红屁股／尿布疹）。尿不湿及时把它们吸走、保持干爽，再勤换，就能护住小屁股。等孩子能感觉到「我要尿」、能自己走到马桶（大约 2–3 岁），白天就可以换成小内裤了。"
       ],
       "followUp": "那为什么小婴儿自己不知道「我要尿尿」呢？",
       "source": "2026-11-25 桃子",
@@ -117,7 +117,7 @@ window.KQ = {
         "points": [
           "It is not disobedience — the body is not ready. Holding pee needs a bladder big enough, nerves that can feel 'it is full', and muscles that can hold the gate shut. That set of skills usually matures between about 2 and 3 years old. A baby under one pees whenever it happens, does not notice it, and cannot tell a grown-up in advance — so the diaper's job is to catch it, not to teach the baby to wait.",
           "A diaper has three key parts: (1) a top sheet of non-woven fabric that lets pee pass through at once, so the side touching the skin still feels dry; (2) an absorbent core with super-absorbent polymer (SAP) beads that can take dozens of times their own weight in water — pee turns into a gel-like jelly that does not easily squeeze back out; (3) a waterproof backing film, like a breathable raincoat, that keeps the water inside.",
-          "Why bother? Because pee left on the skin breaks down into ammonia, which irritates the skin and causes nappy rash. A diaper takes the pee away quickly and keeps the skin dry; changing it often protects the baby's bottom. When a child can feel 'I need to pee' and can walk to the potty (usually around 2–3), daytime underwear can take over."
+          "Why bother? Because pee and poop left on the skin cause trouble: bacteria break the urea in pee into ammonia, and enzymes in poop irritate the skin too — together they make it red and rashy (nappy rash). A diaper takes them away quickly and keeps the skin dry; changing it often protects the baby's bottom. When a child can feel 'I need to pee' and can walk to the potty (usually around 2–3), daytime underwear can take over."
         ],
         "followUp": "Then why can't a baby tell that a pee is coming?",
         "figureAlt": "Cross-section: pee drips from above through the top layer of a diaper, absorbent beads in the middle drink it into a soft jelly, and a waterproof film at the bottom keeps it from leaking. Bottom note: babies pee whenever it happens and cannot say — a diaper is 'pants that drink'"
