@@ -516,29 +516,21 @@ input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; background: v
 .inline-link { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-dim); }
 .foot-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 22px; padding-top: 18px; border-top: 1px solid var(--line-soft); font-size: 9.5px; letter-spacing: .12em; color: var(--dimmer); }
 
-/* 章节左右导航：对齐第 2 / 3 章的 foot-r 形式 */
-.chapter-nav {
-  display: flex; align-items: stretch; justify-content: space-between; gap: 14px;
-  margin-top: 34px; padding-top: 18px; border-top: 1px solid var(--line);
-  font-size: 9px; letter-spacing: .12em;
-}
-.chapter-nav a, .chapter-nav .cn-next { display: flex; flex-direction: column; gap: 3px; min-width: 0; text-decoration: none; }
-.chapter-nav .cn-prev { align-items: flex-start; }
-.chapter-nav .cn-next { align-items: flex-end; text-align: right; }
-.chapter-nav .cn-side { color: var(--dimmer); font-size: 9px; letter-spacing: .14em; }
-.chapter-nav b { font-family: var(--sans); font-size: 13px; font-weight: 600; color: var(--text); letter-spacing: .02em; line-height: 1.4; }
-.chapter-nav a:hover b { color: var(--gold); }
-.chapter-nav a:hover .cn-side { color: var(--gold-dim); }
-.chapter-nav .cn-mid { align-self: center; color: var(--gold-dim); font-size: 9.5px; letter-spacing: .16em; border-bottom: 1px solid transparent; padding-bottom: 1px; }
-.chapter-nav .cn-mid:hover { color: var(--gold); border-bottom-color: var(--gold-dim); }
-.chapter-nav .is-soon { opacity: .55; }
-.chapter-nav .is-soon b { color: var(--dimmer); font-weight: 500; }
-.chapter-nav em { font-style: normal; font-size: 8.5px; letter-spacing: .12em; color: var(--dimmer); margin-top: 2px; }
+/* ── footer（对齐第 2 / 3 章的简洁左右导航） ──────────────── */
+footer { border-top: 1px solid var(--line); padding: 44px 0 40px; margin-top: 0; }
+footer .wrap { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; flex-wrap: nowrap; }
+footer .wrap > div:first-child { flex: 1 1 0; min-width: 0; }
+footer p { margin: 0 0 6px; font-size: 11px; color: var(--dimmer); line-height: 1.7; }
+footer p.mono { font-size: 9px; letter-spacing: .16em; color: var(--gold-dim); }
+footer a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--gold-dim); }
+footer .foot-r { display: flex; align-items: center; gap: 18px; }
+footer .foot-r a { border-bottom: 0; font-size: 10px; letter-spacing: .08em; }
+.foot-soon { font-size: 10px; letter-spacing: .08em; color: var(--dimmer); opacity: .55; }
 @media (max-width: 700px) {
-  .chapter-nav { gap: 8px; margin-top: 26px; }
-  .chapter-nav b { font-size: 11px; }
-  .chapter-nav .cn-mid { font-size: 9px; }
-  .chapter-nav .cn-side { font-size: 8px; }
+  footer .wrap { flex-wrap: wrap; }
+  footer .wrap > div:first-child { flex-basis: 100%; }
+  footer .foot-r { gap: 12px; }
+  .foot-soon { display: none; }
 }
 
 /* ── 动画 ─────────────────────────────────────────────── */
