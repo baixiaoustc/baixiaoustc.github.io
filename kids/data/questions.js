@@ -92,6 +92,39 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "why-igloo-not-cold",
+      "date": "2026-11-26",
+      "kid": "yumi",
+      "age": 9,
+      "question": "爱斯基摩冰屋里面为什么不冷？",
+      "subject": "nature",
+      "secondary": "daily",
+      "depth": 2,
+      "figure": "assets/figures/why-igloo-not-cold.svg",
+      "figureEn": "assets/figures/en/why-igloo-not-cold.svg",
+      "figureAlt": "冰屋剖面：外面零下40度，里面零度上下；雪砖里关着很多空气，空气不导热，像一件厚棉被；人和油灯散热，暖空气留在圆顶里，冷空气沉在低矮的门洞里",
+      "oneLine": "雪砖里大部分是空气，空气不导热，墙就像一件厚棉被，把人体散出的热捂住；圆顶散热面小，门洞又比屋里地面低，冷空气沉在门口——冰屋不发热，只是让热漏得慢，所以比外面暖三十多度。",
+      "points": [
+        "先纠正一个直觉：冰屋的砖不是冰块，是压实的雪。新雪九成以上是空气，压实成砖后也还留着一半左右的空间——无数小气孔把空气关在里面。空气是差的导热体，所以这圈雪墙等于一件很厚的羽绒服：人散出的热要很慢才能漏到外面。冰反而不好——冰里空气少、导热快，又重。",
+        "形状也在帮忙：① 圆顶：同样体积，球的表面积最小，热量从墙面跑掉的地方最少；风也顺着弧面滑过去，不直吹墙。② 低门洞：门洞比屋里睡觉的台面低，冷空气重、会往下沉，就积在门口那段「坑」里；暖空气轻、留在圆顶上部。等于在门口放了一个冷气槽，开门时外面的冷风也不容易灌进来。",
+        "热从哪来：人自己就是暖炉——一个大人安静坐着，散的热约 100 瓦，相当于一只灯泡；再加一盏海豹油灯（qulliq），屋里能维持在 0℃ 上下，而外面可能是 −40℃，里外差三四十度，又没有风，所以「不冷」。边界要记住：冰屋不发热，只是漏得慢；屋里不能生大火，屋顶会融。内壁微微融化再冻上，会结成一层薄冰壳，把砖缝封得更严。（他们自己叫自己「因纽特人」，Inuit 意思是「人」；「爱斯基摩」是外人起的名字，现在书里多写「因纽特人」；iglu 在他们的语言里就是「房子」。）"
+      ],
+      "followUp": "为什么冰屋不用冰块，而要用雪砖？",
+      "source": "2026-11-26 玉米",
+      "en": {
+        "question": "Why isn't it cold inside an Inuit igloo?",
+        "oneLine": "Snow blocks are mostly trapped air, and air does not conduct heat — so the walls act like a thick quilt that holds in the heat your body gives off. A dome has less surface to lose heat from, and the entrance is lower than the floor, so cold air sinks and stays at the door. An igloo does not make heat; it just lets heat escape slowly, which is why it can be 30–40℃ warmer inside than out.",
+        "points": [
+          "First, correct the intuition: igloo blocks are not ice — they are packed snow. Fresh snow is more than 90% air, and even after being packed into blocks it is still about half air: countless tiny pockets trap the air inside. Air is a poor conductor of heat, so this ring of snow works like a very thick down jacket — the heat your body gives off escapes only slowly. Ice would be worse: it holds little air, conducts heat quickly, and is heavy.",
+          "The shape helps too: ① A dome: for the same volume, a sphere has the smallest surface area, so there is less wall area for heat to escape through, and wind slides over the curve instead of hitting a flat wall. ② A low entrance: the doorway is lower than the sleeping platform inside. Cold air is denser and sinks, so it collects in the 'pit' at the entrance, while warm air stays in the upper dome. It works like a cold-air trap at the door, so opening the entrance does not let the outside wind pour in.",
+          "Where does the heat come from? People are the heater — an adult sitting still gives off about 100 watts, like a light bulb; add a seal-oil lamp (qulliq), and the inside can stay around 0℃ while it may be −40℃ outside. That is a 30–40℃ difference, with no wind, so it feels 'not cold'. But remember the limit: an igloo does not make heat, it only leaks it slowly; you cannot build a big fire inside or the roof will melt. The inner wall melts a little and refreezes into a thin ice glaze that seals the cracks. (The people call themselves Inuit — the word means 'people'; 'Eskimo' is a name outsiders gave them, and modern books usually say Inuit. In their language, iglu simply means 'house'.)"
+        ],
+        "followUp": "Why do igloos use snow blocks instead of ice blocks?",
+        "figureAlt": "Cross-section of an igloo: outside −40℃, inside about 0℃. Snow blocks are full of trapped air, which does not conduct heat, so the walls work like a thick quilt. A person and an oil lamp give off heat; warm air stays in the dome, while cold air pools in the low entrance tunnel."
+      },
+      "time": "08:27:52"
+    },
+    {
       "id": "diaper-absorb",
       "date": "2026-11-25",
       "kid": "taozi",

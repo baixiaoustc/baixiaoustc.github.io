@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="冰屋剖面：外面零下40度，里面零度上下；雪砖里关着很多空气，空气不导热，像一件厚棉被；人和油灯散热，暖空气留在圆顶里，冷空气沉在低矮的门洞里">
+  <rect width="640" height="400" rx="24" fill="#FFFDF7"/>
+
+  <text x="320" y="46" text-anchor="middle" font-size="22" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" font-weight="700" fill="#2F3542">冰屋不冷：不是加热，是把热带住</text>
+
+  <!-- 外面的温度与风 -->
+  <text x="92" y="112" text-anchor="middle" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">外面 −40℃</text>
+  <path d="M20,152 L126,152" stroke="#A8C3D4" stroke-width="1.5"/>
+  <path d="M120,148 L130,152 L120,156" fill="#A8C3D4"/>
+  <path d="M30,178 L140,178" stroke="#A8C3D4" stroke-width="1.5"/>
+  <path d="M134,174 L144,178 L134,182" fill="#A8C3D4"/>
+  <path d="M20,204 L126,204" stroke="#A8C3D4" stroke-width="1.5"/>
+  <path d="M120,200 L130,204 L120,208" fill="#A8C3D4"/>
+  <circle cx="58" cy="232" r="2.5" fill="#CFE3EE"/>
+  <circle cx="86" cy="250" r="2" fill="#CFE3EE"/>
+  <circle cx="46" cy="272" r="2.5" fill="#CFE3EE"/>
+  <circle cx="96" cy="288" r="2" fill="#CFE3EE"/>
+  <circle cx="64" cy="306" r="2.5" fill="#CFE3EE"/>
+
+  <!-- 屋里的温度 -->
+  <text x="335" y="112" text-anchor="middle" font-size="15" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">屋里 0℃ 上下</text>
+
+  <!-- 雪地 -->
+  <rect x="0" y="330" width="640" height="70" fill="#F1F5F6"/>
+  <line x1="0" y1="330" x2="640" y2="330" stroke="#D8E2E6" stroke-width="1.5"/>
+
+  <!-- 冰屋墙体：外弧与内弧围成一圈雪砖 -->
+  <path d="M190,330 A145,118 0 0 1 480,330 L456,330 A121,96 0 0 0 214,330 Z" fill="#DCEFF8" stroke="#9FC6D8" stroke-width="1.5"/>
+  <!-- 砖缝 -->
+  <line x1="209" y1="271" x2="229" y2="282" stroke="#B7D6E2" stroke-width="1"/>
+  <line x1="263" y1="228" x2="275" y2="247" stroke="#B7D6E2" stroke-width="1"/>
+  <line x1="335" y1="212" x2="335" y2="234" stroke="#B7D6E2" stroke-width="1"/>
+  <line x1="408" y1="228" x2="396" y2="247" stroke="#B7D6E2" stroke-width="1"/>
+  <line x1="461" y1="271" x2="441" y2="282" stroke="#B7D6E2" stroke-width="1"/>
+  <!-- 雪砖里的小气孔 -->
+  <circle cx="210" cy="293" r="3" fill="#FFFFFF" stroke="#B7D6E2"/>
+  <circle cx="241" cy="254" r="3" fill="#FFFFFF" stroke="#B7D6E2"/>
+  <circle cx="300" cy="226" r="3" fill="#FFFFFF" stroke="#B7D6E2"/>
+  <circle cx="335" cy="223" r="3" fill="#FFFFFF" stroke="#B7D6E2"/>
+  <circle cx="370" cy="226" r="3" fill="#FFFFFF" stroke="#B7D6E2"/>
+  <circle cx="429" cy="254" r="3" fill="#FFFFFF" stroke="#B7D6E2"/>
+  <circle cx="460" cy="293" r="3" fill="#FFFFFF" stroke="#B7D6E2"/>
+
+  <!-- 屋里的暖区 -->
+  <path d="M214,330 A121,96 0 0 1 456,330 Z" fill="#FFF6E2"/>
+  <!-- 睡觉的台子 -->
+  <rect x="214" y="318" width="242" height="12" fill="#E8D9B8"/>
+
+  <!-- 人：小暖炉 -->
+  <circle cx="320" cy="270" r="9" fill="#F0B49C"/>
+  <rect x="310" y="282" width="20" height="34" rx="9" fill="#6E9BB5"/>
+  <text x="258" y="300" text-anchor="middle" font-size="13" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#8A6A2F">人 ≈ 100 瓦</text>
+
+  <!-- 油灯 -->
+  <ellipse cx="378" cy="316" rx="10" ry="4" fill="#D9A441"/>
+  <path d="M378,300 C374,306 374,310 378,312 C382,310 382,306 378,300 Z" fill="#F2C94C"/>
+
+  <!-- 暖空气往上走 -->
+  <path d="M316,258 C311,248 309,242 309,236" stroke="#E9A23B" stroke-width="2" fill="none"/>
+  <path d="M305,240 L309,232 L313,240 Z" fill="#E9A23B"/>
+  <path d="M324,258 C329,248 331,242 331,236" stroke="#E9A23B" stroke-width="2" fill="none"/>
+  <path d="M327,240 L331,232 L335,240 Z" fill="#E9A23B"/>
+  <text x="368" y="252" text-anchor="middle" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#B07A1E">暖空气</text>
+
+  <!-- 低矮的门洞：冷空气沉在下面 -->
+  <rect x="456" y="306" width="154" height="10" fill="#DCEFF8" stroke="#9FC6D8" stroke-width="1.5"/>
+  <rect x="456" y="334" width="154" height="10" fill="#DCEFF8" stroke="#9FC6D8" stroke-width="1.5"/>
+  <rect x="456" y="316" width="154" height="18" fill="#EAF6FB"/>
+  <rect x="466" y="326" width="144" height="8" fill="#BFDDF0"/>
+  <circle cx="484" cy="330" r="1.8" fill="#FFFFFF"/>
+  <circle cx="516" cy="329" r="1.8" fill="#FFFFFF"/>
+  <circle cx="552" cy="330" r="1.8" fill="#FFFFFF"/>
+  <circle cx="586" cy="329" r="1.8" fill="#FFFFFF"/>
+
+  <text x="535" y="362" text-anchor="middle" font-size="13" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">冷空气沉在这儿</text>
+  <text x="320" y="386" text-anchor="middle" font-size="14" font-family="-apple-system,PingFang SC,Helvetica,sans-serif" fill="#3A5A6B">雪砖里的空气不导热，像一件厚棉被</text>
+</svg>

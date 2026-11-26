@@ -632,5 +632,17 @@
    "小婴儿想尿就尿、说不了——尿不湿就是一条「会喝水的裤子」": "Babies pee when they want and cannot say — a diaper is 'pants that drink'",
    "吸走水、锁成果冻，衣服床单干干的，小屁股也不红不疼": "Water is soaked up and locked in jelly: clothes stay dry and skin stays calm"
   }
+ },
+ "why-igloo-not-cold.svg": {
+  "aria": "Cross-section of an igloo: outside −40℃, inside about 0℃. Snow blocks are full of trapped air, which does not conduct heat, so the walls work like a thick quilt. A person and an oil lamp give off heat; warm air stays in the dome, while cold air pools in the low entrance tunnel.",
+  "text": {
+   "冰屋不冷：不是加热，是把热带住": "An igloo traps heat; it does not make it",
+   "外面 −40℃": "Outside −40℃",
+   "屋里 0℃ 上下": "Inside about 0℃",
+   "人 ≈ 100 瓦": "A person ≈ 100 W",
+   "暖空气": "Warm air",
+   "冷空气沉在这儿": "Cold air pools here",
+   "雪砖里的空气不导热，像一件厚棉被": "Air trapped in snow blocks does not conduct heat — like a thick quilt"
+  }
  }
 }
