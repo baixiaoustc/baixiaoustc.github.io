@@ -92,6 +92,39 @@ window.KQ = {
   ],
   "questions": [
     {
+      "id": "seashell-ocean-sound",
+      "date": "2026-11-28",
+      "kid": "yumi",
+      "age": 9,
+      "question": "为什么大海螺靠在耳朵能听到海浪的声音？",
+      "subject": "nature",
+      "secondary": "daily",
+      "depth": 2,
+      "figure": "assets/figures/seashell-ocean-sound.svg",
+      "figureEn": "assets/figures/en/seashell-ocean-sound.svg",
+      "figureAlt": "左边画出风、车、说话和风扇这些周围的声音，用箭头送进中间的海螺；海螺剖开，标出空腔里的空气在来回振动、低音被放大；右边声音进入耳朵，听到「哗——」像海浪。底部：越安静的地方「海浪」越小，它本来就是你身边的声音",
+      "oneLine": "海螺里没有存着海水的声音：它是一只空腔，把周围本来就有的细碎噪声（风、车、说话、风扇，还有你自己的心跳和呼吸）收进去，让低音在里面共鸣、放大——听起来就像海浪。越安静的地方，这个「海浪」越小。",
+      "points": [
+        "先拆掉一个误会：海螺不是录音机，壳里没有「存着」海的声音。它真正做的事，是把现场的声音收进来——开口像一个漏斗，壳壁又把一部分高音挡住、吸收掉，剩下的低音在空腔里来回振动、被放大，这就叫共鸣。就像对着空瓶口吹气能吹出呜呜的低音；瓶子越大，音越低。",
+        "为什么偏偏像海浪：海浪声不是某一个音，而是一团「什么频率都有一点、还忽大忽小」的噪声。海螺把周围的噪声染成低频、起伏的「嘶——哗——」，耳朵和脑子一听，就把它认成海。海螺的螺旋内壁一段大一段小，各段有各段的共鸣，所以声音比纸杯更厚、更像真的浪。",
+        "还有一半声音来自你自己：海螺扣在耳朵上，等于给耳道加了一个小房间，心跳、血流、呼吸、手指摩擦壳壁的沙沙声都被关在里面、放大。边界也要记住：换地方声音就变——安静的房间里「海浪」明显变小，风扇旁、马路边更大更沉；换成空纸杯、空水瓶、两只手合起来的空心掌，也一样能听到「海」，只是空腔越小、声音越尖。所以那不是海螺记住的海，是你身边的声音被它「调了音」。"
+      ],
+      "followUp": "如果把海螺带到完全安静的房间里，还能听到海浪声吗？",
+      "source": "2026-11-28 玉米",
+      "en": {
+        "question": "Why can you hear the sound of waves when you hold a big seashell to your ear?",
+        "oneLine": "A seashell does not store the sound of the sea: it is a hollow cavity that collects the faint noise already around you — wind, traffic, voices, a fan, even your own heartbeat and breathing — and lets the low notes resonate and grow louder, so it sounds like surf. The quieter the place, the fainter the 'waves'.",
+        "points": [
+          "First, drop one misunderstanding: a seashell is not a tape recorder, and there is no 'sea sound' stored inside it. What it does is collect the sound that is there right now: the opening works like a funnel, while the shell wall blocks and absorbs some of the high notes. The low ones bounce back and forth inside the cavity and get louder — that is resonance. It works like blowing across the top of an empty bottle to make a low hum: the bigger the bottle, the lower the note.",
+          "Why does it sound like surf in particular? Surf is not one single note. It is a mess of noise with a little of every frequency, rising and falling. The shell tints the surrounding noise into a low, rolling 'shhh — wha', and your ears and brain recognise that pattern as the sea. The spiral inner wall of a conch is wide in some places and narrow in others, and each part has its own resonance, so it sounds fuller than a paper cup — more like real waves.",
+          "Half the sound also comes from you: holding the shell against your ear adds a small room around your ear canal, trapping and amplifying the rustle of your heartbeat, blood flow, breathing and fingers rubbing the shell. Remember the limit, too: the sound changes with the place — in a quiet bedroom the 'waves' shrink; near a fan or a road they get louder and deeper. Swap the shell for an empty paper cup, a plastic bottle or two cupped hands and you still hear 'the sea' — the smaller the cavity, the higher the sound. So it is not the sea that the shell remembers: it is the sound around you, re-tuned by the shell."
+        ],
+        "followUp": "If you took the seashell into a completely silent room, would you still hear the waves?",
+        "figureAlt": "Left: wind, traffic, voices and a fan send arrows of sound toward the seashell in the middle. The shell is cut open: inside the hollow cavity the air vibrates back and forth and low notes are amplified. On the right the sound enters an ear and is heard as 'shhh — wha', like surf. Bottom line: the quieter the place, the fainter the 'waves' — it is the sound around you."
+      },
+      "time": "16:07:25"
+    },
+    {
       "id": "why-igloo-not-cold",
       "date": "2026-11-26",
       "kid": "yumi",

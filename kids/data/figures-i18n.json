@@ -644,5 +644,18 @@
    "冷空气沉在这儿": "Cold air pools here",
    "雪砖里的空气不导热，像一件厚棉被": "Air trapped in snow blocks does not conduct heat — like a thick quilt"
   }
+ },
+ "seashell-ocean-sound.svg": {
+  "aria": "A seashell held to the ear: sound from wind, cars, voices and a fan enters the shell; inside the hollow cavity the air vibrates back and forth and low notes are amplified; the sound reaches the ear and is heard as 'shhh — wha', like surf. Bottom line: the quieter the place, the fainter the 'waves' — it is the sound around you.",
+  "text": {
+   "海螺里的“海浪”，是从哪儿来的？": "Where does a seashell's 'sea sound' come from?",
+   "先记住：海螺里没有存着海水的声音": "First: a seashell does not store the sound of the sea",
+   "周围的声音：风、车、人声、风扇…": "Sound around you: wind, cars, voices, fans…",
+   "空气来回振动": "Air vibrates back and forth",
+   "低音被放大": "Low notes get louder",
+   "听到：哗——像海浪": "You hear: shhh — wha, like surf",
+   "耳朵": "Ear",
+   "越安静的地方，“海浪”越小——它本来就是你身边的声音": "The quieter the place, the fainter the 'waves' — it is the sound around you"
+  }
  }
 }
